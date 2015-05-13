@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad15b184_1f00bb6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-05-13T17:15:29Z",
+      "side": 1,
+      "message": "needs space",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "fb226ac63542284f17cc61106f7cdbe602d71c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ae5b3_5a5405a8",
+        "filename": "libselinux/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-05-13T17:15:29Z",
+      "side": 1,
+      "message": "we should be consistent whether spaces or tabs or used. I prefer spaces. Can we update this file to only have one or the other?",
+      "revId": "fb226ac63542284f17cc61106f7cdbe602d71c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad15b184_9f9dcbb3",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-05-13T17:15:29Z",
+      "side": 1,
+      "message": "wrap this in\n\n  #ifdef ANDROID\n  #endif\n\n? This doesn\u0027t seem useful / relevant to other Linux distributions.",
+      "revId": "fb226ac63542284f17cc61106f7cdbe602d71c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ae5b3_9aae7d12",
+        "filename": "libsepol/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-05-13T17:15:29Z",
+      "side": 1,
+      "message": "inconsistent spacing.",
+      "revId": "fb226ac63542284f17cc61106f7cdbe602d71c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
