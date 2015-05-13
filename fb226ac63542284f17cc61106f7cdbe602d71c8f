@@ -59,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "ad15b184_1a61e90f",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-05-13T17:24:16Z",
+      "side": 1,
+      "message": "the majority of what\u0027s exposed by this header isn\u0027t used in the host-side tools and actually is implemented in the missing android.c libselinux addition.  I\u0027d prefer it if those matched up.",
+      "range": {
+        "startLine": 2,
+        "startChar": 8,
+        "endLine": 2,
+        "endChar": 27
+      },
+      "revId": "fb226ac63542284f17cc61106f7cdbe602d71c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd1ae5b3_9aae7d12",
         "filename": "libsepol/Android.mk",
         "patchSetId": 2
