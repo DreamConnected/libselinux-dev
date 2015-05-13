@@ -67,6 +67,29 @@ common_cflags := \
 	-Wshadow -Wmissing-noreturn \
 	-Wmissing-format-attribute
 
+common_COPY_HEADERS := \
+    include/sepol/handle.h \
+	include/sepol/policydb.h \
+	cil/include/cil/cil.h \
+	include/sepol/sepol.h \
+	include/sepol/policydb.h \
+	include/sepol/user_record.h \
+	include/sepol/context_record.h \
+	include/sepol/iface_record.h \
+	include/sepol/port_record.h \
+	include/sepol/boolean_record.h \
+	include/sepol/node_record.h \
+	include/sepol/booleans.h \
+	include/sepol/interfaces.h \
+	include/sepol/ports.h \
+	include/sepol/nodes.h \
+	include/sepol/users.h \
+	include/sepol/handle.h \
+	include/sepol/debug.h \
+	include/sepol/policydb.h \
+	include/sepol/module.h \
+	include/sepol/context.h
+
 ifeq ($(HOST_OS), darwin)
 common_cflags += -DDARWIN
 endif
@@ -91,8 +114,8 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := libsepol
 LOCAL_MODULE_TAGS := optional
 LOCAL_COPY_HEADERS_TO := sepol
-LOCAL_COPY_HEADERS := include/sepol/handle.h include/sepol/policydb.h cil/include/cil/cil.h
-LOCAL_C_INCLUDES := $(common_includes) 
+LOCAL_COPY_HEADERS := $(common_COPY_HEADERS)
+LOCAL_C_INCLUDES := $(common_includes)
 LOCAL_CFLAGS := $(yacc_flags) $(common_cflags)
 LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
@@ -106,7 +129,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := libsepol
 LOCAL_MODULE_TAGS := optional
-LOCAL_C_INCLUDES := $(common_includes) 
+LOCAL_C_INCLUDES := $(common_includes)
 LOCAL_CFLAGS := $(yacc_flags) $(common_cflags)
 LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
 LOCAL_MODULE_CLASS := STATIC_LIBRARIES
@@ -120,7 +143,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := chkcon
 LOCAL_MODULE_TAGS := optional
-LOCAL_C_INCLUDES := $(common_includes) 
+LOCAL_C_INCLUDES := $(common_includes)
 LOCAL_CFLAGS := $(common_cflags)
 LOCAL_SRC_FILES := utils/chkcon.c
 LOCAL_SHARED_LIBRARIES := libsepol
