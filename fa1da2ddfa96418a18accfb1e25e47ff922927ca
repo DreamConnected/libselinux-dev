@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d98b58f_05fbf4f7",
+        "filename": "prebuilts/usr/bin/audit2allow",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-05-18T16:01:45Z",
+      "side": 1,
+      "message": "Calls itself recursively?",
+      "revId": "fa1da2ddfa96418a18accfb1e25e47ff922927ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
