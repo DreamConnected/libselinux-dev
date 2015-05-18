@@ -16,6 +16,23 @@
       "revId": "fa1da2ddfa96418a18accfb1e25e47ff922927ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d98b58f_c5f4ec06",
+        "filename": "prebuilts/usr/bin/audit2why",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-05-18T16:04:42Z",
+      "side": 1,
+      "message": "There is no audit2why under this path.  There is one under policycoreutils/audit2allow/audit2why.  Is that what was meant?",
+      "revId": "fa1da2ddfa96418a18accfb1e25e47ff922927ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
