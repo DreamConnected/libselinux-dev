@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c4a87c_ffb6572b",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T13:06:19Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "2d17f97b7d35c99350f86fb08e4803bbe0f94859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59c15c6b_80f25ae3",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T13:06:19Z",
+      "side": 1,
+      "message": "Need to rename function prototype in policy_define.h",
+      "revId": "2d17f97b7d35c99350f86fb08e4803bbe0f94859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a6d8d3_80d13876",
+        "filename": "libsepol/src/write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T13:06:19Z",
+      "side": 1,
+      "message": "extended permissions",
+      "revId": "2d17f97b7d35c99350f86fb08e4803bbe0f94859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c4a87c_5c51d159",
+        "filename": "libsepol/src/write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T13:06:19Z",
+      "side": 1,
+      "message": "extended permissions",
+      "revId": "2d17f97b7d35c99350f86fb08e4803bbe0f94859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c4a87c_3c4e1dba",
+        "filename": "libsepol/src/write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T13:06:19Z",
+      "side": 1,
+      "message": "extended permissions",
+      "revId": "2d17f97b7d35c99350f86fb08e4803bbe0f94859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
