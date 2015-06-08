@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b9a6d8d3_80f818f6",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2273,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-06-08T13:11:06Z",
+      "side": 1,
+      "message": "which unused",
+      "revId": "2d17f97b7d35c99350f86fb08e4803bbe0f94859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39c4a87c_ffb6572b",
         "filename": "checkpolicy/policy_define.c",
         "patchSetId": 2
