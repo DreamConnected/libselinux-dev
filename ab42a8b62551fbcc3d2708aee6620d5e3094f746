@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79254042_c2487c02",
+        "filename": "checkpolicy/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-06-11T15:12:57Z",
+      "side": 1,
+      "message": "having all lines be the same is a better (diff-minimizing/error-reducing) style that you should definitely consider. your guys\u0027 project though...",
+      "parentUuid": "f9ecd03d_ff7bbf71",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "ab42a8b62551fbcc3d2708aee6620d5e3094f746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79254042_024f540b",
         "filename": "secilc/Android.mk",
         "patchSetId": 2
