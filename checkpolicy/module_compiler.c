@@ -301,6 +301,7 @@ role_datum_t *declare_role(unsigned char isattr)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -364,6 +365,7 @@ type_datum_t *declare_type(unsigned char primary, unsigned char isattr)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -500,6 +502,7 @@ user_datum_t *declare_user(void)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -918,6 +921,7 @@ static int require_role_or_attribute(int pass, unsigned char isattr)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -981,6 +985,8 @@ static int require_type_or_attribute(int pass, unsigned char isattr)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
+
 		}
 	}
 }
@@ -1042,6 +1048,7 @@ int require_user(int pass)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -1093,6 +1100,7 @@ static int require_bool_tunable(int pass, int is_tunable)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -1166,6 +1174,7 @@ int require_sens(int pass)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
@@ -1219,6 +1228,7 @@ int require_cat(int pass)
 		}
 	default:{
 			assert(0);	/* should never get here */
+			__builtin_unreachable();
 		}
 	}
 }
