@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39858859_4517aa75",
+        "filename": "checkpolicy/module_compiler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-06-11T00:14:24Z",
+      "side": 1,
+      "message": "It feels like this should be written as:\n\n  abort();\n\ninstead of:\n\n  assert(0);\n\nHaving this conditionally fail depending on a compiler flag feels error prone to me.",
+      "revId": "baa495d50f0e0c0e06b16f28a1a14d31e0694e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
