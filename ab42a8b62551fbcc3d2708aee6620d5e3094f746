@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ecd03d_ff7bbf71",
+        "filename": "checkpolicy/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-06-11T15:07:32Z",
+      "side": 1,
+      "message": "nit: should be removed too (although common_includes has a trailing one as well)",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "ab42a8b62551fbcc3d2708aee6620d5e3094f746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_024f540b",
+        "filename": "secilc/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2015-06-11T15:07:32Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "ab42a8b62551fbcc3d2708aee6620d5e3094f746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
