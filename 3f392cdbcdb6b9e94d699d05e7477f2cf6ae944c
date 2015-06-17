@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b10858_00d730eb",
+        "filename": "prebuilts/bin/audit2allow",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-06-17T18:47:28Z",
+      "side": 1,
+      "message": "I take that back trying even quoting the variable and moving to single brackets, it complained.\n\nOn ubuntu sh is symlinked to dash.. dash sucks.\n\nLSB release shows this:\nDistributor ID:\tUbuntu\nDescription:\tUbuntu 14.04.2 LTS\nRelease:\t14.04\nCodename:\ttrusty",
+      "range": {
+        "startLine": 4,
+        "startChar": 5,
+        "endLine": 4,
+        "endChar": 6
+      },
+      "revId": "3f392cdbcdb6b9e94d699d05e7477f2cf6ae944c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
