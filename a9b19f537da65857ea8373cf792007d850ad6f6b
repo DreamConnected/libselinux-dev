@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e9c462a_5b614331",
+        "filename": "prebuilts/bin/seinfo",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-06-18T16:17:33Z",
+      "side": 1,
+      "message": "technically you could add:\n\n  exec python ...\n\nwhich would avoid keeping around the shell script process while python is executing.",
+      "revId": "a9b19f537da65857ea8373cf792007d850ad6f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
