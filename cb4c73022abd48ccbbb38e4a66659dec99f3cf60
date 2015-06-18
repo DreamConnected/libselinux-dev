@@ -1,0 +1,7 @@
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-at: Thu, 18 Jun 2015 16:54:08 +0000
+Reviewed-on: https://android-review.googlesource.com/155484
+Project: platform/external/selinux
+Branch: refs/heads/master
