@@ -17,7 +17,8 @@
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
 typedef int (*selabel_initfunc)(struct selabel_handle *rec,
-				struct selinux_opt *opts, unsigned nopts);
+				const struct selinux_opt *opts,
+				unsigned nopts);
 
 static selabel_initfunc initfuncs[] = {
 	&selabel_file_init,
@@ -128,7 +129,8 @@ err:
  * Validation functions
  */
 
-static inline int selabel_is_validate_set(struct selinux_opt *opts, unsigned n)
+static inline int selabel_is_validate_set(const struct selinux_opt *opts,
+					  unsigned n)
 {
 	while (n--)
 		if (opts[n].type == SELABEL_OPT_VALIDATE)
@@ -251,7 +253,8 @@ selabel_lookup_bm_common(struct selabel_handle *rec, int translating,
  */
 
 struct selabel_handle *selabel_open(unsigned int backend,
-				    struct selinux_opt *opts, unsigned nopts)
+				    const struct selinux_opt *opts,
+				    unsigned nopts)
 {
 	struct selabel_handle *rec = NULL;
 
@@ -364,6 +367,15 @@ int selabel_lookup_best_match_raw(struct selabel_handle *rec, char **con,
 
 	*con = strdup(lr->ctx_raw);
 	return *con ? 0 : -1;
+}
+
+enum selabel_cmp_result selabel_cmp(struct selabel_handle *h1,
+				    struct selabel_handle *h2)
+{
+	if (!h1->func_cmp || h1->func_cmp != h2->func_cmp)
+		return SELABEL_INCOMPARABLE;
+
+	return h1->func_cmp(h1, h2);
 }
 
 void selabel_close(struct selabel_handle *rec)
