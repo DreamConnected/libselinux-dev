@@ -112,7 +112,7 @@ int cil_roletype_to_policydb(policydb_t *pdb, const struct cil_db *db, struct ci
  *
  * @return SEPOL_OK upon success or an error otherwise.
  */
-int cil_type_to_policydb(policydb_t *pdb, struct cil_type *cil_type);
+int cil_type_to_policydb(policydb_t *pdb, struct cil_type *cil_type, void *type_value_to_cil[]);
 
 /**
  * Insert cil typealias structure into sepol policydb.
@@ -144,7 +144,7 @@ int cil_typepermissive_to_policydb(policydb_t *pdb, struct cil_typepermissive *c
  *
  * @return SEPOL_OK upon success or an error otherwise.
  */
-int cil_typeattribute_to_policydb(policydb_t *pdb, struct cil_typeattribute *cil_attr);
+int cil_typeattribute_to_policydb(policydb_t *pdb, struct cil_typeattribute *cil_attr, void *type_value_to_cil[]);
 
 /**
  * Insert cil attribute structure into sepol type->attribute bitmap.
@@ -250,7 +250,7 @@ int cil_type_rule_to_policydb(policydb_t *pdb, const struct cil_db *db, struct c
  *
  * @return SEPOL_OK upon success or an error otherwise.
  */
-int cil_avrule_to_policydb(policydb_t *pdb, const struct cil_db *db, struct cil_avrule *cil_avrule, struct cil_list *neverallows);
+int cil_avrule_to_policydb(policydb_t *pdb, const struct cil_db *db, struct cil_avrule *cil_avrule);
 
 /**
  * Insert cil booleanif structure into sepol policydb.  This populates the
@@ -262,7 +262,7 @@ int cil_avrule_to_policydb(policydb_t *pdb, const struct cil_db *db, struct cil_
  *
  * @return SEPOL_OK upon success or an error otherwise.
  */
-int cil_booleanif_to_policydb(policydb_t *pdb, const struct cil_db *db, struct cil_tree_node *node, struct cil_list *neverallows, hashtab_t filename_trans_table);
+int cil_booleanif_to_policydb(policydb_t *pdb, const struct cil_db *db, struct cil_tree_node *node, hashtab_t filename_trans_table);
 
 /**
  * Insert cil role transition structure into sepol policydb.

@@ -257,7 +257,8 @@ void cil_db_init(struct cil_db **db)
 	cil_type_init(&(*db)->selftype);
 	(*db)->selftype->datum.name = CIL_KEY_SELF;
 	(*db)->selftype->datum.fqn = CIL_KEY_SELF;
-
+	(*db)->num_types_and_attrs = 0;
+	(*db)->num_classes = 0;
 	(*db)->num_types = 0;
 	(*db)->num_roles = 0;
 	(*db)->num_cats = 0;
@@ -340,7 +341,7 @@ int cil_add_file(cil_db_t *db, char *name, char *data, size_t size)
 
 	rc = cil_parser(name, buffer, size + 2, &db->parse);
 	if (rc != SEPOL_OK) {
-		cil_log(CIL_ERR, "Failed to parse %s\n", name);
+		cil_log(CIL_INFO, "Failed to parse %s\n", name);
 		goto exit;
 	}
 
@@ -370,7 +371,7 @@ int cil_compile_nopdb(struct cil_db *db)
 	cil_log(CIL_INFO, "Building AST from Parse Tree\n");
 	rc = cil_build_ast(db, db->parse->root, db->ast->root);
 	if (rc != SEPOL_OK) {
-		cil_log(CIL_ERR, "Failed to build ast\n");
+		cil_log(CIL_INFO, "Failed to build ast\n");
 		goto exit;
 	}
 
@@ -380,21 +381,21 @@ int cil_compile_nopdb(struct cil_db *db)
 	cil_log(CIL_INFO, "Resolving AST\n");
 	rc = cil_resolve_ast(db, db->ast->root);
 	if (rc != SEPOL_OK) {
-		cil_log(CIL_ERR, "Failed to resolve ast\n");
+		cil_log(CIL_INFO, "Failed to resolve ast\n");
 		goto exit;
 	}
 
 	cil_log(CIL_INFO, "Qualifying Names\n");
 	rc = cil_fqn_qualify(db->ast->root);
 	if (rc != SEPOL_OK) {
-		cil_log(CIL_ERR, "Failed to qualify names\n");
+		cil_log(CIL_INFO, "Failed to qualify names\n");
 		goto exit;
 	}
 
 	cil_log(CIL_INFO, "Compile post process\n");
 	rc = cil_post_process(db);
 	if (rc != SEPOL_OK ) {
-		cil_log(CIL_ERR, "Post process failed\n");
+		cil_log(CIL_INFO, "Post process failed\n");
 		goto exit;
 	}
 

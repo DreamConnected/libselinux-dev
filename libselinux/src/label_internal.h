@@ -17,16 +17,21 @@
 /*
  * Installed backends
  */
-int selabel_file_init(struct selabel_handle *rec, struct selinux_opt *opts,
-		      unsigned nopts) hidden;
-int selabel_media_init(struct selabel_handle *rec, struct selinux_opt *opts,
-		      unsigned nopts) hidden;
-int selabel_x_init(struct selabel_handle *rec, struct selinux_opt *opts,
-		   unsigned nopts) hidden;
+int selabel_file_init(struct selabel_handle *rec,
+			    const struct selinux_opt *opts,
+			    unsigned nopts) hidden;
+int selabel_media_init(struct selabel_handle *rec,
+			    const struct selinux_opt *opts,
+			    unsigned nopts) hidden;
+int selabel_x_init(struct selabel_handle *rec,
+			    const struct selinux_opt *opts,
+			    unsigned nopts) hidden;
 int selabel_db_init(struct selabel_handle *rec,
-		    struct selinux_opt *opts, unsigned nopts) hidden;
+			    const struct selinux_opt *opts,
+			    unsigned nopts) hidden;
 int selabel_property_init(struct selabel_handle *rec,
-			  struct selinux_opt *opts, unsigned nopts) hidden;
+			    const struct selinux_opt *opts,
+			    unsigned nopts) hidden;
 
 /*
  * Labeling internal structures
@@ -63,6 +68,8 @@ struct selabel_handle {
 						    const char *key,
 						    const char **aliases,
 						    int type);
+	enum selabel_cmp_result (*func_cmp)(struct selabel_handle *h1,
+					    struct selabel_handle *h2);
 
 	/* supports backend-specific state information */
 	void *data;
@@ -90,7 +97,7 @@ selabel_validate(struct selabel_handle *rec,
  */
 extern int myprintf_compat;
 extern void __attribute__ ((format(printf, 1, 2)))
-(*myprintf) (const char *fmt,...);
+(*myprintf) (const char *fmt, ...);
 
 #define COMPAT_LOG(type, fmt...) if (myprintf_compat)	  \
 		myprintf(fmt);				  \
