@@ -241,6 +241,10 @@ typedef struct class_perm_node {
 	struct class_perm_node *next;
 } class_perm_node_t;
 
+#define xperm_test(x, p) (1 & (p[x >> 5] >> (x & 0x1f)))
+#define xperm_set(x, p) (p[x >> 5] |= (1 << (x & 0x1f)))
+#define xperm_clear(x, p) (p[x >> 5] &= ~(1 << (x & 0x1f)))
+
 typedef struct av_extended_perms {
 #define AVRULE_XPERMS_IOCTLFUNCTION	0x01
 #define AVRULE_XPERMS_IOCTLDRIVER	0x02
@@ -266,8 +270,9 @@ typedef struct avrule {
 #define AVRULE_XPERMS_ALLOWED 		0x0100
 #define AVRULE_XPERMS_AUDITALLOW	0x0200
 #define AVRULE_XPERMS_DONTAUDIT		0x0400
+#define AVRULE_XPERMS_NEVERALLOW	0x0800
 #define AVRULE_XPERMS	(AVRULE_XPERMS_ALLOWED | AVRULE_XPERMS_AUDITALLOW | \
-				AVRULE_XPERMS_DONTAUDIT)
+				AVRULE_XPERMS_DONTAUDIT | AVRULE_XPERMS_NEVERALLOW)
 	uint32_t specified;
 #define RULE_SELF 1
 	uint32_t flags;
