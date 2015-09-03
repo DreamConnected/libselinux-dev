@@ -148,6 +148,8 @@ AUDITALLOWXPERM |
 auditallowxperm		        { return(AUDITALLOWXPERM); }
 DONTAUDITXPERM |
 dontauditxperm                  { return(DONTAUDITXPERM); }
+NEVERALLOWXPERM |
+neverallowxperm                  { return(NEVERALLOWXPERM); }
 SOURCE |
 source			        { return(SOURCE); }
 TARGET |
