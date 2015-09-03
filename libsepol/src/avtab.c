@@ -45,7 +45,6 @@
 #include <sepol/policydb/avtab.h>
 #include <sepol/policydb/policydb.h>
 #include <sepol/errcodes.h>
-
 #include "debug.h"
 #include "private.h"
 
@@ -527,6 +526,7 @@ int avtab_read_item(struct policy_file *fp, uint32_t vers, avtab_t * a,
 			set++;
 	}
 	if (!set || set > 1) {
+		ERR(fp->handle, "key.specified = %08x\n", key.specified);
 		ERR(fp->handle, "more than one specifier");
 		return -1;
 	}
