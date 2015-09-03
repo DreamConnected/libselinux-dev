@@ -93,6 +93,23 @@ queue_element_t queue_remove(queue_t q)
 	return e;
 }
 
+queue_element_t queue_peak(queue_t q)
+{
+	queue_node_ptr_t node;
+	queue_element_t e;
+
+	if (!q)
+		return NULL;
+
+	if (q->head == NULL)
+		return NULL;
+
+	node = q->head;
+
+	e = node->element;
+	return e;
+}
+
 queue_element_t queue_head(queue_t q)
 {
 	if (!q)
