@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "24472669_120cf27a",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "queue_head()",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c48d6af4_b41bb87a",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "warning/error?",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "647bdead_0917f910",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4580a44_178a9ea0",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "Couldn\u0027t we coalesce this loop with the preceding one?",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_507a75b8",
         "filename": "checkpolicy/queue.c",
         "patchSetId": 3
@@ -25,6 +93,40 @@
     },
     {
       "key": {
+        "uuid": "44e97ace_3fdbc359",
+        "filename": "checkpolicy/queue.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "Same as queue_head()",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e49c2e76_51bfb497",
+        "filename": "checkpolicy/test/dispol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t even this test move within sepol_extended_perms_to_string() [and ultimately be used to decide whether to print the \"ioctl\" permission string before the ioctl command list?]",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04cce27b_89857a92",
         "filename": "libsepol/include/sepol/policydb/util.h",
         "patchSetId": 3
@@ -42,6 +144,40 @@
     },
     {
       "key": {
+        "uuid": "44e97ace_dffadfaa",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "magic constant; should probably be #define\u0027d PERMS_LENGTH or something and used everywhere including array declaration for consistency.",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c452ca50_0c69a704",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "For regular neverallows, we report the actual permissions that violated (i.e. the intersection), not all of permissions in the allow rule.",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_c486bc4d",
         "filename": "libsepol/src/assertion.c",
         "patchSetId": 3
@@ -53,6 +189,46 @@
       "writtenOn": "2015-09-04T18:33:01Z",
       "side": 1,
       "message": "If avtab_search_node() on line 282 returns NULL, then we\u0027ll end up returning an error on line 311. Is this correct? I would have expected that the absence of any elements would result in success, not failure.",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c48d6af4_f4cf003e",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "Not sure I follow.  check_assertion_avtab_match is called on every (key,datum) pair in the avtab.  Its job is to check whether that specific avtab entry matches (violates) the neverallow.  This function should only further refine that set of tests on the same (key, datum) pair, not search again for the same key and check all matches. Doing so will at least partly undo the benefits of the neverallow checker rewrite so that we only visit each entry once.",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64dafe36_23df2ecf",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "\u0026\u0026\nor !(a-\u003especified \u0026 (AVRULE_NEVERALLOW|AVRULE_XPERMS_NEVERALLOW))",
+      "range": {
+        "startLine": 405,
+        "startChar": 3,
+        "endLine": 405,
+        "endChar": 5
+      },
       "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +269,23 @@
     },
     {
       "key": {
+        "uuid": "c452ca50_ec655328",
+        "filename": "libsepol/src/expand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2749,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "Use same form as above.",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44141a88_f9fcdb38",
         "filename": "libsepol/src/util.c",
         "patchSetId": 3
@@ -127,6 +320,23 @@
       "writtenOn": "2015-09-04T18:33:01Z",
       "side": 1,
       "message": "size_t instead of int?",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24472669_32a36ea2",
+        "filename": "libsepol/src/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T19:16:33Z",
+      "side": 1,
+      "message": "For sepol_av_to_string(), we check the return value for snprintf and return NULL if any output was truncated.",
       "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
