@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "a4bdd6e7_17757490",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2015-09-08T19:54:21Z",
+      "side": 1,
+      "message": "Unlike the typical neverallow check, two things have to be true for this neverallow to fail.\n(ioctl perm) \u0026\u0026 ((ioctl command) || (no ioctl commands defined)) \n\nFirst the ioctl permission is checked using the original code, if the ioctl command has been found for a source, target, class set, I then check if the ioctl command has been granted for that same set or if no commands are defined (meaning all commands are allowed).\n\nI think this is still still fast. You\u0027ll only hit this additional check if a neverallow is defined for ioctl commands AND the ioctl permission is defined for that source, target, class.\n\nOther ways to check that two things exist in the avtab are fairly complex. It seems like very little is lost here as the first check is the same and the second check (only done if the first check is true) is a hash table lookup.",
+      "parentUuid": "c48d6af4_f4cf003e",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64dafe36_23df2ecf",
         "filename": "libsepol/src/assertion.c",
         "patchSetId": 3
