@@ -230,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "e49c2e76_1151acff",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-08T20:46:49Z",
+      "side": 1,
+      "message": "Ok.  Might merit a comment.",
+      "parentUuid": "a4bdd6e7_17757490",
+      "revId": "73f981648e6d70f4bf9d78052af32893173ea110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64dafe36_23df2ecf",
         "filename": "libsepol/src/assertion.c",
         "patchSetId": 3
