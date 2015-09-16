@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84ca92dc_cc5f2309",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-16T14:06:29Z",
+      "side": 1,
+      "message": "Not needed now that the loops are coalesced; cur_perms allocated at beginning of loop.",
+      "revId": "4e7a18b457d9defd8d387cd90c3f8be5dff89f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "095f9b28_8ac78b24",
+        "filename": "checkpolicy/test/dispol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-16T14:06:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the printing of the ioctl prefix and the testing of the AVTAB_XPERMS_IOCTL* values be inside of sepol_extended_perms_to_string()?  Shouldn\u0027t we just be able to do fprintf(fp, \"%s\\n\", sepol_extended_perms_to_string(datum-\u003experms)); and leave the rest to the function?",
+      "revId": "4e7a18b457d9defd8d387cd90c3f8be5dff89f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
