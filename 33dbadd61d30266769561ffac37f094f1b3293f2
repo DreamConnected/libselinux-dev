@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0984fbca_05891418",
+        "filename": "libsepol/src/avtab.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-17T15:26:20Z",
+      "side": 0,
+      "message": "Seems extraneous to this change, and arguable stylistically (it was an intentional splitting of public vs local header inclusion).",
+      "revId": "33dbadd61d30266769561ffac37f094f1b3293f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

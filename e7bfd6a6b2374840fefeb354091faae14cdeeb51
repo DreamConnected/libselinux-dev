@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c98d83f4_c319e881",
+        "filename": "libsepol/src/avtab.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-09-17T15:26:20Z",
+      "side": 1,
+      "message": "Relevant to this change?  If so, combine with next line; otherwise, revert.  Does it really help to see it?  This is probably what you get in trying to parse an old policy.30 format with the upstream libsepol, but not sure it is any more helpful to tell the user the specific value here - it just reflects an incompatible version or corrupted policy file regardless.",
+      "revId": "e7bfd6a6b2374840fefeb354091faae14cdeeb51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
