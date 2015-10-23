@@ -310,8 +310,8 @@ void avtab_destroy(avtab_t * h)
 		while (cur != NULL) {
 			temp = cur;
 			cur = cur->next;
-			if (temp->datum.ops)
-				free(temp->datum.ops);
+			if (temp->key.specified & AVTAB_OP)
+			    free(temp->datum.ops);
 			free(temp);
 		}
 		h->htable[i] = NULL;
