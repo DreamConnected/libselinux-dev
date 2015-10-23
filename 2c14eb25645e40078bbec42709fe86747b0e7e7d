@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1627c9f5_ca90234a",
+        "filename": "libsepol/src/avtab.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-10-23T17:02:12Z",
+      "side": 1,
+      "message": "m kernels have this:\n if (temp-\u003ekey.specified \u0026 AVTAB_OP)               \nfree(temp-\u003edatum.u.ops);",
+      "revId": "2c14eb25645e40078bbec42709fe86747b0e7e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
