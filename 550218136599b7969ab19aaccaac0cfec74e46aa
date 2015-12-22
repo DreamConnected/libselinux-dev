@@ -1,0 +1,7 @@
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Colin Cross <ccross@android.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Tue, 22 Dec 2015 18:32:46 +0000
+Reviewed-on: https://android-review.googlesource.com/189030
+Project: platform/external/selinux
+Branch: refs/heads/master
