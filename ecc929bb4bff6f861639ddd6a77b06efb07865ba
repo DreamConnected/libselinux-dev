@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "085974e9_4acd7782",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T15:19:02Z",
+      "side": 1,
+      "message": "weird very hard to read that, but I guess its gotta be split somewhere.",
+      "parentUuid": "085974e9_04d45663",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "085974e9_a48a22dc",
         "filename": "libsepol/src/assertion.c",
         "patchSetId": 2
@@ -170,6 +188,24 @@
       "side": 1,
       "message": "This is only entered if rc still has its initialized value i.e. if there are no extended permission nodes in the avtab.",
       "parentUuid": "085974e9_24971202",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_ea0f8385",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T15:19:02Z",
+      "side": 1,
+      "message": "I see it now, you come into this method under the pretense that a match was made in the avtab via ebitmap_match_any(), rc is set to one, and if not turned down indicates it cid not find a failure on the xperms path, now check the regular perms path.\n\nWould it be possible to have both neverallow failures on the xperm and the regular allow?",
+      "parentUuid": "085974e9_c4271e64",
       "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
