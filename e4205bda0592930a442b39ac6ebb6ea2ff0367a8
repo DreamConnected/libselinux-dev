@@ -33,6 +33,24 @@
       "revId": "e4205bda0592930a442b39ac6ebb6ea2ff0367a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_443c8e71",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-04-20T03:58:45Z",
+      "side": 0,
+      "message": "If you don\u0027t enter the for loop (no node is found in the avtab) then rc \u003d 1.\n\ni.e. all ioctls commands are allowed which violates the neverallowxperm rule.",
+      "parentUuid": "085974e9_845e061f",
+      "revId": "e4205bda0592930a442b39ac6ebb6ea2ff0367a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "085974e9_04d45663",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-04-20T03:58:45Z",
+      "side": 1,
+      "message": "The for loop statement is split across three lines:\n\nfor (node \u003d avtab_search_node(avtab, \u0026tmp_key); node; node \u003d avtab_search_node_next(node, tmp_key.specified)) {\n\n\"node;\" is just the conditional statement",
+      "parentUuid": "085974e9_649bca3e",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "085974e9_a48a22dc",
         "filename": "libsepol/src/assertion.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-04-20T01:49:36Z",
       "side": 1,
       "message": "I haven\u0027t been following this as close as I should, whats the diff between IOCTL_FUNCTION and IOCTL_DRIVER?",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_a436a292",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-04-20T03:58:45Z",
+      "side": 1,
+      "message": "This is just checking that the extended permissions node is for ioctls (guarding against future extensions).",
+      "parentUuid": "085974e9_a48a22dc",
       "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "085974e9_e4c33aab",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-04-20T03:58:45Z",
+      "side": 1,
+      "message": "\"if (rc) \" then there was a neverallow violation, print the violation and check for others.\n\nrc is set to 0 to avoid hitting the final statement.",
+      "parentUuid": "085974e9_c4d2bed7",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "085974e9_24971202",
         "filename": "libsepol/src/assertion.c",
         "patchSetId": 2
@@ -98,6 +152,24 @@
       "writtenOn": "2016-04-20T01:49:36Z",
       "side": 1,
       "message": "So on the last loop if check_extended_permissions() enters the if it clears rc and this doesn\u0027t enter? Whats so important about the last loop iteration? It seems as though everytime that branch is taken above, it dumps an error that its violated...",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_c4271e64",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-04-20T03:58:45Z",
+      "side": 1,
+      "message": "This is only entered if rc still has its initialized value i.e. if there are no extended permission nodes in the avtab.",
+      "parentUuid": "085974e9_24971202",
       "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
