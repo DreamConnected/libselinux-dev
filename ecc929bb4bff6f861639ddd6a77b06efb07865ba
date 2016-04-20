@@ -209,6 +209,24 @@
       "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_0a521f5a",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T15:24:56Z",
+      "side": 1,
+      "message": "1. neverallow a b:chr_file ioctl;\n\n2. neverallowxperm a b:chr_file ioctl 32;\n\n3. allowxperm a b:chr_file ioctl 32;\n\nWhat would be the output?",
+      "parentUuid": "085974e9_ea0f8385",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
