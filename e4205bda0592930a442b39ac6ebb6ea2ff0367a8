@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "085974e9_c464fef2",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 0,
+      "message": "On the old case, rc !\u003d 0 results in rc \u003d\u003d 0. Then below the if is skipped. In the case rc \u003d\u003d 0, then both if\u0027s are skipped.",
+      "revId": "e4205bda0592930a442b39ac6ebb6ea2ff0367a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_845e061f",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 0,
+      "message": "I think this is dead code.",
+      "revId": "e4205bda0592930a442b39ac6ebb6ea2ff0367a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

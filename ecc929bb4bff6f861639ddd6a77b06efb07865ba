@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "085974e9_649bca3e",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 1,
+      "message": "Huh, node; ?",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_a48a22dc",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 1,
+      "message": "I haven\u0027t been following this as close as I should, whats the diff between IOCTL_FUNCTION and IOCTL_DRIVER?",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_e4801ac2",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 1,
+      "message": "permissionss, extra s?",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_04a8d64c",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 1,
+      "message": "gross hardcoded policy.conf, I see your not the only one, nothing one can do about that at this moment.",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_c4d2bed7",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 1,
+      "message": "I am not sold on the logic here with rc \u003d 0.",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "085974e9_24971202",
+        "filename": "libsepol/src/assertion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-20T01:49:36Z",
+      "side": 1,
+      "message": "So on the last loop if check_extended_permissions() enters the if it clears rc and this doesn\u0027t enter? Whats so important about the last loop iteration? It seems as though everytime that branch is taken above, it dumps an error that its violated...",
+      "revId": "ecc929bb4bff6f861639ddd6a77b06efb07865ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
