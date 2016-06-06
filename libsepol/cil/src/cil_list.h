@@ -45,7 +45,7 @@ struct cil_list_item {
 };
 
 #define cil_list_for_each(item, list) \
-	for (item = (list)->head; item != NULL; item = item->next)
+	for ((item) = (list)->head; (item) != NULL; (item) = (item)->next)
 
 
 void cil_list_init(struct cil_list **list, enum cil_flavor flavor);

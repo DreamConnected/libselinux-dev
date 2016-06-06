@@ -25,7 +25,7 @@
 #include "handle.h"
 
 #define STATUS_SUCCESS 0
-#define STATUS_ERR -1
+#define STATUS_ERR (-1)
 #define STATUS_NODATA 1
 
 /* FIXME: this needs to become a real function. Declaring variables

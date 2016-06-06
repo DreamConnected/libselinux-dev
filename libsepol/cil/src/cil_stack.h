@@ -42,7 +42,7 @@ struct cil_stack_item {
 };
 
 #define cil_stack_for_each_starting_at(stack, start, pos, item) \
-	for (pos = start, item = cil_stack_peek_at(stack, pos); item != NULL; pos++, item = cil_stack_peek_at(stack, pos))
+	for ((pos) = (start), (item) = cil_stack_peek_at(stack, pos); (item) != NULL; (pos)++, (item) = cil_stack_peek_at(stack, pos))
 
 #define cil_stack_for_each(stack, pos, item) cil_stack_for_each_starting_at(stack, 0, pos, item)
 
