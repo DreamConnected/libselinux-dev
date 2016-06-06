@@ -1665,7 +1665,7 @@ static avtab_ptr_t find_avtab_node(sepol_handle_t * handle,
 
 #define EXPAND_RULE_SUCCESS   1
 #define EXPAND_RULE_CONFLICT  0
-#define EXPAND_RULE_ERROR    -1
+#define EXPAND_RULE_ERROR    (-1)
 
 static int expand_terule_helper(sepol_handle_t * handle,
 				policydb_t * p, uint32_t * typemap,
