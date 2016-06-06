@@ -1461,13 +1461,13 @@ int cil_avrule_to_policydb(policydb_t *pdb, const struct cil_db *db, struct cil_
 // Copied from checkpolicy/policy_define.c
 
 /* index of the u32 containing the permission */
-#define XPERM_IDX(x) (x >> 5)
+#define XPERM_IDX(x) ((x) >> 5)
 /* set bits 0 through x-1 within the u32 */
-#define XPERM_SETBITS(x) ((1 << (x & 0x1f)) - 1)
+#define XPERM_SETBITS(x) ((1 << ((x) & 0x1f)) - 1)
 /* low value for this u32 */
-#define XPERM_LOW(x) (x << 5)
+#define XPERM_LOW(x) ((x) << 5)
 /* high value for this u32 */
-#define XPERM_HIGH(x) (((x + 1) << 5) - 1)
+#define XPERM_HIGH(x) ((((x) + 1) << 5) - 1)
 void __avrule_xperm_setrangebits(uint16_t low, uint16_t high, struct avtab_extended_perms *xperms)
 {
 	unsigned int i;
@@ -1490,8 +1490,8 @@ void __avrule_xperm_setrangebits(uint16_t low, uint16_t high, struct avtab_exten
 }
 
 
-#define IOC_DRIV(x) (x >> 8)
-#define IOC_FUNC(x) (x & 0xff)
+#define IOC_DRIV(x) ((x) >> 8)
+#define IOC_FUNC(x) ((x) & 0xff)
 
 int __cil_permx_bitmap_to_sepol_xperms_list(ebitmap_t *xperms, struct cil_list **xperms_list)
 {

@@ -73,7 +73,7 @@ static inline int ebitmap_node_get_bit(ebitmap_node_t * n, unsigned int bit)
 }
 
 #define ebitmap_for_each_bit(e, n, bit) \
-	for (bit = ebitmap_start(e, &n); bit < ebitmap_length(e); bit = ebitmap_next(&n, bit)) \
+	for ((bit) = ebitmap_start(e, &(n)); (bit) < ebitmap_length(e); (bit) = ebitmap_next(&(n), bit)) \
 
 extern int ebitmap_cmp(const ebitmap_t * e1, const ebitmap_t * e2);
 extern int ebitmap_or(ebitmap_t * dst, const ebitmap_t * e1, const ebitmap_t * e2);
