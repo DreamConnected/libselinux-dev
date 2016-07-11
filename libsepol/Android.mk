@@ -131,7 +131,8 @@ LOCAL_MODULE := libsepol
 LOCAL_MODULE_TAGES := optional
 LOCAL_C_INCLUDES := $(common_includes)
 LOCAL_CFLAGS := $(common_cflags)
-LOCAL_SRC_FILES := $(common_src_files)
+LOCAL_CPPFLAGS := $(yacc_flags)
+LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 
 include $(BUILD_STATIC_LIBRARY)
