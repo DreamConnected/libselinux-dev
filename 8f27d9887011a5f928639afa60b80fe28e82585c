@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b28aa68_a693c604",
+        "filename": "secilc/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-09-15T16:56:55Z",
+      "side": 1,
+      "message": "We need $(LOCAL_PATH)/../libsepol/cil/include/cil/cil.h\n\nSo in secilc.c, the #include \u003csepol/cil.h\u003e should be changed to #include \u003ccil/cil.h\u003e.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "8f27d9887011a5f928639afa60b80fe28e82585c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
