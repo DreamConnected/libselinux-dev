@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0746fbe_36133666",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2016-09-20T14:58:54Z",
+      "side": 1,
+      "message": "An expression will either be an unresolved string expression that contains strings, lists, and operations or it will be a resolved expression that contains datums, lists, and operations. Many of the structs have the fields str_expr and datum_expr, when the AST is built the str_expr is filled and after it is resolved the datum_expr is filled.\n\nIf you are writing the AST out before resolving, then you should use the str_exprs and you won\u0027t see any datums.",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
