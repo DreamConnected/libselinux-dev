@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30b79fb7_41463608",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "Yep.  Will remove.",
+      "parentUuid": "30b79fb7_30a26eaf",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 81
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_9b381b29",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-20T17:48:37Z",
       "side": 1,
       "message": "don\u0027t need to be initialized. Could instead set args\u003dextra_args here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_41f716bd",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "Yes, this is a carry-over from the way I set these up. I don\u0027t actually even use db, so this\u0027ll get cleaned up.",
+      "parentUuid": "30b79fb7_9b381b29",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "30b79fb7_fc090d8b",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "At the moment, I\u0027m writing this out before cil_resolve_ast(), but I\u0027d like for it to work in both cases (and also before/after fqn_qualify() and post_process()).  My understanding is that the str_expr elements of the various cil_* structs still stick around, so the approach for the nodes I\u0027ve written so far should work in both cases. I\u0027m taking your response to mean that if I keep this case, then this should work for both before and after name resolution, is that correct?\n\nThe resolution phase goes over many passes, most of which I\u0027ve not concerned myself with yet since AOSP policy doesn\u0027t use a lot of the more advanced CIL features like namespacing and the different inheritance rules, but to do this properly and eventually upstream it, those\u0027ll need to be work too.",
+      "parentUuid": "b0746fbe_36133666",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_bba15f47",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "30b79fb7_7c675d51",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "The underlying data is a cil_flavor enum, so this is consistent with that.  The cil_flavor enum type is defined in cil_flavor.h and contains the operator mappings.",
+      "parentUuid": "30b79fb7_bba15f47",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_5b41435f",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -99,6 +189,30 @@
       "writtenOn": "2016-09-20T17:48:37Z",
       "side": 1,
       "message": "tabs",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 8
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_1c6c2131",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "I knew there\u0027d be at least one. Will fix.",
+      "parentUuid": "30b79fb7_5b41435f",
       "range": {
         "startLine": 268,
         "startChar": 0,
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "30b79fb7_dc3e8916",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "It is/does. This TODO is a TODO for the CIL -\u003e CIL output, which is incomplete, i.e. wouldn\u0027t work any any valid CIL AST.  I\u0027ve currently addressed 28 of the node flavors, with another 60 to go, only some of which are needed by AOSP.  \n\nThis TODO indicates that the CIL_AVRULE handling is incomplete, since CIL_AVRULE is also used for xperm avrules, which I haven\u0027t handled.  Thus, if the source policy contains an (allowx ...) rule, it won\u0027t be output correctly when written back out to source.",
+      "parentUuid": "b0746fbe_d65f62dd",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 642,
+        "endChar": 30
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_3bb6cf91",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -169,6 +307,24 @@
       "writtenOn": "2016-09-20T17:16:03Z",
       "side": 1,
       "message": "Three more statements to add: CIL_IN, CIL_SELINUXUSER, and CIL_SELINUXUSERDEFAULT.",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_9cf25160",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T21:44:34Z",
+      "side": 1,
+      "message": "Thanks, I copied the list from cil_copy_ast() as a starting point.  These are missing there.",
+      "parentUuid": "30b79fb7_3bb6cf91",
       "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
