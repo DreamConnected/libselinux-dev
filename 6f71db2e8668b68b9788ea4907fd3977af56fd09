@@ -16,6 +16,23 @@
       "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_3bb6cf91",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2016-09-20T17:16:03Z",
+      "side": 1,
+      "message": "Three more statements to add: CIL_IN, CIL_SELINUXUSER, and CIL_SELINUXUSERDEFAULT.",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
