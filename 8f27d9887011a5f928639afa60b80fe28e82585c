@@ -22,6 +22,52 @@
       "revId": "8f27d9887011a5f928639afa60b80fe28e82585c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_5be5c39f",
+        "filename": "secilc/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T17:08:44Z",
+      "side": 1,
+      "message": "We should not be relying on these includes at all, but rather they should be included as part of the exported headers from libsepol.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8f27d9887011a5f928639afa60b80fe28e82585c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_9bf25b60",
+        "filename": "secilc/secilc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-20T17:08:44Z",
+      "side": 1,
+      "message": "this changes the upstream code, so should be sent upstream as well.  I think this previously built with the LOCAL_COPY_HEADERS_TO usage but doing the basic exporting from libsepol I think this is correct.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "8f27d9887011a5f928639afa60b80fe28e82585c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
