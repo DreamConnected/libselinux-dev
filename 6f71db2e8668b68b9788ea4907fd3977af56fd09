@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "30b79fb7_30a26eaf",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-09-20T17:48:37Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 81
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_9b381b29",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-09-20T17:48:37Z",
+      "side": 1,
+      "message": "don\u0027t need to be initialized. Could instead set args\u003dextra_args here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0746fbe_36133666",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -13,6 +59,75 @@
       "writtenOn": "2016-09-20T14:58:54Z",
       "side": 1,
       "message": "An expression will either be an unresolved string expression that contains strings, lists, and operations or it will be a resolved expression that contains datums, lists, and operations. Many of the structs have the fields str_expr and datum_expr, when the AST is built the str_expr is filled and after it is resolved the datum_expr is filled.\n\nIf you are writing the AST out before resolving, then you should use the str_exprs and you won\u0027t see any datums.",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_bba15f47",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-09-20T17:48:37Z",
+      "side": 1,
+      "message": "What is the benefit of declaring this as an enum?",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_5b41435f",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-09-20T17:48:37Z",
+      "side": 1,
+      "message": "tabs",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 8
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b79fb7_3b7ecf70",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-09-20T17:48:37Z",
+      "side": 1,
+      "message": "I thought this was already added to CIL",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 642,
+        "endChar": 30
+      },
       "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
