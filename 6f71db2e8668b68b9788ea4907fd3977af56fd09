@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "b0746fbe_d65f62dd",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2016-09-20T18:37:17Z",
+      "side": 1,
+      "message": "CIL does have xperm support.",
+      "parentUuid": "30b79fb7_3b7ecf70",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 642,
+        "endChar": 30
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_3bb6cf91",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
