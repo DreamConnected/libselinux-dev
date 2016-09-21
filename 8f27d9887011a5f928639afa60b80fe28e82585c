@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "30a4ffca_9324ec21",
+        "filename": "secilc/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-09-21T22:17:58Z",
+      "side": 1,
+      "message": "OK, SGTM!",
+      "parentUuid": "30b79fb7_5be5c39f",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8f27d9887011a5f928639afa60b80fe28e82585c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_9bf25b60",
         "filename": "secilc/secilc.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-09-20T17:08:44Z",
       "side": 1,
       "message": "this changes the upstream code, so should be sent upstream as well.  I think this previously built with the LOCAL_COPY_HEADERS_TO usage but doing the basic exporting from libsepol I think this is correct.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "8f27d9887011a5f928639afa60b80fe28e82585c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30a4ffca_7321680f",
+        "filename": "secilc/secilc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-09-21T22:17:58Z",
+      "side": 1,
+      "message": "OK, will change the upstream as well.",
+      "parentUuid": "30b79fb7_9bf25b60",
       "range": {
         "startLine": 38,
         "startChar": 10,
