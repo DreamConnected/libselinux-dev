@@ -1,0 +1,53 @@
+This fork of Android differs in the following ways:
+ - include/selinux/android.h
+ - src/android.c
+ - README.android
+ - MODULE_LICENSE_PUBLIC_DOMAIN
+
+All other changes should be upstreamed to selinux as
+Android no longer carries changes outside of those files.
+
+The upstream project can be found at:
+https://github.com/SELinuxProject/selinux
+
+Thus, since all changes are in separate files, updates merged from
+upstream should occur with no merge conflicts.
+
+This fork differs from upstream libselinux in at least the following ways:
+
+* Legacy code and compatibility interfaces have been removed,
+
+* Many interfaces, functions, and files are omitted since they are
+unused in Android,
+
+* The python bindings are omitted since they are unused in Android,
+
+* The setrans (context translation) support has been disabled via
+  the build flag "DISABLE_SETRANS".
+
+* The SELinux policy files are all located in / rather than under
+/etc/selinux since /etc is not available in Android until /system
+is mounted and use fixed paths, not dependent on /etc/selinux/config,
+
+* The kernel policy file (sepolicy in Android, policy.N in Linux) does
+not include a version suffix since Android does not need to support
+booting multiple kernels,
+
+* The policy loading logic does not support automatic downgrading of
+the kernel policy file to a version known to the kernel, since this
+requires libsepol on the device and is only needed to support mixing
+and matching kernels and userspace easily,
+
+* The selabel interface and label_file backend have been extended to
+support label-by-symlink and partial matching support for use by ueventd
+in labeling device nodes based on stable symlink names and by init for
+optimizing its restorecon_recursive of /sys,
+
+* restorecon functionality, including recursive restorecon, has been
+fully implemented within new libselinux functions in android.c, along
+with optimizations to prune the tree walk if no change has occurred
+in file_contexts since the last restorecon,
+
+* Support for new Android-specific SELinux configuration files, such
+as seapp_contexts, property_contexts, and service_contexts, has been
+added within android.c
