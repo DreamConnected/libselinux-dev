@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "30b79fb7_ffaa5a23",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2016-09-21T15:19:30Z",
+      "side": 1,
+      "message": "Yes the str_expr elements stay around so if you want just the AST, then it will still work after the other phases.\n\nThe AST will change however. For blockinherits the block is copied under it, for calls the macro is copied under it. For both of these you just need to stop following the tree when you come to the blockinherit or call.\n\nMore difficult are the cases for tunableif and in. During the resolve stage tunableifs are resolved and either the true or false block is copied over the tunableif. for in statements the in block is copied to the block referred to. For in blocks (which is just a way of saying \"I want these rules in the block named\") the rules in the in block are copied to the named block. The AST will be different in these cases. I don\u0027t think it will be a big deal though.\n\nYou only need to start using the datums if you want to see what everything looks like after macro calls are resolved and named blocks removed (like if you want to print a policy.conf).",
+      "parentUuid": "30b79fb7_fc090d8b",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_bba15f47",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
