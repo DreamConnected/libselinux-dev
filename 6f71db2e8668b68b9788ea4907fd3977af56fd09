@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d09643c8_7c8ceee1",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-23T21:28:47Z",
+      "side": 1,
+      "message": "Done (or at least moved the actual functions lower-down to be consistent with the rest of the cil lib).",
+      "parentUuid": "30b79fb7_41463608",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 81
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_9b381b29",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yes, this is a carry-over from the way I set these up. I don\u0027t actually even use db, so this\u0027ll get cleaned up.",
       "parentUuid": "30b79fb7_9b381b29",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d09643c8_9c89bad3",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-23T21:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b79fb7_41f716bd",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -143,6 +191,24 @@
       "side": 1,
       "message": "Yes the str_expr elements stay around so if you want just the AST, then it will still work after the other phases.\n\nThe AST will change however. For blockinherits the block is copied under it, for calls the macro is copied under it. For both of these you just need to stop following the tree when you come to the blockinherit or call.\n\nMore difficult are the cases for tunableif and in. During the resolve stage tunableifs are resolved and either the true or false block is copied over the tunableif. for in statements the in block is copied to the block referred to. For in blocks (which is just a way of saying \"I want these rules in the block named\") the rules in the in block are copied to the named block. The AST will be different in these cases. I don\u0027t think it will be a big deal though.\n\nYou only need to start using the datums if you want to see what everything looks like after macro calls are resolved and named blocks removed (like if you want to print a policy.conf).",
       "parentUuid": "30b79fb7_fc090d8b",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d09643c8_fcb0fe96",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-23T21:28:47Z",
+      "side": 1,
+      "message": "Done (for now).  This suits my current needs.",
+      "parentUuid": "30b79fb7_ffaa5a23",
       "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -243,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "d09643c8_9ca29a49",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-23T21:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b79fb7_1c6c2131",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 8
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_3b7ecf70",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -314,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "d09643c8_1c676a1f",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-23T21:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b79fb7_dc3e8916",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 642,
+        "endChar": 30
+      },
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b79fb7_3bb6cf91",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 1
@@ -343,6 +457,24 @@
       "side": 1,
       "message": "Thanks, I copied the list from cil_copy_ast() as a starting point.  These are missing there.",
       "parentUuid": "30b79fb7_3bb6cf91",
+      "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d09643c8_3c6c26ff",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-09-23T21:28:47Z",
+      "side": 1,
+      "message": "Done (added to switch statement, but haven\u0027t filled them in yet).",
+      "parentUuid": "30b79fb7_9cf25160",
       "revId": "6f71db2e8668b68b9788ea4907fd3977af56fd09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
