@@ -268,6 +268,23 @@
       "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45b1b3f0_da166106",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:50:08Z",
+      "side": 1,
+      "message": "This should also go, as property contexts backend was upstreamed, and the same backend covers service_contexts. The only delta now is seapp_contexts.",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
