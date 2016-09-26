@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45b1b3f0_1ae8d9a1",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0242797_ab50edd2",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0242797_cb5529c2",
         "filename": "libselinux/README.android",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "45b1b3f0_fabb25b8",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "Yeah likely screws stuff up, im not sure what to test, I know somewhere the \"what is what license\" is burnt into the build and can be pulled up in settings. We likely would need to move this down to the toplevel of each sub-component (libsepol, libX)...\n\nSeparate rant:\n\nwe should move the include and src files somewhere else in the repo so make still works on libselinux. Right now the wildcard *.c will pick up android.c and cause issues, as that\u0027s a target only file.\n\nmaybe something like:\n\nsrc/android/xxx\ninclude/selinux/android/xxx\n\nWe would need to update callers when we do this or not update the header file location.",
+      "parentUuid": "f0242797_cb5529c2",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0242797_eb5ae5ee",
         "filename": "libselinux/README.android",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2016-09-26T19:36:17Z",
       "side": 1,
       "message": "Is this still true?",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45b1b3f0_da0bc183",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "Well the files are there, but most of its not being build or ifdef\u0027d out. I think this blends into the next comment block and can be condensed.",
+      "parentUuid": "f0242797_eb5ae5ee",
       "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "45b1b3f0_1a17f9b9",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "The first two things should really go away since were building some files + some config options. Maybe elaborate on what has been configured like the DISABLE_SETRANS comment below and drop the separate comment.",
+      "parentUuid": "f0242797_0b6021a4",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0242797_2b5ddde4",
         "filename": "libselinux/README.android",
         "patchSetId": 1
@@ -93,6 +177,24 @@
       "writtenOn": "2016-09-26T19:36:17Z",
       "side": 1,
       "message": "Well, they aren\u0027t built as part of Android but they are included from upstream",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45b1b3f0_3a1cbddb",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "True.",
+      "parentUuid": "f0242797_2b5ddde4",
       "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "45b1b3f0_fa316559",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0242797_2bccfdb1",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0242797_4b6a1984",
         "filename": "libselinux/README.android",
         "patchSetId": 1
@@ -127,6 +247,24 @@
       "writtenOn": "2016-09-26T19:36:17Z",
       "side": 1,
       "message": "This has been upstreamed as selinux_restorecon() but there are residual differences between it and selinux_android_restorecon().",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45b1b3f0_3a03dd72",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-26T21:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0242797_4b6a1984",
       "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
