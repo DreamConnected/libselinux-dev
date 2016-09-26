@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0242797_ab50edd2",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "fork of selinux? Also, maybe this should be moved to external/selinux/README.android and then you can prefix each item below with libselinux/.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0242797_cb5529c2",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "Wonder if this one creates a headache for license compliance people.  Top-level external/selinux has a MODULE_LICENSE_GPL because some of the components are GPL.  libselinux itself is not.",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0242797_eb5ae5ee",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "Is this still true?",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0242797_0b6021a4",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0242797_2b5ddde4",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "Well, they aren\u0027t built as part of Android but they are included from upstream",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0242797_2bccfdb1",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "This has been upstreamed and is no longer different.",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0242797_4b6a1984",
+        "filename": "libselinux/README.android",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-09-26T19:36:17Z",
+      "side": 1,
+      "message": "This has been upstreamed as selinux_restorecon() but there are residual differences between it and selinux_android_restorecon().",
+      "revId": "bb4d381e957d5758c11e3833a501a4a69d4339bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
