@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e29e1d21_7c4c3999",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-09-29T19:56:03Z",
+      "side": 1,
+      "message": "This needs to be updated to use SERVICE backend!",
+      "revId": "496320ca3c7edca4a37a66d9aaafcc0467aff995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
