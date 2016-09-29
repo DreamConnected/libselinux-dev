@@ -178,12 +178,12 @@ static int report_assertion_extended_permissions(sepol_handle_t *handle,
 				if (rc) {
 					extended_permissions_violated(&error, avrule->xperms, xperms);
 					ERR(handle, "neverallowxperm on line %lu of %s (or line %lu of policy.conf) violated by\n"
-							"allowxperm %s %s:%s %s;",
+							"allowxperm %s %s:%s ioctl { %s };",
 							avrule->source_line, avrule->source_filename, avrule->line,
 							p->p_type_val_to_name[i],
 							p->p_type_val_to_name[j],
 							p->p_class_val_to_name[curperm->tclass - 1],
-							sepol_extended_perms_to_string(&error));
+							sepol_avtab_xperms_to_string(&error));
 
 					rc = 0;
 					ret++;

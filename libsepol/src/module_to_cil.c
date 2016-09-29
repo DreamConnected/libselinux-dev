@@ -545,7 +545,7 @@ static int semantic_level_to_cil(struct policydb *pdb, int sens_offset, struct m
 	return 0;
 }
 
-static int avrule_to_cil(int indent, struct policydb *pdb, uint32_t type, const char *src, const char *tgt, const struct class_perm_node *classperms)
+static int avrule_to_cil(int indent, struct policydb *pdb, uint32_t type, const char *src, const char *tgt, const struct class_perm_node *classperms, av_extended_perms_t *avx)
 {
 	int rc = -1;
 	const char *rule;
@@ -577,6 +577,18 @@ static int avrule_to_cil(int indent, struct policydb *pdb, uint32_t type, const 
 	case AVRULE_CHANGE:
 		rule = "typechange";
 		break;
+	case AVRULE_XPERMS_ALLOWED:
+		rule = "allowx";
+		break;
+	case AVRULE_XPERMS_AUDITALLOW:
+		rule = "auditallowx";
+		break;
+	case AVRULE_XPERMS_DONTAUDIT:
+		rule = "dontauditx";
+		break;
+	case AVRULE_XPERMS_NEVERALLOW:
+		rule = "neverallowx";
+		break;
 	default:
 		log_err("Unknown avrule type: %i", type);
 		rc = -1;
@@ -595,7 +607,18 @@ static int avrule_to_cil(int indent, struct policydb *pdb, uint32_t type, const 
 					rule, src, tgt,
 					pdb->p_class_val_to_name[classperm->tclass - 1],
 					perms + 1);
-		} else {
+		} else if (type & AVRULE_XPERMS) {
+			perms = sepol_avrule_xperms_to_string(avx);
+			if (perms == NULL) {
+				log_err("Failed to generate permission string");
+				rc = -1;
+				goto exit;
+			}
+			cil_println(indent, "(%s %s %s (ioctl %s (%s)))",
+					rule, src, tgt,
+					pdb->p_class_val_to_name[classperm->tclass - 1],
+					perms);
+		}else {
 			cil_println(indent, "(%s %s %s %s %s)",
 					rule, src, tgt,
 					pdb->p_class_val_to_name[classperm->tclass - 1],
@@ -1095,14 +1118,14 @@ static int avrule_list_to_cil(int indent, struct policydb *pdb, struct avrule *a
 
 		for (s = 0; s < num_snames; s++) {
 			for (t = 0; t < num_tnames; t++) {
-				rc = avrule_to_cil(indent, pdb, avrule->specified, snames[s], tnames[t], avrule->perms);
+				rc = avrule_to_cil(indent, pdb, avrule->specified, snames[s], tnames[t], avrule->perms, avrule->xperms);
 				if (rc != 0) {
 					goto exit;
 				}
 			}
 
 			if (avrule->flags & RULE_SELF) {
-				rc = avrule_to_cil(indent, pdb, avrule->specified, snames[s], "self", avrule->perms);
+				rc = avrule_to_cil(indent, pdb, avrule->specified, snames[s], "self", avrule->perms, avrule->xperms);
 				if (rc != 0) {
 					goto exit;
 				}

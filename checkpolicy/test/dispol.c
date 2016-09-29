@@ -155,7 +155,7 @@ int render_av_rule(avtab_key_t * key, avtab_datum_t * datum, uint32_t what,
 		else if (key->specified & AVTAB_XPERMS_DONTAUDIT)
 			fprintf(fp, "dontauditxperm ");
 		render_key(key, p, fp);
-		fprintf(fp, "%s;\n", sepol_extended_perms_to_string(datum->xperms));
+		fprintf(fp, "ioctl { %s };\n", sepol_avtab_xperms_to_string(datum->xperms));
 	} else {
 		fprintf(fp, "     ERROR: no valid rule type specified\n");
 		return -1;

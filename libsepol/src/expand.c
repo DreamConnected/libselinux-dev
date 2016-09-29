@@ -1878,7 +1878,7 @@ static int expand_avrule_helper(sepol_handle_t * handle,
 			}
 
 			xperms->driver = extended_perms->driver;
-			for (i = 0; i < ARRAY_SIZE(xperms->perms); i++)
+			for (i = 0; i < EXTENDED_PERMS_LEN; i++)
 				xperms->perms[i] |= extended_perms->perms[i];
 		} else {
 			assert(0);	/* should never occur */
