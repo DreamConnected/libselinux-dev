@@ -42,6 +42,7 @@ common_src_files := \
 	src/write.c
 
 cil_src_files := \
+	cil/src/cil_attributize.c \
 	cil/src/cil_binary.c \
 	cil/src/cil_build_ast.c \
 	cil/src/cil.c \
@@ -61,7 +62,8 @@ cil_src_files := \
 	cil/src/cil_strpool.c \
 	cil/src/cil_symtab.c \
 	cil/src/cil_tree.c \
-	cil/src/cil_verify.c
+	cil/src/cil_verify.c \
+	cil/src/cil_version_map.c
 
 common_cflags := \
 	-D_GNU_SOURCE \
