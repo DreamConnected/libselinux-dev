@@ -16,6 +16,24 @@
       "revId": "496320ca3c7edca4a37a66d9aaafcc0467aff995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0242517e_dd780bb7",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-09-30T14:02:12Z",
+      "side": 1,
+      "message": "Right, I had prepared a patch that would update this and introduce the new backend. But I figured the new backend should come from upstream. When do we pull in upstream? With the new release of libselinux?",
+      "parentUuid": "e29e1d21_7c4c3999",
+      "revId": "496320ca3c7edca4a37a66d9aaafcc0467aff995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
