@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42d8c93a_5f47aba5",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1421,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2016-10-03T12:26:27Z",
+      "side": 1,
+      "message": "Ah, you included it now. Great!",
+      "range": {
+        "startLine": 1421,
+        "startChar": 48,
+        "endLine": 1421,
+        "endChar": 55
+      },
+      "revId": "41a626f5927815348cef90b52553f7f8ee988810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
