@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22ad95b1_e7b5b084",
+        "filename": "libsepol/cil/src/cil_attributize.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-10-04T18:16:23Z",
+      "side": 1,
+      "message": "This comment is misleading. It implies that line 30 is ignoring base attributes, when really line 27 is.",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4267e99f_47580e8c",
+        "filename": "libsepol/cil/src/cil_attributize.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-10-04T18:16:23Z",
+      "side": 1,
+      "message": "is this something we use?",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 1
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4267e99f_87912605",
+        "filename": "libsepol/cil/src/cil_version_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-10-04T18:16:23Z",
+      "side": 1,
+      "message": "why is this on a new line?",
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4267e99f_87aa861f",
+        "filename": "libsepol/cil/src/cil_version_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-10-04T18:16:23Z",
+      "side": 1,
+      "message": "What is this? Is this a standard CIL hash function that should be referenced from elsewhere?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4267e99f_47724edb",
+        "filename": "libsepol/cil/src/cil_version_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2016-10-04T18:16:23Z",
+      "side": 1,
+      "message": "strncmp?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
