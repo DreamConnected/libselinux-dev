@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42ba8938_4fd4cddd",
+        "filename": "libsepol/cil/src/cil_attributize.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-04T20:45:38Z",
+      "side": 1,
+      "message": "I based this on the comment-style of the rest of the cil source, which tends to explain the conditional expression underneath the check like this.  I could change the wording to be more obvious perhaps?  I\u0027d rather not break with that and place this above the check.",
+      "parentUuid": "22ad95b1_e7b5b084",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4267e99f_47580e8c",
         "filename": "libsepol/cil/src/cil_attributize.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-04T18:16:23Z",
       "side": 1,
       "message": "is this something we use?",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 1
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42ba8938_af4c59ca",
+        "filename": "libsepol/cil/src/cil_attributize.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-04T20:45:38Z",
+      "side": 1,
+      "message": "Yes.  See system/sepolicy/fs_use.  CIL definition: https://github.com/SELinuxProject/selinux/blob/master/secilc/docs/cil_file_labeling_statements.md#fsuse",
+      "parentUuid": "4267e99f_47580e8c",
       "range": {
         "startLine": 423,
         "startChar": 0,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "42ba8938_efc30100",
+        "filename": "libsepol/cil/src/cil_version_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-04T20:45:38Z",
+      "side": 1,
+      "message": "As I commented in line #4: I took this directly from cil_strpool.c.  We could perhaps export that outside of that file and use it here, but I opted to keep this completely separate from the upstream use for now.",
+      "parentUuid": "4267e99f_87aa861f",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4267e99f_47724edb",
         "filename": "libsepol/cil/src/cil_version_map.c",
         "patchSetId": 1
@@ -99,6 +171,30 @@
       "writtenOn": "2016-10-04T18:16:23Z",
       "side": 1,
       "message": "strncmp?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42ba8938_afe29991",
+        "filename": "libsepol/cil/src/cil_version_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-04T20:45:38Z",
+      "side": 1,
+      "message": "This function has to be fed to hashtab_create(), which demands the given function signature (absent lengths).  We have to make sure that every key in the table and fed to this function are null-terminated.",
+      "parentUuid": "4267e99f_47724edb",
       "range": {
         "startLine": 22,
         "startChar": 8,
