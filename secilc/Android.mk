@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (22924f Add cil_write_ast to produce CIL -> CIL output.)
 LOCAL_PATH:= $(call my-dir)
 
 common_src_files := secilc.c
@@ -33,3 +34,5 @@ LOCAL_STATIC_LIBRARIES := libsepol
 LOCAL_MODULE_CLASS := EXECUTABLES
 
 include $(BUILD_EXECUTABLE)
+=======
+>>>>>>> BRANCH (82f994 Updated ChangeLogs)

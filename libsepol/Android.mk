@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (22924f Add cil_write_ast to produce CIL -> CIL output.)
 LOCAL_PATH:= $(call my-dir)
 
 common_src_files := \
@@ -141,3 +142,5 @@ LOCAL_SRC_FILES := $(common_src_files) $(cil_src_files)
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(common_export_includes)
 
 include $(BUILD_STATIC_LIBRARY)
+=======
+>>>>>>> BRANCH (82f994 Updated ChangeLogs)
