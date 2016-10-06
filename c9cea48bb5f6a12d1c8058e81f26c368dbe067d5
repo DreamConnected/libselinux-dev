@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-at: Thu, 06 Oct 2016 14:54:20 +0000
+Reviewed-on: https://android-review.googlesource.com/284563
+Project: platform/external/selinux
+Branch: refs/heads/master
