@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9f105cd0_6a0a9737",
+        "filename": "libsepol/cil/src/cil_attributize.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-07T15:53:27Z",
+      "side": 1,
+      "message": "537 is wrong from my point of view (and Linus\u0027s).  I personally subscribe to Linus\u0027s message as well, although didn\u0027t realize that I was abusing that with the\n/* foo\n * bar */\n\nI can change those to multiple \u0027//\u0027 lines, since I don\u0027t want a 2-line comment to become 4-lines and just removing the \u0027*\u0027 in front of bar is not \"kernel style.\"  That being said, Jeff\u0027s point was not about the formatting so much as placement, which elsewhere I\u0027ve seen tends to put the comment below the conditional check when describing the actions.\n\nI\u0027ll update this in a way which I think satisfies all parties.",
+      "parentUuid": "9fe77c24_1591f652",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4267e99f_47580e8c",
         "filename": "libsepol/cil/src/cil_attributize.c",
         "patchSetId": 1
