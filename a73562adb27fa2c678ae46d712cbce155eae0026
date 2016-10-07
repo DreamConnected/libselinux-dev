@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9fe77c24_1591f652",
+        "filename": "libsepol/cil/src/cil_attributize.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-10-07T14:36:26Z",
+      "side": 1,
+      "message": "Style wise, the brackets are wrong. Look at lines 51-57 and 70-72. 537 also is different.\n\nGranted the CIL code itself seems all over the place, I see C99 style // comments as well as inconsistent /* */ usage.\n\nI would just urge consistency.\n\nI personally have issues, and like things to be balanced like Torvalds:\n\nhttp://www.theinquirer.net/inquirer/news/2464440/linus-torvalds-goes-off-on-one-over-comment-syntax",
+      "parentUuid": "42ba8938_4fd4cddd",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "a73562adb27fa2c678ae46d712cbce155eae0026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4267e99f_47580e8c",
         "filename": "libsepol/cil/src/cil_attributize.c",
         "patchSetId": 1
