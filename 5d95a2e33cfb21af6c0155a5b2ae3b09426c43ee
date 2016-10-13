@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c899276_5028ccef",
+        "filename": "libsepol/cil/src/cil_strpool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-13T21:49:44Z",
+      "side": 1,
+      "message": "missing NULL check above this. Will change.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 16
+      },
+      "revId": "5d95a2e33cfb21af6c0155a5b2ae3b09426c43ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
