@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf8878b_d2daa45d",
+        "filename": "libsepol/cil/src/cil_strpool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-10-17T23:09:31Z",
+      "side": 1,
+      "message": "unlock without corresponding lock.",
+      "revId": "41caedbbf96790f0c62415a0f004400f50e9cff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcf8878b_f2dd2058",
+        "filename": "libsepol/cil/src/cil_strpool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-10-17T23:09:31Z",
+      "side": 1,
+      "message": "return unnecessary as the last line of a function.",
+      "revId": "41caedbbf96790f0c62415a0f004400f50e9cff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
