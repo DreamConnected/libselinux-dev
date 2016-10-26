@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c17d9c54_4beccddc",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-26T19:43:02Z",
+      "side": 1,
+      "message": "Clearly it\u0027s imperative that p gets incremented ;).  Hopefully will fix when upstreaming.",
+      "parentUuid": "c17d9c54_abf0f9e9",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c17d9c54_6b74317f",
         "filename": "libsepol/cil/src/cil_write_ast.c",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2016-10-26T19:30:15Z",
       "side": 1,
       "message": "why not just initialize rc to SEPOL_OK?",
+      "range": {
+        "startLine": 935,
+        "startChar": 1,
+        "endLine": 935,
+        "endChar": 15
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c17d9c54_96899c09",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-10-26T19:43:02Z",
+      "side": 1,
+      "message": "Here (and elsewhere) I opted for consistency across different functions (although even that hasn\u0027t been achieved).  I defaulted to SEPOL_ERR to a) match initialization code in other cil source files and b) to make sure that if other cases are added that forget to set the value, errors would be noticed (although this is limited by the setting of rc to SEPOL_OK in some of these functions).  Basically I opted to use this everywhere and rely on the compiler to get rid of any overhead and rely on the upstream submission to finalize style.",
+      "parentUuid": "c17d9c54_abf1d9c6",
       "range": {
         "startLine": 935,
         "startChar": 1,
