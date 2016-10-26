@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c17d9c54_abf0f9e9",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-26T19:30:15Z",
+      "side": 1,
+      "message": ":(",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c17d9c54_6b74317f",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-26T19:30:15Z",
+      "side": 1,
+      "message": "probably cleaner to say \u0027strlen(\"()\") + 1\u0027 or \u0027sizeof(\"()\\0\")\u0027",
+      "range": {
+        "startLine": 273,
+        "startChar": 22,
+        "endLine": 273,
+        "endChar": 23
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c17d9c54_abf1d9c6",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-26T19:30:15Z",
+      "side": 1,
+      "message": "why not just initialize rc to SEPOL_OK?",
+      "range": {
+        "startLine": 935,
+        "startChar": 1,
+        "endLine": 935,
+        "endChar": 15
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c17d9c54_eb46811c",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-26T19:30:15Z",
+      "side": 1,
+      "message": "why initialize this? \n\nsame above and below",
+      "range": {
+        "startLine": 942,
+        "startChar": 10,
+        "endLine": 942,
+        "endChar": 19
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c17d9c54_8b1fb51c",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-26T19:30:15Z",
+      "side": 1,
+      "message": "no-op",
+      "range": {
+        "startLine": 958,
+        "startChar": 1,
+        "endLine": 958,
+        "endChar": 15
+      },
+      "revId": "22924f8e88b61e65484866f62f698d052944a99e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
