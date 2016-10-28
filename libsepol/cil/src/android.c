@@ -83,6 +83,11 @@ static int __extract_attributees_helper(struct cil_tree_node *node, uint32_t *fi
 		return rc;
 
 	switch (node->flavor) {
+	case CIL_ROLE:
+		cil_log(CIL_ERR, "%s should not be used in platform public policy (line %d)\n",
+			CIL_KEY_ROLE, node->line);
+		rc = SEPOL_ERR;
+		break;
 	case CIL_TYPE:
 	case CIL_TYPEATTRIBUTE:
 		datum = cil_malloc(sizeof(*datum));
@@ -285,17 +290,10 @@ int cil_attrib_context(struct cil_tree_node *node, struct version_args *args) {
 
 	return cil_attrib_check_context(ctxt, args);
 }
-
-/*
- * role modifications are not currently supported, but checkpolicy
- * auto-generates a roletype statement linking every type to the
- * auto-generated object_r role.  Filter these out for the public platform types
- * which are provided by platform policy.
- */
-
 int cil_attrib_roletype(struct cil_tree_node *node,
                         __attribute__((unused)) struct version_args *args) {
 	int rc = SEPOL_ERR;
+	char *key;
 	struct cil_roletype *roletype = (struct cil_roletype *)node->data;
 	struct cil_tree_node *prev = NULL;
 
@@ -303,25 +301,10 @@ int cil_attrib_roletype(struct cil_tree_node *node,
 		cil_log(CIL_ERR, "AST already resolved.  !!! Not yet supported.\n");
 		rc = SEPOL_ERR;
 		goto exit;
-	} else if (strcmp(roletype->role_str, CIL_KEY_OBJECT_R)) {
-		cil_log(CIL_ERR, "%s statements not supported in non-platform policy.\n",
-			CIL_KEY_ROLETYPE);
-		rc = SEPOL_ERR;
-		goto exit;
-	} else if (hashtab_search(args->vers_map, (hashtab_key_t) roletype->type_str) != NULL) {
-		/* roletype with public platform type declaration needs removal */
-		if (node->parent->cl_head == node) {
-			node->parent->cl_head = node->next;
-		} else {
-			prev = node->parent->cl_head;
-			while (prev->next != node)
-				prev = prev->next;
-			prev->next = node->next;
-		}
-		if (node->parent->cl_tail == node)
-			node->parent->cl_tail = prev;
-		/* removed from tree, destroy */
-		cil_tree_subtree_destroy(node);
+	}
+	key = roletype->type_str;
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+		roletype->type_str = __cil_attrib_get_versname(key, args->num);
 	}
 	rc = SEPOL_OK;
 exit:
@@ -497,12 +480,14 @@ int cil_attrib_avrule(struct cil_tree_node *node, struct version_args *args) {
 	}
 
 	key = avrule->src_str;
-	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+	if (!strncmp(key, "base_typeattr_", 14)
+	    || hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		avrule->src_str = __cil_attrib_get_versname(key, args->num);
 	}
 
 	key = avrule->tgt_str;
-	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+	if (!strncmp(key, "base_typeattr_", 14)
+	    || hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		avrule->tgt_str = __cil_attrib_get_versname(key, args->num);
 	}
 	rc = SEPOL_OK;
@@ -552,6 +537,11 @@ static int __attributize_helper(struct cil_tree_node *node, uint32_t *finished, 
 		/* contains type, but shouldn't involve an attributized type, maybe add
 		   a check on type and error if it conflicts */
 		rc = cil_attrib_sidcontext(node, args);
+		break;
+	case CIL_ROLE:
+		cil_log(CIL_ERR, "%s declaration illegal non-platform policy (line %d)\n",
+			CIL_KEY_ROLE, node->line);
+		rc = SEPOL_ERR;
 		break;
 	case CIL_ROLETYPE:
 		/* Yes, this is needed if we support roletype in non-platform policy.
