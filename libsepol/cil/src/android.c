@@ -220,6 +220,21 @@ exit:
 	return rc;
 }
 
+/* TODO - move to shared header? Copied from cil_build_ast.c */
+static enum cil_flavor __cil_get_expr_operator_flavor(const char *op)
+{
+	if (op == NULL) return CIL_NONE;
+	else if (op == CIL_KEY_AND)   return CIL_AND;
+	else if (op == CIL_KEY_OR)    return CIL_OR;
+	else if (op == CIL_KEY_NOT)   return CIL_NOT;
+	else if (op == CIL_KEY_EQ)    return CIL_EQ;    /* Only conditional */
+	else if (op == CIL_KEY_NEQ)   return CIL_NEQ;   /* Only conditional */
+	else if (op == CIL_KEY_XOR)   return CIL_XOR;
+	else if (op == CIL_KEY_ALL)   return CIL_ALL;   /* Only set and permissionx */
+	else if (op == CIL_KEY_RANGE) return CIL_RANGE; /* Only catset and permissionx */
+	else return CIL_NONE;
+}
+
 /*
  * expressions may contains strings which are not in the type-attribute
  * namespace, so this is not a general cil_expr attributizer.
@@ -239,9 +254,11 @@ static int cil_attrib_type_expr(struct cil_list *expr_str, struct version_args *
 				goto exit;
 			break;
 		case CIL_STRING:
-			if (!strncmp(curr->data, "base_typeattr_", 14)
-			    || hashtab_search(args->vers_map, (hashtab_key_t) curr->data) != NULL) {
+			if (hashtab_search(args->vers_map, (hashtab_key_t) curr->data) != NULL) {
 				new = __cil_attrib_get_versname((char *) curr->data, args->num);
+				curr->data = (void *) new;
+			} else if (__cil_get_expr_operator_flavor((char *)curr->data) == CIL_NONE) {
+				new = __cil_attrib_get_versname((char *) curr->data, NON_PLAT_SUFFIX);
 				curr->data = (void *) new;
 			}
 			break;
@@ -262,17 +279,15 @@ exit:
 
 static int cil_attrib_check_context(struct cil_context *ctxt, struct version_args *args) {
 	int rc = SEPOL_ERR;
+	char *key;
 
 	if (ctxt->type != NULL) {
 		cil_log(CIL_ERR, "AST already resolved. Not yet supported.\n");
 		goto exit;
 	}
-	if (hashtab_search(args->vers_map, (hashtab_key_t) ctxt->type_str) != NULL) {
-        /* TODO: reinstate check, but leave out for now
-		cil_log(CIL_ERR, "AST contains context with platform public type: %s\n",
-			ctxt->type_str);
-		rc = SEPOL_ERR;
-		goto exit; */
+	key = ctxt->type_str;
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) == NULL) {
+		ctxt->type_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -310,7 +325,6 @@ static int cil_attrib_roletype(struct cil_tree_node *node,
 	int rc = SEPOL_ERR;
 	char *key;
 	struct cil_roletype *roletype = (struct cil_roletype *)node->data;
-	struct cil_tree_node *prev = NULL;
 
 	if (roletype->role) {
 		cil_log(CIL_ERR, "AST already resolved.  !!! Not yet supported.\n");
@@ -319,6 +333,8 @@ static int cil_attrib_roletype(struct cil_tree_node *node,
 	key = roletype->type_str;
 	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		roletype->type_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		roletype->type_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -340,6 +356,13 @@ static int cil_attrib_type(struct cil_tree_node *node, struct version_args *args
 		if (rc != SEPOL_OK) {
 			goto exit;
 		}
+	} else {
+		/* non-platform type: give it _np suffix to avoid name conflicts.
+		   TODO: investigate namespaces (cil only) instead */
+		rc = __cil_attrib_swap_symtab_key(node, key, NON_PLAT_SUFFIX);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
 	}
 
 	return SEPOL_OK;
@@ -350,15 +373,19 @@ exit:
 static int cil_attrib_typepermissive(struct cil_tree_node *node, struct version_args *args) {
 	int rc = SEPOL_ERR;
 	struct cil_typepermissive *typeperm = (struct cil_typepermissive *)node->data;
+	char *key;
 
 	if (typeperm->type != NULL) {
 		cil_log(CIL_ERR, "AST already resolved.  ### Not yet supported.\n");
 		goto exit;
 	}
-	if (hashtab_search(args->vers_map, (hashtab_key_t) typeperm->type_str) != NULL) {
+	key = typeperm->type_str;
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		cil_log(CIL_ERR, "%s contains platform public type: %s (line %d) .\n",
-			CIL_KEY_TYPEPERMISSIVE, typeperm->type_str, node->line);
+			CIL_KEY_TYPEPERMISSIVE, key, node->line);
 		goto exit;
+	} else {
+		typeperm->type_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -376,9 +403,13 @@ static int cil_attrib_typeattribute(struct cil_tree_node *node, struct version_a
 			node->line);
 		goto exit;
 	}
-	if (!strncmp(key, "base_typeattr_", 14)
-	    || hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		rc = __cil_attrib_swap_symtab_key(node, key, args->num);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+	} else {
+		rc = __cil_attrib_swap_symtab_key(node, key, NON_PLAT_SUFFIX);
 		if (rc != SEPOL_OK) {
 			goto exit;
 		}
@@ -402,11 +433,11 @@ static int cil_attrib_typeattributeset(struct cil_tree_node *node, struct versio
 
 	key = typeattrset->attr_str;
 	/* first check to see if the attribute to which this set belongs is versioned */
-	if (!strncmp(key, "base_typeattr_", 14)
-	    || hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		typeattrset->attr_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		typeattrset->attr_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
-
 	rc = cil_attrib_type_expr(typeattrset->str_expr, args);
 	if (rc != SEPOL_OK) {
 		goto exit;
@@ -427,6 +458,8 @@ static int cil_attrib_typealiasactual(struct cil_tree_node *node, struct version
 		cil_log(CIL_ERR, "%s with platform public type not allowed (line %d)\n",
 		    CIL_KEY_TYPEALIASACTUAL, node->line);
 		goto exit;
+	} else {
+		aliasact->actual_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -447,11 +480,18 @@ static int cil_attrib_nametypetransition(struct cil_tree_node *node, struct vers
 	key = namettrans->src_str;
 	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		namettrans->src_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		namettrans->src_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
-
 	key = namettrans->tgt_str;
 	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		namettrans->tgt_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		namettrans->tgt_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
+	}
+	key = namettrans->result_str;
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) == NULL) {
+		namettrans->result_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -476,11 +516,18 @@ static int cil_attrib_type_rule(struct cil_tree_node *node, struct version_args 
 	key = type_rule->src_str;
 	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		type_rule->src_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		type_rule->src_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
-
 	key = type_rule->tgt_str;
 	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		type_rule->tgt_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		type_rule->tgt_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
+	}
+	key = type_rule->result_str;
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) == NULL) {
+		type_rule->result_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -498,17 +545,17 @@ static int cil_attrib_avrule(struct cil_tree_node *node, struct version_args *ar
 			node->line);
 		goto exit;
 	}
-
 	key = avrule->src_str;
-	if (!strncmp(key, "base_typeattr_", 14)
-	    || hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		avrule->src_str = __cil_attrib_get_versname(key, args->num);
+	} else {
+		avrule->src_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
-
 	key = avrule->tgt_str;
-	if (!strncmp(key, "base_typeattr_", 14)
-	    || hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
+	if (hashtab_search(args->vers_map, (hashtab_key_t) key) != NULL) {
 		avrule->tgt_str = __cil_attrib_get_versname(key, args->num);
+	} else if (CIL_KEY_SELF != key) {
+		avrule->tgt_str = __cil_attrib_get_versname(key, NON_PLAT_SUFFIX);
 	}
 
 	return SEPOL_OK;
@@ -851,5 +898,117 @@ int cil_android_attributize(struct cil_db *tgtdb, struct cil_db *srcdb, const ch
 	rc = SEPOL_OK;
 exit:
 	ver_map_destroy(ver_map_tab);
+	return rc;
+}
+
+int __ns_process_line(FILE *out, char *line, hashtab_t ver_map_tab) {
+	int rc = SEPOL_ERR;
+	char *beg, *end, *ns_type, *type = NULL;;
+	size_t type_sz;
+
+	beg = end = strstr(line, ":s0");
+	if (end == NULL)
+		goto asis;
+
+	/* find type border */
+	while (beg != line) {
+		if (*(--beg) == ':')
+			break;
+	}
+	if (beg == line || beg == end) {
+		goto asis;
+	}
+	beg++;
+	type_sz = end - beg;
+	type = cil_malloc(type_sz + 1);
+	strncpy(type, beg, type_sz);
+	type[type_sz] = '\0';
+	if (hashtab_search(ver_map_tab, (hashtab_key_t) type) != NULL)
+		goto asis;
+	ns_type = __cil_attrib_get_versname(type, NON_PLAT_SUFFIX);
+	while(line != beg) {
+		if (fputc(*line++, out) < 0) {
+			rc = SEPOL_ERR;
+			goto exit;
+		}
+	}
+	if (fputs(ns_type, out) < 0) {
+		rc = SEPOL_ERR;
+		goto exit;
+	}
+	if (fputs(end, out) < 0) {
+		rc = SEPOL_ERR;
+		goto exit;
+	}
+	rc = SEPOL_OK;
+exit:
+	free(type);
+	return rc;
+asis:
+	if (fputs(line, out) < 0) {
+		rc = SEPOL_ERR;
+		goto exit;
+	} else {
+		rc = SEPOL_OK;
+		goto exit;
+	}
+}
+
+/*
+ * TODO - move to libselinux labeling backends directly.  This is a hack that
+ * should use the labeling backends in libselinux to concretely deal with
+ * contexts and properly interact with the context source files.
+ */
+int cil_android_namespace_contexts(const char *ctxts_dest, const char *ctxts_src,
+                                   struct cil_db *srcdb) {
+	int rc = SEPOL_ERR;
+	hashtab_t ver_map_tab = NULL;
+	FILE *in = NULL, *out = NULL;
+	size_t line_len;
+	char *line_buf = NULL;
+
+	ver_map_tab = hashtab_create(ver_map_hash_val, ver_map_key_cmp, VER_MAP_SZ);
+	if (!ver_map_tab) {
+		cil_log(CIL_ERR, "Unable to create version mapping table.\n");
+		rc = SEPOL_ERR;
+		goto exit;
+	}
+	rc = cil_build_ast(srcdb, srcdb->parse->root, srcdb->ast->root);
+	if (rc != SEPOL_OK) {
+		cil_log(CIL_ERR, "Unable to build source db AST.\n");
+		goto exit;
+	}
+	rc = cil_extract_attributees(srcdb, ver_map_tab);
+	if (rc != SEPOL_OK) {
+		cil_log(CIL_ERR, "Unable to extract attributizable elements from source db.\n");
+		goto exit;
+	}
+	in = fopen(ctxts_src, "r");
+	if (in == NULL) {
+		cil_log(CIL_ERR, "Failure opening input contexts file for namespacing: %s\n",
+                strerror(errno));
+		rc = SEPOL_ERR;
+		goto exit;
+	}
+	out = fopen(ctxts_dest, "w");
+	if (out == NULL) {
+		cil_log(CIL_ERR, "Failure opening output contexts file for namespacing: %s\n",
+                strerror(errno));
+		rc = SEPOL_ERR;
+        fclose(in);
+		goto exit;
+	}
+	/* process file and convert */
+	while(getline(&line_buf, &line_len, in) > 0) {
+		rc = __ns_process_line(out, line_buf, ver_map_tab);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+	}
+    fclose(in);
+	fclose(out);
+exit:
+	ver_map_destroy(ver_map_tab);
+	free(line_buf);
 	return rc;
 }
