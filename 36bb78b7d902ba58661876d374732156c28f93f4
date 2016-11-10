@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b773781_1b04e3c3",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "document What return value indicates success versus failure",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_fbd72706",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "what happens if strdup fails, will hashtab_insert add a NULL value for key, or fail?",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_5ebc899b",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "static?",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_1bb6a3df",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "drop variable rc and just return.",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_3ed8ad04",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t all these __\u003cfunction_name\u003e things be static?",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_9e59c1a8",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "tmp_new allocation fails... all users of this need to be smart enough to handle null allocation failures.",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_bef59d67",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "return cil_gen_node()\n\ndrop rc variable",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_fe68f536",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "check for null",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_5e58099c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "return cil_tab_insert() drop rc variable",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_1ee13189",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-11-10T22:32:51Z",
+      "side": 1,
+      "message": "versname failures not checked.",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
