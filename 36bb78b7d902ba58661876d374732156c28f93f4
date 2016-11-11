@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b773781_97699fd7",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-11T20:56:47Z",
+      "side": 1,
+      "message": "Can do.  These are consistent with the rest of the exported API: SEPOL_OK if successful, otherwise error relevant error (almost always SEPOL_ERR).",
+      "parentUuid": "2b773781_1b04e3c3",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b773781_fbd72706",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-10T22:32:51Z",
       "side": 1,
       "message": "what happens if strdup fails, will hashtab_insert add a NULL value for key, or fail?",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_f71bb392",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-11T20:56:47Z",
+      "side": 1,
+      "message": "would add NULL value, which would be bad, as I believe it\u0027s assumed to never be NULL.  Should replace with cil_strdup() to be consistent w/rest of cil code.",
+      "parentUuid": "2b773781_fbd72706",
       "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2b773781_b7fa1b05",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-11T20:56:47Z",
+      "side": 1,
+      "message": "Yes, there are a bunch of functions here (as you pointed out generally) that could be hidden.",
+      "parentUuid": "2b773781_5ebc899b",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b773781_1bb6a3df",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2016-11-10T22:32:51Z",
       "side": 1,
       "message": "drop variable rc and just return.",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_57ec674e",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-11T20:56:47Z",
+      "side": 1,
+      "message": "Yes, I\u0027d like to get a convention standardized across all of these functions according to whatever fits best w/the lib.  I have a mish-mash of conventions regarding whether or not and how the return code is set and issued.",
+      "parentUuid": "2b773781_1bb6a3df",
       "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2b773781_b71bfb85",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-11T20:56:47Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "2b773781_3ed8ad04",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b773781_9e59c1a8",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2016-11-10T22:32:51Z",
       "side": 1,
       "message": "tmp_new allocation fails... all users of this need to be smart enough to handle null allocation failures.",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_9750bf1d",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-11T20:56:47Z",
+      "side": 1,
+      "message": "I think the idea behind cil_mem.h is to hide this for users across the library, so this appears to me to be WAI.  The default handler just calls exit().",
+      "parentUuid": "2b773781_9e59c1a8",
       "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
