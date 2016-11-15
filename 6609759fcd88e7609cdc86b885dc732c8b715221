@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0472c8e_b875403c",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T16:46:44Z",
+      "side": 1,
+      "message": "the underlying \"XDEV\" seemed more guessable.\n\nbut why not just \"CROSS_FILESYSTEMS\"? extra characters are free, and it saves writing comments...",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "6609759fcd88e7609cdc86b885dc732c8b715221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
