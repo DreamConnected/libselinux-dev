@@ -107,6 +107,23 @@
     },
     {
       "key": {
+        "uuid": "d0472c8e_b339ccec",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-11-16T23:15:53Z",
+      "side": 1,
+      "message": "/nit/ DATUM(node-\u003edata)-\u003ename",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b773781_1bb6a3df",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 3
@@ -263,6 +280,23 @@
     },
     {
       "key": {
+        "uuid": "d0472c8e_aea04374",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-11-16T23:15:53Z",
+      "side": 1,
+      "message": "key \u003d \u0026DATUM(type)-\u003ename ?",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b773781_1ee13189",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 3
@@ -274,6 +308,57 @@
       "writtenOn": "2016-11-10T22:32:51Z",
       "side": 1,
       "message": "versname failures not checked.",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0472c8e_eefc0b03",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-11-16T23:15:53Z",
+      "side": 1,
+      "message": "static",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0472c8e_ce014f22",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-11-16T23:15:53Z",
+      "side": 1,
+      "message": "static .. and some more",
+      "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0472c8e_4ee53f1c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-11-16T23:15:53Z",
+      "side": 1,
+      "message": "empty if ..",
       "revId": "36bb78b7d902ba58661876d374732156c28f93f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
