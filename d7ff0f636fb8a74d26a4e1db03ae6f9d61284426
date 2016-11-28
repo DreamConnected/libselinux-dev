@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d8afbd9_6a0eabac",
+        "filename": "libselinux/src/android/android_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-28T17:27:13Z",
+      "side": 1,
+      "message": "could we file a bug to fix this the \"proper\" way.  Presumably by conditionally expecting this python-side?",
+      "range": {
+        "startLine": 3,
+        "startChar": 3,
+        "endLine": 3,
+        "endChar": 62
+      },
+      "revId": "d7ff0f636fb8a74d26a4e1db03ae6f9d61284426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d8afbd9_4acac704",
+        "filename": "prebuilts/bin/audit2allow",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-11-28T17:27:13Z",
+      "side": 1,
+      "message": "This string corresponds to some internal make variables which aren\u0027t guaranteed to remain the same (although in practice likely will).  Shouldn\u0027t this directory already be included in the library search path as part of an android build?",
+      "range": {
+        "startLine": 5,
+        "startChar": 38,
+        "endLine": 5,
+        "endChar": 62
+      },
+      "revId": "d7ff0f636fb8a74d26a4e1db03ae6f9d61284426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
