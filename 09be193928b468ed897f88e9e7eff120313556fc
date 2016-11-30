@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adffbf6a_f2888841",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-30T23:35:01Z",
+      "side": 1,
+      "message": "\"re\" for O_CLOEXEC",
+      "range": {
+        "startLine": 870,
+        "startChar": 31,
+        "endLine": 870,
+        "endChar": 34
+      },
+      "revId": "09be193928b468ed897f88e9e7eff120313556fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_92101c15",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-30T23:35:01Z",
+      "side": 1,
+      "message": "strerror(errno)?",
+      "revId": "09be193928b468ed897f88e9e7eff120313556fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_f21d282b",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-30T23:35:01Z",
+      "side": 1,
+      "message": "strerror(errno)?",
+      "revId": "09be193928b468ed897f88e9e7eff120313556fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_d21aa430",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-30T23:35:01Z",
+      "side": 1,
+      "message": "strerror(errno)?\n\n(also for all the other cil_log(CIL_ERR) lines below)",
+      "revId": "09be193928b468ed897f88e9e7eff120313556fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
