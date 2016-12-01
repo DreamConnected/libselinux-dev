@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adffbf6a_ed07fe39",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "cil_android_attrib_mapping",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_cd04ba38",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "cil_android_attributize",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_8dfc72fe",
+        "filename": "libsepol/cil/include/cil/cil_write_ast.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "presumably you are pulling this out to make it a public API. \n\nI think this should have been a separate change on its own.",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_6dbe6e0a",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "as a library API, you probably don\u0027t want to error check against what\u0027s allowed and what\u0027s not. So, may be alter the error message to say something generic, rather than how we are using the APIs?",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_edd1be61",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "same here and everywhere below,",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_6d914ea4",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "just return \u0027rc\u0027 , or \u0027return cil_tree_walk(..);\u0027",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_4dfa8ac4",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "/nit/\n\nisn\u0027t the \u0027||\u0027 supposed to be on the same line as the left operand ?",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_cdb79a1f",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "just \u0027return cil_tree_walk(...);\u0027",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 11
+      },
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_4d48ca7c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "static",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_2debc631",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "All cil code seems to have the \u0027{\u0027 after function definition on a new line.",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_8d6112be",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_2d70e685",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-01T23:32:31Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
