@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_68913ca4",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_ed07fe39",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_cd04ba38",
         "filename": "libsepol/cil/include/cil/android.h",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-01T23:32:31Z",
       "side": 1,
       "message": "cil_android_attributize",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_a88b246f",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_cd04ba38",
       "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_e3638d31",
+        "filename": "libsepol/cil/include/cil/cil_write_ast.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/#/c/309209/",
+      "parentUuid": "adffbf6a_8dfc72fe",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_6dbe6e0a",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 8
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_08b2302e",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "This is a bit tricky, since this API is being provided specifically for this purpose, but I can vague-ify it. Done.",
+      "parentUuid": "adffbf6a_6dbe6e0a",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_edd1be61",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 8
@@ -81,6 +153,24 @@
       "writtenOn": "2016-12-01T23:32:31Z",
       "side": 1,
       "message": "same here and everywhere below,",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_887aa05f",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_edd1be61",
       "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_0807d0f9",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Would prefer to leave as-is for now since I modeled this after code in cil_build_ast.c and updated all functions here to match what I observed there.  If we\u0027d like to update this to not be so weird, would prefer that it\u0027s done consistently across the whole library with the maintainer\u0027s blessing.",
+      "parentUuid": "adffbf6a_6d914ea4",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_4dfa8ac4",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 8
@@ -121,6 +235,24 @@
       "writtenOn": "2016-12-01T23:32:31Z",
       "side": 1,
       "message": "/nit/\n\nisn\u0027t the \u0027||\u0027 supposed to be on the same line as the left operand ?",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_e8e88cf7",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Not sure actually.  I think our java style guide has it this way, but most of the examples (I see both) in libsepol/cil appear to be as you suggest.  Done.",
+      "parentUuid": "adffbf6a_4dfa8ac4",
       "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_c8e5c81f",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "See above re. matching cil_build_ast. Would prefer to leave as-is in this CL.",
+      "parentUuid": "adffbf6a_cdb79a1f",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 11
+      },
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_4d48ca7c",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 8
@@ -161,6 +317,24 @@
       "writtenOn": "2016-12-01T23:32:31Z",
       "side": 1,
       "message": "static",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_a82a043e",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_4d48ca7c",
       "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_28e3b41a",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Dammit.  Done.",
+      "parentUuid": "adffbf6a_2debc631",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_8d6112be",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 8
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_e8136c1f",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_8d6112be",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_2d70e685",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 8
@@ -212,6 +422,24 @@
       "writtenOn": "2016-12-01T23:32:31Z",
       "side": 1,
       "message": "redundant",
+      "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_281e1427",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T01:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_2d70e685",
       "revId": "9859c6b82db2848b08f6b1a736d46550ffc73e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
