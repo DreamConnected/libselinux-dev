@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adffbf6a_e6b438d6",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T23:49:02Z",
+      "side": 1,
+      "message": "check for NULL return value?",
+      "revId": "736d1ac1e0535fe6882bcef44b02a3ad7853224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_a6d35019",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T23:49:02Z",
+      "side": 1,
+      "message": "snprintf please. Always snprintf.",
+      "revId": "736d1ac1e0535fe6882bcef44b02a3ad7853224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad109fcf_4aa47389",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T23:49:02Z",
+      "side": 1,
+      "message": "simplify to:\n\n  if (sidcon-\u003econtext_str \u003d\u003d NULL) {\n    [lines 302-306]\n  }",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 9
+      },
+      "revId": "736d1ac1e0535fe6882bcef44b02a3ad7853224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad109fcf_73a1728a",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T23:49:02Z",
+      "side": 1,
+      "message": "can simplify to\n\n  if (genfscon-\u003econtext_str \u003d\u003d NULL) {",
+      "range": {
+        "startLine": 546,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 9
+      },
+      "revId": "736d1ac1e0535fe6882bcef44b02a3ad7853224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad109fcf_339bfa60",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T23:49:02Z",
+      "side": 1,
+      "message": "same",
+      "revId": "736d1ac1e0535fe6882bcef44b02a3ad7853224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad109fcf_de6ee56c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T23:49:02Z",
+      "side": 1,
+      "message": "Reconsider all of these cases to determine if they should be an error or not. (also below)",
+      "revId": "736d1ac1e0535fe6882bcef44b02a3ad7853224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
