@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_49b6f7bc",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T19:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adffbf6a_ed3c1e86",
+      "revId": "8d0b84cd574add79ff6f36463def129dc61782a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adffbf6a_c3a766a0",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-02T15:57:37Z",
       "side": 1,
       "message": "/nit/ none of these variables need to be initialized I think, as long as your \u0027gotos\u0027 are structured according to the respective failures instead of the one jump for all errors.\n\nI guess its also down to preference in some cases, but dedicated labels definitely would improve reading the code as I find myself having to jump to the end of function and start to understand all the failure paths are taken care of properly",
+      "revId": "8d0b84cd574add79ff6f36463def129dc61782a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad109fcf_6a397733",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-02T19:06:14Z",
+      "side": 1,
+      "message": "I considered splitting it up, but the loop makes this particularly ugly. An out: label to jump back to the return statement in the case of error conditions would already be required, but the necessity for the closing of files and freeing of buff\u0027s in the loop also would lead to potentially two separate error paths, each with a \"goto out;\" call if properly split along all errors.  So my preference would be to leave as-is, with greater affinity for multiple labels in future additions on my part since this seems to be recurring.",
+      "parentUuid": "adffbf6a_c3a766a0",
       "revId": "8d0b84cd574add79ff6f36463def129dc61782a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
