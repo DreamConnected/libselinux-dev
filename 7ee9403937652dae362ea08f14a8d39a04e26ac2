@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adffbf6a_666fa86a",
+        "filename": "libsepol/cil/include/cil/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "unrelated change :)",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_067e9c1c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "/nit/ These checks can be pulled out in the parent scope, instead of seperate checks for inf if {} else {} blocks.",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_269e403e",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "may be put a meta comment in here about what you are trying to do. With a sample line pulled out of file_context",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_4688a407",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "the \u0027beg \u003d\u003d end\u0027 is never possible right ?",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_66984857",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "while (..)",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_06acdc68",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "surely this can be sorted out by doing ..\n\nns_type \u003d type;\nif (hashtab_search() \u003d\u003d NULL)) {\n   ns_type \u003d __cil_get_versname(...);\n}\n\n.. and then only retain the code that writes to out separately with null checks for \u0027ns_type\u0027 and \u0027end\u0027 and get rid of everything under \u0027asis\u0027 label.",
+      "range": {
+        "startLine": 944,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 2
+      },
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_26b3e0cb",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "indent wrong ?",
+      "range": {
+        "startLine": 988,
+        "startChar": 27,
+        "endLine": 989,
+        "endChar": 33
+      },
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_a6923034",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "indent is wrong",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_c68db415",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "while (..",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adffbf6a_06a7bc90",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-02T16:18:47Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "7ee9403937652dae362ea08f14a8d39a04e26ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
