@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad109fcf_f4a6655d",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-05T16:21:13Z",
+      "side": 1,
+      "message": "We\u0027ve hit issues with this not-compiling before. You may want to consider moving the declaration of int i out of this loop.",
+      "revId": "eb25bf689cd8ba33c9147c91468befa6e38f2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
