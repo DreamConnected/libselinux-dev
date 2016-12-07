@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd24f349_507f4d7e",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-07T20:26:38Z",
+      "side": 1,
+      "message": "opening brace on new line ..",
+      "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24f349_9085e55c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-07T20:26:38Z",
+      "side": 1,
+      "message": "one more indent on \u0027break\u0027 here and below..",
+      "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24f349_b0cfc1b8",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-07T20:26:38Z",
+      "side": 1,
+      "message": "/nit/ not for this change, but this check is recurring, may be makes sense to fold it into a static inline later.",
+      "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
