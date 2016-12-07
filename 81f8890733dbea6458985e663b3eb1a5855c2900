@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd24f349_d0d83d40",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-07T20:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd24f349_507f4d7e",
+      "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24f349_9085e55c",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cd24f349_90f3a5bd",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-07T20:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd24f349_9085e55c",
+      "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24f349_b0cfc1b8",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-12-07T20:26:38Z",
       "side": 1,
       "message": "/nit/ not for this change, but this check is recurring, may be makes sense to fold it into a static inline later.",
+      "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24f349_50ed0dd2",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-07T20:38:04Z",
+      "side": 1,
+      "message": "Good idea.  For another change, as you said,though.",
+      "parentUuid": "cd24f349_b0cfc1b8",
       "revId": "81f8890733dbea6458985e663b3eb1a5855c2900",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
