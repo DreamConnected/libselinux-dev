@@ -42,7 +42,6 @@ int selabel_property_init(struct selabel_handle *rec,
 int selabel_service_init(struct selabel_handle *rec,
 			    const struct selinux_opt *opts,
 			    unsigned nopts) hidden;
-
 /*
  * Labeling internal structures
  */
@@ -108,10 +107,12 @@ struct selabel_handle {
 	void *data;
 
 	/*
-	 * The main spec file used. Note for file contexts the local and/or
+	 * The main spec file(s) used. Note for file contexts the local and/or
 	 * homedirs could also have been used to resolve a context.
 	 */
-	char *spec_file;
+	size_t spec_files_len;
+	char **spec_files;
+
 
 	/* substitution support */
 	struct selabel_sub *dist_subs;
@@ -143,7 +144,6 @@ extern int
 compat_validate(struct selabel_handle *rec,
 		struct selabel_lookup_rec *contexts,
 		const char *path, unsigned lineno) hidden;
-
 /*
  * The read_spec_entries function may be used to
  * replace sscanf to read entries from spec files.
