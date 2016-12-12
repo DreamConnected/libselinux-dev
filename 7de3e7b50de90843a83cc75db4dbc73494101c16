@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a427b4d_aa6eb56e",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-12T22:56:44Z",
+      "side": 1,
+      "message": "could switch the order here if desired, but this has the nice property of the first file added has the highest precedence.",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 607,
+        "endChar": 13
+      },
+      "revId": "7de3e7b50de90843a83cc75db4dbc73494101c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a427b4d_67ada881",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-12T22:56:44Z",
+      "side": 1,
+      "message": "probably would want to do this for all files too?",
+      "range": {
+        "startLine": 660,
+        "startChar": 24,
+        "endLine": 660,
+        "endChar": 31
+      },
+      "revId": "7de3e7b50de90843a83cc75db4dbc73494101c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a427b4d_8a8ad1fd",
+        "filename": "libselinux/src/matchpathcon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-12T22:56:44Z",
+      "side": 1,
+      "message": "should add a new NULL check for this, similar to above.",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "7de3e7b50de90843a83cc75db4dbc73494101c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
