@@ -159,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5a427b4d_2a02c072",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-13T17:39:20Z",
+      "side": 1,
+      "message": "Yes, sorry I meant I\u0027m open to either defaulting to /file_contexts or just giving an error since I expect us to fully specify it anyway.  I think that the #else clause should be here even without this broader change, but considering this change is meant to allow for a /plat_file_contexts and /nonplat_file_contexts, I have a slight preference for this as-is.",
+      "parentUuid": "1ade4329_1d40d356",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae9b76b_ab9a5946",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 2
