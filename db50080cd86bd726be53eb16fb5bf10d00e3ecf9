@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae9b76b_0baf0563",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "I guess here we should just pass rec-\u003espec_files[0] for the error message; we aren\u0027t keeping state about which context came from which file (and weren\u0027t anyway for .homedirs/.local), so we might be wrong but good enough, and we prevalidate at build time anyway; this is just lazy validation.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_a8981f60",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "unnecessary { }; only use for multiple statements, clarity of nested if else, readability for multi-line statements, etc.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_6b95711c",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "size_t",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_4b73cd54",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "Unnecessary { }",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_eba06178",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "Possibly could default to /file_contexts #ifdef __ANDROID__ but no big deal either way.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_ab9a5946",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "Not sure about this behavior (only loading .homedirs and .local for the first path), but I guess it is rather moot at present.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_4b8aad00",
+        "filename": "libselinux/src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "No, we want the actual path from which the context originated.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_eb798132",
+        "filename": "libselinux/src/label_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "Tabs not spaces",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_ab8379ec",
+        "filename": "libselinux/src/matchpathcon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "No, the caller passes the actual path in question. We don\u0027t want all paths here.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae9b76b_8b90b52e",
+        "filename": "libselinux/src/matchpathcon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 1,
+      "message": "This will just repeat the same error for each pathname, without indicating which path contains the bad context.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

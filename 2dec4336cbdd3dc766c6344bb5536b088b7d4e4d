@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae9b76b_0b7dc51e",
+        "filename": "libselinux/src/label_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-12-13T14:06:31Z",
+      "side": 0,
+      "message": "Why removed?",
+      "revId": "2dec4336cbdd3dc766c6344bb5536b088b7d4e4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
