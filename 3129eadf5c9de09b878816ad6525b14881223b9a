@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a756307_53fec6f8",
+        "filename": "libsepol/cil/include/cil/cil.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "This part, and lines 76-78, have value independent of this patch. In the future (not now), consider submitting this as a separate fix. This is useful if we have to rollback this change.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_737022b9",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "It would be better if this was a boolean, rather than an int.\n\nThe return value is confusing... Sometimes you return SEPOL_ERR (for instance, line 921), and sometimes you return -1 (line 942). However, SEPOL_ERR and -1 are both the same, so I\u0027m not sure what I\u0027m suppose to make of this. Similarly, SEPOL_OK is returned sometimes, and 0 is returned sometimes, but they\u0027re both the same value.\n\nIt feels like you really want to return a boolean here, or have an enum of possible values, but mixing different types of return values is confusing...",
+      "range": {
+        "startLine": 919,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 3
+      },
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_b3d61a06",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "Recommend moving this definition to inside the for() loop (line 933), so it\u0027s closer to where it\u0027s used, and better scoped.",
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_535166f0",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "num_files is a size_t, so \"i\" should be a size_t too.",
+      "range": {
+        "startLine": 932,
+        "startChar": 6,
+        "endLine": 932,
+        "endChar": 9
+      },
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_b3a37ae4",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "It would be better if you used fstat() here. Avoids race conditions.\n\n  rc \u003d fstat(fileno(infile), \u0026sb);",
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_1338ce8b",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "No check to see if the malloc() call returned successfully. Or is this not needed because of the cil_malloc() error handler?",
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_d3ef16d0",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "Arguably should pass a file descriptor instead of a file name, but as this is pre-existing code, I don\u0027t think you need to fix this.",
+      "range": {
+        "startLine": 952,
+        "startChar": 24,
+        "endLine": 952,
+        "endChar": 36
+      },
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_f36172bb",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "Use standard SELinux logging? logging to stderr seems easy to miss.",
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a756307_7328224c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-15T01:04:01Z",
+      "side": 1,
+      "message": "yuck... But I guess you\u0027re forced to do this because of the signature of this function... :-(",
+      "range": {
+        "startLine": 991,
+        "startChar": 30,
+        "endLine": 991,
+        "endChar": 38
+      },
+      "revId": "3129eadf5c9de09b878816ad6525b14881223b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
