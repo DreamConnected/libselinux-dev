@@ -16,6 +16,24 @@
       "revId": "07fc4be6043aee40dbc694b65ae05ef5b2179e7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_1a993c08",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T22:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5073f1_f78e5811",
+      "revId": "07fc4be6043aee40dbc694b65ae05ef5b2179e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
