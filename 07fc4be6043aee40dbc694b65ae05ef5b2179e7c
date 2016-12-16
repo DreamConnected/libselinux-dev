@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5073f1_f78e5811",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-16T04:15:08Z",
+      "side": 1,
+      "message": "If it fails here, init won\u0027t free(data). So you likely want to only assign data on line 999 equal to some local tmp.\n\nNot a big deal...",
+      "revId": "07fc4be6043aee40dbc694b65ae05ef5b2179e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
