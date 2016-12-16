@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_fd7c72d6",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a427b4d_3686ac69",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae9b76b_a8981f60",
         "filename": "libselinux/src/label.c",
         "patchSetId": 2
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_1d82169e",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a427b4d_76c794a7",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae9b76b_6b95711c",
         "filename": "libselinux/src/label.c",
         "patchSetId": 2
@@ -83,6 +119,24 @@
       "writtenOn": "2016-12-13T14:06:31Z",
       "side": 1,
       "message": "size_t",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_5d649e3a",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae9b76b_6b95711c",
       "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -106,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_7d7162f7",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae9b76b_4b73cd54",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5073f1_97998c0d",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 2
@@ -117,6 +189,24 @@
       "writtenOn": "2016-12-16T04:41:25Z",
       "side": 1,
       "message": "Can we move away from these duplicate declarations on the same line? Considering that it\u0027s inconsistently applied... ie size_t i, could be with size_t num_paths.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_dd9ecef1",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5073f1_97998c0d",
       "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -140,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_3d599a77",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5073f1_f7981806",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5073f1_178e7cc1",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 2
@@ -157,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_5d565e46",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5073f1_178e7cc1",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5073f1_97442c95",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 2
@@ -168,6 +294,24 @@
       "writtenOn": "2016-12-16T04:41:25Z",
       "side": 1,
       "message": "What happens on this strdup failing?",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_9de9a63c",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "This copies the original behavior (no NULL check), but that is wrong.  Added exit on NULL.",
+      "parentUuid": "9a5073f1_97442c95",
       "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -298,6 +442,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_bd182a90",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Leaving as is for this CL.",
+      "parentUuid": "5a427b4d_7619d45f",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae9b76b_4b8aad00",
         "filename": "libselinux/src/label_file.h",
         "patchSetId": 2
@@ -327,6 +489,24 @@
       "side": 1,
       "message": "This should be reverted to the previous state once I undo my changes to compat_validate.  It was only made due to my (now-shown erroneous) change to compat_validate to optionally take multiple pathnames, but the change to this line particularly doesn\u0027t actually change the path in question: it is still using the path argument passed to process_line() and specifying that only one path is being passed. Unless I\u0027m missing something else?",
       "parentUuid": "bae9b76b_4b8aad00",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_bd990a0d",
+        "filename": "libselinux/src/label_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a427b4d_16b5e814",
       "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -368,6 +548,24 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_bd3f4aca",
+        "filename": "libselinux/src/label_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a427b4d_36034cf2",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae9b76b_ab8379ec",
         "filename": "libselinux/src/matchpathcon.c",
         "patchSetId": 2
@@ -397,6 +595,24 @@
       "side": 1,
       "message": "See my comments in selabel_fini.  I\u0027ll just remove all of my changes to this function, although I think we should add a null check on the path argument in the error-case.",
       "parentUuid": "bae9b76b_ab8379ec",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_fd7472ad",
+        "filename": "libselinux/src/matchpathcon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-16T23:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a427b4d_d6e0800e",
       "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
