@@ -106,6 +106,74 @@
     },
     {
       "key": {
+        "uuid": "9a5073f1_97998c0d",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-16T04:41:25Z",
+      "side": 1,
+      "message": "Can we move away from these duplicate declarations on the same line? Considering that it\u0027s inconsistently applied... ie size_t i, could be with size_t num_paths.",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_f7981806",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-16T04:41:25Z",
+      "side": 1,
+      "message": "Use calloc and drop the memset",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_178e7cc1",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-16T04:41:25Z",
+      "side": 1,
+      "message": "kill this memset",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5073f1_97442c95",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-16T04:41:25Z",
+      "side": 1,
+      "message": "What happens on this strdup failing?",
+      "revId": "db50080cd86bd726be53eb16fb5bf10d00e3ecf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae9b76b_eba06178",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 2
