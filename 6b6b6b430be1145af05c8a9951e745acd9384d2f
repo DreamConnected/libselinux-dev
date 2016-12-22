@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "d7a2c67b_ca90e72d",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-22T21:34:29Z",
+      "side": 1,
+      "message": "\u003e what is the intention of this loop? Am I missing something, cause it only seems to be counting total number of uncommented lines in \u0027nspec\u0027 but then again it resets that on line #288 below...\n\u003e \n\u003e confused..\n\nnevermind, missed the calloc()  below.",
+      "parentUuid": "d7a2c67b_0a6eff6f",
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a2c67b_473632a2",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
