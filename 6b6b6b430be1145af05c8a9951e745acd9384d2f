@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d7a2c67b_cdd561fd",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-23T00:05:24Z",
+      "side": 1,
+      "message": "Not sure about that (why it isn\u0027t just sizeof line_buf).  That was unchanged from before (although it looks changed due to indentation).",
+      "parentUuid": "d7a2c67b_07283a49",
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a2c67b_0a6eff6f",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
@@ -94,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "d7a2c67b_2dc4354e",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-23T00:05:24Z",
+      "side": 1,
+      "message": "This is only an indentation change from previous code, and would prefer to change only what\u0027s necessary to split seapp_contexts here, but this could be refactored in a future CL if desired.",
+      "parentUuid": "d7a2c67b_8a798f32",
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a2c67b_07ccba79",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
@@ -105,6 +141,30 @@
       "writtenOn": "2016-12-22T21:32:28Z",
       "side": 1,
       "message": "if you move the selinux_log() for \u0027oom\u0027 to the jumpsite and then just jump to the \u0027err_no_log\u0027 below, this can simply be ..\n\n    return 0;\n\nerr:\n    selinux_log(SELINUX_ERROR, \"%s:  Invalid entry on line %u\\n\", seapp_contexts_files[i], lineno);\n\nerr_no_log:\n    free_seapp_contexts();\n\nout:\n    if (fp)\n         fclose(fp);\n    return 0;\n\nall but jump to \u0027oom\u0027 changes and you don\u0027t have to jump back up into the code. Because of this I almost thought the file descriptors are being leaked in every time there was a jump to \u0027err\u0027",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 10
+      },
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7a2c67b_6da30d96",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-23T00:05:24Z",
+      "side": 1,
+      "message": "Same passing-the-buck response as above :-).  Would prefer refactor in different CL.",
+      "parentUuid": "d7a2c67b_07ccba79",
       "range": {
         "startLine": 533,
         "startChar": 0,
