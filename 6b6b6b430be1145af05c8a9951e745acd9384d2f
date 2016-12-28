@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d7a2c67b_5587ab65",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-28T23:13:36Z",
+      "side": 1,
+      "message": "heh, I was merely pointing to suggest using (..) after sizeof :).",
+      "parentUuid": "d7a2c67b_cdd561fd",
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a2c67b_0a6eff6f",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
@@ -130,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "d7a2c67b_75842760",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-28T23:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7a2c67b_2dc4354e",
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a2c67b_07ccba79",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
@@ -171,6 +207,24 @@
         "endLine": 551,
         "endChar": 10
       },
+      "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7a2c67b_357eaf80",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2016-12-28T23:13:36Z",
+      "side": 1,
+      "message": "Ack, I thought the backwards jump was added to handle multiple files here. This definitely doesn\u0027t need to be that complicated though :)",
+      "parentUuid": "d7a2c67b_6da30d96",
       "revId": "6b6b6b430be1145af05c8a9951e745acd9384d2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
