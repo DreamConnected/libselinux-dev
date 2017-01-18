@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43753906_7fe1cfdd",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-18T00:36:43Z",
+      "side": 1,
+      "message": "should probably avoid hardcoding this, but fine for now.\n\nI think \"2\" can be replaced by:\n\n  sizeof(seopts_service) / sizeof(seopts_service[0])",
+      "range": {
+        "startLine": 1485,
+        "startChar": 28,
+        "endLine": 1485,
+        "endChar": 29
+      },
+      "revId": "2ca78856e7173bc0a2e7e98215d24e2df7d68e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
