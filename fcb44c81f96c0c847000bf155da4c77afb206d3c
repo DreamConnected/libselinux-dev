@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c17f162_104c7679",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-26T20:03:09Z",
+      "side": 1,
+      "message": "__FILE__ and __LINE__ refer to the cil_write_ast.c method, not the file/line of the policy being parsed. So this is misleading and I wouldn\u0027t include it as part of the error message.\n\nThis is an odd macro, because it depends on the fact that the caller adds a semicolon immediately after the statement. What about:\n\n#define UNSUPPORTED(flavor) \\\n  { \\\n    cil_log(CIL_ERR, \"flavor \\\"%s\\\" is not supported\", file); \\\n    SEPOL_ENOTSUP; \\\n  }",
+      "range": {
+        "startLine": 1145,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 30
+      },
+      "revId": "fcb44c81f96c0c847000bf155da4c77afb206d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacdb94c_68071e33",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-26T20:03:09Z",
+      "side": 1,
+      "message": "convention in this file is tabs, not spaces.",
+      "revId": "fcb44c81f96c0c847000bf155da4c77afb206d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa92053_e2bfae79",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-26T20:03:09Z",
+      "side": 1,
+      "message": "tabs, plus extra space after \"CIL_SELINUXUSER\"",
+      "revId": "fcb44c81f96c0c847000bf155da4c77afb206d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0918867a_e30da859",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-26T20:03:09Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "fcb44c81f96c0c847000bf155da4c77afb206d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
