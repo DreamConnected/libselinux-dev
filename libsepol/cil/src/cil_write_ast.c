@@ -1142,6 +1142,10 @@ exit:
 	return rc;
 }
 
+#define UNSUPPORTED(flavor) \
+	SEPOL_ENOTSUP; cil_log(CIL_ERR, "flavor \"%s\" is not supported in file \"%s\" line: %d!\n", \
+			flavor, __FILE__, __LINE__)
+
 int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void *extra_args)
 {
 	int rc = SEPOL_OK;
@@ -1168,7 +1172,7 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		cil_write_blockinherit(node, cil_out);
 		break;
     case CIL_IN:
-		fprintf(cil_out, "CIL_IN ");
+        rc = UNSUPPORTED("CIL_IN");
 		break;
 	case CIL_POLICYCAP:
 		cil_write_policycap(node, cil_out);
@@ -1177,10 +1181,10 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_perm(node, cil_out);
 		break;
 	case CIL_MAP_PERM:
-		fprintf(cil_out, "CIL_MAP_PERM ");
+		rc = UNSUPPORTED("CIL_MAP_PERM");
 		break;
 	case CIL_CLASSMAPPING:
-		fprintf(cil_out, "CIL_CLASSMAPPING ");
+		rc = UNSUPPORTED("CIL_CLASSMAPPING");
 		break;
 	case CIL_CLASS:
 		rc = cil_write_class(node, finished, extra_args);
@@ -1189,16 +1193,16 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_class(node, finished, extra_args);
 		break;
 	case CIL_MAP_CLASS:
-		fprintf(cil_out, "CIL_MAP_CLASS ");
+		rc = UNSUPPORTED("CIL_MAP_CLASS");
 		break;
 	case CIL_CLASSORDER:
 		rc = cil_write_classorder(node, cil_out);
 		break;
 	case CIL_CLASSPERMISSION:
-		fprintf(cil_out, "CIL_CLASSPERMISSION ");
+		rc = UNSUPPORTED("CIL_CLASSPERMISSION");
 		break;
 	case CIL_CLASSPERMISSIONSET:
-		fprintf(cil_out, "CIL_CLASSPERMISSIONSET ");
+		rc = UNSUPPORTED("CIL_CLASSPERMISSIONSET");
 		break;
 	case CIL_CLASSCOMMON:
 		rc = cil_write_classcommon(node, cil_out);
@@ -1216,10 +1220,10 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_user(node, cil_out);
 		break;
 	case CIL_USERATTRIBUTE:
-		fprintf(cil_out, "CIL_USERATTRIBUTE ");
+		rc = UNSUPPORTED("CIL_USERATTRIBUTE");
 		break;
 	case CIL_USERATTRIBUTESET:
-		fprintf(cil_out, "CIL_USERATTRIBUTESET ");
+		rc = UNSUPPORTED("CIL_USERATTRIBUTESET");
 		break;
 	case CIL_USERROLE:
 		rc = cil_write_userrole(node, cil_out);
@@ -1231,10 +1235,10 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_userrange(node, cil_out);
 		break;
 	case CIL_USERBOUNDS:
-		fprintf(cil_out, "CIL_USERBOUNDS ");
+		rc = UNSUPPORTED("CIL_USERBOUNDS");
 		break;
 	case CIL_USERPREFIX:
-		fprintf(cil_out, "CIL_USERPREFIX ");
+		rc = UNSUPPORTED("CIL_USERPREFIX");
 		break;
 	case CIL_ROLE:
 		rc = cil_write_role(node, cil_out);
@@ -1243,22 +1247,22 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_roletype(node, cil_out);
 		break;
 	case CIL_ROLEBOUNDS:
-		fprintf(cil_out, "CIL_ROLEBOUNDS ");
+		rc = UNSUPPORTED("CIL_ROLEBOUNDS");
 		break;
 	case CIL_ROLEATTRIBUTE:
 		cil_write_roleattribute(node, cil_out);
 		break;
 	case CIL_ROLEATTRIBUTESET:
-		fprintf(cil_out, "CIL_ROLEATTRIBUTESET ");
+		rc = UNSUPPORTED("CIL_ROLEATTRIBUTESET");
 		break;
 	case CIL_ROLEALLOW:
-		fprintf(cil_out, "CIL_ROLEALLOW ");
+		rc = UNSUPPORTED("CIL_ROLEALLOW ");
 		break;
 	case CIL_TYPE:
 		rc = cil_write_type(node, cil_out);
 		break;
 	case CIL_TYPEBOUNDS:
-		fprintf(cil_out, "CIL_TYPEBOUNDS ");
+		rc = UNSUPPORTED("CIL_TYPEBOUNDS ");
 		break;
 	case CIL_TYPEPERMISSIVE:
 		rc = cil_write_typepermissive(node, cil_out);
@@ -1285,10 +1289,10 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		fprintf(cil_out, "CIL_RANGETRANSITION ");
 		break;
 	case CIL_TUNABLE:
-		fprintf(cil_out, "CIL_TUNABLE ");
+		rc = UNSUPPORTED("CIL_TUNABLE");
 		break;
 	case CIL_BOOL:
-		fprintf(cil_out, "CIL_BOOL ");
+		rc = UNSUPPORTED("CIL_BOOL");
 		break;
 	case CIL_AVRULE:
 	case CIL_AVRULEX:
@@ -1319,7 +1323,7 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_aliasactual(node, cil_out);
 		break;
 	case CIL_CATSET:
-		fprintf(cil_out, "CIL_CATSET ");
+		rc = UNSUPPORTED("CIL_CATSET");
 		break;
 	case CIL_SENSCAT:
 		rc = cil_write_senscat(node, cil_out);
@@ -1331,100 +1335,100 @@ int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finished, void
 		rc = cil_write_sensorder(node, cil_out);
 		break;
 	case CIL_LEVEL:
-		fprintf(cil_out, "CIL_LEVEL ");
+		rc = UNSUPPORTED("CIL_LEVEL");
 		break;
 	case CIL_LEVELRANGE:
-		fprintf(cil_out, "CIL_LEVELRANGE ");
+		rc = UNSUPPORTED("CIL_LEVELRANGE");
 		break;
 	case CIL_CONTEXT:
-		fprintf(cil_out, "CIL_CONTEXT ");
+		rc = UNSUPPORTED("CIL_CONTEXT");
 		break;
 	case CIL_NETIFCON:
-		fprintf(cil_out, "CIL_NETIFCON ");
+		rc = UNSUPPORTED("CIL_NETIFCON");
 		break;
 	case CIL_GENFSCON:
 		 rc = cil_write_genfscon(node, cil_out);
 		break;
 	case CIL_FILECON:
-		fprintf(cil_out, "CIL_FILECON ");
+		rc = UNSUPPORTED("CIL_FILECON");
 		break;
 	case CIL_NODECON:
-		fprintf(cil_out, "CIL_NODECON ");
+		rc = UNSUPPORTED("CIL_NODECON");
 		break;
 	case CIL_PORTCON:
-		fprintf(cil_out, "CIL_PORTCON ");
+		rc = UNSUPPORTED("CIL_PORTCON");
 		break;
 	case CIL_PIRQCON:
-		fprintf(cil_out, "CIL_PIRQCON ");
+		rc = UNSUPPORTED("CIL_PIRQCON");
 		break;
 	case CIL_IOMEMCON:
-		fprintf(cil_out, "CIL_IOMEMCON ");
+		rc = UNSUPPORTED("CIL_IOMEMCON");
 		break;
 	case CIL_IOPORTCON:
-		fprintf(cil_out, "CIL_IOPORTCON ");
+		rc = UNSUPPORTED("CIL_IOPORTCON");
 		break;
 	case CIL_PCIDEVICECON:
-		fprintf(cil_out, "CIL_PCIDEVICECON ");
+		rc = UNSUPPORTED("CIL_PCIDEVICECON");
 		break;
 	case CIL_DEVICETREECON:
-		fprintf(cil_out, "CIL_DEVICETREECON ");
+		rc = UNSUPPORTED("CIL_DEVICETREECON");
 		break;
 	case CIL_FSUSE:
 		rc = cil_write_fsuse(node, cil_out);
 		break;
 	case CIL_CONSTRAIN:
-		fprintf(cil_out, "CIL_CONSTRAIN ");
+		rc = UNSUPPORTED("CIL_CONSTRAIN");
 		break;
 	case CIL_MLSCONSTRAIN:
 		rc = cil_write_constrain(node, cil_out);
 		break;
 	case CIL_VALIDATETRANS:
-		fprintf(cil_out, "CIL_VALIDATETRANS ");
+		rc = UNSUPPORTED("CIL_VALIDATETRANS");
 		break;
 	case CIL_MLSVALIDATETRANS:
-		fprintf(cil_out, "CIL_MLSVALIDATETRANS ");
+		rc = UNSUPPORTED("CIL_MLSVALIDATETRANS");
 		break;
 	case CIL_CALL:
-		fprintf(cil_out, "CIL_CALL ");
+		rc = UNSUPPORTED("CIL_CALL");
 		break;
 	case CIL_MACRO:
-		fprintf(cil_out, "CIL_MACRO ");
+		rc = UNSUPPORTED("CIL_MACRO");
 		break;
 	case CIL_NODE:
-		fprintf(cil_out, "CIL_NODE ");
+		rc = UNSUPPORTED("CIL_NODE");
 		break;
 	case CIL_OPTIONAL:
-		fprintf(cil_out, "CIL_OPTIONAL ");
+		rc = UNSUPPORTED("CIL_OPTIONAL");
 		break;
 	case CIL_IPADDR:
-		fprintf(cil_out, "CIL_IPADDR ");
+		rc = UNSUPPORTED("CIL_IPADDR");
 		break;
 	case CIL_CONDBLOCK:
-		fprintf(cil_out, "CIL_CONDBLOCK ");
+		rc = UNSUPPORTED("CIL_CONDBLOCK");
 		break;
 	case CIL_BOOLEANIF:
-		fprintf(cil_out, "CIL_BOOLEANIF ");
+		rc = UNSUPPORTED("CIL_BOOLEANIF");
 		break;
 	case CIL_TUNABLEIF:
-		fprintf(cil_out, "CIL_TUNABLEIF ");
+		rc = UNSUPPORTED("CIL_TUNABLEIF");
 		break;
 	case CIL_DEFAULTUSER:
-		fprintf(cil_out, "CIL_DEFAULTUSER ");
+		rc = UNSUPPORTED("CIL_DEFAULTUSER");
 		break;
 	case CIL_DEFAULTROLE:
-		fprintf(cil_out, "CIL_DEFAULTROLE ");
+		rc = UNSUPPORTED("CIL_DEFAULTROLE");
 		break;
 	case CIL_DEFAULTTYPE:
-		fprintf(cil_out, "CIL_DEFAULTTYPE ");
+		rc = UNSUPPORTED("CIL_DEFAULTTYPE");
 		break;
 	case CIL_DEFAULTRANGE:
-		fprintf(cil_out, "CIL_DEFAULTRANGE ");
+		rc = UNSUPPORTED("CIL_DEFAULTRANGE");
 		break;
     case CIL_SELINUXUSER:
-        fprintf(cil_out, "CIL_SELINUXUSER ");
+        rc = UNSUPPORTED("CIL_SELINUXUSER ");
 		break;
     case CIL_SELINUXUSERDEFAULT:
-        fprintf(cil_out, "CIL_SELINUXUSERDEFAULT ");
+        rc = UNSUPPORTED("CIL_SELINUXUSERDEFAULT");
 		break;
 	case CIL_HANDLEUNKNOWN:
 		rc = cil_write_handleunknown(node, cil_out);
