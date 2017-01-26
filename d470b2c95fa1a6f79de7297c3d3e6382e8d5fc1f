@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e6efa7_630b6eea",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-01-26T22:38:35Z",
+      "side": 0,
+      "message": "ahh that\u0027s why my editor got confused, existing spaces and not tabs... here and line 1423/1424.",
+      "revId": "d470b2c95fa1a6f79de7297c3d3e6382e8d5fc1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
