@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1842265c_7a3ea13a",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-01-26T19:35:05Z",
+      "side": 1,
+      "message": "I am not a huge fan of this, this should be a hard failure with a definitive error message with file/line stating no support.",
+      "revId": "d470b2c95fa1a6f79de7297c3d3e6382e8d5fc1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
