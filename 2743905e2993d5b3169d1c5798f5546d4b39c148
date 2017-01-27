@@ -16,6 +16,23 @@
       "revId": "2743905e2993d5b3169d1c5798f5546d4b39c148",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca318f30_b4b55578",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-01-27T19:33:54Z",
+      "side": 1,
+      "message": "This would cause us to deviate from the rest of the file, but I agree. This and many more should be static.",
+      "revId": "2743905e2993d5b3169d1c5798f5546d4b39c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
