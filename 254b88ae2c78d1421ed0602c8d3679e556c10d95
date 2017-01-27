@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bfea6c_d7b13cee",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-01-27T00:15:31Z",
+      "side": 1,
+      "message": "We also have things like cil_write_block() that log an error message and set rc \u003d SEPOL_ERR...\n\nMaybe a better way to set this up is a static array of function pointers set up on flavor...",
+      "revId": "254b88ae2c78d1421ed0602c8d3679e556c10d95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
