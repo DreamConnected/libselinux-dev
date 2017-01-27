@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e89e5d61_752b6ee1",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-27T18:43:27Z",
+      "side": 1,
+      "message": "static int _cil_write_unsupported(....)",
+      "revId": "2743905e2993d5b3169d1c5798f5546d4b39c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
