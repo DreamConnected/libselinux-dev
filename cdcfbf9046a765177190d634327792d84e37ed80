@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1dbe4cfb_97b92892",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-09T04:45:42Z",
+      "side": 1,
+      "message": "\u003e Since were now on upstream libselinux, can\u0027t we use the builtin\n \u003e hashing scheme?\n \u003e \n \u003e Per the manpage:\n \u003e To enable selabel_digest() to return this information the\n \u003e SELABEL_OPT_DIGEST option must be enable in selabel_open(3).\n\nI guess yes, although I don\u0027t want to make that as part of this split, agree?",
+      "parentUuid": "02ca6794_d1829055",
+      "revId": "cdcfbf9046a765177190d634327792d84e37ed80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd65d56_45d5ee58",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
