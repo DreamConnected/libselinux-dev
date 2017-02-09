@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1398e72b_3dc2ca38",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-02-09T18:39:02Z",
+      "side": 1,
+      "message": "Well when you have to change \u003e 90% of the routine, I would rebase this change ontop of the hash change, so you have less work in this patch. That\u0027s me, either way, I wouldn\u0027t do it as part of this commit, we agree there.",
+      "parentUuid": "1dbe4cfb_97b92892",
+      "revId": "cdcfbf9046a765177190d634327792d84e37ed80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd65d56_45d5ee58",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 1
