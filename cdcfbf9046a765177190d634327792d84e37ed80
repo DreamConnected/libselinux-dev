@@ -39,6 +39,30 @@
       "revId": "cdcfbf9046a765177190d634327792d84e37ed80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db4ec68b_82307a80",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-09T04:44:36Z",
+      "side": 1,
+      "message": "\u003e Should be:\n \u003e ARRAY_SIZE(fc_opts) + 1\n \u003e \n \u003e right?\n\nno, ARRAY_SIZE(fc_opts) is already ARRAY_SIZE(seopts_file) + 1",
+      "parentUuid": "7bd65d56_45d5ee58",
+      "range": {
+        "startLine": 1482,
+        "startChar": 54,
+        "endLine": 1482,
+        "endChar": 74
+      },
+      "revId": "cdcfbf9046a765177190d634327792d84e37ed80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
