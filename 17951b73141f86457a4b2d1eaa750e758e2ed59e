@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13373dd5_87ee926e",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-14T20:22:29Z",
+      "side": 1,
+      "message": "minTargetSdkVersion is a uint32_t (line 114), yet get_minTargetSdkVersion() returns an int32_t (line 270).",
+      "revId": "17951b73141f86457a4b2d1eaa750e758e2ed59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4314e342_0a9a9c82",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-14T20:22:29Z",
+      "side": 1,
+      "message": "statement is always false, because minTargetSdkVersion is an unsigned value.",
+      "revId": "17951b73141f86457a4b2d1eaa750e758e2ed59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba07b83a_7bc78088",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-14T20:22:29Z",
+      "side": 1,
+      "message": "minTargetSdkVersion is unsigned. I think you mean %u, or better yet, PRIu32",
+      "range": {
+        "startLine": 554,
+        "startChar": 55,
+        "endLine": 554,
+        "endChar": 57
+      },
+      "revId": "17951b73141f86457a4b2d1eaa750e758e2ed59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c41c53b_af9a5ca5",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-14T20:22:29Z",
+      "side": 1,
+      "message": "signed / unsigned comparison.",
+      "revId": "17951b73141f86457a4b2d1eaa750e758e2ed59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
