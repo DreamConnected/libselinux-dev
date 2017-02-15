@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e38ce4e_ddadfcd4",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-02-15T16:58:33Z",
+      "side": 1,
+      "message": "Im confused why we\u0027re not using uint32_t since we don\u0027t need signedness.",
+      "revId": "2f3eb4cd344b6e368ea7aa95f757a723faca1de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd54a47a_1f54e79c",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-02-15T16:58:33Z",
+      "side": 1,
+      "message": "%d is not for longs, %ld. I think on 32 bit you\u0027ll throw away a very big number in printable output.",
+      "revId": "2f3eb4cd344b6e368ea7aa95f757a723faca1de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
