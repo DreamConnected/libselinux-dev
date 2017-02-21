@@ -532,6 +532,8 @@ static int process_file(const char *path, const char *suffix,
 	struct stat sb;
 	FILE *fp = NULL;
 	char found_path[PATH_MAX];
+	struct saved_data *data = (struct saved_data *)rec->data;
+	struct spec *spec_arr;
 
 	/*
 	 * On the first pass open the newest modified file. If it fails to
@@ -547,6 +549,7 @@ static int process_file(const char *path, const char *suffix,
 		rc = fcontext_is_binary(fp) ?
 				load_mmap(fp, sb.st_size, rec, found_path) :
 				process_text_file(fp, prefix, rec, found_path);
+
 		if (!rc)
 			rc = digest_add_specfile(digest, fp, NULL, sb.st_size,
 				found_path);
@@ -603,8 +606,7 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 	rec->spec_files_len = num_paths;
 
 	if (path_provided) {
-		i = n;
-		while (i--)
+		for (i = 0; i < n; i++) {
 			switch(opts[i].type) {
 			case SELABEL_OPT_PATH:
 				*path = strdup(opts[i].value);
@@ -615,6 +617,7 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 			default:
 				break;
 			}
+		}
 	}
 #if !defined(BUILD_HOST) && !defined(ANDROID)
 	char subs_file[PATH_MAX + 1];
