@@ -1,0 +1,8 @@
+Verified+1: Chad Brubaker <cbrubaker@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Chad Brubaker <cbrubaker@google.com>
+Submitted-at: Wed, 22 Feb 2017 00:12:52 +0000
+Reviewed-on: https://android-review.googlesource.com/333229
+Project: platform/external/selinux
+Branch: refs/heads/master
