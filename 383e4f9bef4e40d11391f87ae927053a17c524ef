@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b1c1cb_4a0e756c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-02-23T23:39:56Z",
+      "side": 1,
+      "message": "Please add an explanation about why this is necessary or a good thing. Does something break if we read them in some other order? Or is reading them in the order in which they are specified simply the least surprising thing to do?",
+      "revId": "383e4f9bef4e40d11391f87ae927053a17c524ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
