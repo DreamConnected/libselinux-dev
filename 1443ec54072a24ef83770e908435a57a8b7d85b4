@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fc5c5f0_67ee476c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-02-25T00:04:42Z",
+      "side": 1,
+      "message": "Typo: denialsi",
+      "revId": "1443ec54072a24ef83770e908435a57a8b7d85b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
