@@ -79,6 +79,30 @@
       "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd4c7052_541a515c",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-03-08T22:47:37Z",
+      "side": 1,
+      "message": "It is static",
+      "parentUuid": "072c6c49_ac7a1c6e",
+      "range": {
+        "startLine": 1592,
+        "startChar": 33,
+        "endLine": 1592,
+        "endChar": 38
+      },
+      "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
