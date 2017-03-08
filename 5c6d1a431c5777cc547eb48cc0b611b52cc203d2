@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7733555c_89a41c8d",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-08T22:52:15Z",
+      "side": 1,
+      "message": "Should be static, since it\u0027s not used outside of this compilation module.",
+      "revId": "5c6d1a431c5777cc547eb48cc0b611b52cc203d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

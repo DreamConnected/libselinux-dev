@@ -121,6 +121,30 @@
       "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "296a7638_c4fbc1de",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-08T22:52:15Z",
+      "side": 1,
+      "message": "Sorry, I meant that selinux_android_file_context_handle should be static.",
+      "parentUuid": "bd4c7052_541a515c",
+      "range": {
+        "startLine": 1592,
+        "startChar": 33,
+        "endLine": 1592,
+        "endChar": 38
+      },
+      "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
