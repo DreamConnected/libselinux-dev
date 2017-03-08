@@ -16,6 +16,24 @@
       "revId": "5c6d1a431c5777cc547eb48cc0b611b52cc203d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "878ae06e_5834c44a",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-03-08T22:54:24Z",
+      "side": 1,
+      "message": "This function is exported in android.h and called in init.cpp",
+      "parentUuid": "7733555c_89a41c8d",
+      "revId": "5c6d1a431c5777cc547eb48cc0b611b52cc203d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
