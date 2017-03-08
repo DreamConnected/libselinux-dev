@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8107bf5d_bfacc3da",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-08T22:42:28Z",
+      "side": 1,
+      "message": "system_and_vendor? just \"system\" is misleading. Alternatively, split vs monolithic might work.",
+      "range": {
+        "startLine": 53,
+        "startChar": 39,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbd485f4_f97bd88e",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-08T22:42:28Z",
+      "side": 1,
+      "message": "O_NOFOLLOW needs to be removed, I suspect. There are devices without a vendor partition (e.g., hikey) where /vendor is symlink.",
+      "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77153b3f_0e91e2bb",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-08T22:42:28Z",
+      "side": 1,
+      "message": "Tabs vs spaces. Looks like lines around these changes all use spaces. Please thus use spaces (here and below)",
+      "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "072c6c49_ac7a1c6e",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-08T22:42:28Z",
+      "side": 1,
+      "message": "* first_file, or \"files\" if you want to check that all exist\n* Should be static, since it\u0027s not exported.",
+      "range": {
+        "startLine": 1592,
+        "startChar": 33,
+        "endLine": 1592,
+        "endChar": 38
+      },
+      "revId": "26b2c0e7520cd9d8da7462a224038523d4f899ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
