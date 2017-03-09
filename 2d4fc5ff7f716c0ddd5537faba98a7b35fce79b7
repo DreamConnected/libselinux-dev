@@ -16,6 +16,24 @@
       "revId": "2d4fc5ff7f716c0ddd5537faba98a7b35fce79b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1caf4c85_378814e4",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-03-09T17:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "115cb667_760228a0",
+      "revId": "2d4fc5ff7f716c0ddd5537faba98a7b35fce79b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
