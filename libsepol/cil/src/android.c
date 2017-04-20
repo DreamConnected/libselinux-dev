@@ -394,8 +394,6 @@ exit:
 
 static int cil_attrib_typepermissive(struct cil_tree_node *node, struct version_args *args)
 {
-	int rc = SEPOL_ERR;
-	char *key;
 	struct cil_typepermissive *typeperm = (struct cil_typepermissive *)node->data;
 
 	if (typeperm->type != NULL) {
@@ -403,16 +401,7 @@ static int cil_attrib_typepermissive(struct cil_tree_node *node, struct version_
 		goto exit;
 	}
 
-	key = typeperm->type_str;
-	if (__cil_get_plat_flavor(args->vers_map, (hashtab_key_t) key) != PLAT_NONE) {
-		cil_log(CIL_ERR, "%s contains platform public type: %s (line %d) .\n",
-			CIL_KEY_TYPEPERMISSIVE, typeperm->type_str, node->line);
-		goto exit;
-	}
-
 	return SEPOL_OK;
-exit:
-	return rc;
 }
 
 static int cil_attrib_typeattribute(struct cil_tree_node *node, struct version_args *args)
