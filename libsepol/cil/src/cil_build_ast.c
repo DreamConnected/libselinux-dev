@@ -2307,6 +2307,7 @@ int cil_gen_typeattribute(struct cil_db *db, struct cil_tree_node *parse_current
 	enum cil_syntax syntax[] = {
 		CIL_SYN_STRING,
 		CIL_SYN_STRING,
+		CIL_SYN_STRING | CIL_SYN_END,
 		CIL_SYN_END
 	};
 	int syntax_len = sizeof(syntax)/sizeof(*syntax);
@@ -2335,6 +2336,21 @@ int cil_gen_typeattribute(struct cil_db *db, struct cil_tree_node *parse_current
 	rc = cil_gen_node(db, ast_node, (struct cil_symtab_datum*)attr, (hashtab_key_t)key, CIL_SYM_TYPES, CIL_TYPEATTRIBUTE);
 	if (rc != SEPOL_OK) {
 		goto exit;
+	}
+
+	if (parse_current->next->next) {
+		if (!strcmp(parse_current->next->next->data, "preserve")) {
+			attr->used |= CIL_ATTR_PRESERVE;
+		} else if (!strcmp(parse_current->next->next->data, "expand")) {
+			attr->used |= CIL_ATTR_EXPAND;
+		} else {
+			cil_log(CIL_ERR, "Unsupported attribute option: %s.\n"
+				"Supported attribute options include "
+				"\"expand\" and \"preserve\".",
+				 parse_current->next->next->data);
+			rc = SEPOL_ERR;
+			goto exit;
+		}
 	}
 
 	return SEPOL_OK;

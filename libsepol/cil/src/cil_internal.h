@@ -515,9 +515,11 @@ struct cil_type	{
 	int value;
 };
 
-#define CIL_ATTR_AVRULE     0x01
-#define CIL_ATTR_NEVERALLOW 0x02
-#define CIL_ATTR_CONSTRAINT 0x04
+#define CIL_ATTR_AVRULE		(1 << 0)
+#define CIL_ATTR_NEVERALLOW	(1 << 1)
+#define CIL_ATTR_CONSTRAINT	(1 << 2)
+#define CIL_ATTR_PRESERVE	(1 << 3)
+#define CIL_ATTR_EXPAND		(1 << 4)
 struct cil_typeattribute {
 	struct cil_symtab_datum datum;
 	struct cil_list *expr_list;

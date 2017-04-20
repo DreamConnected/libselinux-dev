@@ -2241,7 +2241,14 @@ static int type_to_cil(int indent, struct policydb *pdb, struct avrule_block *UN
 		break;
 	case TYPE_ATTRIB:
 		if (scope == SCOPE_DECL) {
-			cil_println(indent, "(typeattribute %s)", key);
+			cil_indent(indent);
+			cil_printf("(typeattribute %s", key);
+			if (type->flags & TYPE_FLAGS_EXPAND_ATTR) {
+				cil_printf(" expand");
+			} else if (type->flags & TYPE_FLAGS_PRESERVE_ATTR) {
+				cil_printf(" preserve");
+			}
+			cil_printf(")\n");
 		}
 
 		if (ebitmap_cardinality(&type->types) > 0) {

@@ -1198,6 +1198,14 @@ static int cil_typeattribute_used(struct cil_typeattribute *attr, struct cil_db 
 		return CIL_TRUE;
 	}
 
+	if (attr->used & CIL_ATTR_PRESERVE) {
+		return CIL_TRUE;
+	}
+
+	if (attr->used & CIL_ATTR_EXPAND) {
+		return CIL_FALSE;
+	}
+
 	if (db->attrs_expand_generated || attr->used == CIL_ATTR_NEVERALLOW) {
 		if (strcmp(DATUM(attr)->name, GEN_REQUIRE_ATTR) == 0) {
 			return CIL_FALSE;

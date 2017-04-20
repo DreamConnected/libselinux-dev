@@ -326,7 +326,10 @@ te_decl			: attribute_def
 			| permissive_def
 			;
 attribute_def           : ATTRIBUTE identifier ';'
-                        { if (define_attrib()) return -1;}
+                        { if (define_attrib(0)) return -1;}
+                        |
+                        ATTRIBUTE identifier identifier ';'
+                        { if (define_attrib(1)) return -1;}
                         ;
 type_def		: TYPE identifier alias_def opt_attr_list ';'
                         {if (define_type(1)) return -1;}

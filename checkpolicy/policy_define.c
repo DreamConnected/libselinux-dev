@@ -1126,14 +1126,14 @@ int define_level(void)
 	return 0;
 }
 
-int define_attrib(void)
+int define_attrib(int option)
 {
 	if (pass == 2) {
 		free(queue_remove(id_queue));
 		return 0;
 	}
 
-	if (declare_type(TRUE, TRUE) == NULL) {
+	if (declare_type(TRUE, TRUE, option ? TRUE: FALSE) == NULL) {
 		return -1;
 	}
 	return 0;
@@ -1407,7 +1407,7 @@ int define_type(int alias)
 		return 0;
 	}
 
-	if ((datum = declare_type(TRUE, FALSE)) == NULL) {
+	if ((datum = declare_type(TRUE, FALSE, FALSE)) == NULL) {
 		return -1;
 	}
 

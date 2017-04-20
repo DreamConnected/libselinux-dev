@@ -384,9 +384,11 @@ role_datum_t *declare_role(unsigned char isattr)
 	return dest_role;
 }
 
-static int create_type(uint32_t scope, unsigned char isattr, type_datum_t **type)
+static int create_type(uint32_t scope, unsigned char isattr,
+		       unsigned char isattr_option, type_datum_t **type)
 {
 	char *id;
+	char *option;
 	type_datum_t *datum;
 	int ret;
 	uint32_t value = 0;
@@ -414,6 +416,25 @@ static int create_type(uint32_t scope, unsigned char isattr, type_datum_t **type
 	type_datum_init(datum);
 	datum->primary = 1;
 	datum->flavor = isattr;
+
+	if (isattr_option) {
+		option = (char *)queue_remove(id_queue);
+		if (option && !strcasecmp(option, "expand")) {
+			datum->flags |= TYPE_FLAGS_EXPAND_ATTR;
+		} else if (option && !strcasecmp(option, "preserve")) {
+			datum->flags |= TYPE_FLAGS_PRESERVE_ATTR;
+		} else {
+			yyerror("Unsupported attribute option.\nSupported attribute options  "
+				"include \"expand\" and \"preserve\".");
+			free(id);
+			free(option);
+			type_datum_destroy(datum);
+			free(datum);
+			return -1;
+		}
+
+		free(option);
+	}
 
 	if (scope == SCOPE_DECL) {
 		ret = declare_symbol(SYM_TYPES, id, datum, &value, &value);
@@ -445,10 +466,11 @@ static int create_type(uint32_t scope, unsigned char isattr, type_datum_t **type
 	return ret;
 }
 
-type_datum_t *declare_type(unsigned char primary, unsigned char isattr)
+type_datum_t *declare_type(unsigned char primary, unsigned char isattr,
+			   unsigned char isattr_option)
 {
 	type_datum_t *type = NULL;
-	int ret = create_type(SCOPE_DECL, isattr, &type);
+	int ret = create_type(SCOPE_DECL, isattr, isattr_option, &type);
 
 	if (ret == 0) {
 		type->primary = primary;
@@ -932,7 +954,7 @@ static int require_type_or_attribute(int pass, unsigned char isattr)
 		return 0;
 	}
 
-	ret = create_type(SCOPE_REQ, isattr, &type);
+	ret = create_type(SCOPE_REQ, isattr, 0, &type);
 
 	if (ret < 0) {
 		return -1;

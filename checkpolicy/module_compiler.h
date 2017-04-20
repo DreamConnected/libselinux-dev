@@ -31,7 +31,8 @@ int declare_symbol(uint32_t symbol_type,
 		   uint32_t * dest_value, uint32_t * datum_value);
 
 role_datum_t *declare_role(unsigned char isattr);
-type_datum_t *declare_type(unsigned char primary, unsigned char isattr);
+type_datum_t *declare_type(unsigned char primary, unsigned char isattr,
+			   unsigned char isattr_option);
 user_datum_t *declare_user(void);
 
 type_datum_t *get_local_type(char *id, uint32_t value, unsigned char isattr);
