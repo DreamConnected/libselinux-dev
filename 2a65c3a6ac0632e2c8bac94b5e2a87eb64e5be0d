@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b2713ba_731fbe3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-04-21T20:11:22Z",
+      "side": 1,
+      "message": "We discussed adding an additional marker between foo and expand to make it clear that this is a compiler directive. Thoughts?",
+      "revId": "2a65c3a6ac0632e2c8bac94b5e2a87eb64e5be0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
