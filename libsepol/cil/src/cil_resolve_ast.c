@@ -271,14 +271,21 @@ exit:
 
 int cil_type_used(struct cil_symtab_datum *datum, int used)
 {
+	int rc = SEPOL_ERR;
 	struct cil_typeattribute *attr = NULL;
 
 	if (FLAVOR(datum) == CIL_TYPEATTRIBUTE) {
 		attr = (struct cil_typeattribute*)datum;
 		attr->used |= used;
+		if ((attr->used & CIL_ATTR_EXPAND_TRUE) &&
+				(attr->used & CIL_ATTR_EXPAND_FALSE)) {
+			goto exit;
+		}
 	}
 
-	return 0;
+	return SEPOL_OK;
+exit:
+	return rc;
 }
 
 int cil_resolve_permissionx(struct cil_tree_node *current, struct cil_permissionx *permx, void *extra_args)
@@ -449,6 +456,36 @@ int cil_resolve_typeattributeset(struct cil_tree_node *current, void *extra_args
 
 	return SEPOL_OK;
 
+exit:
+	return rc;
+}
+
+int cil_resolve_expandtypeattribute(struct cil_tree_node *current, void *extra_args)
+{
+	struct cil_expandtypeattribute *expandattr = current->data;
+	struct cil_symtab_datum *attr_datum = NULL;
+	struct cil_tree_node *attr_node = NULL;
+	int rc = SEPOL_ERR;
+
+	rc = cil_resolve_name(current, expandattr->attr_str, CIL_SYM_TYPES, extra_args, &attr_datum);
+	if (rc != SEPOL_OK) {
+		goto exit;
+	}
+
+	attr_node = attr_datum->nodes->head->data;
+
+	if (attr_node->flavor != CIL_TYPEATTRIBUTE) {
+		rc = SEPOL_ERR;
+		cil_log(CIL_ERR, "Attribute type not an attribute\n");
+		goto exit;
+	}
+
+	rc = cil_type_used(attr_datum, expandattr->used);
+	if (rc != SEPOL_OK) {
+		goto exit;
+	}
+
+	return SEPOL_OK;
 exit:
 	return rc;
 }
@@ -3431,6 +3468,9 @@ int __cil_resolve_ast_node(struct cil_tree_node *node, void *extra_args)
 		switch (node->flavor) {
 		case CIL_TYPEATTRIBUTESET:
 			rc = cil_resolve_typeattributeset(node, args);
+			break;
+		case CIL_EXPANDTYPEATTRIBUTE:
+			rc = cil_resolve_expandtypeattribute(node, args);
 			break;
 		case CIL_TYPEBOUNDS:
 			rc = cil_resolve_bounds(node, args, CIL_TYPE, CIL_TYPEATTRIBUTE);

@@ -211,6 +211,7 @@ static int __cil_attrib_convert_type(struct cil_tree_node *node, struct version_
 	cil_typeattribute_init(&typeattr);
 
 	new_key = __cil_attrib_get_versname(type->datum.name, args->num);
+	fprintf(stderr, "%s %s %u\n", new_key, __func__, __LINE__);
 
 	cil_symtab_datum_remove_node(&type->datum, node);
 	cil_destroy_type(type);
