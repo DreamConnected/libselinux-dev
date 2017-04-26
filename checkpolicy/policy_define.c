@@ -1139,6 +1139,69 @@ int define_attrib(void)
 	return 0;
 }
 
+int expand_attrib(void)
+{
+	char *id;
+	type_datum_t *attr;
+
+	if (pass == 1) {
+		while ((id = queue_remove(id_queue))) {
+			free(id);
+		}
+		return 0;
+	}
+
+	id = (char *) queue_remove(id_queue);
+	if (!id) {
+		yyerror("No attribute name for expandattribute statement?");
+		return -1;
+	}
+
+	if (!is_id_in_scope(SYM_TYPES, id)) {
+		yyerror2("attribute %s is not within scope", id);
+		free(id);
+		return -1;
+	}
+
+	attr = hashtab_search(policydbp->p_types.table, id);
+	if (!attr) {
+		yyerror2("attribute %s is not declared", id);
+		free(id);
+		return -1;
+	}
+
+	if (attr->flavor != TYPE_ATTRIB) {
+		yyerror2("%s is a type, not an attribute", id);
+		free(id);
+		return -1;
+	}
+
+	if (attr->flags & TYPE_FLAGS_EXPAND_ATTR) {
+		yyerror2("%s already has the expandattribute option specified", id);
+		free(id);
+		return -1;
+	}
+
+	free(id);
+	id = (char *) queue_remove(id_queue);
+	if (!id) {
+		yyerror("No option specified for attribute expansion.");
+		return -1;
+	}
+	if (!strcmp(id, "T")) {
+		attr->flags |= TYPE_FLAGS_EXPAND_ATTR_TRUE;
+	} else if (!strcmp(id, "F")) {
+		attr->flags |= TYPE_FLAGS_EXPAND_ATTR_FALSE;
+	} else {
+		yyerror("Unsupported expandattribute option.\nSupported options "
+			"include \"true\" and \"false\".");
+		free(id);
+		return -1;
+	}
+	free(id);
+	return 0;
+}
+
 static int add_aliases_to_type(type_datum_t * type)
 {
 	char *id;

@@ -652,6 +652,16 @@ exit:
 	return rc;
 }
 
+static int cil_write_expandtypeattribute(struct cil_tree_node *node, FILE *cil_out)
+{
+	struct cil_expandtypeattribute *expandattr = (struct cil_expandtypeattribute *)node->data;
+
+	fprintf(stderr, "%s %u\n", __func__, __LINE__);
+	fprintf(cil_out, "(%s %s %s)\n", CIL_KEY_EXPANDTYPEATTRIBUTE,
+			expandattr->attr_str, expandattr->expand_str);
+	return SEPOL_OK;
+}
+
 static int cil_write_alias(struct cil_tree_node *node, FILE *cil_out) {
 	int rc = SEPOL_ERR;
 	char *type;
@@ -1258,6 +1268,9 @@ static int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finishe
 		break;
 	case CIL_TYPEATTRIBUTESET:
 		rc = cil_write_typeattributeset(node, cil_out);
+		break;
+	case CIL_EXPANDTYPEATTRIBUTE:
+		rc = cil_write_expandtypeattribute(node, cil_out);
 		break;
 	case CIL_TYPEALIAS:
 		rc = cil_write_alias(node, cil_out);
