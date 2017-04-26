@@ -1139,6 +1139,65 @@ int define_attrib(void)
 	return 0;
 }
 
+int expand_attrib(void)
+{
+	char *id;
+	type_datum_t *attr;
+
+	if (pass == 1) {
+		while ((id = queue_remove(id_queue))) {
+			free(id);
+		}
+		return 0;
+	}
+
+	id = (char *) queue_remove(id_queue);
+	if (!id) {
+		yyerror("No attribute name for expandattribute statement?");
+		goto exit;;
+	}
+
+	if (!is_id_in_scope(SYM_TYPES, id)) {
+		yyerror2("attribute %s is not within scope", id);
+		goto exit;
+	}
+
+	attr = hashtab_search(policydbp->p_types.table, id);
+	if (!attr) {
+		yyerror2("attribute %s is not declared", id);
+		goto exit;
+	}
+
+	if (attr->flavor != TYPE_ATTRIB) {
+		yyerror2("%s is a type, not an attribute", id);
+		goto exit;
+	}
+
+	if (attr->flags & TYPE_FLAGS_EXPAND_ATTR) {
+		yyerror2("%s already has the expandattribute option specified", id);
+		goto exit;
+	}
+
+	free(id);
+	id = (char *) queue_remove(id_queue);
+	if (!id) {
+		yyerror("No option specified for attribute expansion.");
+		goto exit;
+	}
+
+	if (!strcmp(id, "T")) {
+		attr->flags |= TYPE_FLAGS_EXPAND_ATTR_TRUE;
+	} else {
+		attr->flags |= TYPE_FLAGS_EXPAND_ATTR_FALSE;
+	}
+
+	free(id);
+	return 0;
+exit:
+	free(id);
+	return -1;
+}
+
 static int add_aliases_to_type(type_datum_t * type)
 {
 	char *id;
