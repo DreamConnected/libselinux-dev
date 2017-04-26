@@ -174,6 +174,7 @@ char *CIL_KEY_SELINUXUSER;
 char *CIL_KEY_SELINUXUSERDEFAULT;
 char *CIL_KEY_TYPEATTRIBUTE;
 char *CIL_KEY_TYPEATTRIBUTESET;
+char *CIL_KEY_EXPANDTYPEATTRIBUTE;
 char *CIL_KEY_TYPEALIAS;
 char *CIL_KEY_TYPEALIASACTUAL;
 char *CIL_KEY_TYPEBOUNDS;
@@ -230,6 +231,8 @@ char *CIL_KEY_UNORDERED;
 char *CIL_KEY_SRC_INFO;
 char *CIL_KEY_SRC_CIL;
 char *CIL_KEY_SRC_HLL;
+char *CIL_KEY_TRUE;
+char *CIL_KEY_FALSE;
 
 /*
 	Symbol Table Array Indices
@@ -515,9 +518,11 @@ struct cil_type	{
 	int value;
 };
 
-#define CIL_ATTR_AVRULE     0x01
-#define CIL_ATTR_NEVERALLOW 0x02
-#define CIL_ATTR_CONSTRAINT 0x04
+#define CIL_ATTR_AVRULE		(1 << 0)
+#define CIL_ATTR_NEVERALLOW	(1 << 1)
+#define CIL_ATTR_CONSTRAINT	(1 << 2)
+#define CIL_ATTR_EXPAND_TRUE	(1 << 3)
+#define CIL_ATTR_EXPAND_FALSE	(1 << 4)
 struct cil_typeattribute {
 	struct cil_symtab_datum datum;
 	struct cil_list *expr_list;
@@ -529,6 +534,12 @@ struct cil_typeattributeset {
 	char *attr_str;
 	struct cil_list *str_expr;
 	struct cil_list *datum_expr;
+};
+
+struct cil_expandtypeattribute {
+	char *attr_str;
+	char *expand_str;
+	int used;
 };
 
 struct cil_typepermissive {
@@ -977,6 +988,7 @@ void cil_roleattributeset_init(struct cil_roleattributeset **attrset);
 void cil_roletype_init(struct cil_roletype **roletype);
 void cil_typeattribute_init(struct cil_typeattribute **attribute);
 void cil_typeattributeset_init(struct cil_typeattributeset **attrset);
+void cil_expandtypeattribute_init(struct cil_expandtypeattribute **expandattr);
 void cil_alias_init(struct cil_alias **alias);
 void cil_aliasactual_init(struct cil_aliasactual **aliasactual);
 void cil_typepermissive_init(struct cil_typepermissive **typeperm);

@@ -703,6 +703,14 @@ void cil_tree_print_node(struct cil_tree_node *node)
 			cil_log(CIL_INFO, "TYPE: %s\n", type->datum.name);
 			return;
 		}
+		case CIL_EXPANDTYPEATTRIBUTE: {
+			struct cil_expandtypeattribute *attr = node->data;
+
+			cil_log(CIL_INFO, "(EXPANDTYPEATTRIBUTE %s ", attr->attr_str);
+			cil_log(CIL_INFO, "%s\n", attr->expand_str);
+
+			return;
+		}
 		case CIL_TYPEATTRIBUTESET: {
 			struct cil_typeattributeset *attr = node->data;
 
