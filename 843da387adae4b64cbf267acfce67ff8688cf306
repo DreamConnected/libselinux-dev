@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aeac824_6a3cd3c4",
+        "filename": "libsepol/cil/src/cil.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-27T20:17:40Z",
+      "side": 1,
+      "message": "CIL_KEY_COND(TRUE|FALSE) already exists. You can either use that or convert the uses of CIL_KEY_COND(TRUE|FALSE) to this. I would actually prefer CIL_KEY_(TRUE|FALSE), but that is more work for you and I won\u0027t require it.",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e24017f_075751f0",
+        "filename": "libsepol/cil/src/cil_build_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3183,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-27T20:17:40Z",
+      "side": 1,
+      "message": "I think that it would be better to use CIL_SYN_STRING | CIL_SYN_LIST and allow an expression. This would allow (expandtypeattribute (all) false) to not expand any attributes as one useful example.\n\nThis shouldn\u0027t be too hard cil_gen_expr() will do most of the work in cil_build_ast.c. It might require a bit more work in cil_post.c",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418c377f_beb71681",
+        "filename": "libsepol/cil/src/cil_post.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-27T20:17:40Z",
+      "side": 1,
+      "message": "Don\u0027t you want to do this check first? I thought that you wanted to override the behavior no matter what.",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

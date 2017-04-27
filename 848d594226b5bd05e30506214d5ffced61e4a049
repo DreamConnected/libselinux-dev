@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83c5155b_1ec26ced",
+        "filename": "libsepol/cil/src/cil.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-27T20:17:40Z",
+      "side": 1,
+      "message": "We already have CIL_KEY_CONDTRUE and CIL_KEY_CONDFALSE. Although, at this point, CIL_KEY_TRUE and CIL_KEY_FALSE are better names, so you can either use CIL_KEY_COND(TRUE|FALSE) or switch the other uses to CIL_KEY_(TRUE|FALSE).",
+      "revId": "848d594226b5bd05e30506214d5ffced61e4a049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
