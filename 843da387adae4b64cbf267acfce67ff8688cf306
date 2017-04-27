@@ -50,6 +50,69 @@
       "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89abe7e3_41d67d25",
+        "filename": "libsepol/cil/src/cil_reset_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-04-27T20:32:45Z",
+      "side": 1,
+      "message": "not sure what should be done in this case.",
+      "range": {
+        "startLine": 552,
+        "startChar": 6,
+        "endLine": 552,
+        "endChar": 29
+      },
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f36eab04_9bd9d23c",
+        "filename": "libsepol/cil/src/cil_resolve_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-04-27T20:32:45Z",
+      "side": 1,
+      "message": "This is where I added the fatal error to prevent this from being set to conflicting values.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 43
+      },
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c8965e0_28dadbf1",
+        "filename": "libsepol/cil/src/cil_write_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-04-27T20:32:45Z",
+      "side": 1,
+      "message": "Untested. Need to figure out how to trigger.",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
