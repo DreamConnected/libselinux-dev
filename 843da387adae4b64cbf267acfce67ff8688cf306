@@ -36,6 +36,58 @@
     },
     {
       "key": {
+        "uuid": "e69cf848_4a73759e",
+        "filename": "libsepol/cil/src/cil_build_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3183,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T16:05:36Z",
+      "side": 1,
+      "message": "I realize now that allowing an expression here would be way too much work. I was thinking of type expressions, but this would be an attribute expression.\n\nAllowing a list of attributes would still work though.",
+      "parentUuid": "0e24017f_075751f0",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9eb5b67_b91f13c4",
+        "filename": "libsepol/cil/src/cil_build_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3209,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T16:05:36Z",
+      "side": 1,
+      "message": "I would prefer CIL_TRUE or CIL_FALSE is assigned here and then based on that value pass in CIL_ATTR_EXPAND_(TRUE|FALSE) to cil_type_used() in cil_resolve_ast.c",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80fbe94e_a92fd9c4",
+        "filename": "libsepol/cil/src/cil_internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T16:05:36Z",
+      "side": 1,
+      "message": "expand_str is not really needed. We know that it is going to be true or false.\n\nI think that it makes more sense to call the field \"used\" as \"expand\" with the value of CIL_TRUE or CIL_FALSE.",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418c377f_beb71681",
         "filename": "libsepol/cil/src/cil_post.c",
         "patchSetId": 4
@@ -47,6 +99,24 @@
       "writtenOn": "2017-04-27T20:17:40Z",
       "side": 1,
       "message": "Don\u0027t you want to do this check first? I thought that you wanted to override the behavior no matter what.",
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d828490a_a26995c8",
+        "filename": "libsepol/cil/src/cil_post.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T16:05:36Z",
+      "side": 1,
+      "message": "Nevermind. Of course, if attr-\u003eused \u003d\u003d 0, then neither CIL_ATTR_EXPAND_FALSE or CIL_ATTR_EXPAND_TRUE has been specified for the attribute.",
+      "parentUuid": "418c377f_beb71681",
       "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -135,6 +205,30 @@
       "side": 1,
       "message": "Good.",
       "parentUuid": "f36eab04_9bd9d23c",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 43
+      },
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c62fcbb8_4c331b05",
+        "filename": "libsepol/cil/src/cil_resolve_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T16:05:36Z",
+      "side": 1,
+      "message": "Need an error message here.",
+      "parentUuid": "24a4076c_3df036dc",
       "range": {
         "startLine": 280,
         "startChar": 0,
