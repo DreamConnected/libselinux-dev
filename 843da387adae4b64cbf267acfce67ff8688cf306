@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "99705d32_c104d314",
+        "filename": "libsepol/cil/src/cil_reset_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T13:58:37Z",
+      "side": 1,
+      "message": "Nothing needs to be done specifically for your new rule. The used field of type attributes is already going to be set back to zero.",
+      "parentUuid": "89abe7e3_41d67d25",
+      "range": {
+        "startLine": 552,
+        "startChar": 6,
+        "endLine": 552,
+        "endChar": 29
+      },
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36eab04_9bd9d23c",
         "filename": "libsepol/cil/src/cil_resolve_ast.c",
         "patchSetId": 4
@@ -87,6 +111,30 @@
       "writtenOn": "2017-04-27T20:32:45Z",
       "side": 1,
       "message": "This is where I added the fatal error to prevent this from being set to conflicting values.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 43
+      },
+      "revId": "843da387adae4b64cbf267acfce67ff8688cf306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24a4076c_3df036dc",
+        "filename": "libsepol/cil/src/cil_resolve_ast.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-04-28T13:58:37Z",
+      "side": 1,
+      "message": "Good.",
+      "parentUuid": "f36eab04_9bd9d23c",
       "range": {
         "startLine": 280,
         "startChar": 0,
