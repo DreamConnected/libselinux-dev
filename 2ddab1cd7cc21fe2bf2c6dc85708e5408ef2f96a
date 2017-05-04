@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a8dc971_6838b8de",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-05-04T19:28:25Z",
+      "side": 1,
+      "message": "Extra semicolon.",
+      "revId": "2ddab1cd7cc21fe2bf2c6dc85708e5408ef2f96a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1b2f129_b715a96d",
+        "filename": "libsepol/cil/src/cil_build_ast.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3205,
+      "author": {
+        "id": 1122423
+      },
+      "writtenOn": "2017-05-04T19:28:25Z",
+      "side": 1,
+      "message": "Should be CIL_STRING and not CIL_TYPE.",
+      "revId": "2ddab1cd7cc21fe2bf2c6dc85708e5408ef2f96a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
