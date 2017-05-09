@@ -392,7 +392,8 @@ exit:
 	return rc;
 }
 
-static int cil_attrib_typepermissive(struct cil_tree_node *node, struct version_args *args)
+static int cil_attrib_typepermissive(struct cil_tree_node *node,
+				     struct version_args *args __attribute__ ((unused)))
 {
 	int rc = SEPOL_ERR;
 	char *key;
