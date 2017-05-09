@@ -22,6 +22,30 @@
       "revId": "5201ac22d5b8070e275c75c6d5329fb40eb81d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3bb1782_a46fe1d1",
+        "filename": "checkpolicy/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-05-09T05:43:41Z",
+      "side": 1,
+      "message": "I can try without these. Currently this just ports the existing Android.mk file to soong.",
+      "parentUuid": "352d5452_9c0f4baa",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "5201ac22d5b8070e275c75c6d5329fb40eb81d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
