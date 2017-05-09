@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "352d5452_9c0f4baa",
+        "filename": "checkpolicy/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-05-09T05:37:47Z",
+      "side": 1,
+      "message": "needed? Some of these seem to duplicate already built in flags. -O2 and -pipe seem in particular odd.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "5201ac22d5b8070e275c75c6d5329fb40eb81d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
