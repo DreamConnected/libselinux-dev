@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5b98009_945c5604",
+        "filename": "checkpolicy/Android.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-09T07:59:10Z",
+      "side": 0,
+      "message": "The rest of the cflags probably aren\u0027t necessary, but you should probably keep these (and maybe add -Werror)",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "13329fa632de33a134d321b576eda66bca1dd550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
