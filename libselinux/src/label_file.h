@@ -52,6 +52,7 @@ struct spec {
 	char hasMetaChars;	/* regular expression has meta-chars */
 	char from_mmap;		/* this spec is from an mmap of the data */
 	size_t prefix_len;      /* length of fixed path prefix */
+	unsigned int order;     /* order this spec appeared in the policy */
 };
 
 /* A regular expression stem */
@@ -68,6 +69,22 @@ struct mmap_area {
 	void *next_addr;	/* Incremented by next_entry() */
 	size_t next_len;	/* Decremented by next_entry() */
 	struct mmap_area *next;
+};
+
+struct trie_node {
+	char *path;
+
+	struct spec **regexes;
+	unsigned int num_regexes;
+	unsigned int alloc_regexes;
+
+	struct spec **exact_pathnames;
+	unsigned int num_exact_pathnames;
+	unsigned int alloc_exact_pathnames;
+
+	struct trie_node *children;
+	unsigned int num_children;
+	unsigned int alloc_children;
 };
 
 /* Our stored configuration */
@@ -91,6 +108,7 @@ struct saved_data {
 	/* substitution support */
 	struct selabel_sub *dist_subs;
 	struct selabel_sub *subs;
+	struct trie_node trie_base;
 };
 
 static inline mode_t string_to_mode(char *mode)
@@ -149,6 +167,39 @@ static inline int grow_specs(struct saved_data *data)
 	return 0;
 }
 
+static inline bool is_meta_char(char c) {
+        switch (c) {
+        case '.':
+        case '^':
+        case '$':
+        case '?':
+        case '*':
+        case '+':
+        case '|':
+        case '[':
+        case '(':
+        case '{':
+                return true;
+        default:
+                return false;
+        }
+}
+
+static inline bool meta_chars_in_range(const char *str, const char *end)
+{
+	/* Look at each character in the RE specification string for a
+	 * meta character. Return when any meta character reached. */
+	while (str < end) {
+                if (is_meta_char(*str)) {
+                        return true;
+                } else if (*str == '\\') {
+                        str++;
+                }
+		str++;
+	}
+	return false;
+}
+
 /* Determine if the regular expression specification has any meta characters. */
 static inline void spec_hasMetaChars(struct spec *spec)
 {
@@ -166,27 +217,14 @@ static inline void spec_hasMetaChars(struct spec *spec)
 	/* Look at each character in the RE specification string for a
 	 * meta character. Return when any meta character reached. */
 	while (c < end) {
-		switch (*c) {
-		case '.':
-		case '^':
-		case '$':
-		case '?':
-		case '*':
-		case '+':
-		case '|':
-		case '[':
-		case '(':
-		case '{':
+                if (is_meta_char(*c)) {
 			spec->hasMetaChars = 1;
 			spec->prefix_len = c - spec->regex_str;
 			return;
-		case '\\':	/* skip the next character */
+                } else if (*c == '\\') {
+                        /* skip the next character */
 			c++;
-			break;
-		default:
-			break;
-
-		}
+                }
 		c++;
 	}
 }
