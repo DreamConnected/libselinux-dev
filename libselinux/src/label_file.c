@@ -18,6 +18,7 @@
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <stdlib.h>
 
 #include "callbacks.h"
 #include "label_internal.h"
@@ -393,6 +394,8 @@ end_arch_check:
 		if (rc < 0)
 			goto out;
 
+		spec->order = data->nspec;
+
 		data->nspec++;
 	}
 
@@ -559,6 +562,148 @@ static int process_file(const char *path, const char *suffix,
 	return -1;
 }
 
+/* Returns a pointer to a child with a given path_part,
+   optionally allocates a new one if one is not found */
+static struct trie_node *get_child(struct trie_node *parent, const char *path_part,
+				   size_t path_part_len, bool allocate) {
+	size_t i = 0;
+	struct trie_node *new_node;
+	for (; i < parent->num_children; ++i) {
+		if (strlen(parent->children[i].path) == path_part_len &&
+		    !strncmp(parent->children[i].path, path_part, path_part_len)) {
+			return &parent->children[i];
+		}
+	}
+	if (!allocate) return NULL;
+
+	if (parent->num_children == parent->alloc_children) {
+		size_t new_children = 16;
+		parent->alloc_children += new_children;
+		parent->children = realloc(parent->children,
+					   parent->alloc_children * sizeof(*parent->children));
+		if (!parent->children) abort();
+
+		memset(&parent->children[parent->num_children], 0,
+		       new_children * sizeof(*parent->children));
+	}
+	new_node = &parent->children[parent->num_children];
+	parent->num_children++;
+
+	new_node->path = calloc(sizeof(char), path_part_len + 1);
+	memcpy(new_node->path, path_part, path_part_len);
+	new_node->path[path_part_len] = '\0';
+	return new_node;
+}
+
+static void add_regex_to_node(struct trie_node *node, struct spec *spec) {
+	if (node->num_regexes == node->alloc_regexes) {
+		size_t new_regexes = 16;
+		node->alloc_regexes += new_regexes;
+		node->regexes = realloc(node->regexes, node->alloc_regexes * sizeof(*node->regexes));
+		if (!node->regexes) abort();
+
+		memset(&node->regexes[node->num_regexes], 0, new_regexes * sizeof(*node->regexes));
+	}
+	node->regexes[node->num_regexes] = spec;
+	node->num_regexes++;
+}
+
+static void add_exact_pathname_to_node(struct trie_node *node, struct spec *spec) {
+	if (node->num_exact_pathnames == node->alloc_exact_pathnames) {
+		size_t new_exact_pathnames = 16;
+		node->alloc_exact_pathnames += new_exact_pathnames;
+		node->exact_pathnames =
+			realloc(node->exact_pathnames,
+				node->alloc_exact_pathnames * sizeof(*node->exact_pathnames));
+		if (!node->exact_pathnames) abort();
+
+		memset(&node->exact_pathnames[node->num_exact_pathnames], 0,
+		       new_exact_pathnames * sizeof(*node->exact_pathnames));
+	}
+	node->exact_pathnames[node->num_exact_pathnames] = spec;
+	node->num_exact_pathnames++;
+}
+
+static char *unescape_regex(const char *input, size_t *path_part_len) {
+	char *out = strndup(input, *path_part_len);
+	char *slash;
+	char *buf = out;
+
+	while ((slash = strchr(buf, '\\')) != NULL) {
+		if (*(slash + 1) == '\\') {
+			slash++;
+		}
+		buf = slash;
+		while (*(slash + 1) != '\0') {
+			*slash = *(slash + 1);
+			slash++;
+		}
+		*slash = '\0';
+		*path_part_len = *path_part_len - 1;
+	}
+	return out;
+}
+
+static void build_trie(struct saved_data *data) {
+	size_t i = 0;
+	struct trie_node *cur_node = &data->trie_base;
+
+	memset(&data->trie_base, 0, sizeof(data->trie_base));
+	data->trie_base.path = strdup("");
+
+	for (; i < data->nspec; ++i) {
+		const char *buf = data->spec_arr[i].regex_str;
+		const char *next_slash = strchr(buf + 1, '/');
+		bool has_meta_chars = false;
+
+		cur_node = &data->trie_base;
+
+		while (next_slash != NULL) {
+			char *unescaped_path;
+			size_t path_part_len = next_slash - buf;
+
+			/* If we've found a regex at this point, break to store it */
+			if (meta_chars_in_range(buf, next_slash)) {
+				has_meta_chars = true;
+				break;
+			}
+
+			unescaped_path = unescape_regex(buf, &path_part_len);
+			cur_node = get_child(cur_node, unescaped_path, path_part_len, true);
+			free(unescaped_path);
+			buf = next_slash;
+			next_slash = strchr(buf + 1, '/');
+		}
+
+		if (meta_chars_in_range(buf, strchr(buf, '\0'))) has_meta_chars = true;
+
+		if (has_meta_chars) {
+			add_regex_to_node(cur_node, &data->spec_arr[i]);
+		} else {
+			add_exact_pathname_to_node(cur_node, &data->spec_arr[i]);
+		}
+	}
+}
+
+static void dump_trie(struct trie_node *data, int indent) {
+	size_t i = 0;
+	if (!data) return;
+
+	selinux_log(SELINUX_ERROR, "%*s%s\n", indent, "", data->path);
+	if (data->num_regexes > 0) selinux_log(SELINUX_ERROR, "%*s%s\n", indent + 1, "", "regexes");
+	for (i = 0; i < data->num_regexes; ++i) {
+		selinux_log(SELINUX_ERROR, "%*s├%s\n", indent + 1, "", data->regexes[i]->regex_str);
+	}
+	if (data->num_exact_pathnames > 0) selinux_log(SELINUX_ERROR, "%*s%s\n", indent + 1, "", "exact pathnames");
+	for (i = 0; i < data->num_exact_pathnames; ++i) {
+		selinux_log(SELINUX_ERROR, "%*s├%s\n", indent + 1, "", data->exact_pathnames[i]->regex_str);
+	}
+	if (data->num_children > 0) selinux_log(SELINUX_ERROR, "%*s%s\n", indent + 1, "", "children");
+	for (i = 0; i < data->num_children; ++i) {
+		dump_trie(&data->children[i], indent + 2);
+	}
+}
+
 static void closef(struct selabel_handle *rec);
 
 static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
@@ -674,6 +819,9 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 
 	status = sort_specs(data);
 
+	build_trie(data);
+
+	//dump_trie(&data->trie_base, 0);
 finish:
 	if (status)
 		closef(rec);
@@ -731,6 +879,70 @@ static void closef(struct selabel_handle *rec)
 	free(data);
 }
 
+static void generate_check_arr_from_trie(struct trie_node *root, const char *key,
+					 bool *check_arr, unsigned int nspec, bool *more_children)
+{
+	size_t i;
+	const char *buf;
+	const char *next_slash;
+	*more_children = false;
+
+	/* Add regexes at the root to check_arr as we'll always need to evaluate them */
+	for (i = 0; i < root->num_regexes; ++i) {
+		if (root->regexes[i]->order < nspec) {
+			check_arr[root->regexes[i]->order] = true;
+		} else {
+			selinux_log(SELINUX_ERROR, "attempting to write to check_arr[%u], whereas max is %u",
+				    root->regexes[i]->order, nspec);
+		}
+	}
+
+	buf = key;
+	next_slash = strchr(buf + 1, '/');
+
+	while (next_slash != NULL) {
+		size_t path_part_len = next_slash - buf;
+		root = get_child(root, buf, path_part_len, false);
+		if (!root) break;
+
+		for (i = 0; i < root->num_regexes; ++i) {
+			if (root->regexes[i]->order < nspec) {
+				check_arr[root->regexes[i]->order] = true;
+			} else {
+				selinux_log(SELINUX_ERROR, "attempting to write to check_arr[%u], whereas max is %u",
+					    root->regexes[i]->order, nspec);
+			}
+		}
+
+		buf = next_slash;
+		next_slash = strchr(buf + 1, '/');
+	}
+
+	if (root) {
+		for (i = 0; i < root->num_regexes; ++i) {
+			if (root->regexes[i]->order < nspec) {
+				check_arr[root->regexes[i]->order] = true;
+			} else {
+				selinux_log(SELINUX_ERROR, "attempting to write to check_arr[%u], whereas max is %u",
+					    root->regexes[i]->order, nspec);
+			}
+		}
+
+		for (i = 0; i < root->num_exact_pathnames; ++i) {
+			if (root->exact_pathnames[i]->order < nspec) {
+				check_arr[root->exact_pathnames[i]->order] = true;
+			} else {
+				selinux_log(SELINUX_ERROR, "attempting to write to check_arr[%u], whereas max is %u",
+					    root->regexes[i]->order, nspec);
+			}
+		}
+
+		root = get_child(root, buf, strlen(buf), false);
+		if (root) *more_children = true;
+	}
+}
+
+
 static struct spec *lookup_common(struct selabel_handle *rec,
 					     const char *key,
 					     int type,
@@ -738,6 +950,7 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 {
 	struct saved_data *data = (struct saved_data *)rec->data;
 	struct spec *spec_arr = data->spec_arr;
+	bool *check_arr = NULL;
 	int i, rc, file_stem;
 	mode_t mode = (mode_t)type;
 	const char *buf;
@@ -745,6 +958,7 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 	char *clean_key = NULL;
 	const char *prev_slash, *next_slash;
 	unsigned int sofar = 0;
+	bool more_children;
 
 	if (!data->nspec) {
 		errno = ENOENT;
@@ -775,8 +989,19 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 	 * Check for matching specifications in reverse order, so that
 	 * the last matching specification is used.
 	 */
+
+	check_arr = calloc(sizeof(bool), data->nspec);
+	generate_check_arr_from_trie(&data->trie_base, key, check_arr, data->nspec, &more_children);
+
+	if (partial && more_children) {
+		errno = 0;
+		ret = (struct spec *)0x1234;
+		goto finish;
+	}
+
 	for (i = data->nspec - 1; i >= 0; i--) {
 		struct spec *spec = &spec_arr[i];
+		if (!check_arr[i]) continue;
 		/* if the spec in question matches no stem or has the same
 		 * stem as the file AND if the spec in question has no mode
 		 * specified or if the mode matches the file mode then we do
@@ -814,6 +1039,7 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 	ret = &spec_arr[i];
 
 finish:
+	free(check_arr);
 	free(clean_key);
 	return ret;
 }
