@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "207701f7_2446fa8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-07-06T15:57:48Z",
+      "side": 1,
+      "message": "please use \u0027git cherry-pick -x\u0027 which shows a \"cherry-picked from commit \u003csha\u003e\" line at the end of the change log, for this and other cherry picks in this topic",
+      "revId": "d62ed0bfec941445747cfed28d6f03e046df942e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
