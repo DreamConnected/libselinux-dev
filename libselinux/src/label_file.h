@@ -2,6 +2,7 @@
 #define _SELABEL_FILE_H_
 
 #include <errno.h>
+#include <pthread.h>
 #include <string.h>
 
 #include <sys/stat.h>
@@ -35,6 +36,7 @@ struct spec {
 	char *regex_str;	/* regular expession string for diagnostics */
 	char *type_str;		/* type string for diagnostic messages */
 	struct regex_data * regex; /* backend dependent regular expression data */
+	pthread_mutex_t regex_mutex; /* mutex for lazy compilation of regex */
 	mode_t mode;		/* mode format value */
 	int matches;		/* number of matching pathnames */
 	int stem_id;		/* indicates which stem-compression item */
@@ -320,7 +322,7 @@ static inline int next_entry(void *buf, struct mmap_area *fp, size_t bytes)
 }
 
 static inline int compile_regex(struct saved_data *data, struct spec *spec,
-					    const char **errbuf)
+				const char **errbuf)
 {
 	char *reg_buf, *anchored_regex, *cp;
 	struct regex_error_data error_data;
@@ -328,9 +330,13 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
 	struct stem *stem_arr = data->stem_arr;
 	size_t len;
 	int rc;
+        struct regex_data *new_regex;
 
-	if (spec->regex)
+	pthread_mutex_lock(&spec->regex_mutex);
+	if (spec->regex) {
+		pthread_mutex_unlock(&spec->regex_mutex);
 		return 0; /* already done */
+	}
 
 	/* Skip the fixed stem. */
 	reg_buf = spec->regex_str;
@@ -343,6 +349,7 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
 	if (!anchored_regex) {
 		if (errbuf)
 			*errbuf = "out of memory";
+		pthread_mutex_unlock(&spec->regex_mutex);
 		return -1;
 	}
 
@@ -354,7 +361,7 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
 	*cp = '\0';
 
 	/* Compile the regular expression. */
-	rc = regex_prepare_data(&spec->regex, anchored_regex, &error_data);
+	rc = regex_prepare_data(&new_regex, anchored_regex, &error_data);
 	free(anchored_regex);
 	if (rc < 0) {
 		if (errbuf) {
@@ -363,10 +370,13 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
 					sizeof(regex_error_format_buffer));
 			*errbuf = &regex_error_format_buffer[0];
 		}
+		pthread_mutex_unlock(&spec->regex_mutex);
 		return -1;
 	}
 
+	spec->regex = new_regex;
 	/* Done. */
+	pthread_mutex_unlock(&spec->regex_mutex);
 	return 0;
 }
 
@@ -428,6 +438,7 @@ static inline int process_line(struct selabel_handle *rec,
 	/* process and store the specification in spec. */
 	spec_arr[nspec].stem_id = find_stem_from_spec(data, regex);
 	spec_arr[nspec].regex_str = regex;
+	pthread_mutex_init(&spec_arr[nspec].regex_mutex, NULL);
 
 	spec_arr[nspec].type_str = type;
 	spec_arr[nspec].mode = 0;
