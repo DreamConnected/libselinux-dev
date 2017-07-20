@@ -303,6 +303,7 @@ end_arch_check:
 
 		spec = &data->spec_arr[data->nspec];
 		spec->from_mmap = 1;
+		__pthread_rwlock_init(&spec->regex_lock, NULL);
 
 		/* Process context */
 		rc = next_entry(&entry_len, mmap_area, sizeof(uint32_t));
@@ -703,6 +704,7 @@ static void closef(struct selabel_handle *rec)
 		free(spec->lr.ctx_trans);
 		free(spec->lr.ctx_raw);
 		regex_data_free(spec->regex);
+		__pthread_rwlock_destroy(&spec->regex_lock);
 		if (spec->from_mmap)
 			continue;
 		free(spec->regex_str);

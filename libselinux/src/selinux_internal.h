@@ -144,6 +144,47 @@ extern int selinux_page_size hidden;
 			pthread_setspecific(KEY, VALUE);	\
 	} while (0)
 
+/* selabel_lookup() is only thread safe if we're compiled with pthreads */
+
+#pragma weak pthread_rwlock_init
+#pragma weak pthread_rwlock_destroy
+#pragma weak pthread_rwlock_rdlock
+#pragma weak pthread_rwlock_wrlock
+#pragma weak pthread_rwlock_unlock
+
+#define __pthread_rwlock_init(LOCK, ATTR) 			\
+	(pthread_rwlock_init != NULL ? pthread_rwlock_init(LOCK, ATTR) : -1)
+
+#define __pthread_rwlock_destroy(LOCK) 				\
+	(pthread_rwlock_destroy != NULL ? pthread_rwlock_destroy(LOCK) : -1)
+
+#define __pthread_rwlock_rdlock(LOCK) 				\
+	(pthread_rwlock_rdlock != NULL ? pthread_rwlock_rdlock(LOCK) : -1)
+
+#define __pthread_rwlock_wrlock(LOCK) 				\
+	(pthread_rwlock_wrlock != NULL ? pthread_rwlock_wrlock(LOCK) : -1)
+
+#define __pthread_rwlock_unlock(LOCK) 				\
+	(pthread_rwlock_unlock != NULL ? pthread_rwlock_unlock(LOCK) : -1)
+
+#pragma weak pthread_mutex_init
+#pragma weak pthread_mutex_destroy
+#pragma weak pthread_mutex_lock
+#pragma weak pthread_mutex_unlock
+
+#define __pthread_mutex_init(LOCK, ATTR) 			\
+	(pthread_mutex_init != NULL ? pthread_mutex_init(LOCK, ATTR) : -1)
+
+#define __pthread_mutex_destroy(LOCK) 				\
+	(pthread_mutex_destroy != NULL ? pthread_mutex_destroy(LOCK) : -1)
+
+#define __pthread_mutex_lock(LOCK) 				\
+	(pthread_mutex_lock != NULL ? pthread_mutex_lock(LOCK) : -1)
+
+#define __pthread_mutex_unlock(LOCK) 				\
+	(pthread_mutex_lock != NULL ? pthread_mutex_unlock(LOCK) : -1)
+
+
 #define SELINUXDIR "/etc/selinux/"
 #define SELINUXCONFIG SELINUXDIR "config"
 

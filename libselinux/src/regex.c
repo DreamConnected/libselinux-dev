@@ -1,10 +1,12 @@
 #include <assert.h>
+#include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "regex.h"
 #include "label_file.h"
+#include "selinux_internal.h"
 
 #ifdef USE_PCRE2
 #define REGEX_ARCH_SIZE_T PCRE2_SIZE
@@ -63,6 +65,7 @@ struct regex_data {
 	 * pattern in pcre2
 	 */
 	pcre2_match_data *match_data;
+	pthread_mutex_t match_mutex;
 };
 
 int regex_prepare_data(struct regex_data **regex, char const *pattern_string,
@@ -199,6 +202,7 @@ void regex_data_free(struct regex_data *regex)
 			pcre2_code_free(regex->regex);
 		if (regex->match_data)
 			pcre2_match_data_free(regex->match_data);
+		__pthread_mutex_destroy(&regex->match_mutex);
 		free(regex);
 	}
 }
@@ -206,9 +210,11 @@ void regex_data_free(struct regex_data *regex)
 int regex_match(struct regex_data *regex, char const *subject, int partial)
 {
 	int rc;
+	__pthread_mutex_lock(&regex->match_mutex);
 	rc = pcre2_match(
 	    regex->regex, (PCRE2_SPTR)subject, PCRE2_ZERO_TERMINATED, 0,
 	    partial ? PCRE2_PARTIAL_SOFT : 0, regex->match_data, NULL);
+	__pthread_mutex_unlock(&regex->match_mutex);
 	if (rc > 0)
 		return REGEX_MATCH;
 	switch (rc) {
@@ -242,6 +248,14 @@ int regex_cmp(struct regex_data *regex1, struct regex_data *regex2)
 		return SELABEL_INCOMPARABLE;
 
 	return SELABEL_EQUAL;
+}
+
+struct regex_data *regex_data_create(void)
+{
+	struct regex_data *regex_data =
+		(struct regex_data *)calloc(1, sizeof(struct regex_data));
+	__pthread_mutex_init(&regex_data->match_mutex, NULL);
+	return regex_data;
 }
 
 #else // !USE_PCRE2
@@ -472,12 +486,12 @@ int regex_cmp(struct regex_data *regex1, struct regex_data *regex2)
 	return SELABEL_EQUAL;
 }
 
-#endif
-
 struct regex_data *regex_data_create(void)
 {
 	return (struct regex_data *)calloc(1, sizeof(struct regex_data));
 }
+
+#endif
 
 void regex_format_error(struct regex_error_data const *error_data, char *buffer,
 			size_t buf_size)
