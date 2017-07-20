@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caae66da_04c5139a",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-20T21:05:52Z",
+      "side": 1,
+      "message": "This still isn\u0027t thread safe.  Should be an atomic.\n\nBut it doesn\u0027t actually break this function like the other issues.",
+      "revId": "d5533ef86ee0ffcebd66823a038e73f5c86e385f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ab8d0b7_d7262471",
+        "filename": "libselinux/src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-20T21:05:52Z",
+      "side": 1,
+      "message": "Alternatively allocate per thread match_data?  I\u0027d figure it\u0027s not super likely to have contention here, so the mutex is probably fine.",
+      "revId": "d5533ef86ee0ffcebd66823a038e73f5c86e385f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
