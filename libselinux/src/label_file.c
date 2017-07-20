@@ -393,6 +393,8 @@ end_arch_check:
 		if (rc < 0)
 			goto out;
 
+                __pthread_mutex_init(&spec->regex_lock, NULL);
+                spec->regex_compiled = true;
 		data->nspec++;
 	}
 
@@ -703,6 +705,7 @@ static void closef(struct selabel_handle *rec)
 		free(spec->lr.ctx_trans);
 		free(spec->lr.ctx_raw);
 		regex_data_free(spec->regex);
+		__pthread_mutex_destroy(&spec->regex_lock);
 		if (spec->from_mmap)
 			continue;
 		free(spec->regex_str);
