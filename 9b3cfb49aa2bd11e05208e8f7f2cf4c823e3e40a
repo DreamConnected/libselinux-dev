@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef864190_beba2730",
+        "filename": "libselinux/src/label_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-25T20:49:50Z",
+      "side": 1,
+      "message": "I think so.  I was seeing contention on the lock in my unit test and simply a mutex.  A memory barrier of some kind is required too, otherwise we risk changing this from an easily repro\u0027able race to a more obscure one.\n\nThe latest solution with the atomics is the best and mimics what pthread_once() would do anyway.",
+      "parentUuid": "d72666f0_38fa02b4",
+      "revId": "9b3cfb49aa2bd11e05208e8f7f2cf4c823e3e40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb56d15f_c193c32d",
         "filename": "libselinux/src/selinux_internal.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-25T12:44:40Z",
       "side": 1,
       "message": "Why -1?  Seems problematic if any of the callers were to check the return value.\n\nAlso, any particular reason for taking this approach rather than the one used above for pthread_setspecific() and others?",
+      "revId": "9b3cfb49aa2bd11e05208e8f7f2cf4c823e3e40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f8fd8d9_eb7b2d99",
+        "filename": "libselinux/src/selinux_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-25T20:49:50Z",
+      "side": 1,
+      "message": "Done.  I was copying __selinux_key_create() but you\u0027re right that I shouldn\u0027t have.",
+      "parentUuid": "fb56d15f_c193c32d",
       "revId": "9b3cfb49aa2bd11e05208e8f7f2cf4c823e3e40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
