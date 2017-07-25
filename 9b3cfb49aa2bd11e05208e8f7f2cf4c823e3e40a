@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d72666f0_38fa02b4",
+        "filename": "libselinux/src/label_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2017-07-25T12:44:40Z",
+      "side": 1,
+      "message": "Why did you switch this from a mutex to a rwlock? Is it really worth it?",
+      "revId": "9b3cfb49aa2bd11e05208e8f7f2cf4c823e3e40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb56d15f_c193c32d",
+        "filename": "libselinux/src/selinux_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2017-07-25T12:44:40Z",
+      "side": 1,
+      "message": "Why -1?  Seems problematic if any of the callers were to check the return value.\n\nAlso, any particular reason for taking this approach rather than the one used above for pthread_setspecific() and others?",
+      "revId": "9b3cfb49aa2bd11e05208e8f7f2cf4c823e3e40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
