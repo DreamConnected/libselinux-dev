@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca756738_3a4d4778",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2017-08-01T20:24:01Z",
+      "side": 1,
+      "message": "handle leak: fclose(cfg) is needed before return",
+      "revId": "2cc30d6029d52690bf01b2dc4a04d8af3a49261f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
