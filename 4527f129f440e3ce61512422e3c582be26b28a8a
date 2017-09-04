@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a24cce60_460a2ef5",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-04T07:07:59Z",
+      "side": 1,
+      "message": "Maybe add a comment above?\n\n# For \u0027system\u0027, \u0027vendor\u0027 and/or \u0027odm\u0027.\n# The first two are mandatory while the last one is optional.\n#define MAX_FILE_CONTEXT_SIZE 3",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 31
+      },
+      "revId": "4527f129f440e3ce61512422e3c582be26b28a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3638323_23808834",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-04T07:07:59Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 31
+      },
+      "revId": "4527f129f440e3ce61512422e3c582be26b28a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
