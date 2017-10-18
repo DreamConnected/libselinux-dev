@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75efa11a_09c072e1",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2017-10-18T22:39:50Z",
+      "side": 1,
+      "message": "do we actually need to support this given that this is a no-no for treble devices (we also shouldn\u0027t have it for the previous version (nonplat) either...?",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "f97e4e3a8508d8016e772a22d220c00cae5420af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "116d3db8_33f7ca62",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2017-10-18T22:39:50Z",
+      "side": 1,
+      "message": "likewise, do we ever actually need this, since odm will be treble only?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "f97e4e3a8508d8016e772a22d220c00cae5420af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
