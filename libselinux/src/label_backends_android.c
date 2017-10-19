@@ -305,8 +305,13 @@ static struct selabel_lookup_rec *property_lookup(struct selabel_handle *rec,
 	}
 
 	for (i = 0; i < data->nspec; i++) {
-		if (strncmp(spec_arr[i].property_key, key,
-			    strlen(spec_arr[i].property_key)) == 0) {
+		size_t property_key_len = strlen(spec_arr[i].property_key);
+		if (spec_arr[i].property_key[property_key_len - 1] == '$' &&
+		    strlen(key) == property_key_len - 1 &&
+		    strncmp(spec_arr[i].property_key, key, property_key_len - 1) == 0) {
+			break;
+		}
+		if (strncmp(spec_arr[i].property_key, key, property_key_len) == 0) {
 			break;
 		}
 		if (strncmp(spec_arr[i].property_key, "*", 1) == 0)
