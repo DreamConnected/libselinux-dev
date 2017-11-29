@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26ce0e69_8ece4c49",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-11-29T10:11:30Z",
+      "side": 1,
+      "message": "We could have a separate CL to remove it completely.\n\nFor this CL, let\u0027s keep the renaming (s/nonplat_/vendor_).\n\nI also added #ifndef FULL_TREBLE for this, so it will be clear that this is not Treble-compatible.\n\nSound good?",
+      "parentUuid": "75efa11a_09c072e1",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "f97e4e3a8508d8016e772a22d220c00cae5420af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "116d3db8_33f7ca62",
         "filename": "libselinux/src/android/android.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-18T22:39:50Z",
       "side": 1,
       "message": "likewise, do we ever actually need this, since odm will be treble only?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "f97e4e3a8508d8016e772a22d220c00cae5420af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ee5eebd_0ce48ad9",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-11-29T10:11:30Z",
+      "side": 1,
+      "message": "OK, agree shouldn\u0027t define odm_service_contexts.\nPre-Treble devices won\u0027t have this file.\n\nThanks!",
+      "parentUuid": "116d3db8_33f7ca62",
       "range": {
         "startLine": 25,
         "startChar": 25,
