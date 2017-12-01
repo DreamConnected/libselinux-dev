@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3c16da0_f84b8a1f",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-12-01T06:57:24Z",
+      "side": 1,
+      "message": "This function is to calculate file_contexts hash.\n\nActual \u0027restorecon\u0027 will be skipped it if the file_contexts hash associated with current label doesn\u0027t change (i.e., re-run the restorecon doesn\u0027t change anything).\n\nMy CL here is just to skip reading an empty odm_file_contexts when calculating the hash. The file might be empty if BOARD_ODM_SEPOLICY_DIRS doesn\u0027t have any \u0027file_contexts\u0027 files (and it\u0027s possible).",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "da007e9dafc1015caa456dcde01bf2306ed7aa6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
