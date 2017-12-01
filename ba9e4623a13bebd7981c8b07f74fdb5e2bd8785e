@@ -1,0 +1,9 @@
+Verified+1: Bowgo Tsai <bowgotsai@google.com>
+Code-Review+2: Daniel Cashman <dcashman@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Bowgo Tsai <bowgotsai@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 01 Dec 2017 09:13:49 +0000
+Reviewed-on: https://android-review.googlesource.com/474157
+Project: platform/external/selinux
+Branch: refs/heads/master
