@@ -33,6 +33,12 @@ cc_defaults {
         "src/sha1.c",
     ],
 
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
+
     target: {
         host: {
             cflags: [
