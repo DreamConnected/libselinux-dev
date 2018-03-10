@@ -1663,6 +1663,11 @@ void cil_set_attrs_expand_size(struct cil_db *db, unsigned attrs_expand_size)
 	db->attrs_expand_size = attrs_expand_size;
 }
 
+void cil_set_attrs_resolve_expand_conflict(struct cil_db *db, int attrs_resolve_expand_conflict)
+{
+	db->attrs_resolve_expand_conflict = attrs_resolve_expand_conflict;
+}
+
 void cil_set_preserve_tunables(struct cil_db *db, int preserve_tunables)
 {
 	db->preserve_tunables = preserve_tunables;

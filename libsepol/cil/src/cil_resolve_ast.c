@@ -279,10 +279,18 @@ int cil_type_used(struct cil_symtab_datum *datum, int used)
 		attr->used |= used;
 		if ((attr->used & CIL_ATTR_EXPAND_TRUE) &&
 				(attr->used & CIL_ATTR_EXPAND_FALSE)) {
-			cil_log(CIL_ERR, "Conflicting use of expandtypeattribute. "
-					"Expandtypeattribute may be set to true or false "
-					"but not both. \n");
-			goto exit;
+			if (attr->used & CIL_ATTR_RESOLVE_EXPAND_CONFLICT_TO_TRUE) {
+				attr->used ^= CIL_ATTR_EXPAND_FALSE;
+				return SEPOL_OK;
+			} else if (attr->used & CIL_ATTR_RESOLVE_EXPAND_CONFLICT_TO_FALSE) {
+				attr->used ^= CIL_ATTR_EXPAND_TRUE;
+				return SEPOL_OK;
+			} else {
+				cil_log(CIL_ERR, "Conflicting use of expandtypeattribute. "
+						"Expandtypeattribute may be set to true or false "
+						"but not both. \n");
+				goto exit;
+			}
 		}
 	}
 
@@ -465,6 +473,8 @@ exit:
 
 int cil_resolve_expandtypeattribute(struct cil_tree_node *current, void *extra_args)
 {
+	struct cil_args_resolve *args = extra_args;
+	int resolve_expand_conflict = args->db->attrs_resolve_expand_conflict;
 	struct cil_expandtypeattribute *expandattr = current->data;
 	struct cil_symtab_datum *attr_datum = NULL;
 	struct cil_tree_node *attr_node = NULL;
@@ -488,6 +498,13 @@ int cil_resolve_expandtypeattribute(struct cil_tree_node *current, void *extra_a
 			goto exit;
 		}
 		used = expandattr->expand ? CIL_ATTR_EXPAND_TRUE : CIL_ATTR_EXPAND_FALSE;
+
+		if (resolve_expand_conflict == CIL_TRUE) {
+			used |= CIL_ATTR_RESOLVE_EXPAND_CONFLICT_TO_TRUE;
+		}
+		if (resolve_expand_conflict == CIL_FALSE) {
+			used |= CIL_ATTR_RESOLVE_EXPAND_CONFLICT_TO_FALSE;
+		}
 		rc = cil_type_used(attr_datum, used);
 		if (rc != SEPOL_OK) {
 			goto exit;

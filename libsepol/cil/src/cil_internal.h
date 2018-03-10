@@ -313,6 +313,7 @@ struct cil_db {
 	int disable_neverallow;
 	int attrs_expand_generated;
 	unsigned attrs_expand_size;
+	int attrs_resolve_expand_conflict;
 	int preserve_tunables;
 	int handle_unknown;
 	int mls;
@@ -526,6 +527,8 @@ struct cil_type	{
 #define CIL_ATTR_CONSTRAINT	(1 << 2)
 #define CIL_ATTR_EXPAND_TRUE	(1 << 3)
 #define CIL_ATTR_EXPAND_FALSE	(1 << 4)
+#define CIL_ATTR_RESOLVE_EXPAND_CONFLICT_TO_TRUE  (1 << 5)
+#define CIL_ATTR_RESOLVE_EXPAND_CONFLICT_TO_FALSE (1 << 6)
 struct cil_typeattribute {
 	struct cil_symtab_datum datum;
 	struct cil_list *expr_list;

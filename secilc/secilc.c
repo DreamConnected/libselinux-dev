@@ -46,30 +46,32 @@ static __attribute__((__noreturn__)) void usage(const char *prog)
 	printf("Usage: %s [OPTION]... FILE...\n", prog);
 	printf("\n");
 	printf("Options:\n");
-	printf("  -o, --output=<file>            write binary policy to <file>\n");
-	printf("                                 (default: policy.<version>)\n");
-	printf("  -f, --filecontext=<file>       write file contexts to <file>\n");
-	printf("                                 (default: file_contexts)\n");
-	printf("  -t, --target=<type>            specify target architecture. may be selinux or\n");
-	printf("                                 xen. (default: selinux)\n");
-	printf("  -M, --mls true|false           build an mls policy. Must be true or false.\n");
-	printf("                                 This will override the (mls boolean) statement\n");
-	printf("                                 if present in the policy\n");
-	printf("  -c, --policyvers=<version>     build a binary policy with a given <version>\n");
-	printf("                                 (default: %i)\n", POLICYDB_VERSION_MAX);
-	printf("  -U, --handle-unknown=<action>  how to handle unknown classes or permissions.\n");
-	printf("                                 may be deny, allow, or reject. (default: deny)\n");
-	printf("                                 This will override the (handleunknown action)\n");
-	printf("                                 statement if present in the policy\n");
-	printf("  -D, --disable-dontaudit        do not add dontaudit rules to the binary policy\n");
-	printf("  -P, --preserve-tunables        treat tunables as booleans\n");
-	printf("  -m, --multiple-decls           allow some statements to be re-declared\n");
-	printf("  -N, --disable-neverallow       do not check neverallow rules\n");
-	printf("  -G, --expand-generated         Expand and remove auto-generated attributes\n");
-	printf("  -X, --expand-size <SIZE>       Expand type attributes with fewer than <SIZE>\n");
-	printf("                                 members.\n");
-	printf("  -v, --verbose                  increment verbosity level\n");
-	printf("  -h, --help                     display usage information\n");
+	printf("  -o, --output=<file>                       write binary policy to <file>\n");
+	printf("                                            (default: policy.<version>)\n");
+	printf("  -f, --filecontext=<file>                  write file contexts to <file>\n");
+	printf("                                            (default: file_contexts)\n");
+	printf("  -t, --target=<type>                       specify target architecture. may be selinux or\n");
+	printf("                                            xen. (default: selinux)\n");
+	printf("  -M, --mls true|false                      build an mls policy. Must be true or false.\n");
+	printf("                                            This will override the (mls boolean) statement\n");
+	printf("                                            if present in the policy\n");
+	printf("  -c, --policyvers=<version>                build a binary policy with a given <version>\n");
+	printf("                                            (default: %i)\n", POLICYDB_VERSION_MAX);
+	printf("  -U, --handle-unknown=<action>             how to handle unknown classes or permissions.\n");
+	printf("                                            may be deny, allow, or reject. (default: deny)\n");
+	printf("                                            This will override the (handleunknown action)\n");
+	printf("                                            statement if present in the policy\n");
+	printf("  -D, --disable-dontaudit                   do not add dontaudit rules to the binary policy\n");
+	printf("  -P, --preserve-tunables                   treat tunables as booleans\n");
+	printf("  -m, --multiple-decls                      allow some statements to be re-declared\n");
+	printf("  -N, --disable-neverallow                  do not check neverallow rules\n");
+	printf("  -G, --expand-generated                    Expand and remove auto-generated attributes\n");
+	printf("  -X, --expand-size <SIZE>                  Expand type attributes with fewer than <SIZE>\n");
+	printf("                                            members.\n");
+	printf("  -R, --resolve-expand-conflict true|false  Resolves conflicts in expandtypeattribute statements\n");
+	printf("                                            to the given value.\n");
+	printf("  -v, --verbose                             increment verbosity level\n");
+	printf("  -h, --help                                display usage information\n");
 	exit(1);
 }
 
@@ -97,6 +99,7 @@ int main(int argc, char *argv[])
 	int policyvers = POLICYDB_VERSION_MAX;
 	int attrs_expand_generated = 0;
 	int attrs_expand_size = -1;
+	int attrs_resolve_expand_conflict = -1;
 	int opt_char;
 	int opt_index = 0;
 	char *fc_buf = NULL;
@@ -117,12 +120,13 @@ int main(int argc, char *argv[])
 		{"filecontexts", required_argument, 0, 'f'},
 		{"expand-generated", no_argument, 0, 'G'},
 		{"expand-size", required_argument, 0, 'X'},
+		{"resolve-expand-conflict", required_argument, 0, 'R'},
 		{0, 0, 0, 0}
 	};
 	int i;
 
 	while (1) {
-		opt_char = getopt_long(argc, argv, "o:f:U:hvt:M:PDmNc:GX:", long_opts, &opt_index);
+		opt_char = getopt_long(argc, argv, "o:f:U:hvt:M:PDmNc:GXR:", long_opts, &opt_index);
 		if (opt_char == -1) {
 			break;
 		}
@@ -211,6 +215,15 @@ int main(int argc, char *argv[])
 				}
 				break;
 			}
+			case 'R':
+				if (!strcasecmp(optarg, "true") || !strcasecmp(optarg, "1")) {
+					attrs_resolve_expand_conflict = 1;
+				} else if (!strcasecmp(optarg, "false") || !strcasecmp(optarg, "0")) {
+					attrs_resolve_expand_conflict = 0;
+				} else {
+					usage(argv[0]);
+				}
+				break;
 			case 'h':
 				usage(argv[0]);
 			case '?':
@@ -246,6 +259,7 @@ int main(int argc, char *argv[])
 	if (attrs_expand_size >= 0) {
 		cil_set_attrs_expand_size(db, (unsigned)attrs_expand_size);
 	}
+	cil_set_attrs_resolve_expand_conflict(db, attrs_resolve_expand_conflict);
 
 	for (i = optind; i < argc; i++) {
 		file = fopen(argv[i], "r");
