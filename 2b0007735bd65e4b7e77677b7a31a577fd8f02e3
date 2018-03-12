@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "838baabb_a0c4583f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-03-12T18:08:44Z",
+      "side": 1,
+      "message": "fix this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "2b0007735bd65e4b7e77677b7a31a577fd8f02e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ec78474_a85a6cd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-03-12T18:08:44Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that this is useful. Do you have a use-case for both? Seems like \"false\" should always override \"true\". The only purpose of \"true\" is to reduce run-time lookups, whereas \"false\" is used for tests which must pass.",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "2b0007735bd65e4b7e77677b7a31a577fd8f02e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
