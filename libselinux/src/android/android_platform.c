@@ -1618,8 +1618,13 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     }
 
     // Labeling successful. Mark the top level directory as completed.
-    if (setrestoreconlast && !nochange && !error)
-        setxattr(pathname, RESTORECON_LAST, fc_digest, sizeof fc_digest, 0);
+    if (setrestoreconlast && !nochange && !error) {
+        if (setxattr(pathname, RESTORECON_LAST, fc_digest, sizeof fc_digest, 0) < 0) {
+            selinux_log(SELINUX_ERROR,
+                        "SELinux: setxattr of RESTORECON_LAST failed: %s: %s.\n",
+                        pathname, strerror(errno));
+        }
+    }
 
 out:
     sverrno = errno;
@@ -1722,4 +1727,3 @@ int selinux_android_load_policy_from_fd(int fd, const char *description)
 	load_successful = 1;
 	return 0;
 }
-
