@@ -149,11 +149,15 @@ static int selabel_fini(struct selabel_handle *rec,
 			    struct selabel_lookup_rec *lr,
 			    int translating)
 {
+<<<<<<< HEAD   (534068 Export more symbols for init)
 	char *path = NULL;
 
 	if (rec->spec_files)
 		path = rec->spec_files[0];
 	if (compat_validate(rec, lr, path, 0))
+=======
+	if (compat_validate(rec, lr, rec->spec_file, lr->lineno))
+>>>>>>> BRANCH (f6e761 python/semanage: fix Python syntax of catching several excep)
 		return -1;
 
 	if (translating && !lr->ctx_trans &&
