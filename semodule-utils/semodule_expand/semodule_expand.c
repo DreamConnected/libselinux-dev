@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 			verbose = 1;
 			break;
 		case 'c':{
+				errno = 0;
 				long int n = strtol(optarg, NULL, 10);
 				if (errno) {
 					fprintf(stderr,
