@@ -55,7 +55,9 @@ int main(int argc, char **argv)
 			verbose = 1;
 			break;
 		case 'c':{
-				long int n = strtol(optarg, NULL, 10);
+				long int n;
+				errno = 0;
+				n = strtol(optarg, NULL, 10);
 				if (errno) {
 					fprintf(stderr,
 						"%s:  Invalid policyvers specified: %s\n",
