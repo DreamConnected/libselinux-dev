@@ -509,7 +509,7 @@ int selinux_android_seapp_context_reload(void)
 		}
 		while (fgets(line_buf, sizeof line_buf - 1, fp)) {
 			len = strlen(line_buf);
-			if (line_buf[len - 1] == '\n')
+			if (len > 1 && line_buf[len - 1] == '\n')
 				line_buf[len - 1] = 0;
 			p = line_buf;
 			while (isspace(*p))
