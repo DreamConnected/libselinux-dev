@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dedff779_5518ed99",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-08-23T15:45:26Z",
+      "side": 1,
+      "message": "An embedded NUL byte in a file which is suppose to be a text file shouldn\u0027t silently be ignored. Rather, IMHO, we should error out.\n\n  len \u003d strlen(line_buf);\n  if (len \u003d\u003d 0) {\n    // line contains a NUL byte as it\u0027s first entry\n    free_seapp_context(cur);\n    goto err;\n  }\n  if (line_buf[len - 1] \u003d\u003d \u0027\\n\u0027)\n    ...",
+      "revId": "81e179438da223a8728d508e56dd78967f675cb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
