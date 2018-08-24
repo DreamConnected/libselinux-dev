@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f90fa08b_62c46537",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2018-08-24T03:11:48Z",
+      "side": 1,
+      "message": "Nit: \"it\u0027s\" should be \"its\".",
+      "range": {
+        "startLine": 513,
+        "startChar": 35,
+        "endLine": 513,
+        "endChar": 39
+      },
+      "revId": "de7aadcd67bee65a18825d6498a1a13fcc22cc7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
