@@ -3,12 +3,6 @@
 // For 'system', 'vendor' (mandatory) and/or 'odm' (optional).
 #define MAX_FILE_CONTEXT_SIZE 3
 
-#ifdef __ANDROID_VNDK__
-#ifndef LOG_EVENT_STRING
-#define LOG_EVENT_STRING(...)
-#endif  // LOG_EVENT_STRING
-#endif  // __ANDROID_VNDK__
-
 static const struct selinux_opt seopts_service_plat[] = {
     { SELABEL_OPT_PATH, "/system/etc/selinux/plat_service_contexts" },
     { SELABEL_OPT_PATH, "/plat_service_contexts" }
@@ -144,7 +138,39 @@ int selinux_log_callback(int type, const char *fmt, ...)
     va_start(ap, fmt);
     if (vasprintf(&strp, fmt, ap) != -1) {
         LOG_PRI(priority, "SELinux", "%s", strp);
+#ifdef __ANDROID_VNDK__
+        ALOGE("%s", strp);
+#else
         LOG_EVENT_STRING(AUDITD_LOG_TAG, strp);
+#endif
+        free(strp);
+    }
+    va_end(ap);
+    return 0;
+}
+
+int selinux_vendor_log_callback(int type, const char *fmt, ...)
+{
+    va_list ap;
+    int priority;
+    char *strp;
+
+    switch(type) {
+    case SELINUX_WARNING:
+        priority = ANDROID_LOG_WARN;
+        break;
+    case SELINUX_INFO:
+        priority = ANDROID_LOG_INFO;
+        break;
+    default:
+        priority = ANDROID_LOG_ERROR;
+        break;
+    }
+
+    va_start(ap, fmt);
+    if (vasprintf(&strp, fmt, ap) != -1) {
+        LOG_PRI(priority, "SELinux", "%s", strp);
+        ALOGE("%s", strp);
         free(strp);
     }
     va_end(ap);
