@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f56ac12_81ca9b6e",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-07T18:01:46Z",
+      "side": 1,
+      "message": "Why do we want this in VNDK case?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 5
+      },
+      "revId": "87d215e5abb3269c1c1e1ca2938438567764398d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
