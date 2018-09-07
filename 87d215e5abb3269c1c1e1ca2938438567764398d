@@ -22,6 +22,30 @@
       "revId": "87d215e5abb3269c1c1e1ca2938438567764398d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c4669ad_9928b393",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-07T21:59:39Z",
+      "side": 1,
+      "message": "You\u0027re right, we don\u0027t. Oops.",
+      "parentUuid": "8f56ac12_81ca9b6e",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 5
+      },
+      "revId": "87d215e5abb3269c1c1e1ca2938438567764398d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
