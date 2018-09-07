@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f5322ea_6237962b",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2018-09-07T22:11:07Z",
+      "side": 1,
+      "message": "There is only 1 line difference from selinux_log_callback above. Could you refactor this to be less redundant?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "91b03ea4c881ab9bdba9ac26fcbc030c1bdce654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
