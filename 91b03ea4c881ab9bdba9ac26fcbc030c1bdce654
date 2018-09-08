@@ -22,6 +22,30 @@
       "revId": "91b03ea4c881ab9bdba9ac26fcbc030c1bdce654",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b85027f_a28f5066",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-09-08T01:24:34Z",
+      "side": 1,
+      "message": "Of course I could do this, but my thought is that adding all this complexity is a bad idea for a function that is meant to be deleted. I\u0027ll also send you an article directly related to this type of design decision that I found enlightening. Anyway, this is what it would look like to do it with a callback (for the callback!). Macros would also be possible:\n\ntypedef void(*log_callback)(int priority, char* strp);\n\nstatic void log_callback_internal(int priority, char* strp)\n{\n    universal_log_callback_internal(priority, strp);\n    LOG_EVENT_STRING(AUDITD_LOG_TAG, strp);\n}\nstatic void universal_log_callback_internal(int priority, char* strp)\n{\n    LOG_PRI(priority, \"SELinux\", \"%s\", strp);\n}\n\nstatic int selinux_log_callback_internal(log_callback func, int type, const char *fmt, ...) __attribute__(printf whatever blah blah blah varargs)\n{    \n    va_list ap;\n    int priority;\n    char *strp;\n    switch(type) {\n    case SELINUX_WARNING:\n        priority \u003d ANDROID_LOG_WARN;\n        break;\n    case SELINUX_INFO:\n        priority \u003d ANDROID_LOG_INFO;\n        break;\n    default:\n        priority \u003d ANDROID_LOG_ERROR;\n        break;\n    }\n    va_start(ap, fmt);\n    if (vasprintf(\u0026strp, fmt, ap) !\u003d -1) {\n        func(priority, strp);\n        free(strp);\n    }\n    va_end(ap);\n    return 0;\n}\n\nint selinux_log_callback(int type, const char *fmt, ...)\n{\n    // more complicated to actually forward the args, but you get the point\n    selinux_log_callback_internal(log_callback_internal, type, fmt, ...);\n}\nint selinux_vendor_log_callback(int type, const char *fmt, ...)\n{\n    selinux_log_callback_internal(log_vendor_callback_internal, type, fmt, ...);\n}",
+      "parentUuid": "4f5322ea_6237962b",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "91b03ea4c881ab9bdba9ac26fcbc030c1bdce654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
