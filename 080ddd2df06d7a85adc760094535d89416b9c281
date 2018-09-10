@@ -22,6 +22,30 @@
       "revId": "080ddd2df06d7a85adc760094535d89416b9c281",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce28490a_86ba27f9",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-09-10T16:45:28Z",
+      "side": 1,
+      "message": "sorry, nevermind. There was a previous discussion on this.",
+      "parentUuid": "c9288bc8_11f97ecb",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 13
+      },
+      "revId": "080ddd2df06d7a85adc760094535d89416b9c281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
