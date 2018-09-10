@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9288bc8_11f97ecb",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-09-10T16:44:58Z",
+      "side": 1,
+      "message": "this is identical to the function at line 126. Perhaps it makes sense to refactor this and eliminate the code duplication?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 13
+      },
+      "revId": "080ddd2df06d7a85adc760094535d89416b9c281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
