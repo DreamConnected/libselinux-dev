@@ -1,0 +1,9 @@
+Verified+1: Nick Kralevich <nnk@google.com>
+Code-Review+2: Joel Galenson <jgalenson@google.com>
+Autosubmit+1: Nick Kralevich <nnk@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 21 Sep 2018 22:14:35 +0000
+Reviewed-on: https://android-review.googlesource.com/764727
+Project: platform/external/selinux
+Branch: refs/heads/master
