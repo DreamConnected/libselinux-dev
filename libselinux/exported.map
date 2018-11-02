@@ -32,6 +32,7 @@
     selinux_android_set_sehandle;
     selinux_android_setcon;
     selinux_android_setcontext;
+    selinux_android_setcontext_with_domain;
     selinux_android_vendor_service_context_handle;
     selinux_check_access;
     selinux_log_callback;

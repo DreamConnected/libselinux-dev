@@ -1113,10 +1113,11 @@ int selinux_android_setcon(const char *con)
 	return __system_properties_init();
 }
 
-int selinux_android_setcontext(uid_t uid,
-			       bool isSystemServer,
-			       const char *seinfo,
-			       const char *pkgname)
+int selinux_android_setcontext_with_domain(uid_t uid,
+			                   bool isSystemServer,
+			                   const char *seinfo,
+			                   const char *pkgname,
+			                   const char *domain)
 {
 	char *orig_ctx_str = NULL, *ctx_str;
 	context_t ctx = NULL;
@@ -1138,6 +1139,9 @@ int selinux_android_setcontext(uid_t uid,
 	if (rc == -1)
 		goto err;
 	else if (rc == -2)
+		goto oom;
+
+	if (domain && context_type_set(ctx, domain))
 		goto oom;
 
 	ctx_str = context_str(ctx);
@@ -1176,6 +1180,14 @@ oom:
 	selinux_log(SELINUX_ERROR, "%s:  Out of memory\n", __FUNCTION__);
 	rc = -1;
 	goto out;
+}
+
+int selinux_android_setcontext(uid_t uid,
+			       bool isSystemServer,
+			       const char *seinfo,
+			       const char *pkgname)
+{
+    return selinux_android_setcontext_with_domain(uid, isSystemServer, seinfo, pkgname, NULL);
 }
 
 static struct selabel_handle *fc_sehandle = NULL;

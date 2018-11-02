@@ -34,6 +34,12 @@ extern int selinux_android_setcontext(uid_t uid,
 				      const char *seinfo,
 				      const char *name);
 
+extern int selinux_android_setcontext_with_domain(uid_t uid,
+                                                  bool isSystemServer,
+                                                  const char *seinfo,
+                                                  const char *pkgname,
+                                                  const char *domain);
+
 extern int selinux_android_setfilecon(const char *pkgdir,
 				       const char *pkgname,
 				       const char *seinfo,
