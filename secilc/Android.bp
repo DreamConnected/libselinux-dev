@@ -11,4 +11,5 @@ cc_binary {
     srcs: ["secilc.c"],
     static_libs: ["libsepol"],
     stl: "none",
+    bootstrap: true,
 }
