@@ -292,6 +292,7 @@ struct seapp_context {
 	/* outputs */
 	char *domain;
 	char *type;
+	char *execType;
 	char *level;
 	enum levelFrom levelFrom;
 };
@@ -674,6 +675,16 @@ int selinux_android_seapp_context_reload(void)
 						free_seapp_context(cur);
 						goto oom;
 					}
+				} else if (!strcasecmp(name, "execType")) {
+					if (cur->execType) {
+						free_seapp_context(cur);
+						goto err;
+					}
+					cur->execType = strdup(value);
+					if (!cur->execType) {
+						free_seapp_context(cur);
+						goto oom;
+					}
 				} else if (!strcasecmp(name, "levelFromUid")) {
 					if (cur->levelFrom) {
 						free_seapp_context(cur);
@@ -790,7 +801,7 @@ int selinux_android_seapp_context_reload(void)
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
 			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s  isEphemeralApp=%s isV2App=%s isOwner=%s user=%s seinfo=%s "
-					"name=%s path=%s isPrivApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+					"name=%s path=%s isPrivApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s execType=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
@@ -801,7 +812,7 @@ int selinux_android_seapp_context_reload(void)
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
 				cur->minTargetSdkVersion,
 				cur->fromRunAs ? "true" : "false",
-				cur->domain, cur->type, cur->level,
+				cur->domain, cur->type, cur->execType, cur->level,
 				levelFromName[cur->levelFrom]);
 		}
 	}
@@ -846,6 +857,7 @@ static pthread_once_t once = PTHREAD_ONCE_INIT;
 
 enum seapp_kind {
 	SEAPP_TYPE,
+	SEAPP_EXEC_TYPE,
 	SEAPP_DOMAIN
 };
 
@@ -1029,11 +1041,16 @@ static int seapp_context_lookup(enum seapp_kind kind,
 
 		if (kind == SEAPP_TYPE && !cur->type)
 			continue;
+		else if (kind == SEAPP_EXEC_TYPE && !cur->execType)
+			continue;
 		else if (kind == SEAPP_DOMAIN && !cur->domain)
 			continue;
 
 		if (kind == SEAPP_TYPE) {
 			if (context_type_set(ctx, cur->type))
+				goto oom;
+		} else if (kind == SEAPP_EXEC_TYPE) {
+			if (context_type_set(ctx, cur->execType))
 				goto oom;
 		} else if (kind == SEAPP_DOMAIN) {
 			if (context_type_set(ctx, cur->domain))
@@ -1335,6 +1352,7 @@ struct pkg_info *package_info_lookup(const char *name)
 static int pkgdir_selabel_lookup(const char *pathname,
                                  const char *seinfo,
                                  uid_t uid,
+                                 bool executable,
                                  char **secontextp)
 {
     char *pkgname = NULL, *end = NULL;
@@ -1409,7 +1427,7 @@ static int pkgdir_selabel_lookup(const char *pathname,
     if (!ctx)
         goto err;
 
-    rc = seapp_context_lookup(SEAPP_TYPE, info ? info->uid : uid, 0,
+    rc = seapp_context_lookup(executable ? SEAPP_EXEC_TYPE : SEAPP_TYPE, info ? info->uid : uid, 0,
                               info ? info->seinfo : seinfo, info ? info->name : pkgname, pathname, ctx);
     if (rc < 0)
         goto err;
@@ -1447,7 +1465,7 @@ err:
 
 static int restorecon_sb(const char *pathname, const struct stat *sb,
                          bool nochange, bool verbose,
-                         const char *seinfo, uid_t uid)
+                         const char *seinfo, uid_t uid, bool executable)
 {
     char *secontext = NULL;
     char *oldsecontext = NULL;
@@ -1470,7 +1488,7 @@ static int restorecon_sb(const char *pathname, const struct stat *sb,
         !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
         !fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME) ||
         !fnmatch(EXPAND_USER_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
-        if (pkgdir_selabel_lookup(pathname, seinfo, uid, &secontext) < 0)
+        if (pkgdir_selabel_lookup(pathname, seinfo, uid, executable, &secontext) < 0)
             goto err;
     }
 
@@ -1514,6 +1532,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     bool datadata = (flags & SELINUX_ANDROID_RESTORECON_DATADATA) ? true : false;
     bool skipce = (flags & SELINUX_ANDROID_RESTORECON_SKIPCE) ? true : false;
     bool cross_filesystems = (flags & SELINUX_ANDROID_RESTORECON_CROSS_FILESYSTEMS) ? true : false;
+    bool executable = (flags & SELINUX_ANDROID_RESTORECON_EXECUTABLE) ? true : false;
     bool issys;
     bool setrestoreconlast = true;
     struct stat sb;
@@ -1571,7 +1590,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
             goto cleanup;
         }
 
-        error = restorecon_sb(pathname, &sb, nochange, verbose, seinfo, uid);
+        error = restorecon_sb(pathname, &sb, nochange, verbose, seinfo, uid, executable);
         goto cleanup;
     }
 
@@ -1667,7 +1686,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
             }
             /* fall through */
         default:
-            error |= restorecon_sb(ftsent->fts_path, ftsent->fts_statp, nochange, verbose, seinfo, uid);
+            error |= restorecon_sb(ftsent->fts_path, ftsent->fts_statp, nochange, verbose, seinfo, uid, executable);
             break;
         }
     }
