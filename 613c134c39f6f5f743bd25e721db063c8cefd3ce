@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3049c030_b4c68a21",
+        "filename": "secilc/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-30T13:18:29Z",
+      "side": 1,
+      "message": "Can you add comments around this like the one in the commit message?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "613c134c39f6f5f743bd25e721db063c8cefd3ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
