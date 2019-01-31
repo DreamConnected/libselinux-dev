@@ -1517,6 +1517,51 @@ err:
     goto out;
 }
 
+/*
+ * Convert passed-in pathname to canonical pathname by resolving realpath of
+ * containing dir, then appending last component name.
+ */
+static int canonical_pathname(const char *pathname_orig, char **pathname)
+{
+    char *pathdnamer = NULL, *pathdname, *pathbname;
+    int error = 0, sverrno;
+
+    pathbname = basename(pathname_orig);
+    if (!strcmp(pathbname, "/") || !strcmp(pathbname, ".") || !strcmp(pathbname, "..")) {
+        *pathname = realpath(pathname_orig, NULL);
+        if (!(*pathname))
+            goto realpatherr;
+    } else {
+        pathdname = dirname(pathname_orig);
+        pathdnamer = realpath(pathdname, NULL);
+        if (!pathdnamer)
+            goto realpatherr;
+        if (!strcmp(pathdnamer, "/"))
+            error = asprintf(pathname, "/%s", pathbname);
+        else
+            error = asprintf(pathname, "%s/%s", pathdnamer, pathbname);
+        if (error < 0)
+            goto oom;
+    }
+
+cleanup:
+    free(pathdnamer);
+    return error;
+oom:
+    sverrno = errno;
+    selinux_log(SELINUX_ERROR, "%s:  Out of memory\n", __FUNCTION__);
+    errno = sverrno;
+    error = -1;
+    goto cleanup;
+realpatherr:
+    sverrno = errno;
+    selinux_log(SELINUX_ERROR, "SELinux: Could not get canonical path for %s restorecon: %s.\n",
+            pathname_orig, strerror(errno));
+    errno = sverrno;
+    error = -1;
+    goto cleanup;
+}
+
 #define SYS_PATH "/sys"
 #define SYS_PREFIX SYS_PATH "/"
 
@@ -1539,7 +1584,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     struct statfs sfsb;
     FTS *fts;
     FTSENT *ftsent;
-    char *pathname = NULL, *pathdnamer = NULL, *pathdname, *pathbname;
+    char *pathname = NULL;
     char * paths[2] = { NULL , NULL };
     int ftsflags = FTS_NOCHDIR | FTS_PHYSICAL;
     int error, sverrno;
@@ -1558,26 +1603,9 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     if (!fc_sehandle)
         return 0;
 
-    /*
-     * Convert passed-in pathname to canonical pathname by resolving realpath of
-     * containing dir, then appending last component name.
-     */
-    pathbname = basename(pathname_orig);
-    if (!strcmp(pathbname, "/") || !strcmp(pathbname, ".") || !strcmp(pathbname, "..")) {
-        pathname = realpath(pathname_orig, NULL);
-        if (!pathname)
-            goto realpatherr;
-    } else {
-        pathdname = dirname(pathname_orig);
-        pathdnamer = realpath(pathdname, NULL);
-        if (!pathdnamer)
-            goto realpatherr;
-        if (!strcmp(pathdnamer, "/"))
-            error = asprintf(&pathname, "/%s", pathbname);
-        else
-            error = asprintf(&pathname, "%s/%s", pathdnamer, pathbname);
-        if (error < 0)
-            goto oom;
+    /* Convert passed-in pathname to canonical pathname. */
+    if ((error = canonical_pathname(pathname_orig, &pathname)) < 0) {
+        goto cleanup;
     }
 
     paths[0] = pathname;
@@ -1702,22 +1730,8 @@ out:
     (void) fts_close(fts);
     errno = sverrno;
 cleanup:
-    free(pathdnamer);
     free(pathname);
     return error;
-oom:
-    sverrno = errno;
-    selinux_log(SELINUX_ERROR, "%s:  Out of memory\n", __FUNCTION__);
-    errno = sverrno;
-    error = -1;
-    goto cleanup;
-realpatherr:
-    sverrno = errno;
-    selinux_log(SELINUX_ERROR, "SELinux: Could not get canonical path for %s restorecon: %s.\n",
-            pathname_orig, strerror(errno));
-    errno = sverrno;
-    error = -1;
-    goto cleanup;
 }
 
 int selinux_android_restorecon(const char *file, unsigned int flags)
@@ -1733,6 +1747,60 @@ int selinux_android_restorecon_pkgdir(const char *pkgdir,
     return selinux_android_restorecon_common(pkgdir, seinfo, uid, flags | SELINUX_ANDROID_RESTORECON_DATADATA);
 }
 
+int selinux_android_selabel_lookup_pkgdir(const char *pathname_orig,
+                                          const char *seinfo,
+                                          uid_t uid,
+                                          unsigned int flags,
+                                          mode_t file_type,
+                                          char **secontext)
+{
+    bool executable = (flags & SELINUX_ANDROID_RESTORECON_EXECUTABLE) ? true : false;
+    char *pathname = NULL;
+    struct stat sb;
+    int rc;
+
+    /* Convert passed-in pathname to canonical pathname. */
+    if (canonical_pathname(pathname_orig, &pathname) < 0) {
+        goto err;
+    }
+
+    if (selabel_lookup(fc_sehandle, secontext, pathname, file_type) < 0) {
+        rc = 0;  /* no match, but not an error */
+        goto out;
+    }
+
+    /*
+     * For subdirectories of /data/data or /data/user, we ignore selabel_lookup()
+     * and use pkgdir_selabel_lookup() instead. Files within those directories
+     * have different labeling rules, based off of /seapp_contexts, and
+     * installd is responsible for managing these labels instead of init.
+     */
+    if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
+        !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
+        !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
+        !fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME) ||
+        !fnmatch(EXPAND_USER_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+        if (pkgdir_selabel_lookup(pathname, seinfo, uid, executable, secontext) < 0) {
+            goto err;
+        }
+    } else {
+        // Invalid path.
+        errno = EINVAL;
+        goto err;
+    }
+
+    rc = 0;
+
+out:
+    free(pathname);
+    return rc;
+err:
+    selinux_log(SELINUX_ERROR,
+                "SELinux: Could not get context for %s:  %s\n",
+                pathname_orig, strerror(errno));
+    rc = -1;
+    goto out;
+}
 
 void selinux_android_set_sehandle(const struct selabel_handle *hndl)
 {
