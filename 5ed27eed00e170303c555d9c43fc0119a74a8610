@@ -22,6 +22,30 @@
       "revId": "5ed27eed00e170303c555d9c43fc0119a74a8610",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a217442_decca8b4",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-02-05T09:43:56Z",
+      "side": 1,
+      "message": "Indeed. Nice catch",
+      "parentUuid": "2e251df3_31cc0938",
+      "range": {
+        "startLine": 1800,
+        "startChar": 16,
+        "endLine": 1800,
+        "endChar": 24
+      },
+      "revId": "5ed27eed00e170303c555d9c43fc0119a74a8610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
