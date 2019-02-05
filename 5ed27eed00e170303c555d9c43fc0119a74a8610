@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e251df3_31cc0938",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2019-02-05T09:30:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be pathname_orig ?",
+      "range": {
+        "startLine": 1800,
+        "startChar": 16,
+        "endLine": 1800,
+        "endChar": 24
+      },
+      "revId": "5ed27eed00e170303c555d9c43fc0119a74a8610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
