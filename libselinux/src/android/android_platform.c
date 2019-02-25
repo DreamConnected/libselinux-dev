@@ -1322,6 +1322,10 @@ struct pkg_info *package_info_lookup(const char *name)
 #define DATA_SYSTEM_CE_PREFIX "/data/system_ce/"
 #define DATA_MISC_CE_PREFIX "/data/misc_ce/"
 
+#define DATA_PATH "/data"
+#define DATA_MEDIA_PATH "/data/media"
+#define DATA_MEDIA_PREFIX DATA_MEDIA_PATH "/"
+
 /* The path prefixes of package data directories. */
 #define DATA_DATA_PATH "/data/data"
 #define DATA_USER_PATH "/data/user"
@@ -1516,6 +1520,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     bool cross_filesystems = (flags & SELINUX_ANDROID_RESTORECON_CROSS_FILESYSTEMS) ? true : false;
     bool issys;
     bool setrestoreconlast = true;
+    bool isdatapath;
     struct stat sb;
     struct statfs sfsb;
     FTS *fts;
@@ -1564,6 +1569,8 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     paths[0] = pathname;
     issys = (!strcmp(pathname, SYS_PATH)
             || !strncmp(pathname, SYS_PREFIX, sizeof(SYS_PREFIX)-1)) ? true : false;
+
+    isdatapath = !strcmp(pathname, DATA_PATH);
 
     if (!recurse) {
         if (lstat(pathname, &sb) < 0) {
@@ -1643,6 +1650,12 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
             continue;
         case FTS_D:
             if (issys && !selabel_partial_match(fc_sehandle, ftsent->fts_path)) {
+                fts_set(fts, ftsent, FTS_SKIP);
+                continue;
+            }
+
+            if (isdatapath &&
+                !strncmp(ftsent->fts_path, DATA_MEDIA_PREFIX, sizeof(DATA_MEDIA_PREFIX)-1)) {
                 fts_set(fts, ftsent, FTS_SKIP);
                 continue;
             }
