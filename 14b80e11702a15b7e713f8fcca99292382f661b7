@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a64eba33_fcac7069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-02-28T22:12:22Z",
+      "side": 1,
+      "message": "Can you please change this to:\n\n  Bug: 124858106",
+      "revId": "14b80e11702a15b7e713f8fcca99292382f661b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63198e3_03cf9fd1",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-02-28T22:12:22Z",
+      "side": 1,
+      "message": "DATA_MEDIA_PATH is never used except for line 1327. Just merge with line 1327.",
+      "range": {
+        "startLine": 1326,
+        "startChar": 8,
+        "endLine": 1326,
+        "endChar": 23
+      },
+      "revId": "14b80e11702a15b7e713f8fcca99292382f661b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
