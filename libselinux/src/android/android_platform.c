@@ -1323,6 +1323,7 @@ struct pkg_info *package_info_lookup(const char *name)
 #define DATA_MISC_CE_PREFIX "/data/misc_ce/"
 
 /* The path prefixes of package data directories. */
+#define DATA_PATH "/data"
 #define DATA_DATA_PATH "/data/data"
 #define DATA_USER_PATH "/data/user"
 #define DATA_USER_DE_PATH "/data/user_de"
@@ -1444,6 +1445,7 @@ err:
 }
 
 #define RESTORECON_LAST "security.restorecon_last"
+#define RESTORECON_PARTIAL_MATCH_DIGEST  "security.partial_match_digest"
 
 static int restorecon_sb(const char *pathname, const struct stat *sb,
                          bool nochange, bool verbose,
@@ -1501,6 +1503,14 @@ err:
 
 #define SYS_PATH "/sys"
 #define SYS_PREFIX SYS_PATH "/"
+
+#define MAX_PATH_LENGTH 256
+
+struct dir_hash_node {
+  char path[MAX_PATH_LENGTH];
+  uint8_t digest[SHA1_HASH_SIZE];
+  struct dir_hash_node *next;
+};
 
 static int selinux_android_restorecon_common(const char* pathname_orig,
                                              const char *seinfo,
@@ -1616,6 +1626,8 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     }
 
     error = 0;
+    struct dir_hash_node *current = NULL;
+    struct dir_hash_node *head = NULL;
     while ((ftsent = fts_read(fts)) != NULL) {
         switch (ftsent->fts_info) {
         case FTS_DC:
@@ -1647,6 +1659,35 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
                 continue;
             }
 
+            if (!force && setrestoreconlast &&
+                    !strncmp(ftsent->fts_path, DATA_PATH, sizeof(DATA_PATH)-1)) {
+                uint8_t read_digest[SHA1_HASH_SIZE];
+                ssize_t read_size = getxattr(ftsent->fts_path, RESTORECON_PARTIAL_MATCH_DIGEST,
+                                             read_digest, SHA1_HASH_SIZE);
+                uint8_t calculated_digest[SHA1_HASH_SIZE];
+                bool status = selabel_hash_all_partial_matches(fc_sehandle, ftsent->fts_path,
+                                                               calculated_digest);
+                if ((status && read_size == SHA1_HASH_SIZE &&
+                        memcmp(read_digest, calculated_digest, SHA1_HASH_SIZE) == 0)) {
+                    fts_set(fts, ftsent, FTS_SKIP);
+                    continue;
+                }
+
+                if (!error && status && strlen(ftsent->fts_path) < MAX_PATH_LENGTH) {
+                    struct dir_hash_node *new_node = malloc(sizeof(struct dir_hash_node));
+                    memcpy(new_node->path, ftsent->fts_path, strlen(ftsent->fts_path));
+                    memcpy(new_node->digest, calculated_digest, SHA1_HASH_SIZE);
+                    new_node->next = NULL;
+                    if (!current) {
+                        current = new_node;
+                        head = current;
+                    } else {
+                        current->next = new_node;
+                        current = current->next;
+                    }
+                }
+            }
+
             if (skipce &&
                 (!strncmp(ftsent->fts_path, DATA_SYSTEM_CE_PREFIX, sizeof(DATA_SYSTEM_CE_PREFIX)-1) ||
                  !strncmp(ftsent->fts_path, DATA_MISC_CE_PREFIX, sizeof(DATA_MISC_CE_PREFIX)-1))) {
@@ -1676,6 +1717,17 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     if (setrestoreconlast && !nochange && !error) {
         if (setxattr(pathname, RESTORECON_LAST, fc_digest, sizeof fc_digest, 0) < 0)
             selinux_log(SELINUX_ERROR, "SELinux:  setxattr failed: %s:  %s\n", pathname, strerror(errno));
+
+        current = head;
+        while (current != NULL) {
+            if (setxattr(current->path, RESTORECON_PARTIAL_MATCH_DIGEST, current->digest, SHA1_HASH_SIZE, 0) < 0) {
+                selinux_log(SELINUX_ERROR,
+                            "SELinux:  setxattr failed: %s:  %s\n",
+                            current->path,
+                            strerror(errno));
+            }
+            current = current->next;
+        }
     }
 
 out:
