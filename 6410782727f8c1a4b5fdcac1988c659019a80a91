@@ -122,6 +122,30 @@
     },
     {
       "key": {
+        "uuid": "a876476f_c0509c73",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-01T21:50:41Z",
+      "side": 1,
+      "message": "I thought about setting the digest after visiting the subdirs. Then I wonder if the error elsewhere could actually indicate a problem in file context. Anyway, if we want to set early, we could use the postorder directory FTS_DP, and maybe convert part of the loop into recursion.",
+      "parentUuid": "e090c7b1_bdef728e",
+      "range": {
+        "startLine": 1721,
+        "startChar": 0,
+        "endLine": 1730,
+        "endChar": 9
+      },
+      "revId": "6410782727f8c1a4b5fdcac1988c659019a80a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bbe5bd6_ce28eb9b",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 3
@@ -133,6 +157,24 @@
       "writtenOn": "2019-03-01T21:31:42Z",
       "side": 1,
       "message": "IIRC, the order of the entries in file_contexts is meaningful. If multiple regexes apply, the last entry is the appropriate one. So sorting this *may* be problematic. I\u0027m not sure.",
+      "revId": "6410782727f8c1a4b5fdcac1988c659019a80a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec50e257_390bc581",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-01T21:50:41Z",
+      "side": 1,
+      "message": "That explains the reverse traverse in the loopup.. I\u0027ll leave the order as it is.",
+      "parentUuid": "4bbe5bd6_ce28eb9b",
       "revId": "6410782727f8c1a4b5fdcac1988c659019a80a91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -190,6 +232,24 @@
       "writtenOn": "2019-03-01T21:31:42Z",
       "side": 1,
       "message": "I don\u0027t think it\u0027s necessary to concatenate the strings (line 1049), then call Sha1Update on the concatenated string. Just make two calls to Sha1Update:\n\n  Sha1Update(\u0026context, regex_str, strlen(regex_str));\n  Sha1Update(\u0026context, ctx_raw, strlen(ctx_raw));\n\nwhich has the same effect, but avoids additional memory allocations and string management code.",
+      "revId": "6410782727f8c1a4b5fdcac1988c659019a80a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "283c35f5_4eaf8425",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-01T21:50:41Z",
+      "side": 1,
+      "message": "Made a copy since Sha1Update casts away constness; but I guess we can bet on SHA function won\u0027t modify the data..",
+      "parentUuid": "a8852c3e_b8f2d2f6",
       "revId": "6410782727f8c1a4b5fdcac1988c659019a80a91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
