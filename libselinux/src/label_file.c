@@ -893,25 +893,36 @@ static void closef(struct selabel_handle *rec)
 	free(data);
 }
 
-static struct spec *lookup_common(struct selabel_handle *rec,
-					     const char *key,
-					     int type,
-					     bool partial)
+static const struct spec **lookup_all(struct selabel_handle *rec,
+                                      const char *key,
+                                      int type,
+                                      bool partial,
+                                      int* match_count)
 {
 	struct saved_data *data = (struct saved_data *)rec->data;
 	struct spec *spec_arr = data->spec_arr;
 	int i, rc, file_stem;
 	mode_t mode = (mode_t)type;
 	const char *buf;
-	struct spec *ret = NULL;
 	char *clean_key = NULL;
 	const char *prev_slash, *next_slash;
 	unsigned int sofar = 0;
 	char *sub = NULL;
 
+	const struct spec **result = calloc(data->nspec, sizeof(struct spec*));
+	if (!result) {
+		selinux_log(SELINUX_ERROR, "Failed to allocate %zu bytes of data\n",
+								data->nspec * sizeof(struct spec*));
+		goto finish;
+	}
+
 	if (!data->nspec) {
 		errno = ENOENT;
 		goto finish;
+	}
+
+	if (match_count) {
+		*match_count = 0;
 	}
 
 	/* Remove duplicate slashes */
@@ -949,18 +960,33 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 		 * specified or if the mode matches the file mode then we do
 		 * a regex check        */
 		if ((spec->stem_id == -1 || spec->stem_id == file_stem) &&
-		    (!mode || !spec->mode || mode == spec->mode)) {
+				(!mode || !spec->mode || mode == spec->mode)) {
 			if (compile_regex(data, spec, NULL) < 0)
 				goto finish;
 			if (spec->stem_id == -1)
 				rc = regex_match(spec->regex, key, partial);
 			else
 				rc = regex_match(spec->regex, buf, partial);
-			if (rc == REGEX_MATCH) {
-				spec->matches++;
+
+			if (rc == REGEX_MATCH || (partial && rc == REGEX_MATCH_PARTIAL)) {
+				if (rc == REGEX_MATCH) {
+					spec->matches++;
+				}
+
+				if (strcmp(spec_arr[i].lr.ctx_raw, "<<none>>") == 0) {
+					errno = ENOENT;
+					goto finish;
+				}
+
+				if (match_count) {
+					result[*match_count] = spec;
+					*match_count += 1;
+					// Continue to find all the matches.
+					continue;
+				}
+				result[0] = spec;
 				break;
-			} else if (partial && rc == REGEX_MATCH_PARTIAL)
-				break;
+			}
 
 			if (rc == REGEX_NO_MATCH)
 				continue;
@@ -971,19 +997,65 @@ static struct spec *lookup_common(struct selabel_handle *rec,
 		}
 	}
 
-	if (i < 0 || strcmp(spec_arr[i].lr.ctx_raw, "<<none>>") == 0) {
-		/* No matching specification. */
-		errno = ENOENT;
-		goto finish;
-	}
-
-	errno = 0;
-	ret = &spec_arr[i];
-
 finish:
 	free(clean_key);
 	free(sub);
-	return ret;
+	return result;
+}
+
+static struct spec *lookup_common(struct selabel_handle *rec,
+                                  const char *key,
+                                  int type,
+                                  bool partial) {
+	const struct spec **matches = lookup_all(rec, key, type, partial, NULL);
+	if (!matches || !matches[0]) {
+		return NULL;
+	}
+	struct spec *result = (struct spec*)matches[0];
+	free(matches);
+	return result;
+}
+
+static int cmp2(const void* a, const void* b) {
+	const struct spec* const* spec1 = a;
+	const struct spec* const* spec2 = b;
+	return strcmp((*spec1)->regex_str, (*spec2)->regex_str);
+}
+
+static bool hash_all_partial_matches(struct selabel_handle *rec, const char *key, uint8_t *digest)
+{
+	if (!digest) {
+		return false;
+	}
+
+	int total_matches;
+	const struct spec **matches = lookup_all(rec, key, 0, true, &total_matches);
+	if (!matches || !matches[0]) {
+		free(matches);
+		return NULL;
+	}
+
+	qsort(matches, total_matches, sizeof(struct spec*), cmp2);
+
+	Sha1Context context;
+	Sha1Initialise(&context);
+	int i;
+	for (i = 0; i < total_matches; i++) {
+		const char* regex_str = matches[i]->regex_str;
+		const char* ctx_raw = matches[i]->lr.ctx_raw;
+
+		size_t length = strlen(regex_str) + strlen(ctx_raw) + 1;
+		char line[length];
+		snprintf(line, length, "%s%s", regex_str, ctx_raw);
+		Sha1Update(&context, line, length - 1);
+	}
+
+	SHA1_HASH sha1_hash;
+	Sha1Finalise(&context, &sha1_hash);
+	memcpy(digest,sha1_hash.bytes, SHA1_HASH_SIZE);
+
+	free(matches);
+	return true;
 }
 
 static struct selabel_lookup_rec *lookup(struct selabel_handle *rec,
@@ -1183,6 +1255,7 @@ int selabel_file_init(struct selabel_handle *rec,
 	rec->func_stats = &stats;
 	rec->func_lookup = &lookup;
 	rec->func_partial_match = &partial_match;
+	rec->func_hash_all_partial_matches = &hash_all_partial_matches;
 	rec->func_lookup_best_match = &lookup_best_match;
 	rec->func_cmp = &cmp;
 
