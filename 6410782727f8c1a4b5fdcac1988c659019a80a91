@@ -146,6 +146,30 @@
     },
     {
       "key": {
+        "uuid": "7198eed8_92fa0284",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-01T21:58:08Z",
+      "side": 1,
+      "message": "The file_contexts files are validated at compile time. If we\u0027re seeing runtime misconfigurations in this file, it\u0027s probably better to abort() hard and make sure we have the appropriate compile time fixes in place.\n\nAs for directory tree walk order, I\u0027m fine either way. We could defer adding the hash to all the directories until the end, or add the hash as we finish the elements of the directory. I don\u0027t have a strong opinion either way. Whatever keeps the code simple.",
+      "parentUuid": "a876476f_c0509c73",
+      "range": {
+        "startLine": 1721,
+        "startChar": 0,
+        "endLine": 1730,
+        "endChar": 9
+      },
+      "revId": "6410782727f8c1a4b5fdcac1988c659019a80a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bbe5bd6_ce28eb9b",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 3
