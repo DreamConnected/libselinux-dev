@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27e28ea9_7cd239ec",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "Can we have this be a \"char *\" instead of a \"char path[MAX_PATH_LENGTH]\"? It would make this data structure and the items it points to smaller, and avoid the arbitrary MAX_PATH_LENGTH limit.",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce34d3d9_397f3952",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "Is there anyway to factor lines 1648 through 1682 into their own function? selinux_android_restorecon_common is already really long... I\u0027d prefer that it not get worse.\n\nIf not don\u0027t worry about it.",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0c98e7_bba0d86f",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "Can you move this to line 914? That way, we can ensure that match_count is always initialized, regardless of the other errors which may occur in this function. This would ensure that uninitialized data is never exposed to the caller, no matter how badly the caller may call this function.",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2dbfd18_37e9ac7c",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "(Reviewer\u0027s note to self: We don\u0027t have to worry about out of bound writes for result, as match_count can be no larger than data-\u003enspec, since we\u0027ll never repeat the loop on line 959 more than data-\u003enspec times, and the only increment is line 986. This is safe)\n\nNo action required.",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9584bb5_4050e575",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "Is this safe? \"matches\" is essentially allocated on line 915. Line 1018 then gets one element of that calloc()ed memory. Then line 1019 immediately deallocates the entire calloc()ed memory, including matches[0] (aka \"result\"). We then attempt to return memory which has been deallocated.\n\nUse after free?",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7b6315_8e0b9b07",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "Presumably the caller should always supply a digest, no? Should we just abort() if digest is NULL? It feels like a programmer error if digest is NULL. This function returning \"false\" under such circumstances tells the caller that no partial match exists when it may or may not.",
+      "range": {
+        "startLine": 1025,
+        "startChar": 0,
+        "endLine": 1028,
+        "endChar": 0
+      },
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64bbba26_974cef1b",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "Include the null byte too? \n\n  Sha1Update(\u0026context, regex_str, strlen(regex_str) + 1);\n\n?\n\n(same comment for line 1044).\n\nThis will essentially embed a delimiter into the hash, drawing a clearer distinction between the regex and the ctx_raw value, and avoid the extremely remote possibility that a character from the regex may be combined with a character from the context.",
+      "range": {
+        "startLine": 1043,
+        "startChar": 34,
+        "endLine": 1043,
+        "endChar": 51
+      },
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab10361_5bbf839a",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-02T04:13:11Z",
+      "side": 1,
+      "message": "whitespace after comma.",
+      "range": {
+        "startLine": 1049,
+        "startChar": 14,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
