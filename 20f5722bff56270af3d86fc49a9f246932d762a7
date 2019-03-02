@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "24491f7d_ee459014",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-02T06:21:39Z",
+      "side": 1,
+      "message": "I guess it\u0027s fine because spec *result points to the underlying entry in *rec. It\u0027s equivalent to:\n  int a \u003d 10;\n  int b \u003d 11;\n\n  int **p_array \u003d calloc(5, sizeof(int*));\n  p_array[0] \u003d \u0026a;\n  p_array[1] \u003d \u0026b;\n\n  int *p0 \u003d p_array[0]; \n  printf(\"%p, %p, %p\\n\", p_array[0], p_array[1], p0);\n  free(p_array);\n  printf(\"%p, %p\\n\", p0, p_array[0]);\n\n----\u003e\n0x7ffef20ced6c, 0x7ffef20ced68, 0x7ffef20ced6c\n0x7ffef20ced6c, (nil)",
+      "parentUuid": "d9584bb5_4050e575",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d7b6315_8e0b9b07",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 6
