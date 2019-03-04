@@ -138,6 +138,24 @@
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c42d26c_beac1cd7",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T18:48:22Z",
+      "side": 1,
+      "message": "We need to hash the context (as line 1042 currently does), since we want the hash to be invalidated if the file label changes (but not the file regex).\n\nStephen has a good point about also hashing matches[i]-\u003emode (aka \"file type\").\n\nPer \"man ./external/selinux/libselinux/man/man5/selabel_file.5\"\n\n  File_type\n  An optional file type consisting of:\n  -b - Block Device -c - Character Device \n  -d - Directory -p - Named Pipe \n  -l - Symbolic Link -s - Socket \n  -- - Ordinary file\n\nWe don\u0027t use this much in Android\u0027s SELinux policy, but we should still include it as part of the hash.",
+      "parentUuid": "6b6315b9_04c7c1e9",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
