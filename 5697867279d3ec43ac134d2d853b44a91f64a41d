@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8d6a088_35995f0b",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T20:01:36Z",
+      "side": 1,
+      "message": "the file format doesn\u0027t go well with my IDE...",
+      "range": {
+        "startLine": 920,
+        "startChar": 2,
+        "endLine": 920,
+        "endChar": 6
+      },
+      "revId": "5697867279d3ec43ac134d2d853b44a91f64a41d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
