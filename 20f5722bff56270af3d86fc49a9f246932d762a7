@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9e28a189_7d53bc16",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T05:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27e28ea9_7cd239ec",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce34d3d9_397f3952",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "4c33d6bd_35fcc211",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T05:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce34d3d9_397f3952",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b0c98e7_bba0d86f",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 6
@@ -50,6 +86,24 @@
       "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff803c1_a7eeb9ea",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T05:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0c98e7_bba0d86f",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -146,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "61fb32a4_9126a3bc",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T05:11:25Z",
+      "side": 1,
+      "message": "Done. BTW the malloc failures are still handled by returning false as the old code does...",
+      "parentUuid": "6d7b6315_8e0b9b07",
+      "range": {
+        "startLine": 1025,
+        "startChar": 0,
+        "endLine": 1028,
+        "endChar": 0
+      },
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64bbba26_974cef1b",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 6
@@ -169,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "8f2a4af5_9dd523b1",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T05:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64bbba26_974cef1b",
+      "range": {
+        "startLine": 1043,
+        "startChar": 34,
+        "endLine": 1043,
+        "endChar": 51
+      },
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ab10361_5bbf839a",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 6
@@ -189,6 +291,30 @@
       "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cab85e2_27397d90",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T05:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ab10361_5bbf839a",
+      "range": {
+        "startLine": 1049,
+        "startChar": 14,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
