@@ -70,6 +70,29 @@
       "revId": "1eb2d7e33fdd63471b3da83c68c5696646062359",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feec1ef3_90125de3",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T22:47:22Z",
+      "side": 1,
+      "message": "move the \u0027force\u0027 flag check inside the function so that we still label the directory during force run.",
+      "range": {
+        "startLine": 1687,
+        "startChar": 16,
+        "endLine": 1687,
+        "endChar": 22
+      },
+      "revId": "1eb2d7e33fdd63471b3da83c68c5696646062359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
