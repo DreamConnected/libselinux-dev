@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d496c97d_062c34a4",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T21:22:20Z",
+      "side": 1,
+      "message": "Can we save a few bytes and make this string smaller? How about:\n\n  security.label_hash\n\ninstead?",
+      "range": {
+        "startLine": 1446,
+        "startChar": 51,
+        "endLine": 1446,
+        "endChar": 71
+      },
+      "revId": "1eb2d7e33fdd63471b3da83c68c5696646062359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
