@@ -16,6 +16,24 @@
       "revId": "65c6846e1a2548d8567e855f049256691e1320df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfc8b99_b5a2fa32",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T18:38:07Z",
+      "side": 0,
+      "message": "Then, the content of result won\u0027t set, and it stays as an array of NULL",
+      "parentUuid": "46757768_ebe689ad",
+      "revId": "65c6846e1a2548d8567e855f049256691e1320df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

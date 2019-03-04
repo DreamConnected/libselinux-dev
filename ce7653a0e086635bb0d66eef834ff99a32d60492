@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8ef1f3be_43aae7d9",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T18:38:07Z",
+      "side": 1,
+      "message": "Will switch to warning instead. Wait do we abort upon SELINUX_ERROR? I thought it\u0027s just a message.",
+      "parentUuid": "86ca115f_65ac6454",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8214257e_78039100",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 11
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "57fb1a8e_c7552fe0",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T18:38:07Z",
+      "side": 1,
+      "message": "Yeah, result is an array of NULL in this case. We can free result and return NULL in case of errors if you prefer that way.",
+      "parentUuid": "ab485d0b_75807f06",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e2c092b_4c33aceb",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 11
@@ -81,6 +117,24 @@
       "writtenOn": "2019-03-04T14:08:44Z",
       "side": 1,
       "message": "What is the basis for including/excluding information from the hash?  For example, here we omit the type_str aka the mode, so we aren\u0027t including everything from the matching entry in file_contexts.  OTOH, since we knew it was a match, do we need anything besides the actual contexts here?  The question we are trying to answer is could the context on files within this directory change?",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b6315b9_04c7c1e9",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T18:38:07Z",
+      "side": 1,
+      "message": "I am tying to hash the actually lines in the file_context file. e.g.\n/data(/.*)?\t\tu:object_r:system_data_file:s0\n/data/.layout_version\t\tu:object_r:install_data_file:s0\n/data/unencrypted(/.*)?         u:object_r:unencrypted_data_file:s0\n/data/backup(/.*)?\t\tu:object_r:backup_data_file:s0\n/data/secure/backup(/.*)?\tu:object_r:backup_data_file:s0\n/data/system/ndebugsocket\tu:object_r:system_ndebug_socket:s0\n\n\nSo the regex_str and ctx_raw are directly read from the file, while other fields are intermediate attributes. Since it\u0027s more difficult to reference the actually line contents in the file, I just use \"regex_str+ctx_raw\" as the base information.",
+      "parentUuid": "3e2c092b_4c33aceb",
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
