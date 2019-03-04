@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "c12a091c_2fa91666",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T18:51:52Z",
+      "side": 1,
+      "message": "hmm, the size overhead is ~4k for plat_file_context, which has ~500 entries. I guess link list will also introduce some overhead. How about the dynamic sized allocation:\n\nint array_size \u003d 8;\nconst struct spec **result \u003d calloc(array_size, sizeof(struct spec*));\n.....\nif (match_count) {\n  result[*match_count] \u003d spec;\n  *match_count +\u003d 1;\n  if (*match_count \u003e\u003d array_size) {\n    array_size *\u003d 2;\n    result \u003d realloc(result, array_size * size of(struct spec*));\n    // check result and memset extended area to 0.\n  }\n\n  continue;\n}",
+      "parentUuid": "4c5884ef_fa4e8cc8",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab485d0b_75807f06",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 11
@@ -156,6 +174,24 @@
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ad7d76_b492c339",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T18:51:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c42d26c_beac1cd7",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
