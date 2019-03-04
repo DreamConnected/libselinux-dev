@@ -264,6 +264,24 @@
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e39eb5d_408191b5",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T19:08:29Z",
+      "side": 1,
+      "message": "But we might have a different entry in the matched subset since it\u0027s a partial match.\nif\n/data/test(/.*)? u:object_r:system_data_file:s0\nchanges to \n/data/test/dir(/.*)? u:object_r:system_data_file:s0\n\nand /data/test/dir1 will match both entries, and the hash stays the same. Sounds a bit risky to me?",
+      "parentUuid": "bf87c31a_247d8df1",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
