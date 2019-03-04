@@ -22,6 +22,30 @@
       "revId": "1eb2d7e33fdd63471b3da83c68c5696646062359",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdb1c73_c15aa1b4",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T22:04:29Z",
+      "side": 1,
+      "message": "Other options:\n\n  security.sehash\n  security.se_hash\n  trusted.sehash\n\nI dunno.... Bike shedding.\n\nI\u0027m also fine as-is.",
+      "parentUuid": "d496c97d_062c34a4",
+      "range": {
+        "startLine": 1446,
+        "startChar": 51,
+        "endLine": 1446,
+        "endChar": 71
+      },
+      "revId": "1eb2d7e33fdd63471b3da83c68c5696646062359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
