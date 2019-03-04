@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6c885d77_f0535e0e",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T19:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8214257e_78039100",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c5884ef_fa4e8cc8",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 11
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "I was questioning the approach of doing this allocation at all in the common code path even though we usually only want a single match.  Splitting it into two functions with a common helper might be preferable.",
       "parentUuid": "c12a091c_2fa91666",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9e3505_7cedbda5",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T19:57:00Z",
+      "side": 1,
+      "message": "Moved the calloc into if clause. Otherwise I thought about let the caller allocate the memory, which is less clean..",
+      "parentUuid": "975b5099_d7ab65e2",
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -175,6 +211,24 @@
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c25d47a_c32464b5",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T19:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7992b47c_28008a90",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +333,24 @@
       "side": 1,
       "message": "But we might have a different entry in the matched subset since it\u0027s a partial match.\nif\n/data/test(/.*)? u:object_r:system_data_file:s0\nchanges to \n/data/test/dir(/.*)? u:object_r:system_data_file:s0\n\nand /data/test/dir1 will match both entries, and the hash stays the same. Sounds a bit risky to me?",
       "parentUuid": "bf87c31a_247d8df1",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b50333_f2d390c8",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-04T19:57:00Z",
+      "side": 1,
+      "message": "Okay, removed the regex. Don\u0027t add mode/type for the similar reason. (We won\u0027t do a regex match unless the type already matches.)",
+      "parentUuid": "1e39eb5d_408191b5",
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
