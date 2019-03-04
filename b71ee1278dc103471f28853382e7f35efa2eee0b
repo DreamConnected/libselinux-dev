@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e61eb57_bb0b4440",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T05:44:15Z",
+      "side": 1,
+      "message": "Put this before line 1757, otherwise you\u0027ll dereference a deallocated pointer.",
+      "revId": "b71ee1278dc103471f28853382e7f35efa2eee0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
