@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86ca115f_65ac6454",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T14:08:44Z",
+      "side": 1,
+      "message": "I guess we are ok with this being a non-fatal error since it is just a performance optimization?",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8214257e_78039100",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T14:08:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we set *new_node to NULL before returning so that the caller doesn\u0027t still use it?",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5884ef_fa4e8cc8",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T14:08:44Z",
+      "side": 1,
+      "message": "Seems kind of inefficient to always allocate this only to throw it away in the most common case.",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab485d0b_75807f06",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T14:08:44Z",
+      "side": 1,
+      "message": "Do we want to return result in this case?",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2c092b_4c33aceb",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T14:08:44Z",
+      "side": 1,
+      "message": "What is the basis for including/excluding information from the hash?  For example, here we omit the type_str aka the mode, so we aren\u0027t including everything from the matching entry in file_contexts.  OTOH, since we knew it was a match, do we need anything besides the actual contexts here?  The question we are trying to answer is could the context on files within this directory change?",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

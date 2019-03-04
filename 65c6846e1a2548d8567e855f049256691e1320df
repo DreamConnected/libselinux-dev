@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46757768_ebe689ad",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T14:08:44Z",
+      "side": 0,
+      "message": "What about the (i \u003c 0) case, e.g. there are no entries with a matching stem and mode?",
+      "revId": "65c6846e1a2548d8567e855f049256691e1320df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
