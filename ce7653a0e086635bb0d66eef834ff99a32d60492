@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "aa8ef078_dc581b53",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T19:01:58Z",
+      "side": 1,
+      "message": "It is just a message; I was just asking to confirm that we are ok treating OOM as a non-fatal error here and proceeding.  I think that\u0027s ok.",
+      "parentUuid": "8ef1f3be_43aae7d9",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8214257e_78039100",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 11
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "975b5099_d7ab65e2",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T19:01:58Z",
+      "side": 1,
+      "message": "I was questioning the approach of doing this allocation at all in the common code path even though we usually only want a single match.  Splitting it into two functions with a common helper might be preferable.",
+      "parentUuid": "c12a091c_2fa91666",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab485d0b_75807f06",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 11
@@ -118,6 +154,24 @@
       "side": 1,
       "message": "Yeah, result is an array of NULL in this case. We can free result and return NULL in case of errors if you prefer that way.",
       "parentUuid": "ab485d0b_75807f06",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7992b47c_28008a90",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T19:01:58Z",
+      "side": 1,
+      "message": "It seems less clear to return an array of NULL to the caller than just NULL.",
+      "parentUuid": "57fb1a8e_c7552fe0",
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -192,6 +246,24 @@
       "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf87c31a_247d8df1",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-04T19:01:58Z",
+      "side": 1,
+      "message": "Do we need to hash the regex_str and type_str at all?  We know that they matched this key since they were returned by lookup_all(). So then the only thing that matters is whether any matching entry yields a different security context, right?  So we only need to hash the context strings and we\u0027re done?",
+      "parentUuid": "a6ad7d76_b492c339",
+      "revId": "ce7653a0e086635bb0d66eef834ff99a32d60492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
