@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0afb95b_451156ed",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T22:47:00Z",
+      "side": 1,
+      "message": "mode_t",
+      "range": {
+        "startLine": 1043,
+        "startChar": 2,
+        "endLine": 1043,
+        "endChar": 5
+      },
+      "revId": "c479275c914837fe7d66159cfd295f231aace06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4150372_6416c303",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T22:47:00Z",
+      "side": 1,
+      "message": "mode_t",
+      "range": {
+        "startLine": 1047,
+        "startChar": 37,
+        "endLine": 1047,
+        "endChar": 40
+      },
+      "revId": "c479275c914837fe7d66159cfd295f231aace06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
