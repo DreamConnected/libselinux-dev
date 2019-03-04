@@ -105,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "271bbfd3_b5562d03",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T04:41:08Z",
+      "side": 1,
+      "message": "Thanks for looking into this. Ya, I think it\u0027s right.",
+      "parentUuid": "24491f7d_ee459014",
+      "revId": "20f5722bff56270af3d86fc49a9f246932d762a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d7b6315_8e0b9b07",
         "filename": "libselinux/src/label_file.c",
         "patchSetId": 6
