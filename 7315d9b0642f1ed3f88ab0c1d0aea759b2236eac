@@ -16,6 +16,24 @@
       "revId": "7315d9b0642f1ed3f88ab0c1d0aea759b2236eac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a9c2b6b_64ef2e98",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-04T04:40:07Z",
+      "side": 1,
+      "message": "\"Or you need to create a temp variable *like* line 1753\".",
+      "parentUuid": "d2557d53_0c780361",
+      "revId": "7315d9b0642f1ed3f88ab0c1d0aea759b2236eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
