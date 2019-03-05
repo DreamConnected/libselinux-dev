@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea3ff6d7_3f579e2f",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-05T14:03:12Z",
+      "side": 1,
+      "message": "Tabs vs spaces",
+      "revId": "448c21b8e61ba515a5ef88b2fc92cb9e938e9db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d36f0e_c1df0cd4",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-05T14:03:12Z",
+      "side": 1,
+      "message": "No longer accurate since we only calloc(1, ...) if (!match_count). Either drop the log message entirely or replace with selinux_log(SELINUX_ERROR, \"%s: Out of memory\\n\", __func__);",
+      "revId": "448c21b8e61ba515a5ef88b2fc92cb9e938e9db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caefdeec_7be63082",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-05T14:03:12Z",
+      "side": 1,
+      "message": "sefcontext_compile converts the mode_t to a uint32_t for storage in order to ensure a fixed size across all architectures.  Might want to do the same here for the hash.",
+      "revId": "448c21b8e61ba515a5ef88b2fc92cb9e938e9db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
