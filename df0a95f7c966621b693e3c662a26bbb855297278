@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb3970f_a5da475f",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-05T14:07:38Z",
+      "side": 1,
+      "message": "Should we initialize *new_node \u003d NULL in this function rather than relying on the caller to NULL initialize it?  Otherwise the caller has to remember to always NULL initialize before calling since it may return with false without ever setting it.",
+      "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7410eca1_fb0f96a9",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-05T14:07:38Z",
+      "side": 1,
+      "message": "I would tend to make all of these selinux_log(SELINUX_ERROR, \"%s: Out of memory\\n\", __func__); or drop them.",
+      "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42172b17_f013c6c4",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-05T14:07:38Z",
+      "side": 1,
+      "message": "Ditto.  Or at least I wouldn\u0027t bother including the pathname itself in the output.",
+      "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
