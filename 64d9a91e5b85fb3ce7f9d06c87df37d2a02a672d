@@ -69,6 +69,24 @@
       "revId": "64d9a91e5b85fb3ce7f9d06c87df37d2a02a672d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44d2555f_79eb0fbf",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-03-05T01:22:12Z",
+      "side": 1,
+      "message": "Makes sense.  Thanks.",
+      "parentUuid": "9b468e0b_e6fad037",
+      "revId": "64d9a91e5b85fb3ce7f9d06c87df37d2a02a672d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
