@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb371893_171b45d5",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-05T19:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb3970f_a5da475f",
+      "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7410eca1_fb0f96a9",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 16
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "07ea84b5_dcde3318",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-05T19:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7410eca1_fb0f96a9",
+      "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42172b17_f013c6c4",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 16
@@ -50,6 +86,24 @@
       "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ce5822b_d9f1c9d3",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-05T19:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42172b17_f013c6c4",
+      "revId": "df0a95f7c966621b693e3c662a26bbb855297278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
