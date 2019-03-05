@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0b9218f_8029800e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-05T01:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59f7303f_183d5860",
+      "revId": "64d9a91e5b85fb3ce7f9d06c87df37d2a02a672d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5ceb4de_7e938649",
         "filename": "libselinux/Android.bp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "64d9a91e5b85fb3ce7f9d06c87df37d2a02a672d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b468e0b_e6fad037",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-05T01:19:10Z",
+      "side": 1,
+      "message": "https://github.com/SELinuxProject/selinux/commit/c19395d72295f5e69275d98df5db22dfdf214b6c updated mapping.c to depend on deny_unknown.c and reject_unknown.c. Previously only checkAccess.c and sestatus.c depended on deny_unknown. Neither checkAccess.c nor sestatus.c were listed in this dependency block (lines 121-147), nor in the dependency block below, thus we didn\u0027t need them before. checkAccess.c and sestatus.c were required in the dependency block on lines 44-77, so it was a dependency there (line 56).",
+      "parentUuid": "a5ceb4de_7e938649",
+      "revId": "64d9a91e5b85fb3ce7f9d06c87df37d2a02a672d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
