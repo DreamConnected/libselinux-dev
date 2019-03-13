@@ -22,6 +22,30 @@
       "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661b36f3_74aac3f3",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-13T06:05:13Z",
+      "side": 1,
+      "message": "I believe it indicates partial match. Therefore we will match all the parent \u0026 sub directries during the regex match. For example, in case the context for /data/media/abc(/.*)? changes, we won\u0027t skip restorecon to the /data/media/ (if the context for /data/media/ stays unchanged).",
+      "parentUuid": "10e19887_815a72c5",
+      "range": {
+        "startLine": 1032,
+        "startChar": 55,
+        "endLine": 1032,
+        "endChar": 59
+      },
+      "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
