@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10e19887_815a72c5",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1288352
+      },
+      "writtenOn": "2019-03-13T04:34:28Z",
+      "side": 1,
+      "message": "hi,When I verity this patch, It really saves a lot of time where there have a lot of files in /data/media.But I have some questions. Why the parameter here use True but not false?",
+      "range": {
+        "startLine": 1032,
+        "startChar": 55,
+        "endLine": 1032,
+        "endChar": 59
+      },
+      "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
