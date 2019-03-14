@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c6f0763_fd865cc9",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-14T22:17:13Z",
+      "side": 1,
+      "message": "This is a very Android specific comment. If the goal is to upstream this change, it may make sense to delete his example.",
+      "range": {
+        "startLine": 966,
+        "startChar": 12,
+        "endLine": 967,
+        "endChar": 24
+      },
+      "revId": "ac701bf26074445e5c2df4b3473ace857aeeae1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
