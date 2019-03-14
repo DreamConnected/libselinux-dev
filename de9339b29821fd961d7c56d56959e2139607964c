@@ -52,6 +52,24 @@
       "revId": "de9339b29821fd961d7c56d56959e2139607964c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1e9741_72b9c70c",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-14T21:16:12Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ac1d1408_6b4a9352",
+      "revId": "de9339b29821fd961d7c56d56959e2139607964c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
