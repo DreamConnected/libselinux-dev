@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e69543_34703dfb",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-14T19:44:12Z",
+      "side": 0,
+      "message": "Cam we get rid of buf entirely then",
+      "revId": "de9339b29821fd961d7c56d56959e2139607964c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
