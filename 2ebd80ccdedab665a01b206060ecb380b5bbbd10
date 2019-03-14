@@ -16,6 +16,24 @@
       "revId": "2ebd80ccdedab665a01b206060ecb380b5bbbd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba5de0d_13b8c479",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-14T19:50:30Z",
+      "side": 1,
+      "message": "It will then change the old behavior for the single match case. selabel_partial_match of \"/data\"  will then match into \"/data/misc/(/.*)?\" instead of \"/data/(/.*)?\". Is that intended?",
+      "parentUuid": "d33402ea_34f32c1b",
+      "revId": "2ebd80ccdedab665a01b206060ecb380b5bbbd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
