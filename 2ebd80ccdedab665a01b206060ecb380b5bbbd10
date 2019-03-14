@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d33402ea_34f32c1b",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-14T19:47:10Z",
+      "side": 1,
+      "message": "Should this be based on match_count !\u003d NULL or partial (or both)?  Should selabel_partial_match() be ignoring the stem match too?",
+      "revId": "2ebd80ccdedab665a01b206060ecb380b5bbbd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
