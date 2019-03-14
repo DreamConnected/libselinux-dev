@@ -337,7 +337,7 @@ static inline int next_entry(void *buf, struct mmap_area *fp, size_t bytes)
 }
 
 static inline int compile_regex(struct saved_data *data, struct spec *spec,
-					    const char **errbuf)
+					    const char **errbuf, bool ignore_stem)
 {
 	char *reg_buf, *anchored_regex, *cp;
 	struct regex_error_data error_data;
@@ -381,7 +381,7 @@ static inline int compile_regex(struct saved_data *data, struct spec *spec,
 
 	/* Skip the fixed stem. */
 	reg_buf = spec->regex_str;
-	if (spec->stem_id >= 0)
+	if (!ignore_stem && spec->stem_id >= 0)
 		reg_buf += stem_arr[spec->stem_id].len;
 
 	/* Anchor the regular expression. */
@@ -501,7 +501,7 @@ static inline int process_line(struct selabel_handle *rec,
 	data->nspec++;
 
 	if (rec->validating
-			&& compile_regex(data, &spec_arr[nspec], &errbuf)) {
+			&& compile_regex(data, &spec_arr[nspec], &errbuf, false)) {
 		COMPAT_LOG(SELINUX_ERROR,
 			   "%s:  line %u has invalid regex %s:  %s\n",
 			   path, lineno, regex, errbuf);

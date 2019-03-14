@@ -963,11 +963,15 @@ static const struct spec **lookup_all(struct selabel_handle *rec,
 		 * stem as the file AND if the spec in question has no mode
 		 * specified or if the mode matches the file mode then we do
 		 * a regex check        */
-		if ((spec->stem_id == -1 || spec->stem_id == file_stem) &&
+		bool ignore_stem = match_count != NULL;
+		bool stem_matches = spec->stem_id == -1 || spec->stem_id == file_stem;
+		// Don't check the stem if we want to find all matches. Otherwise the
+		// case "/data/misc/(/.*)?" will consider a miss for "/data".
+		if ((ignore_stem || stem_matches) &&
 				(!mode || !spec->mode || mode == spec->mode)) {
-			if (compile_regex(data, spec, NULL) < 0)
+			if (compile_regex(data, spec, NULL, ignore_stem) < 0)
 				goto finish;
-			if (spec->stem_id == -1)
+			if (spec->stem_id == -1 || ignore_stem)
 				rc = regex_match(spec->regex, key, partial);
 			else
 				rc = regex_match(spec->regex, buf, partial);
