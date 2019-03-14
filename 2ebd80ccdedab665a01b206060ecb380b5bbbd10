@@ -34,6 +34,24 @@
       "revId": "2ebd80ccdedab665a01b206060ecb380b5bbbd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34634e06_ff73353f",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-14T19:54:53Z",
+      "side": 1,
+      "message": "partial_match() only returns a bool indicating whether any partial match was found, not a specific match.  Used by selinux_android_restorecon to decide whether it can prune the sysfs tree walk based on whether they are any matches for any entries below the current directory. I assume it just happened to work because all of those entries share a common prefix of \"/sys\".",
+      "parentUuid": "bba5de0d_13b8c479",
+      "revId": "2ebd80ccdedab665a01b206060ecb380b5bbbd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
