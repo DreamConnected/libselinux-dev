@@ -34,6 +34,24 @@
       "revId": "0a3989d56dc27c93384bb0267335dd02d73be490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf09e094_be637f9b",
+        "filename": "libselinux/src/label_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-14T19:32:52Z",
+      "side": 1,
+      "message": "Done, so it reverts this part:\n(So if we want to check whether the file \"/var/lib/foo\" matches spec \"/var/log/atsar(/.*)?\" the regexec() function will compare \"/lib/foo\" with \"/log/atsar(/.*)?\", I imagine that this may also reduce the time taken for regexec but have not tested it.)",
+      "parentUuid": "cfa0e42a_6acc0392",
+      "revId": "0a3989d56dc27c93384bb0267335dd02d73be490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
