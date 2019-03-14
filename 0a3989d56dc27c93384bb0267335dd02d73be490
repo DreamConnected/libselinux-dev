@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03ee21da_c4cab0aa",
+        "filename": "libselinux/src/label_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-14T18:52:16Z",
+      "side": 1,
+      "message": "Couldn\u0027t this end up leaving us with some entries with their stems and some without, just based on whether they are first matched via a regular selabel_lookup() or via a selabel_hash_all_partial_matches()?  And then later we might be called from either one with the incorrect stem?",
+      "revId": "0a3989d56dc27c93384bb0267335dd02d73be490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
