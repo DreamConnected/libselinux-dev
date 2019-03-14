@@ -16,6 +16,24 @@
       "revId": "de9339b29821fd961d7c56d56959e2139607964c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1309a7f_58bcf6da",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-14T19:46:42Z",
+      "side": 0,
+      "message": "Since we still keep the file_stem for single match case for now, a different pointer other than key seems necessary to call find_stem_from_file(data, \u0026buf).",
+      "parentUuid": "f1e69543_34703dfb",
+      "revId": "de9339b29821fd961d7c56d56959e2139607964c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
