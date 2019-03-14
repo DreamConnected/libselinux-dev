@@ -22,6 +22,30 @@
       "revId": "ac701bf26074445e5c2df4b3473ace857aeeae1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2f701b_078941f7",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-14T22:25:50Z",
+      "side": 1,
+      "message": "Done. using more generic names...",
+      "parentUuid": "8c6f0763_fd865cc9",
+      "range": {
+        "startLine": 966,
+        "startChar": 12,
+        "endLine": 967,
+        "endChar": 24
+      },
+      "revId": "ac701bf26074445e5c2df4b3473ace857aeeae1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
