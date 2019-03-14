@@ -93,6 +93,30 @@
       "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da99bd1_6f4c569a",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-03-14T08:01:53Z",
+      "side": 1,
+      "message": "Thanks for the debug! Actually you are right. When the input key is \"/data\", not only the the stem_id mismatches the regex of subdirectories (e.g. /data/misc/[0-9]), but pcre2\u0027s partial match also returns false. This is a case I overlooked when testing with test directories.\n\nAnd interestingly, if the I force the input to be \"/data/\", everything will work fine. I know the find_stem function is looking for the 2nd \u0027/\u0027, which the keyword \"/data\" lacks. And I will take a close look at pcre\u0027s match function to figure out a better fix than appending trailing \u0027/\u0027 to the input path..",
+      "parentUuid": "46971336_055db432",
+      "range": {
+        "startLine": 1042,
+        "startChar": 11,
+        "endLine": 1042,
+        "endChar": 16
+      },
+      "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
