@@ -46,6 +46,53 @@
       "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5de4db_c4117f99",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1288352
+      },
+      "writtenOn": "2019-03-14T03:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "661b36f3_74aac3f3",
+      "range": {
+        "startLine": 1032,
+        "startChar": 55,
+        "endLine": 1032,
+        "endChar": 59
+      },
+      "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46971336_055db432",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1288352
+      },
+      "writtenOn": "2019-03-14T03:23:08Z",
+      "side": 1,
+      "message": "hi,When I run command \"restorecon -R /data\" and use gdb to debug it, I find that:\n1)It call function lookup_all() to query selinux label related to /data. The result is as below shows,\n\t/data(/.*)?\t\t\t\t\tu:object_r:system_data_file:s0\n\t/data_old\t\t\t\t\tu:object_r:system_data_file:s0\nFrom the result,we know that,the function lookup_all() do not match sub directries selinux label in /data.\n\n2)When I add a new label \"/data/media/abc(/.*)?\" in file_context, As the hash value about /data is not changed,\nso it will skip restorecon to /data/media/abc, there may have some problem.\n\nThe below is my debugging process:\nStarting program: D:\\symbols\\system\\bin\\restorecon -R  /data\nBreakpoint 7, hash_all_partial_matches (rec\u003d0x7fb7234000, key\u003d0x7fb726b000 \"/data\", digest\u003d0x7ffffff000 \"\") at external/selinux/libselinux/src/label_file.c:1023\n1023            const struct spec **matches \u003d lookup_all(rec, key, 0, true, \u0026total_matches);\n(gdb) c\nContinuing.\n\nBreakpoint 8, hash_all_partial_matches (rec\u003d0x7fb7234000, key\u003d0x7fb726b000 \"/data\", digest\u003d0x7ffffff000 \"\") at external/selinux/libselinux/src/label_file.c:1032\n1032                    uint32_t mode \u003d matches[i]-\u003emode;\n(gdb) p total_matches\n$18 \u003d 2\n(gdb) p regex_str\n$19 \u003d 0x7fb722d3c0 \"/data_old\"\n(gdb) c\nContinuing.\n\nBreakpoint 8, hash_all_partial_matches (rec\u003d0x7fb7234000, key\u003d0x7fb726b000 \"/data\", digest\u003d0x7ffffff000 \"\") at external/selinux/libselinux/src/label_file.c:1032\n1032                    uint32_t mode \u003d matches[i]-\u003emode;\n(gdb) p regex_str\n$20 \u003d 0x7fb722d0a0 \"/data(/.*)?\"",
+      "range": {
+        "startLine": 1042,
+        "startChar": 11,
+        "endLine": 1042,
+        "endChar": 16
+      },
+      "revId": "f69947cffabefcda6b92212771bb6882678a0e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
