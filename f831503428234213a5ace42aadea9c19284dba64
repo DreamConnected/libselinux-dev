@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f8841e7_dd17ef9d",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-15T12:16:59Z",
+      "side": 1,
+      "message": "Wondering if this could just be partial.  What would it even mean to pass non-NULL match_count and partial \u003d\u003d false?",
+      "revId": "f831503428234213a5ace42aadea9c19284dba64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
