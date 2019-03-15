@@ -16,6 +16,24 @@
       "revId": "f831503428234213a5ace42aadea9c19284dba64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe73fdd_ba41c5d1",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2019-03-15T12:29:29Z",
+      "side": 1,
+      "message": "I think we only want to ignore the stem if performing partial matches.  If we want all matches but do not want partial matches, then we shouldn\u0027t ignore the stem.  So ignore_stem \u003d\u003d partial and thus we can dispense with it as a separate bool and just test (partial || stem_matches) below.",
+      "parentUuid": "1f8841e7_dd17ef9d",
+      "revId": "f831503428234213a5ace42aadea9c19284dba64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
