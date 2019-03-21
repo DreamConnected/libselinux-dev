@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bafc5df4_d2acbd0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-03-21T20:57:05Z",
+      "side": 1,
+      "message": "please fix and add the bug number.",
+      "revId": "363a4f31413edbd4829a69bc69cc6e15632de5c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
