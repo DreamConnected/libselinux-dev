@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "963dd2ab_3add9524",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1288352
+      },
+      "writtenOn": "2019-04-26T10:27:08Z",
+      "side": 1,
+      "message": "Hi:\nwhen I call function \"android.os.SELinux.restoreconRecursive(fileDir)\" to update directory selinux label in system_server,\nthe directory selinux label can update success, but the directory selinux label hash update failed, the log as below shows:\n    04-22 04:51:31.790   546   546 D Zygote  : Forked child process 1704\n    04-22 04:51:31.790   546   546 I Zygote  : System server process 1704 has been created\n    04-22 04:51:38.098  1704  1704 E SELinux : SELinux:  setxattr failed: /data/system/iaware:  Operation not permitted\n    04-22 12:53:43.742  1704  1768 E SELinux : SELinux:  setxattr failed: /data/app/com.huawei.hisuite-dbe6ZsgK-iiM8FF6_PGJgw\u003d\u003d:  Operation not permitted\n\nThe function setxattr in kernel is: selinux_inode_setxattr(), As system_server donot have capabiliy CAP_SYS_ADMIN, So it will return EPERM,\nDoest it means that we should assign capabiliy CAP_SYS_ADMIN to all processes that who want to call restoreconRecursive() to update selinux label?\n\nhttps://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/security/selinux/hooks.c?h\u003dv4.14.113\n\n    static int selinux_inode_setotherxattr(struct dentry *dentry, const char *name)\n    {\n        if (!strncmp(name, XATTR_SECURITY_PREFIX, sizeof XATTR_SECURITY_PREFIX - 1)) {\n            if (!strcmp(name, XATTR_NAME_CAPS)) {\n                if (!capable(CAP_SETFCAP))\n                    return -EPERM;\n            } else if (!capable(CAP_SYS_ADMIN)) {\n                return -EPERM; //As system_server donot have capabiliy CAP_SYS_ADMIN, So it will return EPERM\n            }\n        }\n        return dentry_has_perm(cred, dentry, FILE__SETATTR);\n    }\n\n    static int selinux_inode_setxattr(struct dentry *dentry, const char *name,\n                      const void *value, size_t size, int flags)\n    {\n        ......\n        if (strcmp(name, XATTR_NAME_SELINUX))  //name\u003d\"security.sehash\", it donot equal XATTR_NAME_SELINUX\n            return selinux_inode_setotherxattr(dentry, name);\n        ......\n    }",
+      "range": {
+        "startLine": 1743,
+        "startChar": 66,
+        "endLine": 1743,
+        "endChar": 67
+      },
+      "revId": "7d4a56f84d0589c535baa50afceeb70d8a04b856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
