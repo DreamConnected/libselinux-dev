@@ -11,6 +11,7 @@
     is_selinux_enabled;
     lgetfilecon;
     lsetfilecon;
+    security_compute_av;
     security_compute_create;
     security_get_initial_context;
     security_getenforce;
@@ -47,6 +48,7 @@
     setfscreatecon;
     setsockcreatecon;
     setsockcreatecon_raw;
+    string_to_av_perm;
     string_to_security_class;
   local: *;
 };
