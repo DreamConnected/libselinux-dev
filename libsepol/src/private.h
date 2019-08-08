@@ -14,7 +14,7 @@
 #endif
 
 #include <errno.h>
-#include <dso.h>
+#include "dso.h"
 
 #ifdef __APPLE__
 #define __BYTE_ORDER  BYTE_ORDER

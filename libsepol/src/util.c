@@ -27,7 +27,7 @@
 #include <sepol/policydb/flask_types.h>
 #include <sepol/policydb/policydb.h>
 #include <sepol/policydb/util.h>
-#include <dso.h>
+#include "dso.h"
 
 struct val_to_name {
 	unsigned int val;
