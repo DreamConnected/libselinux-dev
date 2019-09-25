@@ -1,0 +1,8 @@
+Autosubmit+1: Elliott Hughes <enh@google.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 25 Sep 2019 05:25:45 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1127811
+Project: platform/external/selinux
+Branch: refs/heads/master
