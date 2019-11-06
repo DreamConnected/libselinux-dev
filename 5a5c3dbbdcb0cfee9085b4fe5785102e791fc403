@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02dc7825_1422cda3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-11-06T14:52:37Z",
+      "side": 1,
+      "message": "instead of saying the \"what\", can you please also add the \"why\"?\n\n  Relax the requirement to have both seinfo and name specified\n  for privapps. The original reason for requiring both was because,\n  normally, a package can only be uniquely specified by both name\n  and signature, otherwise package squatting could occur. However, \n  for priv-apps, they are pre-installed, so the concerns about\n  the potential for package squatting are eliminated.  This change\n  will drastically simplify sepolicy configuration for priv-apps.\n\nor something like that.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "5a5c3dbbdcb0cfee9085b4fe5785102e791fc403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
