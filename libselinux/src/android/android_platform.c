@@ -163,6 +163,7 @@ struct seapp_context {
 	struct prefix_str path;
 	bool isPrivAppSet;
 	bool isPrivApp;
+	bool compatMode;
 	int32_t minTargetSdkVersion;
 	bool fromRunAs;
 	/* outputs */
@@ -265,6 +266,10 @@ static int seapp_context_cmp(const void *A, const void *B)
 	/* Give precedence to a specified isPrivApp= over an unspecified isPrivApp=. */
 	if (s1->isPrivAppSet != s2->isPrivAppSet)
 		return (s1->isPrivAppSet ? -1 : 1);
+
+	/* Give precedence to compatMode=true. */
+    if (s1->compatMode != s2->compatMode)
+        return (s1->compatMode ? -1 : 1);
 
 	/* Give precedence to a higher minTargetSdkVersion= over a lower minTargetSdkVersion=.
 	 * If unspecified, minTargetSdkVersion has a default value of 0.
@@ -602,6 +607,15 @@ int selinux_android_seapp_context_reload(void)
 						free_seapp_context(cur);
 						goto err;
 					}
+				} else if (!strcasecmp(name, "compatMode")) {
+					if (!strcasecmp(value, "true"))
+						cur->compatMode = true;
+					else if (!strcasecmp(value, "false"))
+						cur->compatMode = false;
+					else {
+						free_seapp_context(cur);
+						goto err;
+					}
 				} else if (!strcasecmp(name, "minTargetSdkVersion")) {
 					cur->minTargetSdkVersion = get_minTargetSdkVersion(value);
 					if (cur->minTargetSdkVersion < 0) {
@@ -655,7 +669,7 @@ int selinux_android_seapp_context_reload(void)
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
 			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s  isEphemeralApp=%s isOwner=%s user=%s seinfo=%s "
-					"name=%s path=%s isPrivApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+					"name=%s path=%s isPrivApp=%s compatMode=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
@@ -663,6 +677,7 @@ int selinux_android_seapp_context_reload(void)
 				cur->user.str,
 				cur->seinfo, cur->name.str, cur->path.str,
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
+				cur->compatMode ? "true" : "false",
 				cur->minTargetSdkVersion,
 				cur->fromRunAs ? "true" : "false",
 				cur->domain, cur->type, cur->level,
@@ -721,6 +736,7 @@ enum seapp_kind {
 #define EPHEMERAL_APP_STR ":ephemeralapp"
 #define TARGETSDKVERSION_STR ":targetSdkVersion="
 #define FROM_RUNAS_STR ":fromRunAs"
+#define COMPAT_MODE_STR ":compatMode"
 static int32_t get_app_targetSdkVersion(const char *seinfo)
 {
 	char *substr = strstr(seinfo, TARGETSDKVERSION_STR);
@@ -777,6 +793,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 	uid_t appid;
 	bool isPrivApp = false;
 	bool isEphemeralApp = false;
+	bool compatMode = false;
 	int32_t targetSdkVersion = 0;
 	bool fromRunAs = false;
 	char parsedseinfo[BUFSIZ];
@@ -789,6 +806,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 		isPrivApp = strstr(seinfo, PRIVILEGED_APP_STR) ? true : false;
 		isEphemeralApp = strstr(seinfo, EPHEMERAL_APP_STR) ? true : false;
 		fromRunAs = strstr(seinfo, FROM_RUNAS_STR) ? true : false;
+		compatMode = strstr(seinfo, COMPAT_MODE_STR) ? true : false;
 		targetSdkVersion = get_app_targetSdkVersion(seinfo);
 		if (targetSdkVersion < 0) {
 			selinux_log(SELINUX_ERROR,
@@ -868,6 +886,9 @@ static int seapp_context_lookup(enum seapp_kind kind,
 		}
 
 		if (cur->isPrivAppSet && cur->isPrivApp != isPrivApp)
+			continue;
+
+		if (cur->compatMode && cur->compatMode != compatMode)
 			continue;
 
 		if (cur->minTargetSdkVersion > targetSdkVersion)
