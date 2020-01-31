@@ -21,7 +21,7 @@ static char *strtrim(char *dest, char *source, int size)
 		ptr++;
 		i++;
 	}
-	strncpy(dest, ptr, size);
+	memcpy(dest, ptr, size);
 	for (i = strlen(dest) - 1; i > 0; i--) {
 		if (!isspace(dest[i]))
 			break;
