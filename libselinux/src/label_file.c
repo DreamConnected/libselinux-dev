@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <errno.h>
@@ -1033,6 +1034,10 @@ static bool get_digests_all_partial_matches(struct selabel_handle *rec,
 					    uint8_t **xattr_digest,
 					    size_t *digest_len)
 {
+#ifdef __APPLE__
+        abort(); // get_digests_all_partial_matches not implemented
+#else
+
 	uint8_t read_digest[SHA1_HASH_SIZE];
 	ssize_t read_size = getxattr(pathname, RESTORECON_PARTIAL_MATCH_DIGEST,
 				     read_digest, SHA1_HASH_SIZE);
@@ -1069,6 +1074,7 @@ static bool get_digests_all_partial_matches(struct selabel_handle *rec,
 oom:
 	selinux_log(SELINUX_ERROR, "SELinux: %s: Out of memory\n", __func__);
 	return false;
+#endif /* __APPLE __ */
 }
 
 static bool hash_all_partial_matches(struct selabel_handle *rec, const char *key, uint8_t *digest)
