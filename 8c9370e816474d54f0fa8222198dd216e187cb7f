@@ -1,0 +1,9 @@
+Autosubmit+1: Alan Stokes <alanstokes@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 12 Feb 2020 09:48:43 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1232524
+Project: platform/external/selinux
+Branch: refs/heads/master
