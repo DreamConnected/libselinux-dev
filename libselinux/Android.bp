@@ -106,6 +106,10 @@ cc_library {
     },
     double_loadable: true,
     recovery_available: true,
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
 
     host_supported: true,
     cflags: ["-DUSE_PCRE2"],
