@@ -22,6 +22,30 @@
       "revId": "230b5bc64fa5bfe27f1d001bd369483b6388f4fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06797f1_80f5c559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2020-03-10T12:53:52Z",
+      "side": 1,
+      "message": "Not sure I fully understand the question but:\n1) Kernel interface stability is generally guaranteed for the kernel as a whole, including SELinux-specific interfaces like selinuxfs and /proc/pid/attr.  Linux has a thou-shalt-not-break-userspace rule although in practice it is sometimes permitted if no \"real\" userspace is relying on that interface/behavior. Sometimes the kernel will deprecate and eventually remove interfaces but only if not in use or done in a manner that avoids a break (e.g. turning it into a no-op).  One example of this for SELinux is we are deprecating and will eventually drop the ability to set checkreqprot to 1 since that is insecure.  Another example is that we are deprecating use of security_compute_user() and /sys/fs/selinux/user upstream but Android doesn\u0027t use that and we won\u0027t actually remove it from the kernel for at least a decade if ever to avoid breaking long term supported distributions.\n\n2) libselinux provides a stable API and ABI. Symbol visibility was being controlled via the \"hidden\" markings until very recently when we switched to an explicit version script (fc093ad7573898d7e447c286bdeef1eb2b657532).  I see that Android maintains its own version scripts with a more limited selection of interfaces; as long as that set remains a subset of the upstream one (aside from Android\u0027s additions to the API/ABI), it should be stable.",
+      "parentUuid": "73e3eb00_32751765",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 67
+      },
+      "revId": "230b5bc64fa5bfe27f1d001bd369483b6388f4fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
