@@ -1059,6 +1059,69 @@ exit:
 	return rc;
 }
 
+
+static int cil_write_portcon(struct cil_tree_node *node, FILE *cil_out) {
+	int rc = SEPOL_ERR;
+	struct cil_portcon *portcon = (struct cil_portcon *)node->data;
+	char *proto;
+	char *ctx_str = NULL;
+	char ports[24];
+	int len;
+
+	switch(portcon->proto) {
+	case CIL_PROTOCOL_UDP:
+		proto = CIL_KEY_UDP;
+		break;
+	case CIL_PROTOCOL_TCP:
+		proto = CIL_KEY_TCP;
+		break;
+	case CIL_PROTOCOL_DCCP:
+		proto = CIL_KEY_DCCP;
+		break;
+	default:
+		cil_log(CIL_ERR, "Unrecognized portcon proto\n");
+		rc = SEPOL_ERR;
+		goto exit;
+		break;
+	}
+
+	if(portcon->port_high != portcon->port_low) {
+		len = snprintf(ports, sizeof(ports) -1, "%u %u", portcon->port_low, portcon->port_high);
+	} else {
+		len = snprintf(ports, sizeof(ports) -1, "%u", portcon->port_low);
+	}
+
+	if ( (len < 0) || ((size_t)len >= sizeof(ports)) ) {
+		cil_log(CIL_ERR, "String overflow\n");
+		rc = SEPOL_ERR;
+		goto exit;
+	}
+
+	if (portcon->context_str != NULL) {
+		ctx_str = strdup(portcon->context_str);
+		if (ctx_str == NULL) {
+			cil_log(CIL_ERR, "OOM. Unable to copy context string.\n");
+			rc = SEPOL_ERR;
+			goto exit;
+		}
+	} else {
+		rc = cil_unfill_context(portcon->context, &ctx_str);
+		if (rc != SEPOL_OK)
+			goto exit;
+	}
+
+	fprintf(cil_out, "(%s %s %s %s)\n", CIL_KEY_PORTCON, proto, ports, ctx_str);
+
+	rc = SEPOL_OK;
+
+exit:
+	if(ctx_str != NULL)
+		free(ctx_str);
+
+	return rc;
+}
+
+
 static int cil_write_constrain(struct cil_tree_node *node, FILE *cil_out) {
 	int rc = SEPOL_ERR;
 	struct cil_constrain *cons = (struct cil_constrain *)node->data;
@@ -1361,7 +1424,7 @@ static int __cil_write_node_helper(struct cil_tree_node *node, uint32_t *finishe
 		rc = cil_write_unsupported("CIL_NODECON");
 		break;
 	case CIL_PORTCON:
-		rc = cil_write_unsupported("CIL_PORTCON");
+		rc = cil_write_portcon(node, cil_out);
 		break;
 	case CIL_PIRQCON:
 		rc = cil_write_unsupported("CIL_PIRQCON");

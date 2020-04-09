@@ -601,6 +601,22 @@ exit:
 	return rc;
 }
 
+static int cil_attrib_portcon(struct cil_tree_node *node, struct version_args *args)
+{
+	int rc = SEPOL_ERR;
+	struct cil_portcon *portcon = (struct cil_portcon *)node->data;
+	if (portcon->context_str == NULL) {
+		/* portcon contains an anon context, which needs to have type checked */
+		rc = cil_attrib_check_context(portcon->context, args);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+	}
+	return SEPOL_OK;
+exit:
+	return rc;
+}
+
 static int __attributize_helper(struct cil_tree_node *node, uint32_t *finished, void *extra_args)
 {
 	int rc = SEPOL_ERR;
@@ -706,7 +722,6 @@ static int __attributize_helper(struct cil_tree_node *node, uint32_t *finished, 
 		break;
 	case CIL_FILECON:
 	case CIL_NODECON:
-	case CIL_PORTCON:
 	case CIL_PIRQCON:
 	case CIL_IOMEMCON:
 	case CIL_IOPORTCON:
@@ -725,6 +740,13 @@ static int __attributize_helper(struct cil_tree_node *node, uint32_t *finished, 
 		/* not allowed in plat-policy, but types present, throw error if attributee */
 		cil_attrib_fsuse(node, args);
 		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+		break;
+	case CIL_PORTCON:
+		rc = cil_attrib_portcon(node, args);
+		if (rc != SEPOL_OK) {
+			rc = SEPOL_ERR;
 			goto exit;
 		}
 		break;
