@@ -103,7 +103,8 @@ int main(int argc, char **argv)
 							 ftsent->fts_path,
 							 &calculated_digest,
 							 &xattr_digest,
-							 &digest_len);
+							 &digest_len,
+							 NULL);
 
 			sha1_buf = calloc(1, digest_len * 2 + 1);
 			if (!sha1_buf) {

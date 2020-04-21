@@ -1317,13 +1317,13 @@ struct dir_hash_node {
 // saved by setxattr. Otherwise returns false and constructs a dir_hash_node with the
 // newly calculated digest.
 static bool check_context_match_for_dir(const char *pathname, struct dir_hash_node **new_node,
-                                        bool force, int error) {
+                                        bool force, int error, size_t *num_matches) {
     uint8_t read_digest[SHA1_HASH_SIZE];
     ssize_t read_size = getxattr(pathname, RESTORECON_PARTIAL_MATCH_DIGEST,
                      read_digest, SHA1_HASH_SIZE);
     uint8_t calculated_digest[SHA1_HASH_SIZE];
     bool status = selabel_hash_all_partial_matches(fc_sehandle, pathname,
-                               calculated_digest);
+                               calculated_digest, num_matches);
 
     if (!new_node) {
         return false;
@@ -1378,6 +1378,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     FTSENT *ftsent;
     char *pathname = NULL, *pathdnamer = NULL, *pathdname, *pathbname;
     char * paths[2] = { NULL , NULL };
+    char *leafcontextpath = NULL;
     int ftsflags = FTS_NOCHDIR | FTS_PHYSICAL;
     int error, sverrno;
     struct dir_hash_node *current = NULL;
@@ -1494,7 +1495,12 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
 
             if (setrestoreconlast) {
                 struct dir_hash_node* new_node = NULL;
-                if (check_context_match_for_dir(ftsent->fts_path, &new_node, force, error)) {
+                size_t num_matches = 0;
+                bool skipcheck = leafcontextpath &&
+                                 strlen(ftsent->fts_path) > strlen(leafcontextpath) &&
+                                 !strncmp(ftsent->fts_path, leafcontextpath, strlen(leafcontextpath));
+                if (!skipcheck &&
+                    check_context_match_for_dir(ftsent->fts_path, &new_node, force, error, &num_matches)) {
                     selinux_log(SELINUX_INFO,
                                 "SELinux: Skipping restorecon on directory(%s)\n",
                                 ftsent->fts_path);
@@ -1509,6 +1515,14 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
                         current->next = new_node;
                         current = current->next;
                     }
+                }
+                if (1 == num_matches) {
+                    free(leafcontextpath);
+                    leafcontextpath = (char *) calloc(1, strlen(ftsent->fts_path) + 1 + 1);
+                    if (!leafcontextpath)
+                        goto oom;
+                    strcpy(leafcontextpath, ftsent->fts_path);
+                    strcat(leafcontextpath, "/");
                 }
             }
 
@@ -1561,6 +1575,7 @@ out:
 cleanup:
     free(pathdnamer);
     free(pathname);
+    free(leafcontextpath);
     current = head;
     while (current != NULL) {
         struct dir_hash_node *next = current->next;

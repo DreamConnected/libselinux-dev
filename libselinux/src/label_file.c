@@ -983,7 +983,10 @@ static const struct spec **lookup_all(struct selabel_handle *rec,
 				if (match_count) {
 					result[*match_count] = spec;
 					*match_count += 1;
-					// Continue to find all the matches.
+					if (rc ==REGEX_MATCH) {
+						break;
+					}
+					// Continue to find the matches until the first full match found.
 					continue;
 				}
 				result[0] = spec;
@@ -1031,7 +1034,8 @@ static bool get_digests_all_partial_matches(struct selabel_handle *rec,
 					    const char *pathname,
 					    uint8_t **calculated_digest,
 					    uint8_t **xattr_digest,
-					    size_t *digest_len)
+					    size_t *digest_len,
+					    size_t *num_matches)
 {
 	uint8_t read_digest[SHA1_HASH_SIZE];
 	ssize_t read_size = getxattr(pathname, RESTORECON_PARTIAL_MATCH_DIGEST,
@@ -1042,7 +1046,7 @@ static bool get_digests_all_partial_matches(struct selabel_handle *rec,
 				    );
 	uint8_t hash_digest[SHA1_HASH_SIZE];
 	bool status = selabel_hash_all_partial_matches(rec, pathname,
-						       hash_digest);
+						       hash_digest, num_matches);
 
 	*xattr_digest = NULL;
 	*calculated_digest = NULL;
@@ -1075,7 +1079,8 @@ oom:
 	return false;
 }
 
-static bool hash_all_partial_matches(struct selabel_handle *rec, const char *key, uint8_t *digest)
+static bool hash_all_partial_matches(struct selabel_handle *rec, const char *key,
+					    uint8_t *digest, size_t *num_matches)
 {
 	assert(digest);
 
@@ -1101,6 +1106,10 @@ static bool hash_all_partial_matches(struct selabel_handle *rec, const char *key
 	SHA1_HASH sha1_hash;
 	Sha1Finalise(&context, &sha1_hash);
 	memcpy(digest, sha1_hash.bytes, SHA1_HASH_SIZE);
+
+	if (num_matches) {
+		*num_matches = total_matches;
+	}
 
 	free(matches);
 	return true;

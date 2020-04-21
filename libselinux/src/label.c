@@ -286,7 +286,8 @@ bool selabel_get_digests_all_partial_matches(struct selabel_handle *rec,
 					     const char *key,
 					     uint8_t **calculated_digest,
 					     uint8_t **xattr_digest,
-					     size_t *digest_len)
+					     size_t *digest_len,
+					     size_t *num_matches)
 {
 	if (!rec->func_get_digests_all_partial_matches)
 		return false;
@@ -294,16 +295,19 @@ bool selabel_get_digests_all_partial_matches(struct selabel_handle *rec,
 	return rec->func_get_digests_all_partial_matches(rec, key,
 							 calculated_digest,
 							 xattr_digest,
-							 digest_len);
+							 digest_len,
+							 num_matches);
 }
 
 bool selabel_hash_all_partial_matches(struct selabel_handle *rec,
-                                      const char *key, uint8_t *digest) {
+					     const char *key,
+					     uint8_t *digest,
+					     size_t *num_matches) {
 	if (!rec->func_hash_all_partial_matches) {
 		return false;
 	}
 
-	return rec->func_hash_all_partial_matches(rec, key, digest);
+	return rec->func_hash_all_partial_matches(rec, key, digest, num_matches);
 }
 
 int selabel_lookup_best_match(struct selabel_handle *rec, char **con,

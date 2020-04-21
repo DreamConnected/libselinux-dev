@@ -307,7 +307,7 @@ static int add_xattr_entry(const char *directory, bool delete_nonmatch,
 
 	selabel_get_digests_all_partial_matches(fc_sehandle, directory,
 						&calculated_digest,
-						&xattr_digest, &digest_len);
+						&xattr_digest, &digest_len, NULL);
 
 	if (!xattr_digest || !digest_len) {
 		free(calculated_digest);
@@ -746,7 +746,8 @@ struct dir_hash_node {
  */
 static bool check_context_match_for_dir(const char *pathname,
 					struct dir_hash_node **new_node,
-					int error)
+					int error,
+					size_t *num_matches)
 {
 	bool status;
 	size_t digest_len = 0;
@@ -762,7 +763,8 @@ static bool check_context_match_for_dir(const char *pathname,
 	status = selabel_get_digests_all_partial_matches(fc_sehandle, pathname,
 							 &calculated_digest,
 							 &read_digest,
-							 &digest_len);
+							 &digest_len,
+							 num_matches);
 
 	if (status)
 		goto free;
@@ -845,6 +847,7 @@ int selinux_restorecon(const char *pathname_orig,
 	FTSENT *ftsent;
 	char *pathname = NULL, *pathdnamer = NULL, *pathdname, *pathbname;
 	char *paths[2] = { NULL, NULL };
+	char *leafcontextpath = NULL;
 	int fts_flags, error, sverrno;
 	dev_t dev_num = 0;
 	struct dir_hash_node *current = NULL;
@@ -1032,10 +1035,14 @@ int selinux_restorecon(const char *pathname_orig,
 
 			if (setrestorecondigest) {
 				struct dir_hash_node *new_node = NULL;
+				size_t num_matches = 0;
+				bool skipcheck = leafcontextpath &&
+								 strlen(ftsent->fts_path) > strlen(leafcontextpath) &&
+								 !strncmp(ftsent->fts_path, leafcontextpath, strlen(leafcontextpath));
 
-				if (check_context_match_for_dir(ftsent->fts_path,
+				if (!skipcheck && check_context_match_for_dir(ftsent->fts_path,
 								&new_node,
-								error) &&
+								error, NULL) &&
 								!ignore_digest) {
 					selinux_log(SELINUX_INFO,
 						    "Skipping restorecon on directory(%s)\n",
@@ -1052,6 +1059,15 @@ int selinux_restorecon(const char *pathname_orig,
 						current->next = new_node;
 						current = current->next;
 					}
+				}
+
+				if (1 == num_matches) {
+					free(leafcontextpath);
+					leafcontextpath = (char *) calloc(1, strlen(ftsent->fts_path) + 1 + 1);
+					if (!leafcontextpath)
+						goto oom;
+					strcpy(leafcontextpath, ftsent->fts_path);
+					strcat(leafcontextpath, "/");
 				}
 			}
 			/* fall through */
@@ -1101,6 +1117,7 @@ cleanup:
 	}
 	free(pathdnamer);
 	free(pathname);
+	free(leafcontextpath);
 
 	current = head;
 	while (current != NULL) {
