@@ -1,0 +1,9 @@
+Code-Review+2: Alistair Delva <adelva@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+DrNo-Review+1: Hung-ying Tyan <tyanh@google.com>
+Submitted-by: Hung-ying Tyan <tyanh@google.com>
+Submitted-at: Tue, 05 May 2020 02:57:53 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1301095
+Project: platform/external/selinux
+Branch: refs/heads/android10-gsi
