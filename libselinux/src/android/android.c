@@ -60,6 +60,23 @@ static const struct selinux_opt seopts_vndservice =
 static const struct selinux_opt seopts_vndservice_rootfs =
     { SELABEL_OPT_PATH, "/vndservice_contexts" };
 
+static const struct selinux_opt seopts_keystore_key_plat[] = {
+    { SELABEL_OPT_PATH, "system/etc/selinux/keystore_key_contexts" },
+    { SELABEL_OPT_PATH, "/plat_keystore_key_contexts" }
+};
+static const struct selinux_opt seopts_keystore_key_system_ext[] = {
+    { SELABEL_OPT_PATH, "/system_ext/etc/selinux/system_ext_keystore_key_contexts" },
+    { SELABEL_OPT_PATH, "/system_ext_keystore_key_contexts" }
+};
+static const struct selinux_opt seopts_keystore_key_product[] = {
+    { SELABEL_OPT_PATH, "/product/etc/selinux/product_keystore_key_contexts" },
+    { SELABEL_OPT_PATH, "/product_keystore_key_contexts" }
+};
+static const struct selinux_opt seopts_keystore_key_vendor[] = {
+    { SELABEL_OPT_PATH, "/vendor/etc/selinux/vendor_keystore_key_contexts" },
+    { SELABEL_OPT_PATH, "/vendor_keystore_key_contexts" },
+};
+
 struct selabel_handle* selinux_android_service_open_context_handle(const struct selinux_opt* seopts_service,
                                                                    unsigned nopts)
 {
@@ -161,6 +178,39 @@ struct selabel_handle* selinux_android_vendor_service_context_handle(void)
     }
 
     return selinux_android_service_open_context_handle(seopts_service, 1);
+}
+
+struct selabel_handle* selinux_android_keystore_key_context_handle(void)
+{
+    struct selinux_opt seopts_service[MAX_FILE_CONTEXT_SIZE];
+    int size = 0;
+    unsigned int i;
+    for (i = 0; i < ARRAY_SIZE(seopts_keystore_key_plat); i++) {
+        if (access(seopts_keystore_key_plat[i].value, R_OK) != -1) {
+            seopts_service[size++] = seopts_keystore_key_plat[i];
+            break;
+        }
+    }
+    for (i = 0; i < ARRAY_SIZE(seopts_keystore_key_system_ext); i++) {
+        if (access(seopts_keystore_key_system_ext[i].value, R_OK) != -1) {
+            seopts_service[size++] = seopts_keystore_key_system_ext[i];
+            break;
+        }
+    }
+    for (i = 0; i < ARRAY_SIZE(seopts_keystore_key_product); i++) {
+        if (access(seopts_keystore_key_product[i].value, R_OK) != -1) {
+            seopts_service[size++] = seopts_keystore_key_product[i];
+            break;
+        }
+    }
+    for (i = 0; i < ARRAY_SIZE(seopts_keystore_key_vendor); i++) {
+        if (access(seopts_keystore_key_vendor[i].value, R_OK) != -1) {
+            seopts_service[size++] = seopts_keystore_key_vendor[i];
+            break;
+        }
+    }
+
+    return selinux_android_service_open_context_handle(seopts_service, size);
 }
 
 int selinux_log_callback(int type, const char *fmt, ...)
