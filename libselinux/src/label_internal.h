@@ -42,6 +42,9 @@ int selabel_property_init(struct selabel_handle *rec,
 int selabel_service_init(struct selabel_handle *rec,
 			    const struct selinux_opt *opts,
 			    unsigned nopts) hidden;
+int selabel_keystore_key_init(struct selabel_handle *rec,
+			    const struct selinux_opt *opts,
+			    unsigned nopts) hidden;
 
 /*
  * Labeling internal structures
