@@ -23,6 +23,7 @@ LIBSELINUX_R {
     selabel_open;
     selinux_android_file_context_handle;
     selinux_android_hw_service_context_handle;
+    selinux_android_keystore_key_context_handle;
     selinux_android_load_policy;
     selinux_android_load_policy_from_fd;
     selinux_android_restorecon;

@@ -57,7 +57,7 @@ static selabel_initfunc initfuncs[] = {
 	CONFIG_X_BACKEND(selabel_x_init),
 	CONFIG_DB_BACKEND(selabel_db_init),
 	CONFIG_ANDROID_BACKEND(selabel_property_init),
-	CONFIG_ANDROID_BACKEND(selabel_service_init),
+	CONFIG_ANDROID_BACKEND(selabel_exact_match_init),
 };
 
 static inline struct selabel_digest *selabel_is_digest_set
@@ -215,7 +215,7 @@ struct selabel_handle *selabel_open(unsigned int backend,
 {
 	struct selabel_handle *rec = NULL;
 
-	if (backend >= ARRAY_SIZE(initfuncs)) {
+	if (backend > ARRAY_SIZE(initfuncs)) {
 		errno = EINVAL;
 		goto out;
 	}
