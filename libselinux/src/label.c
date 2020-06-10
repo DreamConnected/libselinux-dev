@@ -58,6 +58,7 @@ static selabel_initfunc initfuncs[] = {
 	CONFIG_DB_BACKEND(selabel_db_init),
 	CONFIG_ANDROID_BACKEND(selabel_property_init),
 	CONFIG_ANDROID_BACKEND(selabel_service_init),
+	CONFIG_ANDROID_BACKEND(selabel_keystore_key_init),
 };
 
 static inline struct selabel_digest *selabel_is_digest_set
