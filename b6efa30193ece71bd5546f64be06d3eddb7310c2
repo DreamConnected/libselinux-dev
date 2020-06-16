@@ -22,6 +22,30 @@
       "revId": "b6efa30193ece71bd5546f64be06d3eddb7310c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a76087_311d0086",
+        "filename": "libselinux/exported.map",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1611142
+      },
+      "writtenOn": "2020-06-16T20:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11298cea_7ea4f439",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 48
+      },
+      "revId": "b6efa30193ece71bd5546f64be06d3eddb7310c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
