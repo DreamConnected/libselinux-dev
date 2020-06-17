@@ -22,6 +22,30 @@
       "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb9112b_96366817",
+        "filename": "libselinux/src/label_backends_android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-17T00:56:25Z",
+      "side": 1,
+      "message": "I guess we could. I am not sure if this subsystem should support \"*\". What do you think?",
+      "parentUuid": "0c147107_28d0bee3",
+      "range": {
+        "startLine": 362,
+        "startChar": 34,
+        "endLine": 362,
+        "endChar": 53
+      },
+      "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
