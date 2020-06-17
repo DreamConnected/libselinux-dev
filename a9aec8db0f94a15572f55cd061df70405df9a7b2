@@ -94,6 +94,30 @@
       "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7adb82_5ddb4cee",
+        "filename": "libselinux/src/label_backends_android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-17T16:53:53Z",
+      "side": 1,
+      "message": "Okay, thanks Nick.\n\nActually this function is identical to service_lookup in line 330. The subtle difference is that property_lookup uses strncmp to perform a prefix match, whereas this function checks for an exact match. I guess we could consolidate this with service_lookup. Leaving them separate would mean that if the service lookup is ever changed, we don\u0027t get potentially unintended results in this backend, though.",
+      "parentUuid": "5318b068_0d1ed567",
+      "range": {
+        "startLine": 362,
+        "startChar": 34,
+        "endLine": 362,
+        "endChar": 53
+      },
+      "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
