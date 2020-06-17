@@ -46,6 +46,30 @@
       "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e6eb46_857dbb1b",
+        "filename": "libselinux/src/label_backends_android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-06-17T00:58:25Z",
+      "side": 1,
+      "message": "It seems like it should, IMHO. If you don\u0027t expect the wildcard to be used, I would create an \"illegal_key\" label, and map the wildcard to that label. Then add a neverallow rule prohibiting any operations on the illegal_key label.",
+      "parentUuid": "1eb9112b_96366817",
+      "range": {
+        "startLine": 362,
+        "startChar": 34,
+        "endLine": 362,
+        "endChar": 53
+      },
+      "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
