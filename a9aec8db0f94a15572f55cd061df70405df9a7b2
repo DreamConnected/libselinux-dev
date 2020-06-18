@@ -142,6 +142,30 @@
       "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a902316b_45c5e131",
+        "filename": "libselinux/src/label_backends_android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-18T17:38:17Z",
+      "side": 1,
+      "message": "Okay. Thanks Nick,\n\nKunal, please follow up on this. Also change the name of the function so that it indicates that is used by both back ends.",
+      "parentUuid": "24b386d9_4058582e",
+      "range": {
+        "startLine": 362,
+        "startChar": 34,
+        "endLine": 362,
+        "endChar": 53
+      },
+      "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
