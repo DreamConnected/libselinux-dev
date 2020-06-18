@@ -118,6 +118,30 @@
       "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b386d9_4058582e",
+        "filename": "libselinux/src/label_backends_android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-06-18T01:20:01Z",
+      "side": 1,
+      "message": "ah ya, I meant line 330. The function is simple enough that I think it\u0027s safe to combine them. I\u0027d prefer that over cut/paste code. We can always separate them later if we need to.\n\nGenerally speaking, the service lookup code changes very infrequently, so I\u0027m not worried about regressions.",
+      "parentUuid": "de7adb82_5ddb4cee",
+      "range": {
+        "startLine": 362,
+        "startChar": 34,
+        "endLine": 362,
+        "endChar": 53
+      },
+      "revId": "a9aec8db0f94a15572f55cd061df70405df9a7b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
