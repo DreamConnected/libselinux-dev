@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebdcfbf5_2dbe5ba7",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-23T19:49:40Z",
+      "side": 1,
+      "message": "Add one more entry for KEYSTORE_KEY context even if it uses the same init function.\n\nAlso add a comment referring to the definition of SELABEL_CTX_ANDROID_KEYSTORE_KEY in label.h.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "48f3d272ad811eb57c25d5cb547dd8c44b520d04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57491d76_7129cdcf",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-23T19:49:40Z",
+      "side": 1,
+      "message": "buffer overflow, please fix.",
+      "range": {
+        "startLine": 218,
+        "startChar": 13,
+        "endLine": 218,
+        "endChar": 14
+      },
+      "revId": "48f3d272ad811eb57c25d5cb547dd8c44b520d04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
