@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd1d2ada_003ce41a",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1611142
+      },
+      "writtenOn": "2020-06-25T18:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebdcfbf5_2dbe5ba7",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "48f3d272ad811eb57c25d5cb547dd8c44b520d04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57491d76_7129cdcf",
         "filename": "libselinux/src/label.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "48f3d272ad811eb57c25d5cb547dd8c44b520d04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6945e77f_19232747",
+        "filename": "libselinux/src/label.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1611142
+      },
+      "writtenOn": "2020-06-25T18:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57491d76_7129cdcf",
+      "range": {
+        "startLine": 218,
+        "startChar": 13,
+        "endLine": 218,
+        "endChar": 14
+      },
+      "revId": "48f3d272ad811eb57c25d5cb547dd8c44b520d04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
