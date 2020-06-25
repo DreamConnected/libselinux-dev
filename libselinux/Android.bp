@@ -227,3 +227,14 @@ cc_binary_host {
     ],
     whole_static_libs: ["libpcre2"],
 }
+
+cc_library_host_shared {
+    name: "selabel_lookup_context",
+    defaults: ["libselinux_defaults"],
+    cflags: ["-DUSE_PCRE2"],
+    static_libs: [
+        "libselinux",
+        "libsepol",
+    ],
+    whole_static_libs: ["libpcre2"],
+}

@@ -1,0 +1,21 @@
+cc_test_host {
+    name: "selabel_ctx_keyStore_key",
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+        "-O0",
+    ],
+    srcs: [
+        "test_main.cpp",
+        "selabel_lookup.cpp",
+    ],
+    test_suites: ["general-tests"],
+    shared_libs: [
+        "selabel_lookup_context",
+    ],
+    static_libs: [
+        "libgtest",
+        "libft2.nodep",
+    ],
+}
