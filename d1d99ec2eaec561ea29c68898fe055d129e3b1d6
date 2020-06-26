@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "024e3bd1_63980d8b",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:26:17Z",
+      "side": 1,
+      "message": "just link the test against libselinux. Remove this.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 0
+      },
+      "revId": "d1d99ec2eaec561ea29c68898fe055d129e3b1d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc787ce_717729fa",
+        "filename": "libselinux/test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:26:17Z",
+      "side": 1,
+      "message": "_test",
+      "range": {
+        "startLine": 2,
+        "startChar": 34,
+        "endLine": 2,
+        "endChar": 35
+      },
+      "revId": "d1d99ec2eaec561ea29c68898fe055d129e3b1d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f162fbc_783d14dc",
+        "filename": "libselinux/test/selabel_lookup.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:26:17Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "d1d99ec2eaec561ea29c68898fe055d129e3b1d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e7261a_c7598ac3",
+        "filename": "libselinux/test/selabel_lookup.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:26:17Z",
+      "side": 1,
+      "message": "You need a test file here to initialize the back end.\n\nWrite two files. One with and one without wild card rule.\n\nMake a few positive and negative queries to both files.",
+      "range": {
+        "startLine": 32,
+        "startChar": 22,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "d1d99ec2eaec561ea29c68898fe055d129e3b1d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6854abb_9d83f496",
+        "filename": "libselinux/test/selabel_lookup.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:26:17Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "d1d99ec2eaec561ea29c68898fe055d129e3b1d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eda37e0_0f9745c3",
+        "filename": "libselinux/test/selabel_lookup.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:26:17Z",
+      "side": 1,
+      "message": "This needs to be freed if selabel_lookup was successful.",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "d1d99ec2eaec561ea29c68898fe055d129e3b1d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
