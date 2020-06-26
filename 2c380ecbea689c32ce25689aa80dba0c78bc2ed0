@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "892152db_39d668c7",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-26T19:13:26Z",
+      "side": 1,
+      "message": "seopts_keystore_key",
+      "range": {
+        "startLine": 205,
+        "startChar": 23,
+        "endLine": 205,
+        "endChar": 37
+      },
+      "revId": "2c380ecbea689c32ce25689aa80dba0c78bc2ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
