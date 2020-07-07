@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec5fd04_a5c80a88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2020-07-07T16:58:56Z",
+      "side": 1,
+      "message": "Jeff: You reviewed an earlier version of this at ag/10286925.\n\nThe exported.map change is based on the comments on commit 8949cc0b7923c4ce34132c09f114a5350b6a2303.",
+      "revId": "468cc0e9906b0c51acaa4642534fb7b06d0f3e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
