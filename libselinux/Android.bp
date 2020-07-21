@@ -227,3 +227,13 @@ cc_binary_host {
     ],
     whole_static_libs: ["libpcre2"],
 }
+
+rust_bindgen {
+    name: "libselinux_bindgen",
+    wrapper_src: "rust/selinux.h",
+    stem: "bindings",
+    local_include_dirs: ["include"],
+
+    // This is mainly to run layout tests for generated bindings on the host.
+    host_supported: true,
+}
