@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e89f82f_f36deb52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-30T22:45:38Z",
+      "side": 1,
+      "message": "+2 from Rust standpoint, and since this is in the Android.bp file only, I don\u0027t think it will cause conflicts with upstream.",
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
