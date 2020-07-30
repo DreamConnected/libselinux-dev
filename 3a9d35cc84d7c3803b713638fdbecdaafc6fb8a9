@@ -1,0 +1,1381 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "02b53f7c_4dd69738",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 241,
+        "startChar": 11,
+        "endLine": 241,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "822d6673_76ed0601",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 242,
+        "startChar": 11,
+        "endLine": 242,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b24ba7b6_35f09076",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3c3cfa46_f9340955",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 244,
+        "startChar": 11,
+        "endLine": 244,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5f419714_d6eafc4a",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 245,
+        "startChar": 11,
+        "endLine": 245,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "da5ef895_7a3a2cca",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 246,
+        "startChar": 11,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b2707fef_9ee1560b",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ea827c2b_0d6c95ad",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 248,
+        "startChar": 11,
+        "endLine": 248,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2f954c16_56610985",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 249,
+        "startChar": 11,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "65efba10_91ae593b",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "26ea3d3d_db409192",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 251,
+        "startChar": 11,
+        "endLine": 251,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a160acd5_ef54bbc8",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 252,
+        "startChar": 11,
+        "endLine": 252,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "729ce3ae_4aca9854",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 253,
+        "startChar": 11,
+        "endLine": 253,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a3c0c957_3f3d05fb",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 254,
+        "startChar": 11,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "17646fb4_5000a873",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 255,
+        "startChar": 11,
+        "endLine": 255,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "daf70a56_651c53d5",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f0dc9973_ab7a468d",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 257,
+        "startChar": 11,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d31eec0b_1337d22f",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 258,
+        "startChar": 11,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b2e3a1c9_b68d5da2",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f22bf1c3_0d69e5e1",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 260,
+        "startChar": 11,
+        "endLine": 260,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "53f32041_0a265b6b",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 261,
+        "startChar": 11,
+        "endLine": 261,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ce150957_80914cde",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 262,
+        "startChar": 11,
+        "endLine": 262,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f370ff09_67f903e5",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 263,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "272016dd_8f4d0cf2",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6aacbbe7_f7aeb16e",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 265,
+        "startChar": 11,
+        "endLine": 265,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8f1eba55_9b0fe426",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 266,
+        "startChar": 11,
+        "endLine": 266,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3698efae_9202c273",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 267,
+        "startChar": 11,
+        "endLine": 267,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4e5c34e4_aaa6abe5",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 268,
+        "startChar": 11,
+        "endLine": 268,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dbe0c5ec_a763a486",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 269,
+        "startChar": 11,
+        "endLine": 269,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5e2d4e9c_3641931e",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0d7b3a02_02526c31",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 271,
+        "startChar": 11,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "32ff4606_ade006c7",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 272,
+        "startChar": 11,
+        "endLine": 272,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f78e6004_e699ccab",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 273,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e785d3d0_94a9e4a7",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 274,
+        "startChar": 11,
+        "endLine": 274,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "160e79e2_0baf5e3a",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 275,
+        "startChar": 11,
+        "endLine": 275,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6481fd61_ebb31bff",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 276,
+        "startChar": 11,
+        "endLine": 276,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1b464e2f_508de8fa",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 277,
+        "startChar": 11,
+        "endLine": 277,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cdbdfcdf_347f3909",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 278,
+        "startChar": 11,
+        "endLine": 278,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "bbbbcf9c_fd588b73",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 279,
+        "startChar": 11,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1e6ea40a_3a8f869b",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a599184e_a627c9a2",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 281,
+        "startChar": 11,
+        "endLine": 281,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0c0cc885_a671284b",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 282,
+        "startChar": 11,
+        "endLine": 282,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "246bf05b_8980398f",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 283,
+        "startChar": 11,
+        "endLine": 283,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c74fdd16_aa19a3fe",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 284,
+        "startChar": 11,
+        "endLine": 284,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c28f761a_7ccb649a",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 285,
+        "startChar": 11,
+        "endLine": 285,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ef870ee8_41f0e816",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 286,
+        "startChar": 11,
+        "endLine": 286,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d9a61193_812ea6f1",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 287,
+        "startChar": 11,
+        "endLine": 287,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c364f65c_7d285f80",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 288,
+        "startChar": 11,
+        "endLine": 288,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5ad29f4b_950442db",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 289,
+        "startChar": 11,
+        "endLine": 289,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "28fdfbd3_8eacd2b5",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 292,
+        "startChar": 11,
+        "endLine": 292,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004124861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1380864?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6167e587_d012b677",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-30T22:36:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 293,
+        "startChar": 11,
+        "endLine": 293,
+        "endChar": 20
+      },
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
