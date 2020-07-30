@@ -1,0 +1,9 @@
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Janis Danisevskis <jdanis@google.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 30 Jul 2020 20:47:37 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1329357
+Project: platform/external/selinux
+Branch: refs/heads/master
