@@ -16,6 +16,23 @@
       "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f131fb64_7be8c353",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-31T13:08:03Z",
+      "side": 1,
+      "message": "Android.bp LGTM",
+      "revId": "3a9d35cc84d7c3803b713638fdbecdaafc6fb8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
