@@ -1,0 +1,8 @@
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Joel Galenson <jgalenson@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Ivan Lozano <ivanlozano@google.com>
+Submitted-at: Tue, 04 Aug 2020 17:46:19 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1386891
+Project: platform/external/selinux
+Branch: refs/heads/master
