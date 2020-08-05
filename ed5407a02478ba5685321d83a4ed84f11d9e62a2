@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65ef876d_5e7cb0f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-05T07:38:48Z",
+      "side": 1,
+      "message": "I\u0027m guessing (I can\u0027t see treehugger logs) this is what was causing the presubmit failure of the escaping fix. Alternatively we could split arguments on whitespace before escaping them in soong, but I think that will cause more issues, e.g. argument values with embedded whitespace.",
+      "revId": "ed5407a02478ba5685321d83a4ed84f11d9e62a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
