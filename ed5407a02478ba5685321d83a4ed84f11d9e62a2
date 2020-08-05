@@ -16,6 +16,24 @@
       "revId": "ed5407a02478ba5685321d83a4ed84f11d9e62a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74aa5edc_d86fea05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-05T13:13:51Z",
+      "side": 1,
+      "message": "Yup, this is the source of the error, though the only args that are causing a problem are the two final ones with globs (they get quoted as a single arg with the whitespace included). The others without special characters are passed without quoting and thus aren\u0027t problematic. We probably should update them all for consistency though.\n\nAdding the appropriate owners for review, thanks!",
+      "parentUuid": "65ef876d_5e7cb0f6",
+      "revId": "ed5407a02478ba5685321d83a4ed84f11d9e62a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
