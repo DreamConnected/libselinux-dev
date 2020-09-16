@@ -16,6 +16,23 @@
       "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "674c98be_2e684636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-09-16T19:58:25Z",
+      "side": 1,
+      "message": "Also, at first glance, wouldn\u0027t a better solution be to fix Android to not generate 0 length files?",
+      "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
