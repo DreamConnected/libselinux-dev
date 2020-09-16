@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8a78a92_235cce14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2020-09-16T19:54:42Z",
+      "side": 1,
+      "message": "Secilc is developed in the upstream selinux project. Please email this patch to selinux@vger.kernel.org.\n\nFor more information see:\nhttps://github.com/SELinuxProject/selinux\n\nOnce your patch has merged there, I will merge it into Android.",
+      "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
