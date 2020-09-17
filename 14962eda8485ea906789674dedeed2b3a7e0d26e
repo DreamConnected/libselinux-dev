@@ -33,6 +33,24 @@
       "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce048493_414cb7b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179450
+      },
+      "writtenOn": "2020-09-17T04:57:31Z",
+      "side": 1,
+      "message": "Makes sense, absolutely! Thanks for the review, will look into fixing the empty files first. Abandoning this change.",
+      "parentUuid": "674c98be_2e684636",
+      "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
