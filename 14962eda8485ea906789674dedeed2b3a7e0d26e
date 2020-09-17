@@ -51,6 +51,41 @@
       "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37e8d749_6933c42d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-09-17T09:52:37Z",
+      "side": 1,
+      "message": "While agree we shouldn\u0027t be generating empty CIL files, is there any good reason why it should be fatal?\nOn AOSP skipping the mapping generation isn\u0027t easy as we can\u0027t know at runtime weather the file will be empty or not and skip the build in this case",
+      "parentUuid": "ce048493_414cb7b0",
+      "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95468acf_e7c9c4ae",
+        "filename": "secilc/secilc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-09-17T09:52:37Z",
+      "side": 1,
+      "message": "This is leaking file, missing:\nfclose(file);",
+      "revId": "14962eda8485ea906789674dedeed2b3a7e0d26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
