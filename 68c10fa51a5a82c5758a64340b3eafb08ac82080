@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Submitted-by: Tom Cherry <tomcherry@google.com>
+Submitted-at: Fri, 18 Sep 2020 22:53:43 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1429896
+Project: platform/external/selinux
+Branch: refs/heads/master
