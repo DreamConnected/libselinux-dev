@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b620fe10_b81c9860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-09-18T22:39:39Z",
+      "side": 1,
+      "message": "can you update the commit message to say \"why\" you\u0027re doing this, or at least provide a bug number?",
+      "revId": "456bfca55b541ffa0f33fc916abf3dea5160a294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
