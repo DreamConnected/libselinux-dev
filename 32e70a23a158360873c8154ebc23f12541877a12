@@ -16,6 +16,57 @@
       "message": "Uhh, I don\u0027t know why Gerrit uploaded a new version....  Sorry!",
       "revId": "32e70a23a158360873c8154ebc23f12541877a12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66459fe7_f1bde864",
+        "filename": "libselinux/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-10-16T22:05:14Z",
+      "side": 1,
+      "message": "There\u0027s a lot of debate about whether to add -Werror or not. Adding -Werror makes compiler upgrades hard when the compiler adds new warnings. You may want to investigate what the best practice is. I\u0027m not sure.\n\nNo action required.",
+      "revId": "32e70a23a158360873c8154ebc23f12541877a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433a6705_dd164c8c",
+        "filename": "libselinux/fuzzers/AndroidLoadPolicyFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-10-16T22:05:14Z",
+      "side": 1,
+      "message": "Is this intended to be a test against the kernel?\n\nIf a random policy is loaded successfully into the kernel, bad bad things are going to happen.  :-)\n\nIf an attacker can command a new SELinux policy to be loaded, we have much worse problems than attacks against this code.  :-) I\u0027m not sure of the value of this fuzzer honestly...",
+      "revId": "32e70a23a158360873c8154ebc23f12541877a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4176769_ff42be08",
+        "filename": "libselinux/fuzzers/ContextFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-10-16T22:05:14Z",
+      "side": 1,
+      "message": "If the context is valid this will leak memory. You need to free any allocated memory.",
+      "revId": "32e70a23a158360873c8154ebc23f12541877a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
