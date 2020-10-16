@@ -69,6 +69,24 @@
       "parentUuid": "c9692eeb_5236356f",
       "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57703ae3_30a99b77",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-10-16T22:09:04Z",
+      "side": 1,
+      "message": "It looks like the overwrite of Bram\u0027s base change was legit, since the change was modified to update the committer from Bram to you.  See https://android-review.googlesource.com/c/platform/external/selinux/+/1464002/1..2//COMMIT_MSG . It looks like you change the base commit, although perhaps not intentionally.\n\nDon\u0027t modify the base commit, and it shouldn\u0027t overwrite the uploaded version.",
+      "parentUuid": "297dd29a_fd5c156d",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
