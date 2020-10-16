@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d9be14_bf2b6efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-10-16T21:50:05Z",
+      "side": 1,
+      "message": "Is there anyway we could put this change outside the external/selinux tree? Maybe system/core, system/core/selinux, or system/security? I\u0027d prefer that external/selinux remain as pristine and close to upstream as possible. If this is too hard, no big deal, I\u0027m fine as-is.",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9692eeb_5236356f",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2020-10-16T21:50:05Z",
+      "side": 1,
+      "message": "add newline after this line please",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
