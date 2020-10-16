@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06ce5cd7_28787aa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-16T21:56:28Z",
+      "side": 1,
+      "message": "+Bram, since he wrote the original CL.\n\nI\u0027m just basing this off other CLs I\u0027ve seen (e.g., ag/q/owner:brarcher%2540google.com+external).",
+      "parentUuid": "97d9be14_bf2b6efc",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9692eeb_5236356f",
         "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-16T21:50:05Z",
       "side": 1,
       "message": "add newline after this line please",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297dd29a_fd5c156d",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-16T21:56:28Z",
+      "side": 1,
+      "message": "Sure.  But as a side note, is there a good way to avoid having Gerrit override the base change I locally cherry-picked when I update my CL that\u0027s on top of it?",
+      "parentUuid": "c9692eeb_5236356f",
       "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
