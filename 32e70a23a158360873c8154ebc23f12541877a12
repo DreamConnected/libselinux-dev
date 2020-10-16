@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59fc38c6_05ba35fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-16T21:42:27Z",
+      "side": 1,
+      "message": "Uhh, I don\u0027t know why Gerrit uploaded a new version....  Sorry!",
+      "revId": "32e70a23a158360873c8154ebc23f12541877a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
