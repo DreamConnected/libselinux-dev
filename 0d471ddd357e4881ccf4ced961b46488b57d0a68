@@ -87,6 +87,24 @@
       "parentUuid": "297dd29a_fd5c156d",
       "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2af8cd_149f1148",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-17T00:21:04Z",
+      "side": 1,
+      "message": "Right, but do you know how to avoid that?  All the download patch options seem to modify the committer automatically.  If I locally rewrite the commit to use a different committer name, it won\u0027t let me upload it since the email address isn\u0027t mine.",
+      "parentUuid": "57703ae3_30a99b77",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
