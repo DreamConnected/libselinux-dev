@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ccce98b_cf8b5c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2020-10-19T11:01:18Z",
+      "side": 1,
+      "message": "Hey,\n\nSimilar to what Joel mentioned, I just based the structure off of what other fuzzers for projects in external/ seemed to be doing, for consistency. That being said, totally happy to move this over if that\u0027s what you decide is best (it shouldn\u0027t be hard) :-)\n\nKind regards,\nBram",
+      "parentUuid": "06ce5cd7_28787aa1",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9692eeb_5236356f",
         "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
         "patchSetId": 1
