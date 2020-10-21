@@ -16,6 +16,23 @@
       "message": "Thanks for the review Nick!\n\nAnd thanks for building on top of this Joel! :-)",
       "revId": "4e3527ec78ed5edc702291ca4d3038e94de5b04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1b43be_eeec563e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-21T15:40:05Z",
+      "side": 1,
+      "message": "Friendly ping for review.",
+      "revId": "4e3527ec78ed5edc702291ca4d3038e94de5b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
