@@ -100,6 +100,8 @@ cc_library {
     name: "libselinux",
     defaults: ["libselinux_defaults"],
 
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
     recovery_available: true,
 
     host_supported: true,
