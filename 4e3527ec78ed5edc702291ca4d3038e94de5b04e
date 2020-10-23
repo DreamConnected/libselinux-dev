@@ -50,6 +50,24 @@
       "message": "Do you know how the fuzzer runs? Does it run as root or an unprivileged user?\n\nselinux_android_setcontext(), if successful, has side effects such as changing the SELinux context (and others???). It seems like we need to fix the fuzzer to undo any successful context change, no?",
       "revId": "4e3527ec78ed5edc702291ca4d3038e94de5b04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b432162d_50d6da99",
+        "filename": "libselinux/fuzzers/AndroidSetcontextFuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2020-10-23T10:14:09Z",
+      "side": 1,
+      "message": "Hey Nick,\n\nFrom my understanding, the fuzzer will be run with the same privileges as (non-root) adb. In addition, fuzzers that have host_supported set to true are able to run fully on-host (without a device) as well (go/android-fuzzing-write#note-host-support).\n\nYou\u0027re right that if the call to selinux_android_setcontext() will change the state if successful, though I was expecting this to never happen if the fuzzer was not running as root. Please let me know if that is not the case, and if you have a suggestion on how to best reset the context.\n\nI\u0027m definitely not familiar enough with this code to know what I\u0027m doing, and was just operating from the principle of \"a running fuzzer is better than no fuzzer\", so it\u0027s also totally reasonable for your suggestion to be \"just drop this altogether\" :-)",
+      "parentUuid": "dc748fe8_19cdaed0",
+      "revId": "4e3527ec78ed5edc702291ca4d3038e94de5b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
