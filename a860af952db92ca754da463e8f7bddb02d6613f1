@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f97d5d2_431a9cc8",
+        "filename": "libselinux/fuzzers/AndroidLoadPolicyFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2020-10-26T09:04:06Z",
+      "side": 1,
+      "message": "File was removed as part of https://r.android.com/c/platform/external/selinux/+/1464002/comment/433a6705_dd164c8c/",
+      "parentUuid": "d0901aa8_9dc63412",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "a860af952db92ca754da463e8f7bddb02d6613f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c622a73_ecedac0b",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ddac6e_f718b514",
+        "filename": "libselinux/fuzzers/AndroidSetcontextFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2020-10-26T09:04:06Z",
+      "side": 1,
+      "message": "Done. Thanks for catching these Jeff :-)",
+      "parentUuid": "8c622a73_ecedac0b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a860af952db92ca754da463e8f7bddb02d6613f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc21358f_0d73d8ea",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-23T22:42:37Z",
       "side": 1,
       "message": "copyright?",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "a860af952db92ca754da463e8f7bddb02d6613f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26bfddc1_0557a5d1",
+        "filename": "libselinux/fuzzers/ContextFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2020-10-26T09:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc21358f_0d73d8ea",
       "range": {
         "startLine": 1,
         "startChar": 17,
