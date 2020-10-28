@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d864e6b_2ec06242",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-28T20:32:17Z",
+      "side": 1,
+      "message": "Yes, which is why I was asking you earlier if there was a way to have the dictionary only apply to parts of the input.  Still, this seems reasonable to me, as the fuzzer can still figure it out by generating different data (and without that the dictionary wouldn\u0027t be very useful anyway).",
+      "parentUuid": "e0d0862f_3b099670",
+      "revId": "564569607ac97d6c11fa2758b162a2f5ed77bdbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f2af21_8afdcade",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-28T20:05:26Z",
       "side": 1,
       "message": "In case the fuzzed data is short, should these occur first (as they consume less data), then the strings are sampled second?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 40
+      },
+      "revId": "564569607ac97d6c11fa2758b162a2f5ed77bdbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5872b35c_19cd3c4a",
+        "filename": "libselinux/fuzzers/selinux_check_access_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-28T20:32:17Z",
+      "side": 1,
+      "message": "It looks like the implementation of ConsumeRandomLengthString is a bit weird, so yeah, probably.\n\nI can\u0027t make this change until the parent CL is merged, however.",
+      "parentUuid": "39f2af21_8afdcade",
       "range": {
         "startLine": 58,
         "startChar": 0,
