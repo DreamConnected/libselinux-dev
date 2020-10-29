@@ -16,6 +16,24 @@
       "message": "What is *ramdisk_available?  It\u0027s not clear from the bug.",
       "revId": "a6fdda7fb4aeec0e65013cf889de575b399cd3f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c26c6d_9a06a9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-10-29T17:59:17Z",
+      "side": 1,
+      "message": "see new commit message.",
+      "parentUuid": "65110fba_40050df8",
+      "revId": "a6fdda7fb4aeec0e65013cf889de575b399cd3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
