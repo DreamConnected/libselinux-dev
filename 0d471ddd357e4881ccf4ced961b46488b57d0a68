@@ -123,6 +123,24 @@
       "parentUuid": "57703ae3_30a99b77",
       "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dca8545_fd5daa6f",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.dict",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-29T14:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c2af8cd_149f1148",
+      "revId": "0d471ddd357e4881ccf4ced961b46488b57d0a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
