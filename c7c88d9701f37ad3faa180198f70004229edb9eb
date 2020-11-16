@@ -1,0 +1,8 @@
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Bram Bonné <brambonne@google.com>
+Submitted-at: Mon, 16 Nov 2020 14:21:47 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/external/selinux/+/1492196
+Project: platform/external/selinux
+Branch: refs/heads/master
