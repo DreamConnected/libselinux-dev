@@ -1189,6 +1189,7 @@ struct pkg_info *package_info_lookup(const char *name)
 #define DATA_USER_DE_PATH "/data/user_de"
 #define EXPAND_USER_PATH "/mnt/expand/\?\?\?\?\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?\?\?\?\?\?\?\?\?/user"
 #define EXPAND_USER_DE_PATH "/mnt/expand/\?\?\?\?\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?\?\?\?\?\?\?\?\?/user_de"
+#define USER_PROFILE_PATH "/data/misc/profiles/cur/*"
 #define DATA_DATA_PREFIX DATA_DATA_PATH "/"
 #define DATA_USER_PREFIX DATA_USER_PATH "/"
 #define DATA_USER_DE_PREFIX DATA_USER_DE_PATH "/"
@@ -1548,6 +1549,11 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
                 continue;
             }
 
+            if (!datadata && !fnmatch(USER_PROFILE_PATH, ftsent->fts_path, FNM_PATHNAME)) {
+                // Don't label this directory, vold takes care of that, but continue below it.
+                continue;
+            }
+            
             if (setrestoreconlast) {
                 struct dir_hash_node* new_node = NULL;
                 if (check_context_match_for_dir(ftsent->fts_path, &new_node, force, error)) {
