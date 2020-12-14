@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f80a50_5de7c695",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-12-14T21:05:30Z",
+      "side": 1,
+      "message": "extra spaces",
+      "range": {
+        "startLine": 1556,
+        "startChar": 0,
+        "endLine": 1556,
+        "endChar": 12
+      },
+      "revId": "695f430891d7af2df9d89129f0f7c86b33bd9e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
