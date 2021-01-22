@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+package {
+    default_applicable_licenses: ["external_selinux_libselinux_license"],
+}
+
 cc_defaults {
     name: "libselinux_fuzzer_defaults",
     cflags: [

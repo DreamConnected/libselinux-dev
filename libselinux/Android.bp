@@ -1,3 +1,14 @@
+package {
+    default_applicable_licenses: ["external_selinux_libselinux_license"],
+}
+
+license {
+    name: "external_selinux_libselinux_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0","SPDX-license-identifier-GPL-2.0","SPDX-license-identifier-Unlicense","legacy_unencumbered"],
+    license_text: ["LICENSE"],
+}
+
 common_CFLAGS = [
     // Persistently stored patterns (pcre2) are architecture dependent.
     // In particular paterns built on amd64 can not run on devices with armv7
