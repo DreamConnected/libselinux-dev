@@ -16,6 +16,29 @@
       "message": "Oh, I need +2 here. Joel, Jeffrey, can you give +2?",
       "revId": "b755a86d07ec01affc7772086c1a56fb89a55b8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69e85ae_8d4411b2",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-02-04T23:24:03Z",
+      "side": 1,
+      "message": "Should this be changed as well?",
+      "range": {
+        "startLine": 201,
+        "startChar": 29,
+        "endLine": 201,
+        "endChar": 48
+      },
+      "revId": "b755a86d07ec01affc7772086c1a56fb89a55b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
