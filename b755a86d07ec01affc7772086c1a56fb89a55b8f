@@ -39,6 +39,30 @@
       },
       "revId": "b755a86d07ec01affc7772086c1a56fb89a55b8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d967c9_2f40bb21",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-05T09:14:13Z",
+      "side": 1,
+      "message": "This vendor: {...} part is no-op as libselinux becomes LLNDK. We have to remove this, but that could be a different CL.",
+      "parentUuid": "d69e85ae_8d4411b2",
+      "range": {
+        "startLine": 201,
+        "startChar": 29,
+        "endLine": 201,
+        "endChar": 48
+      },
+      "revId": "b755a86d07ec01affc7772086c1a56fb89a55b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
