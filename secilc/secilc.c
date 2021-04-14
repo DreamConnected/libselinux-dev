@@ -267,6 +267,9 @@ int main(int argc, char *argv[])
 			goto exit;
 		}
 		file_size = filedata.st_size;
+		if (file_size == 0) {
+			continue;
+		}
 
 		buffer = malloc(file_size);
 		rc = fread(buffer, file_size, 1, file);
