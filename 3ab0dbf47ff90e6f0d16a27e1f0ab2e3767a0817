@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f258581d_aa804cb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-04-23T16:27:14Z",
+      "side": 1,
+      "message": "Why was this change taken in AOSP instead of upstream? Now we have merge conflicts when trying to merge upstream into internal :(",
+      "revId": "3ab0dbf47ff90e6f0d16a27e1f0ab2e3767a0817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
