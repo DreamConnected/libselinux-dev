@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3334a66e_f1d2377f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1214664
+      },
+      "writtenOn": "2021-04-27T08:28:36Z",
+      "side": 1,
+      "message": "hi Joel,\n\nMove restorecon data/media to vold, please help review.\nThanks!",
+      "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
