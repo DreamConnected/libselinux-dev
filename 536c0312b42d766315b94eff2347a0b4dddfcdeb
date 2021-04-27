@@ -33,6 +33,24 @@
       "message": "Is there a tracking bug for this? I\u0027m concerned that this will cause breakage on other devices.",
       "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0550d414_8c5b47b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1214664
+      },
+      "writtenOn": "2021-04-27T09:07:26Z",
+      "side": 1,
+      "message": "No tracking bug, I am trying to speed up restorecon after OTA, found that restorecon data/media is very time-consuming in second stage init.\nAt this time, the dirs under data/media/0 has not been decrypted, I add some log:\n[   11.765748] selinux: SELinux:  Relabeling /data/media/0/pZ4dKCAAAAQJ5VtO8gCjGlw2IyHKo3KE/IEd8mCAAAAA8EfbvFo9RPsC1joOPQS,3/MOLPaDAAAAQ88yIv07F4ou4k6SC80E5o/F9L3ZBAAAAw66Sgx7nSNrluaZr35ued2/9hPJPDAAAAArwxkuAK0QpYJidbsO41,B from u:object_r:media_rw_data_file:s0:c246,c256,c512,c768 to u:object_r:media_rw_data_file:s0.\nrestorecon this dir lead to c246,c256,c512,c768 lost.",
+      "parentUuid": "579942e5_8b7627db",
+      "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
