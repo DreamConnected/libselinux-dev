@@ -51,6 +51,23 @@
       "parentUuid": "579942e5_8b7627db",
       "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18110429_719f5513",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-04-27T09:12:26Z",
+      "side": 1,
+      "message": "Unfortunately, at least on my device, I see that files exist here that are not managed by vold.\n\nredfin:/ # ls -laZ /data/media\ndrwxrws--- 18 media_rw media_rw u:object_r:media_rw_data_file:s0     3452 2021-04-04 15:36 0\ndrwxrws--- 16 media_rw media_rw u:object_r:media_rw_data_file:s0     3452 2021-03-29 12:01 10\ndrwxrwx---  2 media_rw media_rw u:object_r:media_rw_data_file:s0     3452 1970-04-04 14:20 obb\n\nSo this change can lead to breakage.",
+      "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
