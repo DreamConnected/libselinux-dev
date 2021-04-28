@@ -86,6 +86,24 @@
       "parentUuid": "18110429_719f5513",
       "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8e987c_be6b7aff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-04-28T09:03:15Z",
+      "side": 1,
+      "message": "Good points. Let\u0027s get the storage folks involved to see what their opinion is. Perhaps we can move the location of obb so that /data/media can be fully managed by vold? I\u0027ve added Nandana and Martijn as reviewers.",
+      "parentUuid": "7d7232d7_d25955a3",
+      "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
