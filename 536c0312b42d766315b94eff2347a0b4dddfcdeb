@@ -104,6 +104,24 @@
       "parentUuid": "7d7232d7_d25955a3",
       "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc20604_8af42e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1214664
+      },
+      "writtenOn": "2021-04-29T15:01:58Z",
+      "side": 1,
+      "message": "hi jeffrey,\n\nAnother question, for ce dirs, do we need to set setrestoreconlast to false?\nI see that restorecon ce dirs always skip due to match digest.",
+      "parentUuid": "bb8e987c_be6b7aff",
+      "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
