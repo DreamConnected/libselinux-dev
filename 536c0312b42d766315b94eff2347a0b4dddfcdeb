@@ -122,6 +122,24 @@
       "parentUuid": "bb8e987c_be6b7aff",
       "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2e12b6_e3938ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1214664
+      },
+      "writtenOn": "2021-04-30T11:17:17Z",
+      "side": 1,
+      "message": "hi jeffrey,\n\nPlease ignore the above question. I made a mistake.\nSorry about that.",
+      "parentUuid": "ebc20604_8af42e24",
+      "revId": "536c0312b42d766315b94eff2347a0b4dddfcdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
