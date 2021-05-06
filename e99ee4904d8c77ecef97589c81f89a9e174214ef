@@ -33,6 +33,24 @@
       "message": "Jeff can confirm, but I believe this should go upstream first.",
       "revId": "e99ee4904d8c77ecef97589c81f89a9e174214ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457b4637_11bacce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1214664
+      },
+      "writtenOn": "2021-05-06T06:30:18Z",
+      "side": 1,
+      "message": "hi Joel,\n\nI clone upstream code from https://github.com/SELinuxProject/selinux.git, but there is not libselinux/src/android dir.\n\nI think this android_platform.c maybe aosp specific code.",
+      "parentUuid": "53bc298e_5432c51a",
+      "revId": "e99ee4904d8c77ecef97589c81f89a9e174214ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
