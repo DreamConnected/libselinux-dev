@@ -86,6 +86,29 @@
       "message": "hi Jeffrey and Joel,\n\nWhat do you think of this？\nThanks!",
       "revId": "e99ee4904d8c77ecef97589c81f89a9e174214ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c96197_3a754629",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-05-12T06:50:46Z",
+      "side": 1,
+      "message": "I don\u0027t understand how the restorecon skip ever worked since we (apparently) expect to be able restorecon files within this directory: https://cs.android.com/android/platform/superproject/+/master:system/sepolicy/private/file_contexts;l\u003d718?q\u003dsystem_ce. Does vold handle the restorecon of subdirectories here?",
+      "range": {
+        "startLine": 1182,
+        "startChar": 0,
+        "endLine": 1182,
+        "endChar": 47
+      },
+      "revId": "e99ee4904d8c77ecef97589c81f89a9e174214ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
