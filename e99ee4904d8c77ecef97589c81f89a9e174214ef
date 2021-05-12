@@ -133,6 +133,30 @@
       },
       "revId": "e99ee4904d8c77ecef97589c81f89a9e174214ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf503e52_e98e38bc",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-05-12T16:41:22Z",
+      "side": 1,
+      "message": "Yes. And that labels the per-user directories, e.g. /data/system_ce/0, but not /data/system_ce itself.\n\nSo doing it here seems right.",
+      "parentUuid": "940f5bcc_277e53e9",
+      "range": {
+        "startLine": 1182,
+        "startChar": 0,
+        "endLine": 1182,
+        "endChar": 47
+      },
+      "revId": "e99ee4904d8c77ecef97589c81f89a9e174214ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
