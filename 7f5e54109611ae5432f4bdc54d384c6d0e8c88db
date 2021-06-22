@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0419e5fe_cd7592c5",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-06-22T10:13:55Z",
+      "side": 1,
+      "message": "Should this be freecon() instead? From the man page:\n\"context, which must be freed by the caller using freecon(3).\"\nThough I guess it doesn\u0027t matter much, as that\u0027s just calling free() itself.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "7f5e54109611ae5432f4bdc54d384c6d0e8c88db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
