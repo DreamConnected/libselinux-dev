@@ -22,6 +22,30 @@
       },
       "revId": "7f5e54109611ae5432f4bdc54d384c6d0e8c88db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fcc120f_3c7476cd",
+        "filename": "libselinux/fuzzers/selabel_lookup_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-06-22T11:06:51Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter. It\u0027s just a string, and android doesn\u0027t expose freecon, so we also don\u0027t use freecon() anywhere in Android-specific code.",
+      "parentUuid": "0419e5fe_cd7592c5",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "7f5e54109611ae5432f4bdc54d384c6d0e8c88db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
