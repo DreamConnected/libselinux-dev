@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4daba29b_3350c89f",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-07-01T09:23:30Z",
+      "side": 1,
+      "message": "We only use pathname for logging after this point now AFAICT.\nCould we delete that and remove the bit of string mungeing we do below?",
+      "range": {
+        "startLine": 1178,
+        "startChar": 21,
+        "endLine": 1178,
+        "endChar": 29
+      },
+      "revId": "2204670e6cafbf0f81aa222cd11987687e41a7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
