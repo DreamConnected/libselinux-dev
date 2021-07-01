@@ -70,6 +70,30 @@
       },
       "revId": "2204670e6cafbf0f81aa222cd11987687e41a7ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6aa212_6cc6d807",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-07-01T09:36:51Z",
+      "side": 1,
+      "message": "I think I\u0027m going to leave it since the logging is useful.",
+      "parentUuid": "a61da854_9f2c72aa",
+      "range": {
+        "startLine": 1178,
+        "startChar": 21,
+        "endLine": 1178,
+        "endChar": 29
+      },
+      "revId": "2204670e6cafbf0f81aa222cd11987687e41a7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
