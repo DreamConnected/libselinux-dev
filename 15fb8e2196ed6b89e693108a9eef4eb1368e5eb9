@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d3716f_2e1f7e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-07-05T09:43:51Z",
+      "side": 1,
+      "message": "Can we now remove `#include \u003cselinux/avc.h\u003e` from android_common.h?",
+      "revId": "15fb8e2196ed6b89e693108a9eef4eb1368e5eb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
