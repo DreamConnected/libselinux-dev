@@ -231,6 +231,7 @@ extern char *CIL_KEY_DONTAUDITX;
 extern char *CIL_KEY_NEVERALLOWX;
 extern char *CIL_KEY_PERMISSIONX;
 extern char *CIL_KEY_IOCTL;
+extern char *CIL_KEY_NLMSG;
 extern char *CIL_KEY_UNORDERED;
 extern char *CIL_KEY_SRC_INFO;
 extern char *CIL_KEY_SRC_CIL;
@@ -615,6 +616,7 @@ struct cil_avrule {
 };
 
 #define CIL_PERMX_KIND_IOCTL 1
+#define CIL_PERMX_KIND_NLMSG 0x10
 struct cil_permissionx {
 	struct cil_symtab_datum datum;
 	uint32_t kind;

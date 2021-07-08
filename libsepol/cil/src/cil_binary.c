@@ -70,6 +70,7 @@ struct cil_args_binary {
 	int pass;
 	hashtab_t role_trans_table;
 	hashtab_t avrulex_ioctl_table;
+	hashtab_t avrulex_nlmsg_table;
 	void **type_value_to_cil;
 };
 
@@ -1569,7 +1570,7 @@ void __avrule_xperm_setrangebits(uint16_t low, uint16_t high, struct avtab_exten
 #define IOC_DRIV(x) (x >> 8)
 #define IOC_FUNC(x) (x & 0xff)
 
-int __cil_permx_bitmap_to_sepol_xperms_list(ebitmap_t *xperms, struct cil_list **xperms_list)
+int __cil_permx_ioctl_bitmap_to_sepol_xperms_list(ebitmap_t *xperms, struct cil_list **xperms_list)
 {
 	ebitmap_node_t *node;
 	unsigned int i;
@@ -1634,7 +1635,46 @@ int __cil_permx_bitmap_to_sepol_xperms_list(ebitmap_t *xperms, struct cil_list *
 	return SEPOL_OK;
 }
 
-int __cil_avrulex_ioctl_to_policydb(hashtab_key_t k, hashtab_datum_t datum, void *args)
+int __cil_permx_nlmsg_bitmap_to_sepol_xperms_list(ebitmap_t *xperms, struct cil_list **xperms_list)
+{
+	ebitmap_node_t *node;
+	uint16_t i;
+	uint16_t low;
+	struct avtab_extended_perms *avtab = NULL;
+	int start_new_range = 1;
+
+	cil_list_init(xperms_list, CIL_NONE);
+
+	ebitmap_for_each_positive_bit(xperms, node, i) {
+		if (start_new_range) {
+			low = i;
+			start_new_range = 0;
+		}
+
+		// continue if the current bit isn't the end of the driver function or the next bit is set
+		if (IOC_FUNC(i) != 0xff && ebitmap_get_bit(xperms, i + 1)) {
+			continue;
+		}
+
+		start_new_range = 1;
+
+		if (!avtab) {
+			avtab = cil_calloc(1, sizeof(*avtab));
+			avtab->driver = 0;
+			avtab->specified = AVTAB_XPERMS_NLMSG;
+		}
+
+		__avrule_xperm_setrangebits(low, i, avtab);
+	}
+
+	if (avtab) {
+		cil_list_append(*xperms_list, CIL_NONE, avtab);
+	}
+
+	return SEPOL_OK;
+}
+
+int __cil_avrulex_to_policydb(hashtab_key_t k, hashtab_datum_t datum, char* cil_key, void *args)
 {
 	int rc = SEPOL_OK;
 	struct policydb *pdb;
@@ -1653,13 +1693,13 @@ int __cil_avrulex_ioctl_to_policydb(hashtab_key_t k, hashtab_datum_t datum, void
 	// setting the data for an extended avtab isn't really necessary because
 	// it is ignored by the kernel. However, neverallow checking requires that
 	// the data value be set, so set it for that to work.
-	rc = __perm_str_to_datum(CIL_KEY_IOCTL, sepol_obj, &data);
+	rc = __perm_str_to_datum(cil_key, sepol_obj, &data);
 	if (rc != SEPOL_OK) {
 		goto exit;
 	}
-	avtab_datum.data = data;
 
-	rc = __cil_permx_bitmap_to_sepol_xperms_list(datum, &xperms_list);
+	avtab_datum.data = data;
+	rc = __cil_permx_ioctl_bitmap_to_sepol_xperms_list(datum, &xperms_list);
 	if (rc != SEPOL_OK) {
 		goto exit;
 	}
@@ -1690,6 +1730,14 @@ exit:
 	free(datum);
 
 	return rc;
+}
+
+int __cil_avrulex_ioctl_to_policydb(hashtab_key_t k, hashtab_datum_t datum, void *args) {
+	return __cil_avrulex_to_policydb(k, datum, CIL_KEY_IOCTL, args);
+}
+
+int __cil_avrulex_nlmsg_to_policydb(hashtab_key_t k, hashtab_datum_t datum, void *args) {
+	return __cil_avrulex_to_policydb(k, datum, CIL_KEY_NLMSG, args);
 }
 
 int __cil_avrulex_ioctl_to_hashtable(hashtab_t h, uint16_t kind, uint32_t src, uint32_t tgt, uint32_t obj, ebitmap_t *xperms)
@@ -1771,8 +1819,12 @@ int __cil_avrulex_to_hashtable_helper(policydb_t *pdb, uint16_t kind, struct cil
 		if (rc != SEPOL_OK) goto exit;
 
 		switch (permx->kind) {
-		case  CIL_PERMX_KIND_IOCTL:
+		case CIL_PERMX_KIND_IOCTL:
 			rc = __cil_avrulex_ioctl_to_hashtable(args->avrulex_ioctl_table, kind, sepol_src->s.value, sepol_tgt->s.value, sepol_obj->s.value, permx->perms);
+			if (rc != SEPOL_OK) goto exit;
+			break;
+		case CIL_PERMX_KIND_NLMSG:
+			rc = __cil_avrulex_ioctl_to_hashtable(args->avrulex_nlmsg_table, kind, sepol_src->s.value, sepol_tgt->s.value, sepol_obj->s.value, permx->perms);
 			if (rc != SEPOL_OK) goto exit;
 			break;
 		default:
@@ -4334,6 +4386,9 @@ static int __cil_permx_to_sepol_class_perms(policydb_t *pdb, struct cil_permissi
 			case CIL_PERMX_KIND_IOCTL:
 				perm_str = CIL_KEY_IOCTL;
 				break;
+			case CIL_PERMX_KIND_NLMSG:
+				perm_str = CIL_KEY_NLMSG;
+				break;
 			default:
 				rc = SEPOL_ERR;
 				goto exit;
@@ -4479,6 +4534,9 @@ static void __cil_print_permissionx(struct cil_permissionx *px)
 		case CIL_PERMX_KIND_IOCTL:
 			kind_str = CIL_KEY_IOCTL;
 			break;
+		case CIL_PERMX_KIND_NLMSG:
+			kind_str = CIL_KEY_NLMSG;
+			break;
 		default:
 			kind_str = "unknown";
 			break;
@@ -4612,9 +4670,22 @@ static int cil_check_neverallow(const struct cil_db *db, policydb_t *pdb, struct
 			goto exit;
 		}
 
-		rc = __cil_permx_bitmap_to_sepol_xperms_list(cil_rule->perms.x.permx->perms, &xperms);
-		if (rc != SEPOL_OK) {
-			goto exit;
+		switch (cil_rule->perms.x.permx->kind) {
+			case CIL_PERMX_KIND_IOCTL:
+				rc = __cil_permx_ioctl_bitmap_to_sepol_xperms_list(cil_rule->perms.x.permx->perms, &xperms);
+				if (rc != SEPOL_OK) {
+					goto exit;
+				}
+				break;
+			case CIL_PERMX_KIND_NLMSG:
+				rc = __cil_permx_nlmsg_bitmap_to_sepol_xperms_list(cil_rule->perms.x.permx->perms, &xperms);
+				if (rc != SEPOL_OK) {
+					goto exit;
+				}
+				break;
+			default:
+				rc = SEPOL_ERR;
+				goto exit;
 		}
 
 		cil_list_for_each(item, xperms) {
@@ -4803,6 +4874,7 @@ int cil_binary_create_allocated_pdb(const struct cil_db *db, sepol_policydb_t *p
 	struct cil_list *neverallows = NULL;
 	hashtab_t role_trans_table = NULL;
 	hashtab_t avrulex_ioctl_table = NULL;
+	hashtab_t avrulex_nlmsg_table = NULL;
 	void **type_value_to_cil = NULL;
 	struct cil_class **class_value_to_cil = NULL;
 	struct cil_perm ***perm_value_to_cil = NULL;
@@ -4846,7 +4918,13 @@ int cil_binary_create_allocated_pdb(const struct cil_db *db, sepol_policydb_t *p
 
 	avrulex_ioctl_table = hashtab_create(avrulex_hash, avrulex_compare, AVRULEX_TABLE_SIZE);
 	if (!avrulex_ioctl_table) {
-		cil_log(CIL_INFO, "Failure to create hashtab for avrulex\n");
+		cil_log(CIL_INFO, "Failure to create hashtab for ioctl\n");
+		goto exit;
+	}
+
+	avrulex_nlmsg_table = hashtab_create(avrulex_hash, avrulex_compare, AVRULEX_TABLE_SIZE);
+	if (!avrulex_nlmsg_table) {
+		cil_log(CIL_INFO, "Failure to create hashtab for nlmsg\n");
 		goto exit;
 	}
 
@@ -4857,6 +4935,7 @@ int cil_binary_create_allocated_pdb(const struct cil_db *db, sepol_policydb_t *p
 	extra_args.neverallows = neverallows;
 	extra_args.role_trans_table = role_trans_table;
 	extra_args.avrulex_ioctl_table = avrulex_ioctl_table;
+	extra_args.avrulex_nlmsg_table = avrulex_nlmsg_table;
 	extra_args.type_value_to_cil = type_value_to_cil;
 
 	for (i = 1; i <= 3; i++) {
@@ -4879,7 +4958,12 @@ int cil_binary_create_allocated_pdb(const struct cil_db *db, sepol_policydb_t *p
 		if (i == 3) {
 			rc = hashtab_map(avrulex_ioctl_table, __cil_avrulex_ioctl_to_policydb, pdb);
 			if (rc != SEPOL_OK) {
-				cil_log(CIL_INFO, "Failure creating avrulex rules\n");
+				cil_log(CIL_INFO, "Failure creating ioctl avrulex rules\n");
+				goto exit;
+			}
+			rc = hashtab_map(avrulex_nlmsg_table, __cil_avrulex_nlmsg_to_policydb, pdb);
+			if (rc != SEPOL_OK) {
+				cil_log(CIL_INFO, "Failure creating nlmsg avrulex rules\n");
 				goto exit;
 			}
 		}
@@ -4954,6 +5038,7 @@ int cil_binary_create_allocated_pdb(const struct cil_db *db, sepol_policydb_t *p
 exit:
 	hashtab_destroy(role_trans_table);
 	hashtab_destroy(avrulex_ioctl_table);
+	hashtab_destroy(avrulex_nlmsg_table);
 	free(type_value_to_cil);
 	free(class_value_to_cil);
 	if (perm_value_to_cil != NULL) {
