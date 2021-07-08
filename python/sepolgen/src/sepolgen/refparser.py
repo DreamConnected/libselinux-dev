@@ -1104,7 +1104,7 @@ def parse_headers(root, output=None, expand=True, debug=False):
         # to make the expansion work correctly.
         can_exec = refpolicy.Interface("can_exec")
         av = access.AccessVector(["$1","$2","file","execute_no_trans","open", "read",
-                                  "getattr","lock","execute","ioctl"])
+                                  "getattr","lock","execute","ioctl", "nlmsg_type"])
 
         can_exec.children.append(refpolicy.AVRule(av))
         headers.children.append(can_exec)
