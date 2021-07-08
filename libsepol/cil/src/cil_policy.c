@@ -1111,6 +1111,8 @@ static void cil_xperms_to_policy(FILE *out, struct cil_permissionx *permx)
 
 	if (permx->kind == CIL_PERMX_KIND_IOCTL) {
 		kind = "ioctl";
+	} else if (permx->kind == CIL_PERMX_KIND_NLMSG) {
+		kind = CIL_KEY_NLMSG;
 	} else {
 		kind = "???";
 	}
