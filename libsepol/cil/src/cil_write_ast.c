@@ -384,6 +384,9 @@ static int cil_unfill_permx(struct cil_permissionx *permx, char **out_str) {
 	case CIL_PERMX_KIND_IOCTL:
 		kind = CIL_KEY_IOCTL;
 		break;
+	case CIL_PERMX_KIND_NLMSG:
+		kind = CIL_KEY_NLMSG;
+		break;
 	default:
 		cil_log(CIL_ERR, "Unknown permissionx kind: %d\n", permx->kind);
 		rc = SEPOL_ERR;
