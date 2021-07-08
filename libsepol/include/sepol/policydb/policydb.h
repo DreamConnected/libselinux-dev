@@ -258,6 +258,7 @@ typedef struct class_perm_node {
 typedef struct av_extended_perms {
 #define AVRULE_XPERMS_IOCTLFUNCTION	0x01
 #define AVRULE_XPERMS_IOCTLDRIVER	0x02
+#define AVRULE_XPERMS_NLMSG		0x04
 	uint8_t specified;
 	uint8_t driver;
 	/* 256 bits of permissions */
