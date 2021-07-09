@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff155ea6_fdce68d5",
+        "filename": "libselinux/man/man3/selinux_set_callback.3",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-07-09T17:10:03Z",
+      "side": 1,
+      "message": "context/application/program/process?",
+      "range": {
+        "startLine": 121,
+        "startChar": 33,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "78f052df7af8558cb4409171dbc6102c5ba23c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d30977b4_b08b4327",
+        "filename": "libselinux/src/avc_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-07-09T17:10:03Z",
+      "side": 1,
+      "message": "how about:\n\n if (!lock) abort();",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "78f052df7af8558cb4409171dbc6102c5ba23c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
