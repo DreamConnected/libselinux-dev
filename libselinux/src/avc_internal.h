@@ -114,19 +114,19 @@ static inline void *avc_alloc_lock(void)
 
 static inline void avc_get_lock(void *lock)
 {
-	if (avc_func_get_lock)
+	if (avc_func_get_lock && lock)
 		avc_func_get_lock(lock);
 }
 
 static inline void avc_release_lock(void *lock)
 {
-	if (avc_func_release_lock)
+	if (avc_func_release_lock && lock)
 		avc_func_release_lock(lock);
 }
 
 static inline void avc_free_lock(void *lock)
 {
-	if (avc_func_free_lock)
+	if (avc_func_free_lock && lock)
 		avc_func_free_lock(lock);
 }
 
