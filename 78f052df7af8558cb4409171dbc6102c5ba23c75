@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2e2dbf_f195f30d",
+        "filename": "libselinux/man/man3/selinux_set_callback.3",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-07-09T17:15:25Z",
+      "side": 1,
+      "message": "Seems redundant with the \"must\" above, so I just removed it.",
+      "parentUuid": "ff155ea6_fdce68d5",
+      "range": {
+        "startLine": 121,
+        "startChar": 33,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "78f052df7af8558cb4409171dbc6102c5ba23c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d30977b4_b08b4327",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-09T17:10:03Z",
       "side": 1,
       "message": "how about:\n\n if (!lock) abort();",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "78f052df7af8558cb4409171dbc6102c5ba23c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fbf46a_27e7cc86",
+        "filename": "libselinux/src/avc_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-07-09T17:15:25Z",
+      "side": 1,
+      "message": "They call these functions all the time with nullptr and expect the function to just \"deal with it\".",
+      "parentUuid": "d30977b4_b08b4327",
       "range": {
         "startLine": 117,
         "startChar": 23,
