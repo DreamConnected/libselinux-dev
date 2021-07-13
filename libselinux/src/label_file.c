@@ -188,6 +188,9 @@ static int load_mmap(FILE *fp, size_t len, struct selabel_handle *rec,
 
 		str_buf[entry_len] = '\0';
 		if ((strcmp(str_buf, reg_version) != 0)) {
+            fprintf(stderr, "regex version mismatches for file %s "
+                    "expected version: %s actual version: %s\n",
+                    path, reg_version, str_buf);
 			free(str_buf);
 			return -1;
 		}
