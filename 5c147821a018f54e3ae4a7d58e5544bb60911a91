@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3834e9bc_552aa3e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-07-15T17:30:35Z",
+      "side": 1,
+      "message": "This isn\u0027t in the Android-specific portion, right?  I believe it should go upstream first.",
+      "revId": "5c147821a018f54e3ae4a7d58e5544bb60911a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25c6a65_4f752f37",
+        "filename": "libselinux/src/label_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-07-15T17:30:35Z",
+      "side": 1,
+      "message": "The indentation seems wrong here (tabs vs spaces, I bet).",
+      "revId": "5c147821a018f54e3ae4a7d58e5544bb60911a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
