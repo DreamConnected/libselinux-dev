@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7cc30a_12fd2ae8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-07-22T17:35:08Z",
+      "side": 1,
+      "message": "Technically this is a target.android block, not target.bionic.  I assume this still works?",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "ba13a354fc719ad9aaa95e88ba30deb517c807d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
