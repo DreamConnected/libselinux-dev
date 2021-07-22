@@ -22,6 +22,30 @@
       },
       "revId": "ba13a354fc719ad9aaa95e88ba30deb517c807d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98730a76_e0fc067f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-22T17:41:36Z",
+      "side": 1,
+      "message": "I updated the commit message to match target.android.  It would only matter if libselinux was compiled for linux_bionic, but it is not, and I don\u0027t think system_shared_libs here matters anyways (its just preventing an unnecessary dependency on libm and libdl?).",
+      "parentUuid": "ae7cc30a_12fd2ae8",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "ba13a354fc719ad9aaa95e88ba30deb517c807d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
