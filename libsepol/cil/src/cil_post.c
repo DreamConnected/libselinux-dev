@@ -475,9 +475,14 @@ int cil_post_portcon_context_compare(const void *a, const void *b)
 
 int cil_post_genfscon_context_compare(const void *a, const void *b)
 {
+	int rc;
 	struct cil_genfscon *a_genfscon = *(struct cil_genfscon**)a;
 	struct cil_genfscon *b_genfscon = *(struct cil_genfscon**)b;
-	return context_compare(a_genfscon->context, b_genfscon->context);
+	rc = context_compare(a_genfscon->context, b_genfscon->context);
+	if (rc != 0) {
+		cil_log(CIL_ERR, "Found conflicting genfscon rule: genfscon %s %s which context conflict\n", a_genfscon->fs_str, a_genfscon->path_str);
+	}
+	return rc;
 }
 
 int cil_post_netifcon_context_compare(const void *a, const void *b)
