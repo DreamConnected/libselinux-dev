@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36bcc245_ec12c7a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-07-29T09:14:52Z",
+      "side": 1,
+      "message": "nit: two spaces?",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a47631_82020fe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-07-29T09:14:52Z",
+      "side": 1,
+      "message": "nit: applying",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96041fce_7d83e1b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-07-29T09:14:52Z",
+      "side": 1,
+      "message": "Adding a blank line before L21?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c07e250_7960144a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-07-29T09:14:52Z",
+      "side": 1,
+      "message": "nit: applying",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2060aad5_6dd92fc4",
+        "filename": "libsepol/cil/src/cil_post.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-07-29T09:14:52Z",
+      "side": 1,
+      "message": "Just for discussion, should we also output b_genfscon? \n(otherwise, it seems not easy to spot the conflicts?)\n\ne.g.,\ncil_log(CIL_ERR, \"Found conflicting genfscon rules:\\n\"); \ncil_log(CIL_ERR, \"  genfscon %s %s\\n\", a_genfscon-\u003efs_str, a_genfscon-\u003epath_str);\ncil_log(CIL_ERR, \"  genfscon %s %s\\n\", b_genfscon-\u003efs_str, b_genfscon-\u003epath_str);",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 137
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
