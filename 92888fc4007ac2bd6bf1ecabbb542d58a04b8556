@@ -258,6 +258,30 @@
       },
       "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b9e9f8_8ff65a5d",
+        "filename": "libsepol/cil/src/cil_post.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-07-30T02:15:48Z",
+      "side": 1,
+      "message": "Unfortunately, I know less about libselinux than Bowgo, it seems. \u003d)",
+      "parentUuid": "f10f3d36_6abfc9c7",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 137
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
