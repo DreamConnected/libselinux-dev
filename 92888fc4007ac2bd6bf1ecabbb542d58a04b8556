@@ -306,6 +306,30 @@
       },
       "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a517387_45e0d4e8",
+        "filename": "libsepol/cil/src/cil_post.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1886190
+      },
+      "writtenOn": "2021-08-06T07:52:55Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "c96a35f7_08b0f95e",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 137
+      },
+      "revId": "92888fc4007ac2bd6bf1ecabbb542d58a04b8556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
