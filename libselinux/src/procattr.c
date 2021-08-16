@@ -1,3 +1,4 @@
+#include <sys/cdefs.h>
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -25,6 +26,8 @@ static __thread char destructor_initialized;
 /* Bionic and glibc >= 2.30 declare gettid() system call wrapper in unistd.h and
  * has a definition for it */
 #ifdef __BIONIC__
+  #define OVERRIDE_GETTID 0
+#elif defined(ANDROID_HOST_MUSL)
   #define OVERRIDE_GETTID 0
 #elif !defined(__GLIBC_PREREQ)
   #define OVERRIDE_GETTID 1
