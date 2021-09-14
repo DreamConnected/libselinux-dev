@@ -16,6 +16,24 @@
       "message": "seems like we\u0027ve diverged from upstream here? https://github.com/SELinuxProject/selinux/blob/master/libselinux/src/procattr.c#L25 \n\nlooks like their reason was musl too: https://github.com/SELinuxProject/selinux/commit/398d2ceef92cb1baac18e6b34a1a8e1bf41296cd\n\n(libselinux isn\u0027t tracking upstream? :-( )",
       "revId": "6a7b91f5fae0a0af095dccb8149189cf4bb9f60a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8dcdb0_0def7a6f",
+        "filename": "libselinux/src/procattr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-14T19:38:49Z",
+      "side": 1,
+      "message": "Switched to cherry-picking the upstream patch.",
+      "parentUuid": "94d4a23d_ca1ff278",
+      "revId": "6a7b91f5fae0a0af095dccb8149189cf4bb9f60a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
