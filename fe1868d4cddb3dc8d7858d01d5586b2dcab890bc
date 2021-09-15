@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d150d4de_af1a090e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-09-15T14:26:20Z",
+      "side": 1,
+      "message": "I have low confidence that this is sufficient testing. Perhaps diff the before/after results of the .cil files that are written to /{system,vendor,product,system_ext}/etc/selinux/ to see if they\u0027re the same?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "fe1868d4cddb3dc8d7858d01d5586b2dcab890bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
