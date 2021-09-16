@@ -54,7 +54,7 @@ static inline const char *datum_to_str(struct cil_symtab_datum *datum)
 static void write_expr(FILE *out, struct cil_list *expr)
 {
 	struct cil_list_item *curr;
-	int notfirst = 0;
+	int notfirst = 0, extra_par = 0;
 
 	fprintf(out, "(");
 	cil_list_for_each(curr, expr) {
@@ -122,6 +122,8 @@ static void write_expr(FILE *out, struct cil_list *expr)
 				op_str = "<?OP>";
 				break;
 			}
+			fprintf(out, "(");
+			extra_par = 1;
 			fprintf(out, "%s", op_str);
 			break;
 		}
@@ -179,6 +181,9 @@ static void write_expr(FILE *out, struct cil_list *expr)
 			fprintf(out, "<?FLAVOR>");
 			break;
 		}
+	}
+	if (extra_par) {
+		fprintf(out, ")");
 	}
 	fprintf(out, ")");
 }
@@ -1317,7 +1322,7 @@ void cil_write_ast_node(FILE *out, struct cil_tree_node *node)
 	case CIL_GENFSCON: {
 		struct cil_genfscon *genfscon = node->data;
 		fprintf(out, "(genfscon ");
-		fprintf(out, "%s \"%s\" ", genfscon->fs_str, genfscon->path_str);
+		fprintf(out, "%s %s ", genfscon->fs_str, genfscon->path_str);
 		if (genfscon->context)
 			write_context(out, genfscon->context, CIL_TRUE);
 		else
