@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aac4aea_45c2caa4",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "Agreed. I think I originally started from the idea of keeping everything as close to the existing policy as possible, but your approach makes much more sense. Changed everything to just nlmsg now.",
+      "parentUuid": "115b40f5_cb57c3a4",
+      "range": {
+        "startLine": 2519,
+        "startChar": 24,
+        "endLine": 2519,
+        "endChar": 34
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41cdc9ee_7771b30c",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-17T10:19:02Z",
       "side": 1,
       "message": "whitespace-only change?",
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1e2f58_9dd949b5",
+        "filename": "checkpolicy/policy_define.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41cdc9ee_7771b30c",
       "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b534e2_e3ba1cea",
+        "filename": "libsepol/cil/src/cil.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549f5ed6_d65c94b5",
+      "range": {
+        "startLine": 403,
+        "startChar": 34,
+        "endLine": 403,
+        "endChar": 44
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b62ad3a_3239ecb8",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-17T10:19:02Z",
       "side": 1,
       "message": "why is this used here? i.e. shouldn\u0027t that never be needed for nlmsg?",
+      "range": {
+        "startLine": 1655,
+        "startChar": 6,
+        "endLine": 1655,
+        "endChar": 14
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b832547a_aad0d94a",
+        "filename": "libsepol/cil/src/cil_binary.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "Thanks for catching this! It was a leftover from when I was experimenting with using the driver+func model to allow for a larger-than-needed range of netlink xperms.",
+      "parentUuid": "1b62ad3a_3239ecb8",
       "range": {
         "startLine": 1655,
         "startChar": 6,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7715af46_a447ba80",
+        "filename": "libsepol/cil/src/cil_binary.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "I don\u0027t think so. My reasoning was that, given that all netlink types comfortably fit in one driver, I\u0027m including them all in driver 0. Assuming you\u0027re talking about the line at https://android-review.googlesource.com/c/kernel/common/+/1786139/comments/539ea483_d9049805 in the kernel patch, this line always flags driver 0 (sets it to 1), given that all netlink xperms are included in that driver.\nPlease let me know if I misunderstood, or if a different approach makes more sense here.",
+      "parentUuid": "5f00436f_75b0f65a",
+      "range": {
+        "startLine": 1663,
+        "startChar": 19,
+        "endLine": 1663,
+        "endChar": 20
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7af94a53_f9c7805c",
         "filename": "libsepol/src/kernel_to_cil.c",
         "patchSetId": 4
@@ -123,6 +237,30 @@
       "writtenOn": "2021-09-17T10:19:02Z",
       "side": 1,
       "message": "this is a bit odd because for CIL, you\u0027re defining a nlmsg_type rule, but for regular policy you\u0027re reusing nlmsg_read, nlmsg_write, nlmsg_readpriv. You should be consistent, and I think the \"nlmsg_type\" route is the way to go. But I would just call it \"nlmsg\"",
+      "range": {
+        "startLine": 1727,
+        "startChar": 10,
+        "endLine": 1727,
+        "endChar": 23
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7f7ac3_d74742d8",
+        "filename": "libsepol/src/kernel_to_cil.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "That makes sense, thanks for the suggestion. Changed it everywhere to nlmsg now.",
+      "parentUuid": "7af94a53_f9c7805c",
       "range": {
         "startLine": 1727,
         "startChar": 10,
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03852460_d8e809cd",
+        "filename": "libsepol/src/module_to_cil.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1138f9a1_791dde27",
+      "range": {
+        "startLine": 721,
+        "startChar": 10,
+        "endLine": 721,
+        "endChar": 20
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c7d459_547e44ae",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-09-17T10:19:02Z",
       "side": 1,
       "message": "why have you added this here?",
+      "range": {
+        "startLine": 1107,
+        "startChar": 71,
+        "endLine": 1107,
+        "endChar": 81
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa445ecf_d87451cc",
+        "filename": "python/sepolgen/src/sepolgen/refparser.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-09-27T14:33:27Z",
+      "side": 1,
+      "message": "I honestly have no idea. My guess is that I was chasing why ioctl xperms worked and nlmsg xperms didn\u0027t, and that this is a remnant of that which I overlooked when uploading my patch. Apologies for the confusion.",
+      "parentUuid": "f4c7d459_547e44ae",
       "range": {
         "startLine": 1107,
         "startChar": 71,
