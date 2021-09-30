@@ -16,6 +16,23 @@
       "message": "I would like to invite you to do the code review, thanks!",
       "revId": "f122e529e88f69b9db8e5d4788c7056fa115cf39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0428baf8_abb81fb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1838859
+      },
+      "writtenOn": "2021-09-30T09:03:51Z",
+      "side": 1,
+      "message": "I would like to invite you to do the code review, thanks!",
+      "revId": "f122e529e88f69b9db8e5d4788c7056fa115cf39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
