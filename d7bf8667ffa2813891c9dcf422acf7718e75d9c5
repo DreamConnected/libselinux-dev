@@ -224,6 +224,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e384fe_7787afda",
+        "filename": "libsepol/cil/src/cil_binary.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-10-27T10:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7715af46_a447ba80",
+      "range": {
+        "startLine": 1663,
+        "startChar": 19,
+        "endLine": 1663,
+        "endChar": 20
+      },
+      "revId": "d7bf8667ffa2813891c9dcf422acf7718e75d9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7af94a53_f9c7805c",
