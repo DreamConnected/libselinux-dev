@@ -22,6 +22,23 @@
       },
       "revId": "d83555665153c419aacc33218693fbb5b96d470d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e94309_7a823509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-05T14:39:39Z",
+      "side": 1,
+      "message": "There\u0027s various references in the policy which I guess could also be cleaned up: https://source.corp.google.com/search?q\u003dnonplat\u0026sq\u003dpackage:%5Eandroid$%20file:sepolicy",
+      "revId": "d83555665153c419aacc33218693fbb5b96d470d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
