@@ -28,6 +28,11 @@ static const struct selinux_opt seopts_file_odm[] = {
     { SELABEL_OPT_PATH, "/odm_file_contexts" }
 };
 
+static const struct selinux_opt seopts_file_apex[] = {
+    { SELABEL_OPT_PATH, "/dev/selinux/apex_file_contexts" },
+    { SELABEL_OPT_PATH, "/apex_file_contexts" }
+};
+
 /*
  * XXX Where should this configuration file be located?
  * Needs to be accessible by zygote and installd when
@@ -109,6 +114,12 @@ struct selabel_handle* selinux_android_file_context_handle(void)
     for (i = 0; i < ARRAY_SIZE(seopts_file_odm); i++) {
         if (access(seopts_file_odm[i].value, R_OK) != -1) {
             seopts_file[size++] = seopts_file_odm[i];
+            break;
+        }
+    }
+    for (i = 0; i < ARRAY_SIZE(seopts_file_apex); i++) {
+        if (access(seopts_file_apex[i].value, R_OK) != -1) {
+            seopts_file[size++] = seopts_file_apex[i];
             break;
         }
     }
