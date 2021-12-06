@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "011b9857_643229af",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-12-06T07:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58f803ee_f8694414",
+      "range": {
+        "startLine": 120,
+        "startChar": 43,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "2a01f732ca32a391704b071b8c59db41a2789634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4240785a_c406399b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-03T15:27:21Z",
       "side": 1,
       "message": "Small readability nit. I think it will be easier to read, if we check for the \"positive condition\" (e.g. file exists, access(..., R_OK) \u003d\u003d 0), rather than for the lack of the \"negative condition\" (e.g. the file doesn\u0027t not exist, access(..., R_OK) !\u003d -1).",
+      "range": {
+        "startLine": 121,
+        "startChar": 55,
+        "endLine": 121,
+        "endChar": 61
+      },
+      "revId": "2a01f732ca32a391704b071b8c59db41a2789634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704a3ab3_6ab4e6aa",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-12-06T07:45:07Z",
+      "side": 1,
+      "message": "I don\u0027t disagree. However, I\u0027d prefer to leave it as-is because it matches how the same logic is handled in the above 5 cases.",
+      "parentUuid": "4240785a_c406399b",
       "range": {
         "startLine": 121,
         "startChar": 55,
