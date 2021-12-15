@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8406a10c_f46f2bc4",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-15T13:41:29Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context. So please ignore me if this was addressed before.\n\nI wonder why these context files are mounted at /dev/selinux, not at the standard path /apex/\u003cname\u003e/",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "48bd8a4a2c66c32b46ceb01a4865b7e9961ab3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
