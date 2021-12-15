@@ -22,6 +22,30 @@
       },
       "revId": "48bd8a4a2c66c32b46ceb01a4865b7e9961ab3e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b0550d_3c15f29f",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-15T13:43:18Z",
+      "side": 1,
+      "message": "Nevermind. I am reading the answer at the change uploaded to system/core.",
+      "parentUuid": "8406a10c_f46f2bc4",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "48bd8a4a2c66c32b46ceb01a4865b7e9961ab3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
