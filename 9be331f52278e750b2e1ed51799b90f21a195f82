@@ -16,6 +16,24 @@
       "message": "Dupe of https://r.android.com/1942093",
       "revId": "9be331f52278e750b2e1ed51799b90f21a195f82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aab2b2a_f7e9cf75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-01-10T10:13:47Z",
+      "side": 1,
+      "message": "Wow, that\u0027s quite the timing.",
+      "parentUuid": "b3106a42_42a02134",
+      "revId": "9be331f52278e750b2e1ed51799b90f21a195f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
