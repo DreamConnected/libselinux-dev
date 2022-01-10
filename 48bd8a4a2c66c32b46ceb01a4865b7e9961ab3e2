@@ -63,6 +63,24 @@
       "message": "Should it be /dev/selinux?",
       "revId": "48bd8a4a2c66c32b46ceb01a4865b7e9961ab3e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0031352f_e04955ae",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-01-10T09:47:19Z",
+      "side": 1,
+      "message": "Very much so. Thanks!",
+      "parentUuid": "baf6d0f5_23544fd3",
+      "revId": "48bd8a4a2c66c32b46ceb01a4865b7e9961ab3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
