@@ -40,9 +40,13 @@ static void report_failure(sepol_handle_t *handle, policydb_t *p, const avrule_t
 			   unsigned int stype, unsigned int ttype,
 			   const class_perm_node_t *curperm, uint32_t perms)
 {
+	char *pname = "policy.conf";
+	if (p->name) {
+		pname = p->name;
+	}
 	if (avrule->source_filename) {
-		ERR(handle, "neverallow on line %lu of %s (or line %lu of policy.conf) violated by allow %s %s:%s {%s };",
-		    avrule->source_line, avrule->source_filename, avrule->line,
+		ERR(handle, "neverallow on line %lu of %s (or line %lu of %s) violated by allow %s %s:%s {%s };",
+		    avrule->source_line, avrule->source_filename, avrule->line, pname,
 		    p->p_type_val_to_name[stype],
 		    p->p_type_val_to_name[ttype],
 		    p->p_class_val_to_name[curperm->tclass - 1],
