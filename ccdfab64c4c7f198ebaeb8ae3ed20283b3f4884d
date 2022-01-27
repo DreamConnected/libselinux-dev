@@ -22,6 +22,30 @@
       },
       "revId": "ccdfab64c4c7f198ebaeb8ae3ed20283b3f4884d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d93af8_c9eed9ca",
+        "filename": "checkpolicy/parse_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-01-27T21:49:52Z",
+      "side": 1,
+      "message": "It should already be the case when policy_destroy() is called (https://cs.android.com/android/platform/superproject/+/master:external/selinux/libsepol/src/policydb.c;l\u003d1511;drc\u003d14197e613c905b0ac670c785019a3e201d8864bd).",
+      "parentUuid": "bf9e4c0d_5d88eedf",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "ccdfab64c4c7f198ebaeb8ae3ed20283b3f4884d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
