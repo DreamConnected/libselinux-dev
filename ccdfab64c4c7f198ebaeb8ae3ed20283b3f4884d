@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9e4c0d_5d88eedf",
+        "filename": "checkpolicy/parse_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-01-27T10:05:45Z",
+      "side": 1,
+      "message": "Is it ok that this never gets freed?",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "ccdfab64c4c7f198ebaeb8ae3ed20283b3f4884d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
