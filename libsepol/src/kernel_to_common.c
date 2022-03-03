@@ -19,7 +19,7 @@
 #include <sepol/policydb/symtab.h>
 
 #include "kernel_to_common.h"
-
+#include "private.h"
 
 void sepol_log_err(const char *fmt, ...)
 {
