@@ -806,9 +806,12 @@ static int seapp_context_lookup(enum seapp_kind kind,
 
 		username = pwd->pw_name;
 
-	} else if (appid < AID_ISOLATED_START) {
+	} else if (appid < AID_SDK_SANDBOX_PROCESS_START) {
 		username = "_app";
 		appid -= AID_APP;
+	} else if (appid < AID_ISOLATED_START) {
+		username = "_sdksandbox";
+		appid -= AID_SDK_SANDBOX_PROCESS_START;
 	} else {
 		username = "_isolated";
 		appid -= AID_ISOLATED_START;
@@ -1119,20 +1122,49 @@ struct pkg_info *package_info_lookup(const char *name)
  * credentials are presented (filenames inside are mangled), so we need
  * to delay restorecon of those until vold explicitly requests it. */
 // NOTE: these paths need to be kept in sync with vold
-#define DATA_SYSTEM_CE_PREFIX "/data/system_ce"
-#define DATA_VENDOR_CE_PREFIX "/data/vendor_ce"
-#define DATA_MISC_CE_PREFIX "/data/misc_ce"
+#define DATA_SYSTEM_CE_PATH "/data/system_ce"
+#define DATA_VENDOR_CE_PATH "/data/vendor_ce"
+#define DATA_MISC_CE_PATH "/data/misc_ce"
+#define DATA_MISC_DE_PATH "/data/misc_de"
 
 /* The path prefixes of package data directories. */
 #define DATA_DATA_PATH "/data/data"
 #define DATA_USER_PATH "/data/user"
 #define DATA_USER_DE_PATH "/data/user_de"
-#define EXPAND_USER_PATH "/mnt/expand/\?\?\?\?\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?\?\?\?\?\?\?\?\?/user"
-#define EXPAND_USER_DE_PATH "/mnt/expand/\?\?\?\?\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?\?\?\?\?\?\?\?\?/user_de"
 #define USER_PROFILE_PATH "/data/misc/profiles/cur/*"
+#define SDK_SANDBOX_DATA_CE_PATH "/data/misc_ce/*/sdksandbox"
+#define SDK_SANDBOX_DATA_DE_PATH "/data/misc_de/*/sdksandbox"
+
+#define EXPAND_MNT_PATH "/mnt/expand/\?\?\?\?\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?-\?\?\?\?\?\?\?\?\?\?\?\?"
+#define EXPAND_USER_PATH EXPAND_MNT_PATH "/user"
+#define EXPAND_USER_DE_PATH EXPAND_MNT_PATH "/user_de"
+#define EXPAND_SDK_CE_PATH EXPAND_MNT_PATH "/misc_ce/*/sdksandbox"
+#define EXPAND_SDK_DE_PATH EXPAND_MNT_PATH "/misc_de/*/sdksandbox"
+
 #define DATA_DATA_PREFIX DATA_DATA_PATH "/"
 #define DATA_USER_PREFIX DATA_USER_PATH "/"
 #define DATA_USER_DE_PREFIX DATA_USER_DE_PATH "/"
+#define DATA_MISC_CE_PREFIX DATA_MISC_CE_PATH "/"
+#define DATA_MISC_DE_PREFIX DATA_MISC_DE_PATH "/"
+#define EXPAND_MNT_PATH_PREFIX EXPAND_MNT_PATH "/"
+
+/*
+ * This method helps in identifying paths that refer to users' app data. Labeling for app data is
+ * based on seapp_contexts and seinfo assignments rather than file_contexts and is managed by
+ * installd rather than by init.
+ */
+static bool is_app_data_path(const char *pathname) {
+    int flags = FNM_LEADING_DIR|FNM_PATHNAME;
+    return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
+        !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
+        !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
+        !fnmatch(EXPAND_USER_PATH, pathname, flags) ||
+        !fnmatch(EXPAND_USER_DE_PATH, pathname, flags) ||
+        !fnmatch(SDK_SANDBOX_DATA_CE_PATH, pathname, flags) ||
+        !fnmatch(SDK_SANDBOX_DATA_DE_PATH, pathname, flags) ||
+        !fnmatch(EXPAND_SDK_CE_PATH, pathname, flags) ||
+        !fnmatch(EXPAND_SDK_DE_PATH, pathname, flags));
+}
 
 static int pkgdir_selabel_lookup(const char *pathname,
                                  const char *seinfo,
@@ -1179,6 +1211,40 @@ static int pkgdir_selabel_lookup(const char *pathname,
         if (*pathname == '/')
             pathname++;
         else
+            return 0;
+    } else if (!strncmp(pathname, DATA_MISC_CE_PREFIX, sizeof(DATA_MISC_CE_PREFIX)-1)) {
+        pathname += sizeof(DATA_MISC_CE_PREFIX) - 1;
+        while (isdigit(*pathname))
+            pathname++;
+        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1)) {
+            pathname += sizeof("/sdksandbox/") - 1;
+        } else
+            return 0;
+    } else if (!strncmp(pathname, DATA_MISC_DE_PREFIX, sizeof(DATA_MISC_DE_PREFIX)-1)) {
+        pathname += sizeof(DATA_MISC_DE_PREFIX) - 1;
+        while (isdigit(*pathname))
+            pathname++;
+        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1)) {
+            pathname += sizeof("/sdksandbox/") - 1;
+        } else
+            return 0;
+    } else if (!fnmatch(EXPAND_SDK_CE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+        pathname += sizeof(EXPAND_MNT_PATH_PREFIX) - 1;
+        pathname += sizeof("misc_ce/") - 1;
+        while (isdigit(*pathname))
+            pathname++;
+        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1)) {
+            pathname += sizeof("/sdksandbox/") - 1;
+        } else
+            return 0;
+    } else if (!fnmatch(EXPAND_SDK_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+        pathname += sizeof(EXPAND_MNT_PATH_PREFIX) - 1;
+        pathname += sizeof("misc_de/") - 1;
+        while (isdigit(*pathname))
+            pathname++;
+        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1)) {
+            pathname += sizeof("/sdksandbox/") - 1;
+        } else
             return 0;
     } else
         return 0;
@@ -1268,11 +1334,7 @@ static int restorecon_sb(const char *pathname, const struct stat *sb,
      * have different labeling rules, based off of /seapp_contexts, and
      * installd is responsible for managing these labels instead of init.
      */
-    if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
-        !fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME) ||
-        !fnmatch(EXPAND_USER_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+    if (is_app_data_path(pathname)) {
         if (pkgdir_selabel_lookup(pathname, seinfo, uid, &secontext) < 0)
             goto err;
     }
@@ -1435,11 +1497,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
      * assignments rather than file_contexts and is managed by
      * installd rather than init.
      */
-    if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
-        !fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME) ||
-        !fnmatch(EXPAND_USER_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME))
+    if (is_app_data_path(pathname))
         setrestoreconlast = false;
 
     /* Also ignore on /sys since it is regenerated on each boot regardless. */
@@ -1516,20 +1574,15 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
             }
 
             if (skipce &&
-                (!strncmp(ftsent->fts_path, DATA_SYSTEM_CE_PREFIX, sizeof(DATA_SYSTEM_CE_PREFIX)-1) ||
-                 !strncmp(ftsent->fts_path, DATA_MISC_CE_PREFIX, sizeof(DATA_MISC_CE_PREFIX)-1) ||
-                 !strncmp(ftsent->fts_path, DATA_VENDOR_CE_PREFIX, sizeof(DATA_VENDOR_CE_PREFIX)-1))) {
+                (!strncmp(ftsent->fts_path, DATA_SYSTEM_CE_PATH, sizeof(DATA_SYSTEM_CE_PATH)-1) ||
+                 !strncmp(ftsent->fts_path, DATA_MISC_CE_PATH, sizeof(DATA_MISC_CE_PATH)-1) ||
+                 !strncmp(ftsent->fts_path, DATA_VENDOR_CE_PATH, sizeof(DATA_VENDOR_CE_PATH)-1))) {
                 // Don't label anything below this directory.
                 fts_set(fts, ftsent, FTS_SKIP);
                 // but fall through and make sure we label the directory itself
             }
 
-            if (!datadata &&
-                (!strcmp(ftsent->fts_path, DATA_DATA_PATH) ||
-                 !strncmp(ftsent->fts_path, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
-                 !strncmp(ftsent->fts_path, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
-                 !fnmatch(EXPAND_USER_PATH, ftsent->fts_path, FNM_LEADING_DIR|FNM_PATHNAME) ||
-                 !fnmatch(EXPAND_USER_DE_PATH, ftsent->fts_path, FNM_LEADING_DIR|FNM_PATHNAME))) {
+            if (!datadata && is_app_data_path(ftsent->fts_path)) {
                 // Don't label anything below this directory.
                 fts_set(fts, ftsent, FTS_SKIP);
                 // but fall through and make sure we label the directory itself
