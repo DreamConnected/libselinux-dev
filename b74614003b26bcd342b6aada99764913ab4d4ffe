@@ -16,6 +16,24 @@
       "message": "The source of truth for this is upstream.\n\nWhat is the purpose of this tracing?",
       "revId": "b74614003b26bcd342b6aada99764913ab4d4ffe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3204b5_8dabf5ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-04-01T13:26:07Z",
+      "side": 1,
+      "message": "Hi Alan, I am tracing the secilc binary locally. I created the CL so that I can reference it with the rest of my team. I\u0027ll mark the CL as \"do not submit\" explicitly, and -2 to make sure there is no misunderstanding.",
+      "parentUuid": "f6fe9113_2d356363",
+      "revId": "b74614003b26bcd342b6aada99764913ab4d4ffe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
