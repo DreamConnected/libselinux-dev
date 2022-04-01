@@ -33,6 +33,9 @@
 
 #include <sepol/policydb/conditional.h>
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 #include "cil_internal.h"
 #include "cil_flavor.h"
 #include "cil_log.h"
@@ -329,10 +332,12 @@ int cil_tree_walk(struct cil_tree_node *node,
 		}
 	}
 
+	// ATRACE_BEGIN("cil_tree_walk_core");
 	rc = cil_tree_walk_core(node->cl_head, process_node, first_child, last_child, extra_args);
 	if (rc != SEPOL_OK) {
 		return rc;
 	}
+	// ATRACE_END();
 
 	if (last_child != NULL) {
 		rc = (*last_child)(node->cl_tail, extra_args);
