@@ -33,6 +33,9 @@
 #include <sepol/policydb/policydb.h>
 #include <sepol/policydb/symtab.h>
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 #include "cil_internal.h"
 #include "cil_flavor.h"
 #include "cil_log.h"
@@ -546,36 +549,44 @@ int cil_compile(struct cil_db *db)
 		goto exit;
 	}
 
+	ATRACE_BEGIN("cil_build_ast");
 	cil_log(CIL_INFO, "Building AST from Parse Tree\n");
 	rc = cil_build_ast(db, db->parse->root, db->ast->root);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to build AST\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 	cil_log(CIL_INFO, "Destroying Parse Tree\n");
 	cil_tree_destroy(&db->parse);
 
+	ATRACE_BEGIN("cil_resolve_ast");
 	cil_log(CIL_INFO, "Resolving AST\n");
 	rc = cil_resolve_ast(db, db->ast->root);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to resolve AST\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_fqn_qualify");
 	cil_log(CIL_INFO, "Qualifying Names\n");
 	rc = cil_fqn_qualify(db->ast->root);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to qualify names\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_post_process");
 	cil_log(CIL_INFO, "Compile post process\n");
 	rc = cil_post_process(db);
 	if (rc != SEPOL_OK ) {
 		cil_log(CIL_ERR, "Post process failed\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 exit:
 
