@@ -41,6 +41,9 @@
 #endif
 #include <sepol/policydb.h>
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 static __attribute__((__noreturn__)) void usage(const char *prog)
 {
 	printf("Usage: %s [OPTION]... FILE...\n", prog);
@@ -264,7 +267,9 @@ int main(int argc, char *argv[])
 		cil_set_attrs_expand_size(db, (unsigned)attrs_expand_size);
 	}
 
+	ATRACE_BEGIN("fopen-fread");
 	for (i = optind; i < argc; i++) {
+		// ATRACE_BEGIN(argv[i]);
 		file = fopen(argv[i], "r");
 		if (!file) {
 			fprintf(stderr, "Could not open file: %s\n", argv[i]);
@@ -303,26 +308,34 @@ int main(int argc, char *argv[])
 
 		free(buffer);
 		buffer = NULL;
+		// ATRACE_END();
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_compile");
 	rc = cil_compile(db);
 	if (rc != SEPOL_OK) {
 		fprintf(stderr, "Failed to compile cildb: %d\n", rc);
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_build_policydb");
 	rc = cil_build_policydb(db, &pdb);
 	if (rc != SEPOL_OK) {
 		fprintf(stderr, "Failed to build policydb\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 	if (optimize) {
+		ATRACE_BEGIN("sepol_policydb_optimize");
 		rc = sepol_policydb_optimize(pdb);
 		if (rc != SEPOL_OK) {
 			fprintf(stderr, "Failed to optimize policydb\n");
 			goto exit;
 		}
+		ATRACE_END();
 	}
 
 	if (output == NULL) {
@@ -355,21 +368,26 @@ int main(int argc, char *argv[])
 
 	sepol_policy_file_set_fp(pf, binary);
 
+	ATRACE_BEGIN("sepol_policydb_write");
 	rc = sepol_policydb_write(pdb, pf);
 	if (rc != 0) {
 		fprintf(stderr, "Failed to write binary policy: %d\n", rc);
 		goto exit;
 	}
+	ATRACE_END();
 
 	fclose(binary);
 	binary = NULL;
 
+	ATRACE_BEGIN("cil_filecons_to_string");
 	rc = cil_filecons_to_string(db, &fc_buf, &fc_size);
 	if (rc != SEPOL_OK) {
 		fprintf(stderr, "Failed to get file context data\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("filecontexts: fopen-fwrite-fclose");
 	if (filecontexts == NULL) {
 		file_contexts = fopen("file_contexts", "w+");
 	} else {
@@ -390,6 +408,7 @@ int main(int argc, char *argv[])
 
 	fclose(file_contexts);
 	file_contexts = NULL;
+	ATRACE_END();
 
 	rc = SEPOL_OK;
 

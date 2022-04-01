@@ -37,6 +37,9 @@
 #include <sepol/policydb/conditional.h>
 #include <sepol/errcodes.h>
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 #include "cil_internal.h"
 #include "cil_flavor.h"
 #include "cil_log.h"
@@ -1022,6 +1025,7 @@ static int __evaluate_permissionx_expression(struct cil_permissionx *permx, stru
 	permx->perms = cil_malloc(sizeof(*permx->perms));
 	ebitmap_init(permx->perms);
 
+	ATRACE_BEGIN("__cil_expr_to_bitmap");
 	rc = __cil_expr_to_bitmap(permx->expr_str, permx->perms, 0x10000, db); // max is one more than 0xFFFF
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to expand permissionx expression\n");
@@ -1029,6 +1033,7 @@ static int __evaluate_permissionx_expression(struct cil_permissionx *permx, stru
 		free(permx->perms);
 		permx->perms = NULL;
 	}
+	ATRACE_END();
 
 	return rc;
 }
@@ -1318,6 +1323,7 @@ static int __cil_expr_to_bitmap(struct cil_list *expr, ebitmap_t *out, int max, 
 		enum cil_flavor op = (enum cil_flavor)(uintptr_t)curr->data;
 
 		if (op == CIL_ALL) {
+			ATRACE_BEGIN("CIL_ALL");
 			ebitmap_init(&b1); /* all zeros */
 			rc = ebitmap_not(&tmp, &b1, max);
 			ebitmap_destroy(&b1);
@@ -1326,8 +1332,11 @@ static int __cil_expr_to_bitmap(struct cil_list *expr, ebitmap_t *out, int max, 
 				ebitmap_destroy(&tmp);
 				goto exit;
 			}
+			ATRACE_END();
 		} else if (op == CIL_RANGE) {
+			ATRACE_BEGIN("CIL_RANGE");
 			if (flavor == CIL_CAT) {
+				ATRACE_BEGIN("CIL_CAT");
 				ebitmap_init(&tmp);
 				rc = __cil_cat_expr_range_to_bitmap_helper(curr->next, curr->next->next, &tmp);
 				if (rc != SEPOL_OK) {
@@ -1335,7 +1344,9 @@ static int __cil_expr_to_bitmap(struct cil_list *expr, ebitmap_t *out, int max, 
 					ebitmap_destroy(&tmp);
 					goto exit;
 				}
+				ATRACE_END();
 			} else if (flavor == CIL_PERMISSIONX) {
+				ATRACE_BEGIN("CIL_PERMISSIONX");
 				ebitmap_init(&tmp);
 				rc = __cil_permissionx_expr_range_to_bitmap_helper(curr->next, curr->next->next, &tmp);
 				if (rc != SEPOL_OK) {
@@ -1343,11 +1354,13 @@ static int __cil_expr_to_bitmap(struct cil_list *expr, ebitmap_t *out, int max, 
 					ebitmap_destroy(&tmp);
 					goto exit;
 				}
+				ATRACE_END();
 			} else {
 				cil_log(CIL_INFO, "Range operation only supported for categories permissionx\n");
 				rc = SEPOL_ERR;
 				goto exit;
 			}
+			ATRACE_END();
 		} else {
 			rc = __cil_expr_to_bitmap_helper(curr->next, flavor, &b1, max, db);
 			if (rc != SEPOL_OK) {
@@ -1548,50 +1561,64 @@ static int __cil_post_db_attr_helper(struct cil_tree_node *node, uint32_t *finis
 	int rc = SEPOL_ERR;
 	struct cil_db *db = extra_args;
 
+	ATRACE_BEGIN("__cil_post_db_attr_helper");
 	switch (node->flavor) {
 	case CIL_BLOCK: {
+		// ATRACE_BEGIN("CIL_BLOCK");
 		struct cil_block *blk = node->data;
 		if (blk->is_abstract == CIL_TRUE) {
 			*finished = CIL_TREE_SKIP_HEAD;
 		}
+		// ATRACE_END();
 		break;
 	}
 	case CIL_MACRO: {
+		// ATRACE_BEGIN("CIL_MACRO");
 		*finished = CIL_TREE_SKIP_HEAD;
+		// ATRACE_END();
 		break;
 	}
 	case CIL_TYPEATTRIBUTE: {
+		ATRACE_BEGIN("CIL_TYPEATTRIBUTE");
 		struct cil_typeattribute *attr = node->data;
 		if (attr->types == NULL) {
 			rc = __evaluate_type_expression(attr, db);
 			if (rc != SEPOL_OK) goto exit;
 		}
 		attr->keep = cil_typeattribute_used(attr, db);
+		ATRACE_END();
 		break;
 	}
 	case CIL_ROLEATTRIBUTE: {
+		ATRACE_BEGIN("CIL_ROLEATTRIBUTE");
 		struct cil_roleattribute *attr = node->data;
 		if (attr->roles == NULL) {
 			rc = __evaluate_role_expression(attr, db);
 			if (rc != SEPOL_OK) goto exit;
 		}
+		ATRACE_END();
 		break;
 	}
 	case CIL_AVRULEX: {
+		ATRACE_BEGIN("CIL_AVRULEX");
 		struct cil_avrule *rule = node->data;
 		if (rule->perms.x.permx_str == NULL) {
 			rc = __evaluate_permissionx_expression(rule->perms.x.permx, db);
 			if (rc != SEPOL_OK) goto exit;
 		}
+		ATRACE_END();
 		break;
 	}
 	case CIL_PERMISSIONX: {
+		ATRACE_BEGIN("CIL_PERMISSIONX");
 		struct cil_permissionx *permx = node->data;
 		rc = __evaluate_permissionx_expression(permx, db);
 		if (rc != SEPOL_OK) goto exit;
+		ATRACE_END();
 		break;
 	}
 	case CIL_USERATTRIBUTE: {
+		ATRACE_BEGIN("CIL_USERATTRIBUTE");
 		struct cil_userattribute *attr = node->data;
 		if (attr->users == NULL) {
 			rc = __evaluate_user_expression(attr, db);
@@ -1599,11 +1626,13 @@ static int __cil_post_db_attr_helper(struct cil_tree_node *node, uint32_t *finis
 				goto exit;
 			}
 		}
+		ATRACE_END();
 		break;
 	}
 	default:
 		break;
 	}
+	ATRACE_END();
 
 	return SEPOL_OK;
 
@@ -2338,125 +2367,165 @@ static int cil_post_db(struct cil_db *db)
 {
 	int rc = SEPOL_ERR;
 
+	ATRACE_BEGIN("count");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_count_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failure during cil database count helper\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("array");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_array_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failure during cil database array helper\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("neverallow_attr");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_neverallow_attr_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failed to mark attributes used by generated attributes used in neverallow rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("attr");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_attr_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failed to create attribute bitmaps\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("roletype");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_roletype_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failed during roletype association\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("userrole");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_userrole_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failed during userrole association\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("classperms");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_classperms_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failed to evaluate class mapping permissions expressions\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cat");
 	rc = cil_tree_walk(db->ast->root, __cil_post_db_cat_helper, NULL, NULL, db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_INFO, "Failed to evaluate category expressions\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("netifcon");
 	rc = __cil_post_process_context_rules(db->netifcon, cil_post_netifcon_compare, cil_post_netifcon_context_compare, db, CIL_NETIFCON, CIL_KEY_NETIFCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing netifcon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("genfscon");
 	rc = __cil_post_process_context_rules(db->genfscon, cil_post_genfscon_compare, cil_post_genfscon_context_compare, db, CIL_GENFSCON, CIL_KEY_GENFSCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing genfscon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("ibpkeycon");
 	rc = __cil_post_process_context_rules(db->ibpkeycon, cil_post_ibpkeycon_compare, cil_post_ibpkeycon_context_compare, db, CIL_IBPKEYCON, CIL_KEY_IBPKEYCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing ibpkeycon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("ibendportcon");
 	rc = __cil_post_process_context_rules(db->ibendportcon, cil_post_ibendportcon_compare, cil_post_ibendportcon_context_compare, db, CIL_IBENDPORTCON, CIL_KEY_IBENDPORTCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing ibendportcon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("portcon");
 	rc = __cil_post_process_context_rules(db->portcon, cil_post_portcon_compare, cil_post_portcon_context_compare, db, CIL_PORTCON, CIL_KEY_PORTCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing portcon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("nodecon");
 	rc = __cil_post_process_context_rules(db->nodecon, cil_post_nodecon_compare, cil_post_nodecon_context_compare, db, CIL_NODECON, CIL_KEY_NODECON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing nodecon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("fsuse");
 	rc = __cil_post_process_context_rules(db->fsuse, cil_post_fsuse_compare, cil_post_fsuse_context_compare, db, CIL_FSUSE, CIL_KEY_FSUSE);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing fsuse rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("filecon");
 	rc = __cil_post_process_context_rules(db->filecon, cil_post_filecon_compare, cil_post_filecon_context_compare, db, CIL_FILECON, CIL_KEY_FILECON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing filecon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("iomemcon");
 	rc = __cil_post_process_context_rules(db->iomemcon, cil_post_iomemcon_compare, cil_post_iomemcon_context_compare, db, CIL_IOMEMCON, CIL_KEY_IOMEMCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing iomemcon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("ioportcon");
 	rc = __cil_post_process_context_rules(db->ioportcon, cil_post_ioportcon_compare, cil_post_ioportcon_context_compare, db, CIL_IOPORTCON, CIL_KEY_IOPORTCON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing ioportcon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("pcidevicecon");
 	rc = __cil_post_process_context_rules(db->pcidevicecon, cil_post_pcidevicecon_compare, cil_post_pcidevicecon_context_compare, db, CIL_PCIDEVICECON, CIL_KEY_PCIDEVICECON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing pcidevicecon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("devicetreecon");
 	rc = __cil_post_process_context_rules(db->devicetreecon, cil_post_devicetreecon_compare, cil_post_devicetreecon_context_compare, db, CIL_DEVICETREECON, CIL_KEY_DEVICETREECON);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Problems processing devicetreecon rules\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 exit:
 	return rc;
@@ -2545,23 +2614,29 @@ int cil_post_process(struct cil_db *db)
 {
 	int rc = SEPOL_ERR;
 
+	ATRACE_BEGIN("cil_pre_verify");
 	rc = cil_pre_verify(db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to verify cil database\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_post_db");
 	rc = cil_post_db(db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed post db handling\n");
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_post_verify");
 	rc = cil_post_verify(db);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to verify cil database\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 exit:
 	return rc;
