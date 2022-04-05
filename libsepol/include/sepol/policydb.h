@@ -105,6 +105,12 @@ extern int sepol_policydb_set_target_platform(sepol_policydb_t * p,
  */
 extern int sepol_policydb_optimize(sepol_policydb_t * p);
 
+/*
+ * Validates a policydb from a policy file.
+ */
+extern int sepol_policydb_validate(sepol_policydb_t *p,
+                                   sepol_policy_file_t *pf);
+
 /* 
  * Read a policydb from a policy file.
  * This automatically sets the type and version based on the 
