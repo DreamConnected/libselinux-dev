@@ -724,6 +724,7 @@ struct sepol_policy_file {
 
 extern void policy_file_init(policy_file_t * x);
 
+extern int policydb_validate(policydb_t *p, struct policy_file *fp);
 extern int policydb_read(policydb_t * p, struct policy_file *fp,
 			 unsigned int verbose);
 extern int avrule_read_list(policydb_t * p, avrule_t ** avrules,
