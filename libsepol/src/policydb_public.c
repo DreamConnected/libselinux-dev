@@ -173,6 +173,11 @@ int sepol_policydb_optimize(sepol_policydb_t * p)
 	return policydb_optimize(&p->p);
 }
 
+int sepol_policydb_validate(sepol_policydb_t * p, sepol_policy_file_t * pf)
+{
+	return policydb_validate(&p->p, &pf->pf);
+}
+
 int sepol_policydb_read(sepol_policydb_t * p, sepol_policy_file_t * pf)
 {
 	return policydb_read(&p->p, &pf->pf, 0);

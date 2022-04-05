@@ -773,6 +773,15 @@ static int roles_init(policydb_t * p)
 			   (p->policy_type ==
 			    POLICY_MOD ? SCOPE_REQ : SCOPE_DECL), 1,
 			   &role->s.value);
+	p->p_role_val_to_name = malloc(sizeof(char *));
+	p->role_val_to_struct = malloc(sizeof(role_datum_t *));
+	if(p->p_role_val_to_name == NULL || p->role_val_to_struct == NULL)
+		goto out_free_key;
+	p->p_role_val_to_name[0] = strdup(key);
+	p->role_val_to_struct[0] = role;
+	if(p->p_role_val_to_name[0] ==NULL) {
+		goto out_free_key;
+	} 
 	if (rc)
 		goto out_free_key;
 	if (role->s.value != OBJECT_R_VAL) {
@@ -4196,6 +4205,9 @@ static sepol_access_vector_t policydb_string_to_av_perm(
 	return 0;
 }
 
+int policydb_validate(policydb_t *p, struct policy_file *fp){
+	return validate_policydb(fp->handle, p);
+}
 
 /*
  * Read the configuration data from a policy database binary
