@@ -4196,6 +4196,9 @@ static sepol_access_vector_t policydb_string_to_av_perm(
 	return 0;
 }
 
+int policydb_validate(policydb_t *p, struct policy_file *fp){
+	return validate_policydb(fp->handle, p);
+}
 
 /*
  * Read the configuration data from a policy database binary
