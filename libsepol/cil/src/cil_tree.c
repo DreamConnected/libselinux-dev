@@ -34,7 +34,7 @@
 #include <sepol/policydb/conditional.h>
 
 #define ATRACE_TAG ATRACE_TAG_ALWAYS
-#include <cutils/trace.h>
+// #include <cutils/trace.h>
 
 #include "cil_internal.h"
 #include "cil_flavor.h"
