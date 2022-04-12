@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbab34de_f706ba0b",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-04-12T04:03:59Z",
+      "side": 1,
+      "message": "Ack, created a new change to completely remove them.",
+      "parentUuid": "eb092d56_0eed72c7",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b7a106_88652616",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6337f2ad_e6f895f9",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-04-12T04:03:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6b7a106_88652616",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53286045_e364f3ec",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-11T06:59:42Z",
       "side": 1,
       "message": "Is it?",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93778c5e_c0021c82",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-04-12T04:03:59Z",
+      "side": 1,
+      "message": "That\u0027s my understanding from b/175689444?",
+      "parentUuid": "53286045_e364f3ec",
       "range": {
         "startLine": 132,
         "startChar": 4,
