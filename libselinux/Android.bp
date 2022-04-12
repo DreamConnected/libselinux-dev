@@ -276,8 +276,6 @@ rust_bindgen {
         "--allowlist-function=selabel_open",
         "--allowlist-function=selinux_android_file_context_handle",
         "--allowlist-function=selinux_android_hw_service_context_handle",
-        "--allowlist-function=selinux_android_load_policy",
-        "--allowlist-function=selinux_android_load_policy_from_fd",
         "--allowlist-function=selinux_android_restorecon",
         "--allowlist-function=selinux_android_restorecon_pkgdir",
         "--allowlist-function=selinux_android_seapp_context_init",
