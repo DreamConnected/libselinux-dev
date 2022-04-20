@@ -140,6 +140,30 @@
       },
       "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1306126_43bbe0c2",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-04-20T09:46:37Z",
+      "side": 1,
+      "message": "Well, that bug says we should deprecate it, but we haven\u0027t done it yet. And in any case my proposal was to make it no longer the default, rather than to remove it entirely.\n\nA significant number of priv apps currently use NONE. Most of them won\u0027t be able to access their data directories as a result of my changes, but I deduce from the absence of complaints (and from browsing the directories on test devices) that most of them don\u0027t ever use those directories anyway.",
+      "parentUuid": "93778c5e_c0021c82",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
