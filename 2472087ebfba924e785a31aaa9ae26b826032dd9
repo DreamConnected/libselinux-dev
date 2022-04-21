@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa3fb39_69eda913",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-04-21T17:30:24Z",
+      "side": 0,
+      "message": "These symbols appear to be LL-NDK. They cannot be removed.",
+      "revId": "2472087ebfba924e785a31aaa9ae26b826032dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
