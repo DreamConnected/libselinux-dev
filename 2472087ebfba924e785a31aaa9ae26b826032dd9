@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc394f9_a1571df3",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-04-21T13:46:03Z",
+      "side": 1,
+      "message": "app contexts?",
+      "range": {
+        "startLine": 29,
+        "startChar": 73,
+        "endLine": 29,
+        "endChar": 76
+      },
+      "revId": "2472087ebfba924e785a31aaa9ae26b826032dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d649e89_abffc1d8",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-04-21T13:46:03Z",
+      "side": 1,
+      "message": "Add something like \"This should be used in preference to setcon() on Android\" ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "2472087ebfba924e785a31aaa9ae26b826032dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe77a3c_a220281f",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-04-21T13:46:03Z",
+      "side": 1,
+      "message": "s/process/app process/ ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 42
+      },
+      "revId": "2472087ebfba924e785a31aaa9ae26b826032dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76eae611_5e7a7549",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-04-21T13:46:03Z",
+      "side": 1,
+      "message": "Commenting the flags might be useful (if admittedly difficult)",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "2472087ebfba924e785a31aaa9ae26b826032dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1684434_f53cbd36",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-04-21T13:46:03Z",
+      "side": 1,
+      "message": "s/package/package\u0027s private directory/",
+      "range": {
+        "startLine": 82,
+        "startChar": 38,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "2472087ebfba924e785a31aaa9ae26b826032dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
