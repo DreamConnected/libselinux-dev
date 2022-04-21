@@ -164,6 +164,30 @@
       },
       "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad37ddd_ae863c76",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-04-21T01:20:01Z",
+      "side": 1,
+      "message": "Ack. Removed the mention of deprecated. Thanks.",
+      "parentUuid": "d1306126_43bbe0c2",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "24fbcec44cb31c55956100d5a0c3f598617c28da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
