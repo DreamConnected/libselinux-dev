@@ -1609,6 +1609,7 @@ void selinux_android_set_sehandle(const struct selabel_handle *hndl)
       fc_sehandle = (struct selabel_handle *) hndl;
 }
 
+__asm__(".symver selinux_android_load_policy,selinux_android_load_policy@LIBSELINUX_R");
 int selinux_android_load_policy()
 {
 	int fd = -1;
@@ -1624,6 +1625,15 @@ int selinux_android_load_policy()
 	return ret;
 }
 
+__asm__(".symver deprecated_selinux_android_load_policy,selinux_android_load_policy@@LIBSELINUX_T");
+int deprecated_selinux_android_load_policy()
+{
+    selinux_log(SELINUX_ERROR, "selinux_android_load_policy: not implemented\n");
+    return -1;
+}
+
+
+__asm__(".symver selinux_android_load_policy_from_fd,selinux_android_load_policy_from_fd@LIBSELINUX_R");
 int selinux_android_load_policy_from_fd(int fd, const char *description)
 {
 	int rc;
@@ -1669,3 +1679,9 @@ int selinux_android_load_policy_from_fd(int fd, const char *description)
 	return 0;
 }
 
+__asm__(".symver deprecated_selinux_android_load_policy_from_fd,selinux_android_load_policy_from_fd@@LIBSELINUX_T");
+int deprecated_selinux_android_load_policy_from_fd()
+{
+    selinux_log(SELINUX_ERROR, "selinux_android_load_policy_from_fd: not implemented\n");
+    return -1;
+}
