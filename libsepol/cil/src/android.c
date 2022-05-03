@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "cil_binary.h"
 #include "cil_build_ast.h"
 #include "cil_internal.h"
 #include "cil_strpool.h"
@@ -930,4 +931,16 @@ int cil_android_attributize(struct cil_db *tgtdb, struct cil_db *srcdb, const ch
 exit:
 	ver_map_destroy(ver_map_tab);
 	return rc;
+}
+
+int cil_amend_policydb(cil_db_t *db, sepol_policydb_t *pdb) {
+  fprintf(stderr, "db->num_types_and_attrs=%d pdb->p.p_types.nprim=%d.\n",
+          db->num_types_and_attrs, pdb->p.p_types.nprim);
+  db->num_types_and_attrs += pdb->p.p_types.nprim;
+
+  fprintf(stderr, "db->num_classes=%d pdb->p.p_classes.nprim=%d.\n",
+          db->num_classes, pdb->p.p_classes.nprim);
+  db->num_classes += pdb->p.p_classes.nprim;
+
+  return cil_binary_create_allocated_pdb(db, pdb);
 }
