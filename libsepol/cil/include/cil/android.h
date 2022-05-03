@@ -31,4 +31,6 @@ int cil_android_attrib_mapping(struct cil_db **mdb, struct cil_db *srcdb, const 
  */
 int cil_android_attributize(struct cil_db *tgtdb, struct cil_db *srcdb, const char *num);
 
+int cil_amend_policydb(cil_db_t *db, sepol_policydb_t *sepol_db);
+
 #endif /* _SEPOL_ANDROID_H_ */
