@@ -1,10 +1,12 @@
 #include <cil/android.h>
 #include <sepol/policydb/hashtab.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "cil_binary.h"
 #include "cil_build_ast.h"
+#include "cil_flavor.h"
 #include "cil_internal.h"
 #include "cil_strpool.h"
 #include "cil_symtab.h"
@@ -933,14 +935,122 @@ exit:
 	return rc;
 }
 
-int cil_amend_policydb(cil_db_t *db, sepol_policydb_t *pdb) {
-  fprintf(stderr, "db->num_types_and_attrs=%d pdb->p.p_types.nprim=%d.\n",
-          db->num_types_and_attrs, pdb->p.p_types.nprim);
-  db->num_types_and_attrs += pdb->p.p_types.nprim;
+struct policydb_amend_args {
+  const struct cil_db *db;
+  policydb_t *pdb;
+  void **type_value_to_cil;
+  int pass;
+};
 
-  fprintf(stderr, "db->num_classes=%d pdb->p.p_classes.nprim=%d.\n",
-          db->num_classes, pdb->p.p_classes.nprim);
-  db->num_classes += pdb->p.p_classes.nprim;
+int binary_amend_helper(struct cil_tree_node *node,
+                        uint32_t *finished __attribute__((unused)),
+                        void *extra_args) {
+  int rc = SEPOL_OK;
+  struct cil_type *data = NULL;
 
-  return cil_binary_create_allocated_pdb(db, pdb);
+  struct policydb_amend_args *args = extra_args;
+  const struct cil_db *db = args->db;
+  policydb_t *pdb = args->pdb;
+  void **type_value_to_cil = args->type_value_to_cil;
+  int pass = args->pass;
+
+  switch (pass) {
+  case 1:
+    switch (node->flavor) {
+    case CIL_TYPE:
+      data = node->data;
+      rc = cil_type_to_policydb(pdb, data, type_value_to_cil);
+	  // symtab_insert returns 1 when the symbol already exists
+      if (rc == 1) {
+		cil_log(CIL_ERR, "Type with symbol \"%s\" already exists.\n", data->datum.fqn);
+        rc = SEPOL_OK;
+      }
+      break;
+    case CIL_TYPEATTRIBUTE:
+      rc = cil_typeattribute_to_policydb(pdb, node->data, type_value_to_cil);
+      break;
+    default:
+      break;
+    }
+    break;
+  case 2:
+    switch (node->flavor) {
+    // case CIL_TYPE:
+    //   rc = cil_type_bounds_to_policydb(pdb, node->data);
+    //   break;
+    case CIL_TYPEATTRIBUTE:
+      rc = cil_typeattribute_to_bitmap(pdb, db, node->data);
+      break;
+    default:
+      break;
+    }
+    break;
+  case 3:
+    switch (node->flavor) {
+    case CIL_AVRULE: {
+      struct cil_avrule *rule = node->data;
+      if (rule->rule_kind != CIL_AVRULE_NEVERALLOW) {
+        rc = cil_avrule_to_policydb(pdb, db, node->data);
+      } else {
+		cil_log(CIL_ERR, "Neverallow rules are not allowed.\n");
+        rc = SEPOL_ERR;
+      }
+    } break;
+    default:
+      break;
+    }
+    break;
+  default:
+    break;
+  }
+
+  return rc;
+}
+
+int cil_amend_policydb(cil_db_t *db, sepol_policydb_t *policydb) {
+  int rc = SEPOL_ERR;
+  policydb_t *pdb = &policydb->p;
+  struct cil_list *neverallows = NULL;
+  void **type_value_to_cil = NULL;
+
+  if (db == NULL || policydb == NULL) {
+    if (db == NULL) {
+      cil_log(CIL_ERR, "db == NULL\n");
+    } else if (policydb == NULL) {
+      cil_log(CIL_ERR, "policydb == NULL\n");
+    }
+    return SEPOL_ERR;
+  }
+
+  // type_value_to_cil should be able to map the new types in the cil_db, the
+  // existing types in the pdb, and the redefinitions from the cil_db.
+  type_value_to_cil = calloc(db->num_types_and_attrs + pdb->p_types.nprim + 1,
+                             sizeof(*type_value_to_cil));
+  if (!type_value_to_cil)
+    goto exit;
+
+  cil_list_init(&neverallows, CIL_LIST_ITEM);
+
+  struct policydb_amend_args extra_args;
+  extra_args.db = db;
+  extra_args.pdb = pdb;
+  extra_args.type_value_to_cil = type_value_to_cil;
+
+  for (int i = 1; i <= 3; i++) {
+    extra_args.pass = i;
+
+    rc = cil_tree_walk(db->ast->root, binary_amend_helper, NULL, NULL,
+                       &extra_args);
+    if (rc != SEPOL_OK) {
+      cil_log(CIL_ERR, "Failure while walking cil database.\n");
+      goto exit;
+    }
+  }
+
+  rc = SEPOL_OK;
+
+exit:
+  free(type_value_to_cil);
+  cil_list_destroy(&neverallows, CIL_FALSE);
+  return rc;
 }
