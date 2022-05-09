@@ -301,6 +301,12 @@ int cil_classorder_to_policydb(policydb_t *pdb, const struct cil_db *db, struct 
 
 		key = cil_strdup(cil_class->datum.fqn);
 		rc = symtab_insert(pdb, SYM_CLASSES, key, sepol_class, SCOPE_DECL, 0, &value);
+        if (rc == 1) {
+    	    fprintf(stderr,"symbol key=%s already existed as a requirement.\n", key);
+	        free(sepol_class);
+            free(key);
+            continue;
+        }
 		if (rc != SEPOL_OK) {
 			free(sepol_class);
 			free(key);
@@ -3903,7 +3909,10 @@ int __cil_node_to_policydb(struct cil_tree_node *node, void *extra_args)
 	}
 
 exit:
-	if (rc != SEPOL_OK) {
+	if (rc == 1) {
+    	fprintf(stderr, "ignoring SEPOL_EEXIST for pass=%d, node->flavor=%d.\n", pass, node->flavor);
+    	return SEPOL_OK;
+	} else if (rc != SEPOL_OK) {
 		cil_tree_log(node, CIL_ERR, "Binary policy creation failed");
 	}
 	return rc;
@@ -4267,15 +4276,15 @@ int __cil_policydb_init(policydb_t *pdb, const struct cil_db *db, struct cil_cla
 		}
 	}
 
-	rc = avtab_alloc(&pdb->te_avtab, MAX_AVTAB_SIZE);
-	if (rc != SEPOL_OK) {
-		goto exit;
-	}
+	// rc = avtab_alloc(&pdb->te_avtab, MAX_AVTAB_SIZE);
+	// if (rc != SEPOL_OK) {
+	// 	goto exit;
+	// }
 
-	rc = avtab_alloc(&pdb->te_cond_avtab, MAX_AVTAB_SIZE);
-	if (rc != SEPOL_OK) {
-		goto exit;
-	}
+	// rc = avtab_alloc(&pdb->te_cond_avtab, MAX_AVTAB_SIZE);
+	// if (rc != SEPOL_OK) {
+	// 	goto exit;
+	// }
 
 	return SEPOL_OK;
 

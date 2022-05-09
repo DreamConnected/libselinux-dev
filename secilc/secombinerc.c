@@ -52,6 +52,159 @@ static __attribute__((__noreturn__)) void usage(const char *prog) {
   exit(1);
 }
 
+void policydb_to_stderr(const policydb_t pdb) {
+  fprintf(stderr, "\n");
+
+  // policy_type.
+  fprintf(stderr, "policy_type: %d\n", pdb.policy_type);
+
+  // name
+  fprintf(stderr, "name: %s\n", pdb.name);
+
+  // version
+  fprintf(stderr, "version: %s\n", pdb.version);
+
+  // unsupported_format, mls
+  fprintf(stderr, "target_platform: %d\n", pdb.target_platform);
+  fprintf(stderr, "unsupported_format: %d\n", pdb.unsupported_format);
+  fprintf(stderr, "mls: %d\n", pdb.mls);
+
+  fprintf(stderr, "symtab:\n");
+  fprintf(stderr,
+          "\tnprim:\t\t"
+          "SYM_COMMONS=%d, SYM_CLASSES=%d, SYM_ROLES=%d, SYM_TYPES=%d, "
+          "SYM_USERS=%d, SYM_BOOLS=%d, SYM_LEVELS=%d, SYM_CATS=%d\n",
+          pdb.symtab[SYM_COMMONS].nprim, pdb.symtab[SYM_CLASSES].nprim,
+          pdb.symtab[SYM_ROLES].nprim, pdb.symtab[SYM_TYPES].nprim,
+          pdb.symtab[SYM_USERS].nprim, pdb.symtab[SYM_BOOLS].nprim,
+          pdb.symtab[SYM_LEVELS].nprim, pdb.symtab[SYM_CATS].nprim);
+  fprintf(stderr,
+          "\ttable->size:\t"
+          "SYM_COMMONS=%d, SYM_CLASSES=%d, SYM_ROLES=%d, SYM_TYPES=%d, "
+          "SYM_USERS=%d, SYM_BOOLS=%d, SYM_LEVELS=%d, SYM_CATS=%d\n",
+          pdb.symtab[SYM_COMMONS].table->size,
+          pdb.symtab[SYM_CLASSES].table->size,
+          pdb.symtab[SYM_ROLES].table->size, pdb.symtab[SYM_TYPES].table->size,
+          pdb.symtab[SYM_USERS].table->size, pdb.symtab[SYM_BOOLS].table->size,
+          pdb.symtab[SYM_LEVELS].table->size, pdb.symtab[SYM_CATS].table->size);
+
+  // scope.
+  fprintf(stderr, "symtab:\n");
+  fprintf(stderr,
+          "\tnprim:\t\t"
+          "SYM_COMMONS=%d, SYM_CLASSES=%d, SYM_ROLES=%d, SYM_TYPES=%d, "
+          "SYM_USERS=%d, SYM_BOOLS=%d, SYM_LEVELS=%d, SYM_CATS=%d\n",
+          pdb.scope[SYM_COMMONS].nprim, pdb.scope[SYM_CLASSES].nprim,
+          pdb.scope[SYM_ROLES].nprim, pdb.scope[SYM_TYPES].nprim,
+          pdb.scope[SYM_USERS].nprim, pdb.scope[SYM_BOOLS].nprim,
+          pdb.scope[SYM_LEVELS].nprim, pdb.scope[SYM_CATS].nprim);
+  fprintf(stderr,
+          "\ttable->size:\t"
+          "SYM_COMMONS=%d, SYM_CLASSES=%d, SYM_ROLES=%d, SYM_TYPES=%d, "
+          "SYM_USERS=%d, SYM_BOOLS=%d, SYM_LEVELS=%d, SYM_CATS=%d\n",
+          pdb.scope[SYM_COMMONS].table->size,
+          pdb.scope[SYM_CLASSES].table->size, pdb.scope[SYM_ROLES].table->size,
+          pdb.scope[SYM_TYPES].table->size, pdb.scope[SYM_USERS].table->size,
+          pdb.scope[SYM_BOOLS].table->size, pdb.scope[SYM_LEVELS].table->size,
+          pdb.scope[SYM_CATS].table->size);
+
+  // Avrule: global, decl_val_to_struct.
+  int c = 0;
+  for (avrule_block_t *cur = pdb.global; cur != NULL; cur = cur->next)
+    c++;
+  fprintf(stderr, "global=%d.\n", c);
+
+  // te_avtab.
+  fprintf(stderr, "te_avtab: nel=%d, nslot=%d, mask=%d.\n", pdb.te_avtab.nel,
+          pdb.te_avtab.nslot, pdb.te_avtab.mask);
+
+  // te_cond_avtab.
+  fprintf(stderr, "te_cond_avtab: nel=%d, nslot=%d, mask=%d.\n",
+          pdb.te_cond_avtab.nel, pdb.te_cond_avtab.nslot,
+          pdb.te_cond_avtab.mask);
+
+  // cond_list.
+  c = 0;
+  for (cond_list_t *cur = pdb.cond_list; cur != NULL; cur = cur->next)
+    c++;
+  fprintf(stderr, "cond_list=%d.\n", c);
+
+  // role_tr.
+  c = 0;
+  for (role_trans_t *cur = pdb.role_tr; cur != NULL; cur = cur->next)
+    c++;
+  fprintf(stderr, "role_tr=%d.\n", c);
+
+  // role_allow.
+  c = 0;
+  for (role_allow_t *cur = pdb.role_allow; cur != NULL; cur = cur->next)
+    c++;
+  fprintf(stderr, "role_allow=%d.\n", c);
+
+  // ocontexts.
+  fprintf(stderr, "ocontexts: ");
+  for (int i = 0; i < OCON_NUM; i++) {
+    c = 0;
+    for (ocontext_t *cur = pdb.ocontexts[i]; cur != NULL; cur = cur->next)
+      c++;
+    fprintf(stderr, "[%d]=%d%s", i, c, i == OCON_NUM - 1 ? ".\n" : ", ");
+  }
+
+  // genfs.
+  c = 0;
+  for (genfs_t *cur = pdb.genfs; cur != NULL; cur = cur->next)
+    c++;
+  fprintf(stderr, "genfs=%d.\n", c);
+
+  // range_tr.
+  fprintf(stderr, "range_tr: nel=%d, size=%d\n", pdb.range_tr->nel,
+          pdb.range_tr->size);
+
+  // filename_trans, filename_trans_count.
+  fprintf(stderr, "filename_trans: nel=%d, size=%d\n", pdb.filename_trans->nel,
+          pdb.filename_trans->size);
+
+  // type_attr_map.
+  fprintf(stderr, "type_attr_map: ");
+  // for (int i = 0; i < pdb.p_types.nprim; i++) {
+  //   fprintf(stderr, " [%d]=%d", i,
+  //           ebitmap_cardinality(&(pdb.type_attr_map[i])));
+  // }
+  fprintf(stderr, ".\n");
+
+  // attr_type_map.
+  fprintf(stderr, "attr_type_map: ");
+  // for (int i = 0; i < pdb.p_types.nprim; i++) {
+  //   fprintf(stderr, " [%d]=%d", i,
+  //           ebitmap_cardinality(&(pdb.attr_type_map[i])));
+  // }
+  fprintf(stderr, ".\n");
+
+  // policycaps.
+  fprintf(stderr, "policycaps: highbit=%d, cardinality=%d\n",
+          pdb.policycaps.highbit, ebitmap_cardinality(&(pdb.policycaps)));
+
+  // permissive_map.
+  fprintf(stderr, "permissive_map: highbit=%d, cardinality=%d\n",
+          pdb.permissive_map.highbit,
+          ebitmap_cardinality(&(pdb.permissive_map)));
+
+  // policyvers.
+  fprintf(stderr, "policyvers: %d\n", pdb.policyvers);
+  // handle_unknown.
+  fprintf(stderr, "handle_unknown: %d\n", pdb.handle_unknown);
+
+  // process_class, dir_class.
+  fprintf(stderr, "process_class: %d\n", pdb.process_class);
+  fprintf(stderr, "dir_class: %d\n", pdb.dir_class);
+
+  // process_trans, process_trans_dyntrans.
+  fprintf(stderr, "process_trans: %d\n", pdb.process_trans);
+  fprintf(stderr, "process_trans_dyntrans: %d\n", pdb.process_trans_dyntrans);
+
+  fprintf(stderr, "\n");
+}
+
 /*
  * read_cil_file - Initialize db and parse CIL input file.
  */
@@ -168,7 +321,7 @@ int main(int argc, char *argv[]) {
   /*
    * Read the base binary policy.
    */
-  fprintf(stderr, "\nfopen: %s\n", base);
+  fprintf(stderr, "fopen: %s\n", base);
   binary_base = fopen(base, "r");
   if (!binary_base) {
     fprintf(stderr, "Could not open base binary file: %s\n", base);
@@ -209,27 +362,34 @@ int main(int argc, char *argv[]) {
     goto exit;
   }
 
+  if(log_level > CIL_ERR) {
+      policydb_to_stderr(pdb->p);
+  }
+
   /*
    * Add stuff to the policyd db.
    */
-  fprintf(stderr, "Reading incremental policy from %s\n.", incremental);
+  fprintf(stderr, "Reading incremental policy from %s.\n", incremental);
   read_cil_file(&incremental_db, incremental);
 
   cil_set_multiple_decls(incremental_db, 1);
 
-  fprintf(stderr, "Compiling incremental policy\n.");
+  fprintf(stderr, "Compiling incremental policy\n");
   rc = cil_compile(incremental_db);
   if (rc != SEPOL_OK) {
     fprintf(stderr, "Failed to compile cildb: %d\n", rc);
     goto exit;
   }
 
-  // rc = cil_build_policydb(incremental_db, &pdb);
-  // rc = cil_binary_create_allocated_pdb(incremental_db, &pdb);
+  fprintf(stderr, "Ameding binary policy.\n");
   rc = cil_amend_policydb(incremental_db, pdb);
   if (rc != SEPOL_OK) {
     fprintf(stderr, "Failed to build policydb\n");
     goto exit;
+  }
+
+  if(log_level > CIL_ERR) {
+      policydb_to_stderr(pdb->p);
   }
 
   /*
