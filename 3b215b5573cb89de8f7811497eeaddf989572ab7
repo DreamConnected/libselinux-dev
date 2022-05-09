@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda1956b_e3b7ece3",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-05-09T18:49:13Z",
+      "side": 1,
+      "message": "What are these changes actually doing? As far as the API surface I don\u0027t think this changes anything meaningfully, but I don\u0027t know enough about symbol versioning itself to say with confidence what this does.\n\nWhat are you trying to accomplish here?",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
