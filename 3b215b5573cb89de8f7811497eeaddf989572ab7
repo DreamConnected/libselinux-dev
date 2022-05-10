@@ -34,6 +34,24 @@
       "parentUuid": "bda1956b_e3b7ece3",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92f8b97_cced8168",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-05-10T19:21:16Z",
+      "side": 1,
+      "message": "\u003e We\u0027d like to keep the current behavior for anything linking at R and S, but for T, a warning/error is displayed to indicate that the function is not doing anything.\n\nIf you\u0027re trying to stop well-intentioned developers this is overkill, and if you\u0027re trying to stop people that don\u0027t care about what you deprecate this doesn\u0027t accomplish that.\n\nAll you need to do to make it clear to well intentioned developers that they shouldn\u0027t use the old API is remove the decl from the header.\n\nThere\u0027s nothing you can do to stop the other crowd, because they can always dlopen the other version of the symbol.\n\n\u003e The second change here is to remove the VNDK altogether (actually finish the removal, as this was started in a previous commit).\n\nWhy in that direction? The stability costs for the LL-NDK are significantly higher than for the VNDK. The only things that should be in LL-NDK are the things that **cannot** be in the VNDK for whatever reason.",
+      "parentUuid": "194f44c5_f4d1a66a",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
