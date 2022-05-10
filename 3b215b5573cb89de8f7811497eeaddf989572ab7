@@ -16,6 +16,24 @@
       "message": "What are these changes actually doing? As far as the API surface I don\u0027t think this changes anything meaningfully, but I don\u0027t know enough about symbol versioning itself to say with confidence what this does.\n\nWhat are you trying to accomplish here?",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194f44c5_f4d1a66a",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-10T08:56:31Z",
+      "side": 1,
+      "message": "Overall, I am cleaning up some of the tech debt on libselinux.\n\nThrough our discussions, we realized that libselinux was both present in LL-NDK and VNDK (it should be either but not both). The second change here is to remove the VNDK altogether (actually finish the removal, as this was started in a previous commit). \n\nThis change is about preparing the eventual removal of some deprecated functions. We\u0027d like to keep the current behavior for anything linking at R and S, but for T, a warning/error is displayed to indicate that the function is not doing anything. Feel free to comment on the bug as well if you think we should have a different approach here. Thanks.",
+      "parentUuid": "bda1956b_e3b7ece3",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
