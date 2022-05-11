@@ -52,6 +52,24 @@
       "parentUuid": "194f44c5_f4d1a66a",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e23d10_2fd28f7c",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-11T02:23:26Z",
+      "side": 1,
+      "message": "\u003e Why in that direction? The stability costs for the LL-NDK are significantly higher than for the VNDK. The only things that should be in LL-NDK are the things that **cannot** be in the VNDK for whatever reason.\n\nI am not making a new call here, simply following what has already been implemented: aosp/1274482, aosp/1274346 and b/151303316. IIUC, the reasoning is to save space by avoiding having an extra copy of the library. Jiyong can confirm if the move back to VNDK would be appropriate. But again, I\u0027m just trying to clean up the current situation, not trying to make any new decision on how libselinux should be available throughout the platform.\n \n\u003e All you need to do to make it clear to well intentioned developers that they shouldn\u0027t use the old API is remove the decl from the header.\n\u003e \n\nThat sounds good. I updated the change to: \n- Remove the declarations from the header file.\n- Trim down the implementation to simply logging.\n- Keep the function exported in the .map file (I guess this is the llndk commitment).",
+      "parentUuid": "e92f8b97_cced8168",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
