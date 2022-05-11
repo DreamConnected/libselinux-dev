@@ -88,6 +88,24 @@
       "parentUuid": "50e23d10_2fd28f7c",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d58040_0e641764",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-05-11T20:29:17Z",
+      "side": 1,
+      "message": "\u003e there could be old vendor implementations that call the older APIs and expect them to behave correctly. We can deprecate this only for newer (U and beyond) vendor implementations. \n\nWhen building, they\u0027ll have an old version of the headers that still has the decl, right? At runtime, the symbol isn\u0027t going anywhere, so not an issue.",
+      "parentUuid": "1e147604_e8d93ea6",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
