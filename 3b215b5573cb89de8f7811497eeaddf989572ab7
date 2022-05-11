@@ -70,6 +70,24 @@
       "parentUuid": "e92f8b97_cced8168",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e147604_e8d93ea6",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-11T03:51:59Z",
+      "side": 1,
+      "message": "\u003e well intentioned developers that they shouldn\u0027t use the old API is remove the decl from the header.\n\nWe can\u0027t because there could be old vendor implementations that call the older APIs and expect them to behave correctly. We can deprecate this only for newer (U and beyond) vendor implementations. \n\nThe symbol versioning is needed. \n\nAs Dan said, well motivated vendors can still dlvsym the old APIs, but that\u0027s fine.",
+      "parentUuid": "50e23d10_2fd28f7c",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
