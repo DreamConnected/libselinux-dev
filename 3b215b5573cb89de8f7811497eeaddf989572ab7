@@ -106,6 +106,24 @@
       "parentUuid": "1e147604_e8d93ea6",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff26295_72ca21b1",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-12T09:32:19Z",
+      "side": 1,
+      "message": "Linking will be fine, but when they actually start to call the symbols, they will experience a different behavior, which may be a breaking change to them.",
+      "parentUuid": "a3d58040_0e641764",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
