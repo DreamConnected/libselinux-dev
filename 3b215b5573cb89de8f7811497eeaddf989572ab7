@@ -178,6 +178,24 @@
       "parentUuid": "dc4d3559_97c9324e",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c889e54_12ef93e6",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-05-13T19:56:24Z",
+      "side": 1,
+      "message": "I still don\u0027t understand the intent of the symbol versioning tricks. If as you say vendors couldn\u0027t do this anyway, just revert the changes to this file.\n\nIf vendors are allowed to change the implementation in their branches (i.e. if there\u0027s no CTS test enforcing that selinux policy), then you can\u0027t change the implementation, and should revert the changes to the version script and the implementation.",
+      "parentUuid": "65f819a0_dba950e8",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
