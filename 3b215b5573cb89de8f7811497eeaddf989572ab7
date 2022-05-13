@@ -196,6 +196,24 @@
       "parentUuid": "65f819a0_dba950e8",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80981cd8_0e94e73d",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-05-13T19:57:01Z",
+      "side": 1,
+      "message": "\u003e If vendors are allowed to change the implementation in their branches\n\nMore clearly, if vendors are allowed to change sepolicy",
+      "parentUuid": "4c889e54_12ef93e6",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
