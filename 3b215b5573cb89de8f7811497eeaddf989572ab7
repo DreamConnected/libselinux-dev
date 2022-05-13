@@ -160,6 +160,24 @@
       "parentUuid": "c2cc8a00_e2afb865",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f819a0_dba950e8",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-13T04:13:21Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t know the existence of the sepolicy neverallow rule. Then removing the implementation totally makes sense.",
+      "parentUuid": "dc4d3559_97c9324e",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
