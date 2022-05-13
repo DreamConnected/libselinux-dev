@@ -142,6 +142,24 @@
       "parentUuid": "0ff26295_72ca21b1",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4d3559_97c9324e",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-13T03:49:56Z",
+      "side": 1,
+      "message": "Ack for the headers.\n\nI changed the implementation because vendors were never allowed to load the policy themselves. There is a selinux rule specifically for that: http://cs/android/system/sepolicy/public/domain.te;l\u003d417;rcl\u003dc7ca014555b411986cae6d9174a28a782a318f24\n(before that (ag/883592), this rule was `neverallow { domain -init } kernel:security load_policy`, which has the same effect). So if a vendor calls this function, `security_load_policy` will fail and the functions will effectively return -1. The only differences are: log messages are different and there is an access to a file. But surely these are side-effects and not part of the API?",
+      "parentUuid": "c2cc8a00_e2afb865",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
