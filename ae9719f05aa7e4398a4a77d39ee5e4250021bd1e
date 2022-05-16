@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "350f6b74_87bb85e2",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-16T00:33:14Z",
+      "side": 1,
+      "message": "nit: replace tab with spaces",
+      "range": {
+        "startLine": 1612,
+        "startChar": 0,
+        "endLine": 1612,
+        "endChar": 1
+      },
+      "revId": "ae9719f05aa7e4398a4a77d39ee5e4250021bd1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a49b201_7ca037b9",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 3
@@ -14,6 +37,30 @@
       "writtenOn": "2022-05-11T03:51:59Z",
       "side": 1,
       "message": "These are breaking change and a violation of the vendor freeze policy. See my comment on the other thread.",
+      "range": {
+        "startLine": 1610,
+        "startChar": 0,
+        "endLine": 1619,
+        "endChar": 11
+      },
+      "revId": "ae9719f05aa7e4398a4a77d39ee5e4250021bd1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c8fb37_ff8f4bba",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1619,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-16T00:33:14Z",
+      "side": 1,
+      "message": "This is no longer the case.",
+      "parentUuid": "9a49b201_7ca037b9",
       "range": {
         "startLine": 1610,
         "startChar": 0,
