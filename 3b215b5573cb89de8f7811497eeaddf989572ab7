@@ -214,6 +214,24 @@
       "parentUuid": "4c889e54_12ef93e6",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14128485_34d14a8c",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-16T00:14:25Z",
+      "side": 1,
+      "message": "There is a CTS test (cts/tools/selinux/) to ensure that the vendor policy does not breach any neverallow rule in the public policy. So no, vendors won\u0027t be able to remove it.\n\nSo there is no more versioning trick in this patchset version. The only change I have left in exported.map.txt is the inheritance of LIBSELINUX_S on LIBSELINUX_R. PTAL, thanks.",
+      "parentUuid": "80981cd8_0e94e73d",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
