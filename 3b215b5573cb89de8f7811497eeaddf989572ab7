@@ -250,6 +250,24 @@
       "parentUuid": "14128485_34d14a8c",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18594bec_f6c4e1c9",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2022-05-17T23:06:58Z",
+      "side": 1,
+      "message": "Android has a convention where the parent of LIBFOO_B is set to LIBFOO_A. Apparently the parent info is just a hint to the runtime, though, and LLD ignores it:\n\nhttps://reviews.llvm.org/D21888\n\nhttps://github.com/llvm/llvm-project/blob/llvmorg-14.0.3/lld/ELF/ScriptParser.cpp#L1524-L1528\n\nSo, in this case, setting the parent of LIBSELINUX_S to LIBSELINUX_R follows an Android convention, but it\u0027s a no-op because LLD discards the information. (ld.bfd and gold, on the other hand, would write the parent version into the verdef section.) AFAIK, bionic doesn\u0027t ever use the parent information.\n\nCreating an empty LIBSELINUX_T version, though, isn\u0027t a no-op -- it actually places a LIBSELINUX_T version into the verdef section. I see that PS3 removed it, and that seems like a good idea.",
+      "parentUuid": "c6dc4c74_b43cef85",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
