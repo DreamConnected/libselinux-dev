@@ -232,6 +232,24 @@
       "parentUuid": "80981cd8_0e94e73d",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6dc4c74_b43cef85",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-05-17T19:10:32Z",
+      "side": 1,
+      "message": "But why? What behavior change is being introduced by the change in this file? What are the map and source file changes accomplishing?",
+      "parentUuid": "14128485_34d14a8c",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
