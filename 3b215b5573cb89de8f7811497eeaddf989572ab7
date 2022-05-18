@@ -286,6 +286,24 @@
       "parentUuid": "18594bec_f6c4e1c9",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bd7135_2a24eff6",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-18T04:12:56Z",
+      "side": 1,
+      "message": "Thank you Ryan. I\u0027ve always wondered about it and you gave me the very answer!",
+      "parentUuid": "e864d477_966d7cff",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
