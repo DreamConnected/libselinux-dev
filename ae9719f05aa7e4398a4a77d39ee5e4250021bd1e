@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f12a6c5_91684949",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-18T01:31:51Z",
+      "side": 1,
+      "message": "This file is a mishmash of indentation types. The top half is mainly tabs and the rest of libselinux is also using tabs. I\u0027m slowly converting all of it to tabs.",
+      "parentUuid": "350f6b74_87bb85e2",
+      "range": {
+        "startLine": 1612,
+        "startChar": 0,
+        "endLine": 1612,
+        "endChar": 1
+      },
+      "revId": "ae9719f05aa7e4398a4a77d39ee5e4250021bd1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a49b201_7ca037b9",

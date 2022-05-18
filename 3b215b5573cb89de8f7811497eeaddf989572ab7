@@ -268,6 +268,24 @@
       "parentUuid": "c6dc4c74_b43cef85",
       "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e864d477_966d7cff",
+        "filename": "libselinux/exported.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-18T01:31:51Z",
+      "side": 1,
+      "message": "Great, thanks for these details Ryan. To avoid any misunderstanding, I\u0027ve simply removed any change to exported.map.txt here as they are not necessary. Thank you all for the review.",
+      "parentUuid": "18594bec_f6c4e1c9",
+      "revId": "3b215b5573cb89de8f7811497eeaddf989572ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
