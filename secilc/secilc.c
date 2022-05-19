@@ -41,6 +41,9 @@
 #endif
 #include <sepol/policydb.h>
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 static __attribute__((__noreturn__)) void usage(const char *prog)
 {
 	printf("Usage: %s [OPTION]... FILE...\n", prog);
@@ -79,6 +82,7 @@ static __attribute__((__noreturn__)) void usage(const char *prog)
 
 int main(int argc, char *argv[])
 {
+	ATRACE_BEGIN("secilc");
 	int rc = SEPOL_ERR;
 	sepol_policydb_t *pdb = NULL;
 	struct sepol_policy_file *pf = NULL;
@@ -264,6 +268,7 @@ int main(int argc, char *argv[])
 		cil_set_attrs_expand_size(db, (unsigned)attrs_expand_size);
 	}
 
+	ATRACE_BEGIN("cil_read");
 	for (i = optind; i < argc; i++) {
 		file = fopen(argv[i], "r");
 		if (!file) {
@@ -304,18 +309,23 @@ int main(int argc, char *argv[])
 		free(buffer);
 		buffer = NULL;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("cil_compile");
 	rc = cil_compile(db);
 	if (rc != SEPOL_OK) {
 		fprintf(stderr, "Failed to compile cildb: %d\n", rc);
 		goto exit;
 	}
+	ATRACE_END();
 
+	ATRACE_BEGIN("binary_build");
 	rc = cil_build_policydb(db, &pdb);
 	if (rc != SEPOL_OK) {
 		fprintf(stderr, "Failed to build policydb\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 	if (optimize) {
 		rc = sepol_policydb_optimize(pdb);
@@ -340,6 +350,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	ATRACE_BEGIN("binary_write");
 	binary = fopen(output, "w");
 	if (binary == NULL) {
 		fprintf(stderr, "Failure opening binary file for writing\n");
@@ -363,6 +374,7 @@ int main(int argc, char *argv[])
 
 	fclose(binary);
 	binary = NULL;
+	ATRACE_END();
 
 	rc = cil_filecons_to_string(db, &fc_buf, &fc_size);
 	if (rc != SEPOL_OK) {
@@ -407,5 +419,6 @@ exit:
 	sepol_policydb_free(pdb);
 	sepol_policy_file_free(pf);
 	free(fc_buf);
+	ATRACE_END();
 	return rc;
 }

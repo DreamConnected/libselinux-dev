@@ -67,6 +67,9 @@
 #include "mls.h"
 #include "flask.h"
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 #define BUG() do { ERR(NULL, "Badness at %s:%d", __FILE__, __LINE__); } while (0)
 
 static int selinux_enforcing = 1;
@@ -1671,7 +1674,7 @@ static int convert_context(sepol_security_id_t key __attribute__ ((unused)),
 }
 
 /* Reading from a policy "file". */
-int next_entry(void *buf, struct policy_file *fp, size_t bytes)
+int next_entry_untraced(void *buf, struct policy_file *fp, size_t bytes)
 {
 	size_t nread;
 
@@ -1696,6 +1699,14 @@ int next_entry(void *buf, struct policy_file *fp, size_t bytes)
 		return -1;
 	}
 	return 0;
+}
+
+int next_entry(void *buf, struct policy_file *fp, size_t bytes)
+{
+	// ATRACE_BEGIN("fread");
+	int rc = next_entry_untraced(buf, fp, bytes);
+	// ATRACE_END();
+	return rc;
 }
 
 size_t put_entry(const void *ptr, size_t size, size_t n,

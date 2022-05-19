@@ -26,6 +26,7 @@ cc_binary {
     host_supported: true,
     cflags: common_CFLAGS,
     srcs: ["secilc.c"],
+    shared_libs: ["libcutils"],
     static_libs: ["libsepol"],
     stl: "none",
     // secilc is a program that is executed very early by init.
@@ -42,6 +43,7 @@ cc_binary {
     host_supported: true,
     cflags: common_CFLAGS,
     srcs: ["secombinerc.c"],
+    shared_libs: ["libcutils"],
     static_libs: ["libsepol"],
     stl: "none",
     // secilc is a program that is executed very early by init.
