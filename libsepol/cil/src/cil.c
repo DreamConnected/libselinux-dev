@@ -52,6 +52,9 @@
 #include "cil_strpool.h"
 #include "cil_write_ast.h"
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 const int cil_sym_sizes[CIL_SYM_ARRAY_NUM][CIL_SYM_NUM] = {
 	{64, 64, 64, 1 << 13, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64},
 	{8, 8, 8, 32, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -547,35 +550,43 @@ int cil_compile(struct cil_db *db)
 	}
 
 	cil_log(CIL_INFO, "Building AST from Parse Tree\n");
+  	ATRACE_BEGIN("ast_parse");
 	rc = cil_build_ast(db, db->parse->root, db->ast->root);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to build AST\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 	cil_log(CIL_INFO, "Destroying Parse Tree\n");
 	cil_tree_destroy(&db->parse);
 
 	cil_log(CIL_INFO, "Resolving AST\n");
+  	ATRACE_BEGIN("ast_resolve");
 	rc = cil_resolve_ast(db, db->ast->root);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to resolve AST\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 	cil_log(CIL_INFO, "Qualifying Names\n");
+  	ATRACE_BEGIN("ast_qualify_names");
 	rc = cil_fqn_qualify(db->ast->root);
 	if (rc != SEPOL_OK) {
 		cil_log(CIL_ERR, "Failed to qualify names\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 	cil_log(CIL_INFO, "Compile post process\n");
+  	ATRACE_BEGIN("cil_post_process");
 	rc = cil_post_process(db);
 	if (rc != SEPOL_OK ) {
 		cil_log(CIL_ERR, "Post process failed\n");
 		goto exit;
 	}
+	ATRACE_END();
 
 exit:
 

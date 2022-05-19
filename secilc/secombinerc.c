@@ -41,6 +41,9 @@
 #include <sepol/policydb.h>
 #include <sepol/policydb/conditional.h>
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 static __attribute__((__noreturn__)) void usage(const char *prog) {
   printf("Usage: %s [OPTION]... FILE...\n", prog);
   printf("\n");
@@ -269,6 +272,7 @@ file_err:
 }
 
 int main(int argc, char *argv[]) {
+	ATRACE_BEGIN("seamendc");
   int rc = SEPOL_ERR;
   sepol_policydb_t *pdb = NULL;
   struct sepol_policy_file *pf_base = NULL;
@@ -324,6 +328,7 @@ int main(int argc, char *argv[]) {
   /*
    * Read the base binary policy.
    */
+	ATRACE_BEGIN("binary_read");
   fprintf(stderr, "fopen base: %s\n", base);
   binary_base = fopen(base, "r");
   if (!binary_base) {
@@ -364,6 +369,7 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Failed to read binary policy: %d\n", rc);
     goto exit;
   }
+  ATRACE_END(); // binary_read
 
   if(log_level > CIL_ERR) {
       policydb_to_stderr(pdb->p);
@@ -372,28 +378,34 @@ int main(int argc, char *argv[]) {
   /*
    * Initialize db and amend the policyd db.
    */
+   ATRACE_BEGIN("cil_read");
   cil_db_init(&incremental_db);
   rc = read_cil_files(&incremental_db, argv + optind, argc - optind);
   if (rc != SEPOL_OK) {
     fprintf(stderr, "Failed to read CIL files: %d\n", rc);
     goto exit;
   }
+  ATRACE_END(); // cil_read
 
   // cil_set_multiple_decls(incremental_db, 1);
 
   fprintf(stderr, "Compiling incremental policy\n");
+  ATRACE_BEGIN("cil_compile");
   rc = cil_compile(incremental_db);
   if (rc != SEPOL_OK) {
     fprintf(stderr, "Failed to compile cildb: %d\n", rc);
     goto exit;
   }
+  ATRACE_END(); // cil_compile
 
   fprintf(stderr, "Amending binary policy.\n");
+  ATRACE_BEGIN("binary_amend");
   rc = cil_amend_policydb(incremental_db, pdb);
   if (rc != SEPOL_OK) {
     fprintf(stderr, "Failed to build policydb\n");
     goto exit;
   }
+  ATRACE_END(); // binary_amend
 
   if(log_level > CIL_ERR) {
       policydb_to_stderr(pdb->p);
@@ -402,6 +414,7 @@ int main(int argc, char *argv[]) {
   /*
    * Write the result to file.
    */
+  ATRACE_BEGIN("binary_write");
   binary_out = fopen(output, "w");
   if (binary_out == NULL) {
     fprintf(stderr, "Failure opening binary %s file for writing\n", output);
@@ -421,9 +434,11 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "failed to write binary policy: %d\n", rc);
     goto exit;
   }
+  ATRACE_END(); // binary_write
 
 exit:
   fprintf(stderr, "Secombinerc terminated with: %d\n", rc);
+  ATRACE_BEGIN("free_memory");
   if (binary_base != NULL) {
     fclose(binary_base);
   }
@@ -435,5 +450,7 @@ exit:
   sepol_policy_file_free(pf_base);
   sepol_policy_file_free(pf_out);
   free(output);
+  ATRACE_END(); // free_memory
+  ATRACE_END(); // seamendc
   return rc;
 }

@@ -56,6 +56,9 @@
 #include "mls.h"
 #include "policydb_validate.h"
 
+#define ATRACE_TAG ATRACE_TAG_ALWAYS
+#include <cutils/trace.h>
+
 #define POLICYDB_TARGET_SZ   ARRAY_SIZE(policydb_target_strings)
 const char * const policydb_target_strings[] = { POLICYDB_STRING, POLICYDB_XEN_STRING };
 
@@ -4203,7 +4206,7 @@ static sepol_access_vector_t policydb_string_to_av_perm(
  */
 int policydb_read(policydb_t * p, struct policy_file *fp, unsigned verbose)
 {
-
+	// ATRACE_BEGIN("read");
 	unsigned int i, j, r_policyvers;
 	uint32_t buf[5];
 	size_t len, nprim, nel;
@@ -4474,7 +4477,9 @@ int policydb_read(policydb_t * p, struct policy_file *fp, unsigned verbose)
 		}
 
 	}
+	// ATRACE_END(); // read
 
+	// ATRACE_BEGIN("index");
 	if (policydb_index_decls(fp->handle, p))
 		goto bad;
 
@@ -4497,7 +4502,9 @@ int policydb_read(policydb_t * p, struct policy_file *fp, unsigned verbose)
 
 	if (policydb_index_others(fp->handle, p, verbose))
 		goto bad;
+	// ATRACE_END(); // index
 
+	// ATRACE_BEGIN("read");
 	if (ocontext_read(info, p, fp) == -1) {
 		goto bad;
 	}
@@ -4551,9 +4558,12 @@ int policydb_read(policydb_t * p, struct policy_file *fp, unsigned verbose)
 			}
 		}
 	}
+	// ATRACE_END(); // read2
 
+	// ATRACE_BEGIN("validate");
 	if (validate_policydb(fp->handle, p))
 		goto bad;
+	// ATRACE_END(); // validate
 
 	return POLICYDB_SUCCESS;
       bad:
