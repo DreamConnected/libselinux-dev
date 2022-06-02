@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757d5cd7_eb9d0604",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-06-02T13:25:31Z",
+      "side": 1,
+      "message": "A couple of things that I would like to see:\n\n1. Run this in a HWASAN build.\n2. Ensure that the kernel can load the policy that you\u0027re outputting.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e3055ac_ff3cb017",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-06-02T13:25:31Z",
+      "side": 1,
+      "message": "why is this void?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68de645c_077a1172",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-06-02T13:25:31Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1080,
+        "startChar": 22,
+        "endLine": 1080,
+        "endChar": 23
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a43611f_4659a077",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-06-02T13:25:31Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1080,
+        "startChar": 14,
+        "endLine": 1080,
+        "endChar": 15
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
