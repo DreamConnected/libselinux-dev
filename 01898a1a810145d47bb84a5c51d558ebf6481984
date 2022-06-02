@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3323b43_ae2ca709",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-02T13:54:41Z",
+      "side": 1,
+      "message": "I am following the same pattern used in cil_binary.c, because I am trying to reuse as much code as possible. The type_value_to_cil is used to map from the binary policy types to the 2 different CIL types, cil_type or cil_typeattribute.\n\nThis is what I am using as reference\nhttps://cs.android.com/android/platform/superproject/+/master:external/selinux/libsepol/cil/src/cil_binary.c;l\u003d69;drc\u003d349d6efeed02e20c23093f73b3d1ea913ec43632",
+      "parentUuid": "8e3055ac_ff3cb017",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68de645c_077a1172",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 4
@@ -83,6 +107,54 @@
       "writtenOn": "2022-06-02T13:25:31Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 1080,
+        "startChar": 14,
+        "endLine": 1080,
+        "endChar": 15
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97773164_f7c5b671",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-02T13:54:41Z",
+      "side": 1,
+      "message": "See previous comment.",
+      "parentUuid": "68de645c_077a1172",
+      "range": {
+        "startLine": 1080,
+        "startChar": 22,
+        "endLine": 1080,
+        "endChar": 23
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a57327_2a117adc",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-02T13:54:41Z",
+      "side": 1,
+      "message": "The cil_amend_policydb is a stripped down version of the cil_binary_create_allocated_pdb function. The numbers 1 to 3 are the passes made over the cil_db object, first to create the types and typeattributes in the policydb object, then to apply the rules. I am still not exactly sure what happens in step number 2..\n\nThis is the code I am using as reference\nhttps://cs.android.com/android/platform/superproject/+/master:external/selinux/libsepol/cil/src/cil_binary.c;l\u003d5018;drc\u003d349d6efeed02e20c23093f73b3d1ea913ec43632\n\nSee also this funny switch\nhttps://cs.android.com/android/platform/superproject/+/master:external/selinux/libsepol/cil/src/cil_binary.c;l\u003d3752;drc\u003d349d6efeed02e20c23093f73b3d1ea913ec43632",
+      "parentUuid": "5a43611f_4659a077",
       "range": {
         "startLine": 1080,
         "startChar": 14,
