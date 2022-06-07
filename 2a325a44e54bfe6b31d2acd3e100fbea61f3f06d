@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2784021f_004bfca1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-06-07T00:43:50Z",
+      "side": 1,
+      "message": "See comments at https://cs.android.com/android/platform/superproject/+/master:system/core/libcutils/include/private/android_filesystem_config.h;l\u003d227;drc\u003d7e14d138ae598ea8c4c10d6d774552fd0f3099c7. libselinux is the last user of AID_USER (now, AID_USER_OFFSET).",
+      "revId": "2a325a44e54bfe6b31d2acd3e100fbea61f3f06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
