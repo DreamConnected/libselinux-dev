@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c1b11dd_c7a5ad9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-14T16:34:48Z",
+      "side": 1,
+      "message": "Regarding 2., I booted a device using the an amended policy (aosp/2125533). Everything seems to be working fine. Is there anything in particular you would like me to check?\n\nI\u0027ll now start working on 1., running the code in a HWASAN build.",
+      "parentUuid": "757d5cd7_eb9d0604",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e3055ac_ff3cb017",
         "filename": "libsepol/cil/src/android.c",
         "patchSetId": 4
