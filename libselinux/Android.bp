@@ -172,7 +172,9 @@ cc_library {
         linux_bionic: {
             enabled: true,
         },
-
+        darwin: {
+            enabled: false,
+        },
         android: {
             version_script: "exported.map.txt",
         },
