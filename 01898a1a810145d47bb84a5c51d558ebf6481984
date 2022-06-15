@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5cd457_3cf23cb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-15T15:08:08Z",
+      "side": 1,
+      "message": "For 1., I ran the code in an hwasan build, and it complained because the binary was accessing forbidden memory locations. It turns out I did not expand the type\u003c-\u003eattr maps when adding new (non-existing) types.\n\nI fixed the issue and now everything seems to be working fine.",
+      "parentUuid": "0c1b11dd_c7a5ad9f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e3055ac_ff3cb017",
