@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fac1f019_2d6dd0c0",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-15T15:09:28Z",
+      "side": 1,
+      "message": "Marking the comment as resolved, feel free to reopen it.",
+      "parentUuid": "f3323b43_ae2ca709",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68de645c_077a1172",
@@ -208,6 +232,54 @@
         "startChar": 14,
         "endLine": 1080,
         "endChar": 15
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3319f6c1_37b5ae4d",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-15T15:09:28Z",
+      "side": 1,
+      "message": "Marking the comment as resolved, feel free to reopen it.",
+      "parentUuid": "c8a57327_2a117adc",
+      "range": {
+        "startLine": 1080,
+        "startChar": 14,
+        "endLine": 1080,
+        "endChar": 15
+      },
+      "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d10d70_1c7fd7d7",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-15T15:09:28Z",
+      "side": 1,
+      "message": "Marking the comment as resolved, feel free to reopen it.",
+      "parentUuid": "97773164_f7c5b671",
+      "range": {
+        "startLine": 1080,
+        "startChar": 22,
+        "endLine": 1080,
+        "endChar": 23
       },
       "revId": "01898a1a810145d47bb84a5c51d558ebf6481984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
