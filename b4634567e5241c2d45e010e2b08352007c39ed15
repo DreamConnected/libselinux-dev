@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dff42cc_818a8453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1463061
+      },
+      "writtenOn": "2022-06-16T10:12:05Z",
+      "side": 1,
+      "message": "I submit it first because the issue block the branch for a while.",
+      "revId": "b4634567e5241c2d45e010e2b08352007c39ed15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
