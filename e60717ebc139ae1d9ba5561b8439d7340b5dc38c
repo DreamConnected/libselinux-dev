@@ -16,6 +16,29 @@
       "message": "Adding Alan and Melisa as reviewers to take some load off Jeff.",
       "revId": "e60717ebc139ae1d9ba5561b8439d7340b5dc38c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2432ec6f_cc68bae3",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1742951
+      },
+      "writtenOn": "2022-06-28T15:07:54Z",
+      "side": 1,
+      "message": "Although the code is self explanatory, adding a comment here summarizing what each pass does might save some time to future readers. Here or in cil_amend_policydb sg.",
+      "range": {
+        "startLine": 956,
+        "startChar": 0,
+        "endLine": 956,
+        "endChar": 15
+      },
+      "revId": "e60717ebc139ae1d9ba5561b8439d7340b5dc38c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
