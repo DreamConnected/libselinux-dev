@@ -39,6 +39,30 @@
       },
       "revId": "e60717ebc139ae1d9ba5561b8439d7340b5dc38c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a925767d_401fca37",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-06-28T15:45:11Z",
+      "side": 1,
+      "message": "Good point, I added a comment in cil_amend_policydb.",
+      "parentUuid": "2432ec6f_cc68bae3",
+      "range": {
+        "startLine": 956,
+        "startChar": 0,
+        "endLine": 956,
+        "endChar": 15
+      },
+      "revId": "e60717ebc139ae1d9ba5561b8439d7340b5dc38c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
