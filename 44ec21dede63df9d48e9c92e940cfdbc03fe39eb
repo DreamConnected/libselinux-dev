@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a142d219_1b2e1f78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-06-29T17:11:44Z",
+      "side": 1,
+      "message": "Could you add the bug here?\n\nThere seem to be existing unit \u0026 integration tests under libsepol/cil/test; you should run those, and can we add some new ones for the new functionality?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12e3f65_9848cf92",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-06-29T17:11:44Z",
+      "side": 1,
+      "message": "Could we have an enum / named constants for the passes?\n\nTBH I think I would write these as 3 separate functions with helpful names, and live with the minor duplication.",
+      "range": {
+        "startLine": 957,
+        "startChar": 1,
+        "endLine": 957,
+        "endChar": 7
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9144ae2f_b3a01a1f",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-06-29T17:11:44Z",
+      "side": 1,
+      "message": "What\u0027s the rationale for logging just these ones?",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 16
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d138a957_ae9ffe89",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-06-29T17:11:44Z",
+      "side": 1,
+      "message": "The rule of three would suggest extracting this as a helper function",
+      "range": {
+        "startLine": 1047,
+        "startChar": 2,
+        "endLine": 1047,
+        "endChar": 79
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e4bf5a_f7517c8b",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-06-29T17:11:44Z",
+      "side": 1,
+      "message": "What\u0027s the +1 for?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 73,
+        "endLine": 1071,
+        "endChar": 76
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
