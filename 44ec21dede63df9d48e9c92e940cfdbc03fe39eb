@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47f2d12_56707303",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-07-06T14:48:25Z",
+      "side": 1,
+      "message": "I added the bug to the cl description.\n\nRegarding testing, it seems the tests in libespol/cil/test are broken. I opened a bug with the SELinux project, and linked it in here: b/234313751#comment4.\n\nI also added a cts test to verify the behavior of the seamendc binary. See aosp/2146866. For now the cts test is quite simple, we plan to expand it in the future.",
+      "parentUuid": "a142d219_1b2e1f78",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c12e3f65_9848cf92",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-29T17:11:44Z",
       "side": 1,
       "message": "Could we have an enum / named constants for the passes?\n\nTBH I think I would write these as 3 separate functions with helpful names, and live with the minor duplication.",
+      "range": {
+        "startLine": 957,
+        "startChar": 1,
+        "endLine": 957,
+        "endChar": 7
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d87d77_9c0e44f3",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-07-06T14:48:25Z",
+      "side": 1,
+      "message": "Done. I also refactored the for loop below to directly call into the three separate functions. Hopefully the flow is easier to understand now.",
+      "parentUuid": "c12e3f65_9848cf92",
       "range": {
         "startLine": 957,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7959144e_bc8c77e2",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-07-06T14:48:25Z",
+      "side": 1,
+      "message": "This function is a simplified version of the __cil_node_to_policydb function in libsepol\nhttps://cs.android.com/android/platform/superproject/+/master:external/selinux/libsepol/cil/src/cil_binary.c;l\u003d3730;drc\u003db821c815077b1c435c268cc07ede3ec9ff2baeca\n\nFor cil_sepolicy_amend we only support a subset of all the possible CIL types and statements. The logs here corresponds to statements we currently do not support but might want to add support for in the future. It was useful for me while debugging to keep an eye on these logs, but it is probably not necessary to keep them. I replaced the logs with a comment.",
+      "parentUuid": "9144ae2f_b3a01a1f",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 16
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d138a957_ae9ffe89",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "139bbd24_604c071c",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-07-06T14:48:25Z",
+      "side": 1,
+      "message": "I removed this log line and replaced with more specific logs in the for loop below.",
+      "parentUuid": "d138a957_ae9ffe89",
+      "range": {
+        "startLine": 1047,
+        "startChar": 2,
+        "endLine": 1047,
+        "endChar": 79
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6e4bf5a_f7517c8b",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-29T17:11:44Z",
       "side": 1,
       "message": "What\u0027s the +1 for?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 73,
+        "endLine": 1071,
+        "endChar": 76
+      },
+      "revId": "44ec21dede63df9d48e9c92e940cfdbc03fe39eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b9dd481_d75be620",
+        "filename": "libsepol/cil/src/android.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2022-07-06T14:48:25Z",
+      "side": 1,
+      "message": "The +1 is there because libsepol values start from 1. Instead of shifting every value, we just allocate extra memory. I added clarification to the comment.",
+      "parentUuid": "b6e4bf5a_f7517c8b",
       "range": {
         "startLine": 1071,
         "startChar": 73,
