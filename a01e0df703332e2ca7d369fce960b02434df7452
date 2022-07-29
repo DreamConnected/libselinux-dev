@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e8e613_5dab8f66",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-07-29T08:55:00Z",
+      "side": 1,
+      "message": "Where does that limit come from?\n\nIt doesn\u0027t seem right; AID_USER_OFFSET is 1e5, so large values of userid can overflow the 32 bits we have.\n\nI\u0027m not sure there\u0027s an official limit, but http://cs/android-internal/system/core/libcutils/include/private/android_filesystem_config.h?rcl\u003d727fdd443b5211778f287167affd2ab9b7ac5ec8\u0026l\u003d227 uses 1000.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 20,
+        "endLine": 1136,
+        "endChar": 27
+      },
+      "revId": "a01e0df703332e2ca7d369fce960b02434df7452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
