@@ -22,6 +22,30 @@
       },
       "revId": "a01e0df703332e2ca7d369fce960b02434df7452",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116a535f_1987de70",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-07-31T23:52:30Z",
+      "side": 1,
+      "message": "This is an upper bound from the number of categories used to represent a user id: c512-\u003ec768 * c768-\u003ec1024. \n\nI found the 1000 reference in grp_pwd.cpp you mentioned (http://cs/android-internal/bionic/libc/bionic/grp_pwd.cpp;l\u003d352;rcl\u003dd8822dae244d4084e971d8c0749c23e2864f1a68). Updated. Thanks.",
+      "parentUuid": "06e8e613_5dab8f66",
+      "range": {
+        "startLine": 1136,
+        "startChar": 20,
+        "endLine": 1136,
+        "endChar": 27
+      },
+      "revId": "a01e0df703332e2ca7d369fce960b02434df7452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
