@@ -282,7 +282,7 @@ static int class_copy_callback(hashtab_key_t key, hashtab_datum_t datum,
 			 * off). Note: this will break horribly if modules can declare object
 			 * classes because the class numbers will be all wrong (i.e., they
 			 * might be assigned in the order they were required rather than the
-			 * current scheme which ensures correct numbering by ordering the 
+			 * current scheme which ensures correct numbering by ordering the
 			 * declarations properly). This can't be fixed until some infrastructure
 			 * for querying the object class numbers is in place. */
 			state->dest_class_req = 1;
@@ -646,7 +646,7 @@ static int bool_copy_callback(hashtab_key_t key, hashtab_datum_t datum,
 			return -1;
 	}
 
-	/* Get the scope info for this boolean to see if this is the declaration, 
+	/* Get the scope info for this boolean to see if this is the declaration,
  	 * if so set the state */
 	scope = hashtab_search(state->cur->policy->p_bools_scope.table, id);
 	if (!scope)
@@ -943,7 +943,7 @@ static int alias_copy_callback(hashtab_key_t key, hashtab_datum_t datum,
 		base_type->flags |= target_type->flags;
 
 	}
-	/* the aliases map points from its value to its primary so when this module 
+	/* the aliases map points from its value to its primary so when this module
 	 * references this type the value it gets back from the map is the primary */
 	mod->map[SYM_TYPES][type->s.value - 1] = base_type->primary;
 
@@ -1125,7 +1125,7 @@ static int role_fix_callback(hashtab_key_t key, hashtab_datum_t datum,
 		goto cleanup;
 	}
 	ebitmap_destroy(&e_tmp);
-	
+
 	if (role->flavor == ROLE_ATTRIB) {
 		ebitmap_init(&e_tmp);
 		ebitmap_for_each_positive_bit(&role->roles, rnode, i) {
@@ -2041,6 +2041,7 @@ static int is_decl_requires_met(link_state_t * state,
 				rc = hashtab_map(cladatum->comdatum->permissions.table,
 						 find_perm, &fparg);
 				assert(rc == 1);
+				(void)rc;
 			}
 			perm_id = fparg.key;
 
@@ -2447,7 +2448,7 @@ restart:
 /* For any role attribute in a declaration's local symtab[SYM_ROLES] table,
  * copy its roles ebitmap into its duplicate's in the base->p_roles.table.
  */
-static int populate_decl_roleattributes(hashtab_key_t key, 
+static int populate_decl_roleattributes(hashtab_key_t key,
 					hashtab_datum_t datum,
 					void *data)
 {
@@ -2496,7 +2497,7 @@ static int populate_roleattributes(link_state_t *state, policydb_t *pol)
 		if (decl == NULL || decl->enabled == 0)
 			continue;
 
-		if (hashtab_map(decl->symtab[SYM_ROLES].table, 
+		if (hashtab_map(decl->symtab[SYM_ROLES].table,
 				populate_decl_roleattributes, state))
 			return -1;
 	}
@@ -2610,7 +2611,7 @@ int link_modules(sepol_handle_t * handle,
 		retval = SEPOL_EREQ;
 		goto cleanup;
 	}
-	
+
 	/* Now do the escalation. */
 	if (hashtab_map(state.base->p_roles.table, expand_role_attributes,
 			&state))

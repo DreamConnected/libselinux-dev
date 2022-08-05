@@ -245,6 +245,7 @@ int regex_cmp(struct regex_data *regex1, struct regex_data *regex2)
 	size_t len1, len2;
 	rc = pcre2_pattern_info(regex1->regex, PCRE2_INFO_SIZE, &len1);
 	assert(rc == 0);
+	(void)rc;
 	rc = pcre2_pattern_info(regex2->regex, PCRE2_INFO_SIZE, &len2);
 	assert(rc == 0);
 	if (len1 != len2 || memcmp(regex1->regex, regex2->regex, len1))
