@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54036246_f531a17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-08-07T23:19:38Z",
+      "side": 1,
+      "message": "It looks like this is a generic change and should probably go upstream. Could you send the patch to https://github.com/SELinuxProject/selinux instead (a Github pull request is fine)? Thanks.",
+      "revId": "2059756c96c06912f7a187c081ff21b819724f4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a03ca4_ba280377",
+        "filename": "libselinux/src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-08-07T23:19:38Z",
+      "side": 1,
+      "message": "Could you add a similar statement here? Thanks.",
+      "revId": "2059756c96c06912f7a187c081ff21b819724f4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
