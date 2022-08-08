@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2139da8e_2cedec1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-08-08T10:42:44Z",
+      "side": 1,
+      "message": "Some paths are the \"root\" of app data dirs (such as \"/data/user/0\"). It should probably be handled here as well (as we can extract the userid) but that\u0027s not the previous behaviour.",
+      "parentUuid": "adcb760b_dcbcf79d",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 72
+      },
+      "revId": "3db4e2df82f9e125fef7ea7074eb558cba5e43ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74ecd79c_87834739",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-08T10:01:41Z",
       "side": 1,
       "message": "Can we expand this comment a bit to explain why that\u0027s the correct behavior?\nOr just to warn future readers that passing invalid paths really happens and clients are relying on specific outcomes?",
+      "range": {
+        "startLine": 1264,
+        "startChar": 6,
+        "endLine": 1264,
+        "endChar": 36
+      },
+      "revId": "3db4e2df82f9e125fef7ea7074eb558cba5e43ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b728a94a_da5d8ce9",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-08-08T10:42:44Z",
+      "side": 1,
+      "message": "I don\u0027t know how much of this behaviour is expected. For now, I\u0027ll stick to restoring the previous error code. I\u0027ll see if I can dig more info on what is expected here. Thanks.",
+      "parentUuid": "74ecd79c_87834739",
       "range": {
         "startLine": 1264,
         "startChar": 6,
