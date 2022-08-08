@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcb760b_dcbcf79d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-08-08T10:01:41Z",
+      "side": 1,
+      "message": "But why are we passing in invalid paths?",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 72
+      },
+      "revId": "3db4e2df82f9e125fef7ea7074eb558cba5e43ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ecd79c_87834739",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-08-08T10:01:41Z",
+      "side": 1,
+      "message": "Can we expand this comment a bit to explain why that\u0027s the correct behavior?\nOr just to warn future readers that passing invalid paths really happens and clients are relying on specific outcomes?",
+      "range": {
+        "startLine": 1264,
+        "startChar": 6,
+        "endLine": 1264,
+        "endChar": 36
+      },
+      "revId": "3db4e2df82f9e125fef7ea7074eb558cba5e43ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
