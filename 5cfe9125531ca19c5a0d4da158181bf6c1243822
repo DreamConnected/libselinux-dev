@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e36250_5eb7645c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-21T10:55:45Z",
+      "side": 1,
+      "message": "What is different this time round?\n\n(BTW: to make this sort of review easier, it\u0027s nice to do a patchset 1 which is just a revert of the revert, ie the original CL, and then patchset 2 is the modifications to it.)",
+      "revId": "5cfe9125531ca19c5a0d4da158181bf6c1243822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f06abb0_79e89839",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-21T10:55:45Z",
+      "side": 1,
+      "message": "I think this is the only difference from last time?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 12
+      },
+      "revId": "5cfe9125531ca19c5a0d4da158181bf6c1243822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
