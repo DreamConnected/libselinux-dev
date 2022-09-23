@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a49aac8_1edb63d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1961735
+      },
+      "writtenOn": "2022-09-23T14:31:36Z",
+      "side": 1,
+      "message": "Sorry, it seems you were automatically added for review before I\u0027ve finished uploading all the related CLs. I\u0027ll reply again once they\u0027re uploaded. I have shared a relevant document with you.\n\nThe usual signature-based methodology configured via mac_permissions.xml doesn\u0027t suit WebView\u0027s needs very well:\n\n- WebView providers are currently defined via a config_webview_packages.xml resource, which only sometimes specifies signatures. System-installed WebViews don\u0027t have signature enforcement.\n- config_webview_packages.xml as a resource can be overridden (particularly for GMS builds), complicating maintenance of mac_permissions.xml.\n- Debuggable builds of Android don\u0027t enforce signature checks for WebView providers, in order to ease development. The mac_permissions.xml approach doesn\u0027t have such a distinction for debuggable builds.\n- There are some additional (minor) restrictions on what can be considered a WebView provider, which aren\u0027t captured by package name and signature alone.",
+      "parentUuid": "2c0ff374_104dad51",
+      "revId": "0f9d0244fce39185bae5d479c295cf74339c931b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfe87098_ef9b8dea",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 1
