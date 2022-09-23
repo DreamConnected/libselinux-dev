@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cd4ed2_dccbd9c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-23T09:07:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "911abf84_687d3679",
+      "revId": "5cfe9125531ca19c5a0d4da158181bf6c1243822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f06abb0_79e89839",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "That + liblog added as a whole_static_lib when building for the host statically.",
       "parentUuid": "7f06abb0_79e89839",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 12
+      },
+      "revId": "5cfe9125531ca19c5a0d4da158181bf6c1243822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6708a910_f636c8b8",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-23T09:07:24Z",
+      "side": 1,
+      "message": "Ah yes, I missed that.",
+      "parentUuid": "2a0c38b9_32cddb7a",
       "range": {
         "startLine": 193,
         "startChar": 0,
