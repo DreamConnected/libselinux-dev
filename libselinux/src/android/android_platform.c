@@ -133,6 +133,8 @@ struct seapp_context {
 	struct prefix_str name;
 	bool isPrivAppSet;
 	bool isPrivApp;
+	bool isWebViewProviderAppSet;
+	bool isWebViewProviderApp;
 	int32_t minTargetSdkVersion;
 	bool fromRunAs;
 	/* outputs */
@@ -217,6 +219,10 @@ static int seapp_context_cmp(const void *A, const void *B)
 	if (s1->isPrivAppSet != s2->isPrivAppSet)
 		return (s1->isPrivAppSet ? -1 : 1);
 
+	/* Give precedence to a specified isWebViewProviderApp= over an unspecified isWebViewProviderApp=. */
+	if (s1->isWebViewProviderAppSet != s2->isWebViewProviderAppSet)
+		return (s1->isWebViewProviderAppSet ? -1 : 1);
+
 	/* Give precedence to a higher minTargetSdkVersion= over a lower minTargetSdkVersion=.
 	 * If unspecified, minTargetSdkVersion has a default value of 0.
 	 */
@@ -239,6 +245,7 @@ static int seapp_context_cmp(const void *A, const void *B)
 		(!s1->seinfo || !strcmp(s1->seinfo, s2->seinfo)) &&
 		(!s1->name.str || !strcmp(s1->name.str, s2->name.str)) &&
 		(s1->isPrivAppSet && s1->isPrivApp == s2->isPrivApp) &&
+		(s1->isWebViewProviderAppSet && s1->isWebViewProviderApp == s2->isWebViewProviderApp) &&
 		(s1->isSystemServer && s1->isSystemServer == s2->isSystemServer) &&
 		(s1->isEphemeralAppSet && s1->isEphemeralApp == s2->isEphemeralApp);
 
@@ -501,6 +508,16 @@ int selinux_android_seapp_context_reload(void)
 						free_seapp_context(cur);
 						goto err;
 					}
+				} else if (!strcasecmp(name, "isWebViewProviderApp")) {
+					cur->isWebViewProviderAppSet = true;
+					if (!strcasecmp(value, "true"))
+						cur->isWebViewProviderApp = true;
+					else if (!strcasecmp(value, "false"))
+						cur->isWebViewProviderApp = false;
+					else {
+						free_seapp_context(cur);
+						goto err;
+					}
 				} else if (!strcasecmp(name, "minTargetSdkVersion")) {
 					cur->minTargetSdkVersion = get_minTargetSdkVersion(value);
 					if (cur->minTargetSdkVersion < 0) {
@@ -554,13 +571,14 @@ int selinux_android_seapp_context_reload(void)
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
 			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s  isEphemeralApp=%s user=%s seinfo=%s "
-					"name=%s isPrivApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+					"name=%s isPrivApp=%s isWebViewProviderApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
 				cur->user.str,
 				cur->seinfo, cur->name.str,
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
+				cur->isWebViewProviderAppSet ? (cur->isWebViewProviderApp ? "true" : "false") : "null",
 				cur->minTargetSdkVersion,
 				cur->fromRunAs ? "true" : "false",
 				cur->domain, cur->type, cur->level,
@@ -620,6 +638,7 @@ enum seapp_kind {
 
 #define PRIVILEGED_APP_STR ":privapp"
 #define EPHEMERAL_APP_STR ":ephemeralapp"
+#define WEBVIEW_PROVIDER_APP_STR ":webviewproviderapp"
 #define TARGETSDKVERSION_STR ":targetSdkVersion="
 #define FROM_RUNAS_STR ":fromRunAs"
 static int32_t get_app_targetSdkVersion(const char *seinfo)
@@ -713,6 +732,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 	uid_t appid;
 	bool isPrivApp = false;
 	bool isEphemeralApp = false;
+	bool isWebViewProviderApp = false;
 	int32_t targetSdkVersion = 0;
 	bool fromRunAs = false;
 	char parsedseinfo[BUFSIZ];
@@ -724,6 +744,7 @@ static int seapp_context_lookup(enum seapp_kind kind,
 			goto err;
 		isPrivApp = strstr(seinfo, PRIVILEGED_APP_STR) ? true : false;
 		isEphemeralApp = strstr(seinfo, EPHEMERAL_APP_STR) ? true : false;
+		isWebViewProviderApp = strstr(seinfo, WEBVIEW_PROVIDER_APP_STR) ? true : false;
 		fromRunAs = strstr(seinfo, FROM_RUNAS_STR) ? true : false;
 		targetSdkVersion = get_app_targetSdkVersion(seinfo);
 		if (targetSdkVersion < 0) {
@@ -803,6 +824,9 @@ static int seapp_context_lookup(enum seapp_kind kind,
 		}
 
 		if (cur->isPrivAppSet && cur->isPrivApp != isPrivApp)
+			continue;
+
+		if (cur->isWebViewProviderAppSet && cur->isWebViewProviderApp != isWebViewProviderApp)
 			continue;
 
 		if (cur->minTargetSdkVersion > targetSdkVersion)
