@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0ff374_104dad51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-23T14:01:17Z",
+      "side": 1,
+      "message": "Can you point me at the CLs that add the new marker to seinfo in system server?\n\nI can\u0027t see your design doc (I\u0027ve requested access). I\u0027d be interested to understand why you\u0027re adding a new selector rather than, say, using a specific signing key.",
+      "revId": "0f9d0244fce39185bae5d479c295cf74339c931b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe87098_ef9b8dea",
+        "filename": "libselinux/src/android/android_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-23T14:01:17Z",
+      "side": 1,
+      "message": "Please can you updated the comment at the top of system/sepolicy/private/seapp_contexts to document this?\n\nDo you have an example usage of this new selector?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 40
+      },
+      "revId": "0f9d0244fce39185bae5d479c295cf74339c931b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
