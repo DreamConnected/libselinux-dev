@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c327872_89b6a2ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-23T14:35:06Z",
+      "side": 1,
+      "message": "Ah yes, that happens in AOSP for various repos, including this one.\n\nAnyway, I think you need a security review of your design before you can proceed with this CL.",
+      "parentUuid": "9a49aac8_1edb63d3",
+      "revId": "0f9d0244fce39185bae5d479c295cf74339c931b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfe87098_ef9b8dea",
         "filename": "libselinux/src/android/android_platform.c",
         "patchSetId": 1
