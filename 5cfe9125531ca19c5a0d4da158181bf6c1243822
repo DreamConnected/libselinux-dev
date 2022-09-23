@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "911abf84_687d3679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-09-23T01:34:21Z",
+      "side": 1,
+      "message": "Sorry, I should have added that info to the change.\nWhen it landed the first time, 2 targets failed:\n1. mac_sdk because e2fsdroid was still built for it.\n2. aapt2 static build using musl.\n\n(1.) has been solved by removing the dependency on e2fsdroid for mac_sdk.\n(2.) The CI for that target has now been disabled. It is also broken currently (before this change, checked with ccross@ that this is expected). Still, the issue was about building the host tools statically. The liblog dependency was missing. It is added in this change + as you spotted the reset of the \"stl\" attribute.",
+      "parentUuid": "b2e36250_5eb7645c",
+      "revId": "5cfe9125531ca19c5a0d4da158181bf6c1243822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f06abb0_79e89839",
         "filename": "libselinux/Android.bp",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-21T10:55:45Z",
       "side": 1,
       "message": "I think this is the only difference from last time?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 12
+      },
+      "revId": "5cfe9125531ca19c5a0d4da158181bf6c1243822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0c38b9_32cddb7a",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-09-23T01:34:21Z",
+      "side": 1,
+      "message": "That + liblog added as a whole_static_lib when building for the host statically.",
+      "parentUuid": "7f06abb0_79e89839",
       "range": {
         "startLine": 193,
         "startChar": 0,
