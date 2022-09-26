@@ -16,6 +16,47 @@
       "message": "Patchset 1 is the original. Patchset 2 is the modification since the previous landing. Thanks.",
       "revId": "48376dc6df8d092ce77769a06f5545ebd6b85e6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "903ee8c6_e809d552",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-26T08:53:46Z",
+      "side": 1,
+      "message": "Thank you! :-)",
+      "parentUuid": "9d8dc254_55f7acab",
+      "revId": "48376dc6df8d092ce77769a06f5545ebd6b85e6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d7ca85_b70cc2bd",
+        "filename": "libselinux/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-26T08:53:46Z",
+      "side": 1,
+      "message": "Add a comment for this one too?",
+      "range": {
+        "startLine": 193,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 31
+      },
+      "revId": "48376dc6df8d092ce77769a06f5545ebd6b85e6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
