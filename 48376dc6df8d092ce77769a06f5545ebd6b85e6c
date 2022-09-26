@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8dc254_55f7acab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-09-26T07:18:05Z",
+      "side": 1,
+      "message": "Patchset 1 is the original. Patchset 2 is the modification since the previous landing. Thanks.",
+      "revId": "48376dc6df8d092ce77769a06f5545ebd6b85e6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
