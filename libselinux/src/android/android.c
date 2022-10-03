@@ -16,7 +16,7 @@
 #endif  // LOG_EVENT_STRING
 #endif  // __ANDROID_VNDK__
 
-static const char* const service_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
+static const path_alts_t service_context_paths = {
 	{
 		"/system/etc/selinux/plat_service_contexts",
 		"/plat_service_contexts"
@@ -38,7 +38,7 @@ static const char* const service_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEX
 	}
 };
 
-static const char* const hwservice_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
+static const path_alts_t hwservice_context_paths = {
 	{
 		"/system/etc/selinux/plat_hwservice_contexts",
 		"/plat_hwservice_contexts"
@@ -61,14 +61,14 @@ static const char* const hwservice_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONT
 	},
 };
 
-static const char* const vndservice_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
+static const path_alts_t vndservice_context_paths = {
 	{
 		"/vendor/etc/selinux/vndservice_contexts",
 		"/vndservice_contexts"
 	}
 };
 
-static const char* const keystore2_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
+static const path_alts_t keystore2_context_paths = {
 	{
 		"/system/etc/selinux/plat_keystore2_key_contexts",
 		"/plat_keystore2_key_contexts"
@@ -88,7 +88,7 @@ static const char* const keystore2_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONT
 };
 
 size_t find_existing_files(
-		const char* const path_sets[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS],
+		const path_alts_t path_sets,
 		const char* paths[MAX_CONTEXT_PATHS])
 {
 	size_t i, j, len = 0;
@@ -140,8 +140,8 @@ struct selabel_handle* initialize_backend(
 
 struct selabel_handle* context_handle(
 		unsigned int backend,
-		const char* const context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS],
-		const char* name)
+		const path_alts_t context_paths,
+		const char *name)
 {
 	const char* existing_paths[MAX_CONTEXT_PATHS];
 	struct selinux_opt opts[MAX_CONTEXT_PATHS];

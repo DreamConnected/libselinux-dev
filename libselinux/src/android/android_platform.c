@@ -37,7 +37,7 @@
  * /system/etc/selinux/plat_file_contexts exists, /plat_file_contexts will be
  * ignored).
  */
-static const char* const file_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
+static const path_alts_t file_context_paths = {
 	{
 		"/system/etc/selinux/plat_file_contexts",
 		"/plat_file_contexts"
@@ -68,7 +68,7 @@ static const char* const file_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_P
  * /system/etc/selinux/plat_seapp_contexts exists, /plat_seapp_contexts will be
  * ignored).
  */
-static const char* const seapp_context_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
+static const path_alts_t seapp_context_paths = {
 	{
 		"/system/etc/selinux/plat_seapp_contexts",
 		"/plat_seapp_contexts"
