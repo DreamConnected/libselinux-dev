@@ -32,15 +32,14 @@ TEST_F(AndroidSELinuxTest, LoadAndLookupServiceContext)
 		"android.hardware.power.IPower/default  u:object_r:hal_power_service:s0\n",
 		vendor_contexts);
 
-	static const char *const
-		service_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
-			{ service_contexts.c_str(),
-			  unused_service_contexts.c_str() },
-			{ vendor_contexts.c_str() }
-		};
+	const struct path_alts service_paths = { .paths = {
+		{ service_contexts.c_str(), unused_service_contexts.c_str() },
+		{ vendor_contexts.c_str() }
+	}
+	};
 
 	struct selabel_handle *handle = context_handle(
-		SELABEL_CTX_ANDROID_SERVICE, service_paths, "test_service");
+		SELABEL_CTX_ANDROID_SERVICE, &service_paths, "test_service");
 	EXPECT_NE(handle, nullptr);
 
 	char *tcontext;
@@ -75,12 +74,12 @@ TEST_F(AndroidSELinuxTest, FailLoadingServiceContext)
 
 	WriteStringToFile("garbage\n", service_contexts);
 
-	static const char *const
-		service_paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS] = {
-			{ service_contexts.c_str() }
-		};
+	const struct path_alts service_paths = { .paths = {
+		{ service_contexts.c_str() }
+	}
+	};
 
 	struct selabel_handle *handle = context_handle(
-		SELABEL_CTX_ANDROID_SERVICE, service_paths, "test_service");
+		SELABEL_CTX_ANDROID_SERVICE, &service_paths, "test_service");
 	EXPECT_EQ(handle, nullptr);
 }
