@@ -16,6 +16,29 @@
       "message": "This is a 10-patch chain. The goal is to add some unit tests for our seapp_context parsing and lookup. There is one test right now, but I\u0027ll add more later. The main issue with bringing these tests up is that most of android_platform.c expects to run on the device (and not on the host). 6 of the changes are to split android_platform.c into android_seapp.c (now buildable on host) and android_device.c. Because Git does not handle this kind of separation well, I had to create an explicit merge commit so that the history would be conserved (git blame on android_seapp.c and android_device.c would work as expected). So that\u0027s many changes but each should be trivial to review. \n\nI haven\u0027t added you explicitly to each change, but please review the whole chain. Thanks.",
       "revId": "9e36d815fe9fc498cc4ffef4f246ff12208a1384",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ba5534_8eddee9c",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-17T16:53:52Z",
+      "side": 1,
+      "message": "Could we have comments for these 2 new functions?",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "9e36d815fe9fc498cc4ffef4f246ff12208a1384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
