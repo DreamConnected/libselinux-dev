@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9346a4c8_da3f9f62",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-17T16:48:02Z",
+      "side": 1,
+      "message": "Should we add a prefix to this name if it\u0027s now a public symbol?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "a7da870db99003ea5399149e0cc2e5b14ba6357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
