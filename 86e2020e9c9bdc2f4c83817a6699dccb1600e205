@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b1d991_6501afe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-17T16:37:50Z",
+      "side": 1,
+      "message": "Would it make sense to update external/selinux/libselinux/Android.bp at the same time, since it has a reference to the file?",
+      "revId": "86e2020e9c9bdc2f4c83817a6699dccb1600e205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
