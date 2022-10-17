@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a5c1b2_3613c870",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-17T16:34:25Z",
+      "side": 1,
+      "message": "Typedefs to arrays always scare me, because arrays do not have the same semantics as other types; e.g. they are always passed by reference. And you have to include the top-level const in the type, which has advantages but makes things even less obvious at the point of use.\n\nHow about\n```\ntypedef struct path_alts_t {\n  const char* paths[MAX_CONTEXT_PATHS][MAX_ALT_CONTEXT_PATHS];\n} path_alts_t;\n```\n\nWhich avoids both problems? Then pass a pointer to this struct - which doesn\u0027t introduce any inefficiency.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 80
+      },
+      "revId": "731827cafa1a7e69dec0d1e42396016cfb9ada3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92f2d7b_c82584b3",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-17T16:34:25Z",
+      "side": 1,
+      "message": "This const has no effect, might as well delete.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "731827cafa1a7e69dec0d1e42396016cfb9ada3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
