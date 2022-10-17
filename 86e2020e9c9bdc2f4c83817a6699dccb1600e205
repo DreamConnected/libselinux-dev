@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018f63d3_b7e831a2",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-17T16:42:19Z",
+      "side": 0,
+      "message": "Don\u0027t we need all this, somewhere?",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "86e2020e9c9bdc2f4c83817a6699dccb1600e205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
