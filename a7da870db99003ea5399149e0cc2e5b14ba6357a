@@ -46,6 +46,30 @@
       },
       "revId": "a7da870db99003ea5399149e0cc2e5b14ba6357a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ac51ed_2b346ddc",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-18T11:20:04Z",
+      "side": 1,
+      "message": "Ah, I\u0027d forgotten about linker magic.\n\nNames are hard. Maybe internal_ as a prefix? Or just leave as it is; there isn\u0027t an obvious problem so far.",
+      "parentUuid": "b7f29fc5_55c7d805",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "a7da870db99003ea5399149e0cc2e5b14ba6357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
