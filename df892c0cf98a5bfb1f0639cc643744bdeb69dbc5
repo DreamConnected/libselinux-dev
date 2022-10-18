@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1520f80_9ba2660d",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-10-18T23:27:01Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll keep it for now.",
+      "parentUuid": "36ebee6c_b54eda07",
+      "range": {
+        "startLine": 19,
+        "startChar": 50,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "df892c0cf98a5bfb1f0639cc643744bdeb69dbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "add4e4a5_a5bf2f10",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-18T11:24:57Z",
       "side": 1,
       "message": "I would drop this const.\nThe constness is expressed via `const path_alts_t` in the code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "df892c0cf98a5bfb1f0639cc643744bdeb69dbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95daf9d7_70cd4910",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-10-18T23:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "add4e4a5_a5bf2f10",
       "range": {
         "startLine": 17,
         "startChar": 13,
