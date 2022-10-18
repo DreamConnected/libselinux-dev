@@ -22,6 +22,30 @@
       },
       "revId": "a7da870db99003ea5399149e0cc2e5b14ba6357a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f29fc5_55c7d805",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-10-18T04:00:14Z",
+      "side": 1,
+      "message": "So thanks to exported.map.txt, these are not publicly available:\n\n```\n$ readelf -Ws out/target/product/bramble/system/lib64/libselinux.so | grep set_\n   116: 000000000000c020    28 FUNC    GLOBAL DEFAULT   15 selinux_set_callback@@LIBSELINUX_R\n   148: 000000000000db9c    32 FUNC    GLOBAL DEFAULT   15 set_selinuxmnt@@LIBSELINUX_R\n   149: 0000000000016894    12 FUNC    GLOBAL DEFAULT   15 selinux_android_set_sehandle@@LIBSELINUX_R\n```\n\nBut yeah, it could be good to have a common prefix here, at least to avoid any conflict within libselinux. We should keep `selinux_android_` for the public API though. WDYT?",
+      "parentUuid": "9346a4c8_da3f9f62",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "a7da870db99003ea5399149e0cc2e5b14ba6357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
