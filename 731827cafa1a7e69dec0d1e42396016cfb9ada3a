@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f203d4a7_3906b067",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-10-18T03:58:49Z",
+      "side": 1,
+      "message": "Thanks, I was tossing with this idea as well. This is much better. Done.",
+      "parentUuid": "a8a5c1b2_3613c870",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 80
+      },
+      "revId": "731827cafa1a7e69dec0d1e42396016cfb9ada3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a92f2d7b_c82584b3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-17T16:34:25Z",
       "side": 1,
       "message": "This const has no effect, might as well delete.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "731827cafa1a7e69dec0d1e42396016cfb9ada3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3bdaa65_ccee7900",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-10-18T03:58:49Z",
+      "side": 1,
+      "message": "Kept the const here because using the struct now, right?",
+      "parentUuid": "a92f2d7b_c82584b3",
       "range": {
         "startLine": 21,
         "startChar": 1,
