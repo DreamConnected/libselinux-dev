@@ -22,6 +22,30 @@
       },
       "revId": "324c5ba3f83637e59ef090beca19786f6f6ba1cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77582d21_6fb07d38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-10-26T02:46:33Z",
+      "side": 1,
+      "message": "Yes it does catch the error. I updated the commit message.",
+      "parentUuid": "0d5975cc_f9f7d5e2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "324c5ba3f83637e59ef090beca19786f6f6ba1cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
