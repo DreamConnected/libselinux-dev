@@ -56,7 +56,7 @@ int selinux_android_context_with_level(const char * context,
 		goto out;
 	}
 
-	const char * newString = context_str(ctx);
+	char * newString = context_str(ctx);
 	if (!newString) {
 		goto out;
 	}
@@ -92,19 +92,19 @@ int selinux_android_setcontext(uid_t uid,
 			       const char *seinfo,
 			       const char *pkgname)
 {
-	char *orig_ctx_str = NULL;
-	const char *ctx_str = NULL;
+	char *orig_ctx_str = NULL, *ctx_str;
 	context_t ctx = NULL;
 	int rc = -1;
 
 	if (is_selinux_enabled() <= 0)
 		return 0;
 
-	rc = getcon(&orig_ctx_str);
+	rc = getcon(&ctx_str);
 	if (rc)
 		goto err;
 
-	ctx = context_new(orig_ctx_str);
+	ctx = context_new(ctx_str);
+	orig_ctx_str = ctx_str;
 	if (!ctx)
 		goto oom;
 
@@ -432,8 +432,7 @@ static int pkgdir_selabel_lookup(const char *pathname,
 {
     char *pkgname = NULL;
     struct pkg_info *info = NULL;
-    const char *orig_ctx_str = *secontextp;
-    const char *ctx_str = NULL;
+    char *secontext = *secontextp;
     context_t ctx = NULL;
     int rc = 0;
     unsigned int userid_from_path = 0;
@@ -459,7 +458,7 @@ static int pkgdir_selabel_lookup(const char *pathname,
         info->uid += userid_from_path * AID_USER_OFFSET;
     }
 
-    ctx = context_new(orig_ctx_str);
+    ctx = context_new(secontext);
     if (!ctx)
         goto err;
 
@@ -468,19 +467,19 @@ static int pkgdir_selabel_lookup(const char *pathname,
     if (rc < 0)
         goto err;
 
-    ctx_str = context_str(ctx);
-    if (!ctx_str)
+    secontext = context_str(ctx);
+    if (!secontext)
         goto err;
 
-    if (!strcmp(ctx_str, orig_ctx_str))
+    if (!strcmp(secontext, *secontextp))
         goto out;
 
-    rc = security_check_context(ctx_str);
+    rc = security_check_context(secontext);
     if (rc < 0)
         goto err;
 
     freecon(*secontextp);
-    *secontextp = strdup(ctx_str);
+    *secontextp = strdup(secontext);
     if (!(*secontextp))
         goto err;
 
