@@ -217,6 +217,12 @@ int regex_match(struct regex_data *regex, char const *subject, int partial)
 	rc = pcre2_match(
 	    regex->regex, (PCRE2_SPTR)subject, PCRE2_ZERO_TERMINATED, 0,
 	    partial ? PCRE2_PARTIAL_SOFT : 0, regex->match_data, NULL);
+	// ANDROID: pcre2_match allocates heap and it won't be freed until
+	// pcre2_match_data_free, resulting in heap overhead.
+	// Reallocate match_data to prevent such overhead
+	pcre2_match_data_free(regex->match_data);
+	regex->match_data = pcre2_match_data_create_from_pattern(
+	    regex->regex, NULL);
 	__pthread_mutex_unlock(&regex->match_mutex);
 	if (rc > 0)
 		return REGEX_MATCH;
