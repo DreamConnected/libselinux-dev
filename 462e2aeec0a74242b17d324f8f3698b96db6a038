@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290aaf52_8ebe833e",
+        "filename": "libselinux/src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-12-16T10:25:43Z",
+      "side": 1,
+      "message": "I don\u0027t know much pcre, but this sequence confuses me.\n\n1. Perform a match.\n2. Throw away the match data.\n3. Allocate fresh match data.\n\nSince step 3 doesn\u0027t have access to subject, doesn\u0027t that mean we have lost anything that step 1 wrote to the match data?\n\nShould steps 2 \u0026 3 happen before 1 ?\n\nAlso: We already have a call to pcre2_match_data_free in regex_data_free; isn\u0027t that enough?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "462e2aeec0a74242b17d324f8f3698b96db6a038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdcc1b2f_582cce09",
+        "filename": "libselinux/src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-12-16T10:25:43Z",
+      "side": 1,
+      "message": "Check for null return?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "462e2aeec0a74242b17d324f8f3698b96db6a038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
