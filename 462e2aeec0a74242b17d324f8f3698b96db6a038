@@ -45,6 +45,54 @@
       },
       "revId": "462e2aeec0a74242b17d324f8f3698b96db6a038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd1456c_1bd843e6",
+        "filename": "libselinux/src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-12-19T05:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdcc1b2f_582cce09",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "462e2aeec0a74242b17d324f8f3698b96db6a038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a3e310_9ccca826",
+        "filename": "libselinux/src/regex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-12-19T05:44:37Z",
+      "side": 1,
+      "message": "Yeah, we should clean up the data right after `pcre2_match`, because `regex_data_free` will be called much later. See https://cs.android.com/android/platform/superproject/+/master:external/selinux/libselinux/src/label_file.c;l\u003d997;drc\u003d5ab1edf09d7896ffe9840b5c9119c18a4ebe5f2e; there are many calls to `regex_match` upon a bunch of `regex` objects. If we do steps 2 \u0026 3 before 1, the heap overload won\u0027t be fixed because all of the objects will have their own heap memory.\n\nI added more comments.",
+      "parentUuid": "290aaf52_8ebe833e",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "462e2aeec0a74242b17d324f8f3698b96db6a038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
