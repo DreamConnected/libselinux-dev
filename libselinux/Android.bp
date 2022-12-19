@@ -48,6 +48,7 @@ common_CFLAGS = [
     "-DUSE_PCRE2",
     // 1003 corresponds to auditd, from system/core/logd/event.logtags
     "-DAUDITD_LOG_TAG=1003",
+    "-DAGGRESSIVE_FREE_AFTER_REGEX_MATCH",
 ]
 
 cc_defaults {
