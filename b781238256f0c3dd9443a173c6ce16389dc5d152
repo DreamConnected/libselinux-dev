@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c95b1e_14383060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2022-12-19T06:56:07Z",
+      "side": 1,
+      "message": "Can you send this to the upstream selinux mailing list? Once it\u0027s merged there we can merge it in Android by doing a pull from upstream.",
+      "revId": "b781238256f0c3dd9443a173c6ce16389dc5d152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
