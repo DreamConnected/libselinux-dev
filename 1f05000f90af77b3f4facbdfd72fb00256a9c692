@@ -52,6 +52,24 @@
       "parentUuid": "b84fab4a_6cf3d6ac",
       "revId": "1f05000f90af77b3f4facbdfd72fb00256a9c692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e59e92b9_cfcda4fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2023-01-12T09:30:37Z",
+      "side": 1,
+      "message": "Isn\u0027t that also a concern for Android? What is the impact to our runtime?",
+      "parentUuid": "44b91e32_2cdf9199",
+      "revId": "1f05000f90af77b3f4facbdfd72fb00256a9c692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
