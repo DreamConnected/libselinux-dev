@@ -134,7 +134,6 @@ struct seapp_context {
 	bool isPrivApp;
 	int32_t minTargetSdkVersion;
 	bool fromRunAs;
-	bool isIsolatedComputeApp;
 	/* outputs */
 	char *domain;
 	char *type;
@@ -240,8 +239,7 @@ static int seapp_context_cmp(const void *A, const void *B)
 		(!s1->name.str || !strcmp(s1->name.str, s2->name.str)) &&
 		(s1->isPrivAppSet && s1->isPrivApp == s2->isPrivApp) &&
 		(s1->isSystemServer && s1->isSystemServer == s2->isSystemServer) &&
-		(s1->isEphemeralAppSet && s1->isEphemeralApp == s2->isEphemeralApp) &&
-		(s1->isIsolatedComputeApp && s1->isIsolatedComputeApp == s2->isIsolatedComputeApp);
+		(s1->isEphemeralAppSet && s1->isEphemeralApp == s2->isEphemeralApp);
 
 	if (dup) {
 		seapp_contexts_dup = true;
@@ -517,15 +515,6 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "isIsolatedComputeApp")) {
-					if (!strcasecmp(value, "true"))
-						cur->isIsolatedComputeApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isIsolatedComputeApp = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else {
 					free_seapp_context(cur);
 					goto err;
@@ -563,7 +552,7 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 		int i;
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
-			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isEphemeralApp=%s isIsolatedComputeApp=%s user=%s seinfo=%s "
+			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s  isEphemeralApp=%s user=%s seinfo=%s "
 					"name=%s isPrivApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
@@ -573,7 +562,6 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
 				cur->minTargetSdkVersion,
 				cur->fromRunAs ? "true" : "false",
-				cur->isIsolatedComputeApp ? "true" : "false",
 				cur->domain, cur->type, cur->level,
 				levelFromName[cur->levelFrom]);
 		}
@@ -627,7 +615,6 @@ void selinux_android_seapp_context_init(void) {
 #define CAT_MAPPING_MAX_ID (0x1<<16)
 
 #define PRIVILEGED_APP_STR ":privapp"
-#define ISOLATED_COMPUTE_APP_STR ":isolatedComputeApp"
 #define EPHEMERAL_APP_STR ":ephemeralapp"
 #define TARGETSDKVERSION_STR ":targetSdkVersion="
 #define FROM_RUNAS_STR ":fromRunAs"
@@ -725,17 +712,16 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 	uid_t appid;
 	bool isPrivApp = false;
 	bool isEphemeralApp = false;
-	bool isIsolatedComputeApp = false;
 	int32_t targetSdkVersion = 0;
 	bool fromRunAs = false;
 	char parsedseinfo[BUFSIZ];
+
 
 	if (seinfo) {
 		if (seinfo_parse(parsedseinfo, seinfo, BUFSIZ))
 			goto err;
 		isPrivApp = strstr(seinfo, PRIVILEGED_APP_STR) ? true : false;
 		isEphemeralApp = strstr(seinfo, EPHEMERAL_APP_STR) ? true : false;
-		isIsolatedComputeApp = strstr(seinfo, ISOLATED_COMPUTE_APP_STR) ? true : false;
 		fromRunAs = strstr(seinfo, FROM_RUNAS_STR) ? true : false;
 		targetSdkVersion = get_app_targetSdkVersion(seinfo);
 		if (targetSdkVersion < 0) {
@@ -812,9 +798,6 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 			continue;
 
 		if (cur->fromRunAs != fromRunAs)
-			continue;
-
-		if (cur->isIsolatedComputeApp != isIsolatedComputeApp)
 			continue;
 
 		if (kind == SEAPP_TYPE && !cur->type)
