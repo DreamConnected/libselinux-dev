@@ -220,7 +220,8 @@ void regex_data_free(struct regex_data *regex)
 int regex_match(struct regex_data *regex, char const *subject, int partial)
 {
 	int rc;
-	bool slow;
+	bool single_threaded;
+	static pcre2_match_data *static_match_data;
 	pcre2_match_data *match_data = NULL;
 
 	if (match_data_key_initialized > 0) {
@@ -238,10 +239,13 @@ int regex_match(struct regex_data *regex, char const *subject, int partial)
 			match_data = __selinux_getspecific(match_data_key);
 	}
 
-	slow = (match_data_key_initialized <= 0 || match_data == NULL);
-	if (slow) {
-		match_data = pcre2_match_data_create_from_pattern(regex->regex,
-									NULL);
+	single_threaded = (match_data_key_initialized <= 0 || !match_data);
+	if (single_threaded) {
+		if (!static_match_data && !match_data_initialized)
+			static_match_data = pcre2_match_data_create(1, NULL);
+
+		match_data_initialized = 1;
+		match_data = static_match_data;
 		if (!match_data)
 			return REGEX_ERROR;
 	}
@@ -249,9 +253,6 @@ int regex_match(struct regex_data *regex, char const *subject, int partial)
 	rc = pcre2_match(
 	    regex->regex, (PCRE2_SPTR)subject, PCRE2_ZERO_TERMINATED, 0,
 	    partial ? PCRE2_PARTIAL_SOFT : 0, match_data, NULL);
-
-	if (slow)
-		pcre2_match_data_free(match_data);
 
 	if (rc >= 0)
 		return REGEX_MATCH;
