@@ -89,7 +89,7 @@ TEST_F(AndroidSELinuxTest, LoadAndLookupSeAppContext)
 
 	WriteStringToFile(
 		"# some comment\n"
-		"user=_app seinfo=platform domain=platform_app type=app_data_file levelFrom=user\n",
+		"user=_isolated isIsolatedComputeApp=true domain=isolated_compute_app levelFrom=user\n",
 	seapp_contexts);
 
 	const path_alts_t seapp_paths = { .paths = {
@@ -99,14 +99,9 @@ TEST_F(AndroidSELinuxTest, LoadAndLookupSeAppContext)
 	EXPECT_EQ(seapp_context_reload_internal(&seapp_paths), 0);
 
 	context_t ctx = context_new("u:r:unknown");
-	int ret = seapp_context_lookup_internal(SEAPP_DOMAIN, 10001, false, "platform", "com.android.test1", ctx);
+	int ret = seapp_context_lookup_internal(SEAPP_DOMAIN, 99002, 0, "google:privapp:targetSdkVersion=33:isolatedComputeApp:complete", "com.google.android.googlequicksearchbox:trusted:com.google.android.apps.gsa.hotword.hotworddetectionservice.GsaHotwordDetectionService:hotword_detector_0", ctx);
 	EXPECT_EQ(ret, 0);
-	EXPECT_STREQ(context_str(ctx), "u:r:platform_app:s0:c512,c768");
+	EXPECT_STREQ(context_str(ctx), "u:r:isolated_compute_app:s0:c512,c768");
 	context_free(ctx);
 
-	ctx = context_new("u:r:unknown_data_file");
-	ret = seapp_context_lookup_internal(SEAPP_TYPE, 10001, false, "platform", "com.android.test1", ctx);
-	EXPECT_EQ(ret, 0);
-	EXPECT_STREQ(context_str(ctx), "u:r:app_data_file:s0:c512,c768");
-	context_free(ctx);
 }
