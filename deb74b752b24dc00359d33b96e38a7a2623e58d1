@@ -46,6 +46,30 @@
       },
       "revId": "deb74b752b24dc00359d33b96e38a7a2623e58d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c7ea4c_e534816a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-02-03T09:15:05Z",
+      "side": 1,
+      "message": "If this looks terrible (possibly), merging only aosp/2411194 is another option. I verified with microdroid benchmarks that aosp/2411194 already fixe the RAM usage regression.",
+      "parentUuid": "f3d2c422_569031b1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "deb74b752b24dc00359d33b96e38a7a2623e58d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
