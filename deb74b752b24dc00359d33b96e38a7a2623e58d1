@@ -22,6 +22,30 @@
       },
       "revId": "deb74b752b24dc00359d33b96e38a7a2623e58d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d2c422_569031b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-02-03T02:01:48Z",
+      "side": 1,
+      "message": "I think this is fine. This patch applies only to single threaded binaries (no pthread). Also even in such case, only one `pcre2_match_data` will be alive and it won\u0027t consume more than a couple of megabytes.",
+      "parentUuid": "748b3fdb_8051b31e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "deb74b752b24dc00359d33b96e38a7a2623e58d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
