@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3534f22d_1583ed7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-02-03T09:33:25Z",
+      "side": 1,
+      "message": "I\u0027ll merge this once I verify that this doesn\u0027t break other small devices:\n\nhttps://android-build.googleplex.com/builds/abtd/run/L11200000958437774",
+      "revId": "72806f3933d0919a12080fe85445335efe0ecbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
