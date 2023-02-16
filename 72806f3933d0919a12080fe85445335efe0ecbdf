@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f81509_de7dda11",
+        "filename": "VERSION",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-02-16T20:55:54Z",
+      "side": 0,
+      "message": "this isn\u0027t our README.version cruft --- this is an actual upstream file :-)",
+      "revId": "72806f3933d0919a12080fe85445335efe0ecbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

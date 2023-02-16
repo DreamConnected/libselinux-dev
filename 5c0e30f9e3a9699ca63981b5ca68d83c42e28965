@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08bc7943_167cc1d5",
+        "filename": "METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-02-16T20:55:54Z",
+      "side": 1,
+      "message": "(see my comment on your original change)",
+      "revId": "5c0e30f9e3a9699ca63981b5ca68d83c42e28965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
