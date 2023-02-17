@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93fc91d_28a68470",
+        "filename": "METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-02-17T20:13:37Z",
+      "side": 1,
+      "message": "does the semi-auto upgrade to 3.5-rc3 work after this commit?",
+      "revId": "5f377c52fa34bd48679e365795b9d2fdf125f989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
