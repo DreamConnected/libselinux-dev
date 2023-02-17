@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34727729_01407aee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-02-17T21:30:09Z",
+      "side": 1,
+      "message": "sgtm then.\n\n+all owners as fyi, since you might find external-updater useful, even if only to automatically update your METADATA file :-) (plus one of you for OWNERS...)",
+      "revId": "5f377c52fa34bd48679e365795b9d2fdf125f989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d93fc91d_28a68470",
