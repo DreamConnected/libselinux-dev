@@ -611,18 +611,18 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isEphemeralApp=%s "
 				"isIsolatedComputeApp=%s isSdkSandboxAudit=%s isSdkSandboxNext=%s "
 				"user=%s seinfo=%s name=%s isPrivApp=%s minTargetSdkVersion=%d "
-				"fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+				" -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
+				cur->isIsolatedComputeApp ? "true" : "false",
+				cur->isSdkSandboxAudit ? "true" : "false",
+				cur->isSdkSandboxNext ? "true" : "false",
 				cur->user.str,
 				cur->seinfo, cur->name.str,
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
 				cur->minTargetSdkVersion,
 				cur->fromRunAs ? "true" : "false",
-				cur->isIsolatedComputeApp ? "true" : "false",
-				cur->isSdkSandboxAudit ? "true" : "false",
-				cur->isSdkSandboxNext ? "true" : "false",
 				cur->domain, cur->type, cur->level,
 				levelFromName[cur->levelFrom]);
 		}
