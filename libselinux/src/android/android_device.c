@@ -257,6 +257,7 @@ struct pkg_info *package_info_lookup(const char *name)
 #define DATA_DATA_PATH "/data/data"
 #define DATA_USER_PATH "/data/user"
 #define DATA_USER_DE_PATH "/data/user_de"
+#define DATA_STORAGE_AREA_PATH "/data/storage_area"
 #define USER_PROFILE_PATH "/data/misc/profiles/cur/*"
 #define SDK_SANDBOX_DATA_CE_PATH "/data/misc_ce/*/sdksandbox"
 #define SDK_SANDBOX_DATA_DE_PATH "/data/misc_de/*/sdksandbox"
@@ -270,6 +271,7 @@ struct pkg_info *package_info_lookup(const char *name)
 #define DATA_DATA_PREFIX DATA_DATA_PATH "/"
 #define DATA_USER_PREFIX DATA_USER_PATH "/"
 #define DATA_USER_DE_PREFIX DATA_USER_DE_PATH "/"
+#define DATA_STORAGE_AREA_PREFIX DATA_STORAGE_AREA_PATH "/"
 #define DATA_MISC_CE_PREFIX DATA_MISC_CE_PATH "/"
 #define DATA_MISC_DE_PREFIX DATA_MISC_DE_PATH "/"
 #define EXPAND_MNT_PATH_PREFIX EXPAND_MNT_PATH "/"
@@ -289,6 +291,7 @@ static bool is_app_data_path(const char *pathname) {
     return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
+        !strncmp(pathname, DATA_STORAGE_AREA_PREFIX, sizeof(DATA_STORAGE_AREA_PREFIX)-1) ||
         !fnmatch(EXPAND_USER_PATH, pathname, flags) ||
         !fnmatch(EXPAND_USER_DE_PATH, pathname, flags) ||
         !fnmatch(SDK_SANDBOX_DATA_CE_PATH, pathname, flags) ||
@@ -350,6 +353,15 @@ static int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsi
             return -1;
     } else if (!strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1)) {
         pathname += sizeof(DATA_USER_DE_PREFIX) - 1;
+        int rc = extract_userid(&pathname, userid);
+        if (rc)
+            return -1;
+        if (*pathname == '/')
+            pathname++;
+        else
+            return -1;
+    } else if (!strncmp(pathname, DATA_STORAGE_AREA_PREFIX, sizeof(DATA_STORAGE_AREA_PREFIX)-1)) {
+        pathname += sizeof(DATA_STORAGE_AREA_PREFIX) - 1;
         int rc = extract_userid(&pathname, userid);
         if (rc)
             return -1;
