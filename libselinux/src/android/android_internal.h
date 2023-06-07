@@ -110,7 +110,7 @@ struct parsed_seinfo {
 #define IS_EPHEMERAL_APP        (1 << 2)
 #define IS_ISOLATED_COMPUTE_APP (1 << 3)
 #define IS_SDK_SANDBOX_AUDIT    (1 << 4)
-#define IS_SDK_SANDBOX_NEXT     (1 << 5)
+#define IS_SDK_SANDBOX_NEXT    	(1 << 5)
 	int32_t is;
 	bool isPreinstalledApp;
 	char partition[SEINFO_BUFSIZ];
