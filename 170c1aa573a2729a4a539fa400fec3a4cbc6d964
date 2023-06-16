@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76419168_09e4012a",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-06-16T10:53:41Z",
+      "side": 1,
+      "message": "\"..., skipping restorecon\" ?\n(Or log `__FUNCTION__` as we do in a couple of places.)",
+      "range": {
+        "startLine": 637,
+        "startChar": 66,
+        "endLine": 637,
+        "endChar": 67
+      },
+      "revId": "170c1aa573a2729a4a539fa400fec3a4cbc6d964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3674d1a_7e065c63",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-06-16T10:53:41Z",
+      "side": 1,
+      "message": "Out of scope for this CL, but why on earth are we returning success for failure here?\n(And also on line 644.)\nSilently not doing what\u0027s been requested looks pretty bad.\n\n@tweek@google.com",
+      "range": {
+        "startLine": 638,
+        "startChar": 8,
+        "endLine": 638,
+        "endChar": 16
+      },
+      "revId": "170c1aa573a2729a4a539fa400fec3a4cbc6d964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
