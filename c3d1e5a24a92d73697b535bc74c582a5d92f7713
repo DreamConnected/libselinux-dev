@@ -87,6 +87,30 @@
       },
       "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def93dfa_66fbb864",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-07-17T10:52:08Z",
+      "side": 1,
+      "message": "I\u0027ll upload a follow-up change fixing the documentation.",
+      "parentUuid": "e1fbd924_eda7d5f9",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 80
+      },
+      "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
