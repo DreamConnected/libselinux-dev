@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c93a4ce0_89aae646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-17T10:22:25Z",
+      "side": 1,
+      "message": "Wow, thanks for catching this, and fixing it!",
+      "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ff4643_e33648ed",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-17T10:22:25Z",
+      "side": 1,
+      "message": "I was wondering why we did this rather than just treating the clause being omitted altogether. But it makes sense - \"isPrivApp\u003dfalse\" excludes priv apps, but omitting means we don\u0027t care whether or not it is privileged; so having it present is more specific. (And we don\u0027t actually say so very clearly, but we\u0027re trying to order from most to least specific rule.)\n\nBut then looking more closely I notice we don\u0027t have anything here for isIsolatedComputeApp and isSdkSandboxNext. (That\u0027s my fault, I reviewed those CLs - they changed the dup logic but I didn\u0027t notice they didn\u0027t change the ordering.)\n\nWe document:\n```\n#       (9) isIsolatedComputeApp\u003dtrue before isIsolatedComputeApp\u003dfalse\n#       (10) isSdkSandboxNext\u003dtrue before isSdkSandboxNext\u003dfalse\n```\n\nWhich we don\u0027t implement. But actually I think the documentation is also wrong -  these should be sorted the same way as isPrivApp, with present coming before omitted and the actual value ignored.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 80
+      },
+      "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
