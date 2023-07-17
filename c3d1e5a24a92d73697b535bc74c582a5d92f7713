@@ -63,6 +63,30 @@
       },
       "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fbd924_eda7d5f9",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-17T10:50:21Z",
+      "side": 1,
+      "message": "Ah, I see. And since is*\u003dtrue and is*\u003dfalse can never both match, we don\u0027t need to order them.\nAlthough that\u0027s also true for isSystemServer, which we do order.\n\nThen we should fix the documentation to remove the claim that isIsolatedComputeApp and isSdkSandboxNext contribute to the precedence rules.",
+      "parentUuid": "8e730b33_2d9fc591",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 80
+      },
+      "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
