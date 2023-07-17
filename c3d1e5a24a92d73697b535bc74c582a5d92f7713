@@ -39,6 +39,30 @@
       },
       "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e730b33_2d9fc591",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-07-17T10:33:08Z",
+      "side": 1,
+      "message": "\u003e these should be sorted the same way as isPrivApp, with present coming before omitted and the actual value ignored.\n\nI think that the default value for `isIsolatedComputeApp` and `isSdkSandboxNext` is `false`, not `any`, contrast to `isPrivApp`. That\u0027s why we have separate `isPrivAppSet` but not `isIsolatedComputeAppSet`. Does it make sense?",
+      "parentUuid": "04ff4643_e33648ed",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 80
+      },
+      "revId": "c3d1e5a24a92d73697b535bc74c582a5d92f7713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
