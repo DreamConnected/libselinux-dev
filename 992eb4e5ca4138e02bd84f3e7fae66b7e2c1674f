@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff7009b_e6bf7047",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-21T10:56:16Z",
+      "side": 1,
+      "message": "/dev/selinux doesn\u0027t actually now.\n\n@jeffv@google.com - can we get rid of all mention of it?",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "992eb4e5ca4138e02bd84f3e7fae66b7e2c1674f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29fcac98_f2c62633",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-21T10:56:16Z",
+      "side": 1,
+      "message": "Why do we skip this if level\u003dNONE?",
+      "range": {
+        "startLine": 899,
+        "startChar": 3,
+        "endLine": 899,
+        "endChar": 24
+      },
+      "revId": "992eb4e5ca4138e02bd84f3e7fae66b7e2c1674f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
