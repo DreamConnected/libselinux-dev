@@ -45,6 +45,30 @@
       },
       "revId": "992eb4e5ca4138e02bd84f3e7fae66b7e2c1674f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "793609c5_cab3930f",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-07-24T02:01:40Z",
+      "side": 1,
+      "message": "Well, this looks like a mistake. Let me fix it in a follow-up change. I\u0027d like to merge this as-is because this is a cherry pick.",
+      "parentUuid": "29fcac98_f2c62633",
+      "range": {
+        "startLine": 899,
+        "startChar": 3,
+        "endLine": 899,
+        "endChar": 24
+      },
+      "revId": "992eb4e5ca4138e02bd84f3e7fae66b7e2c1674f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
