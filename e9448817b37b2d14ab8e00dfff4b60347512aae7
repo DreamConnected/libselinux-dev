@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c172eb_6c74c873",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-09-05T07:53:50Z",
+      "side": 1,
+      "message": "It looks like we never added APEX over there, so I guess no change is needed.",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "e9448817b37b2d14ab8e00dfff4b60347512aae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
