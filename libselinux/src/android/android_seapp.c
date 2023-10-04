@@ -28,9 +28,6 @@ static const path_alts_t file_context_paths = { .paths = {
 		"/plat_file_contexts"
 	},
 	{
-		"/dev/selinux/apex_file_contexts",
-	},
-	{
 		"/system_ext/etc/selinux/system_ext_file_contexts",
 		"/system_ext_file_contexts"
 	},
@@ -48,18 +45,18 @@ static const path_alts_t file_context_paths = { .paths = {
 	}
 }};
 
-/* Locations for the seapp_contexts files. For each partition, only the first
- * existing entry will be used (for example, if
+/* Locations for the seapp_contexts files, and corresponding partitions. For
+ * each partition, only the first existing entry will be used (for example, if
  * /system/etc/selinux/plat_seapp_contexts exists, /plat_seapp_contexts will be
  * ignored).
+ *
+ * PLEASE KEEP IN SYNC WITH:
+ * hostsidetests/security/src/android/security/cts/SELinuxHostTest.java
  */
 static const path_alts_t seapp_context_paths = { .paths = {
 	{
 		"/system/etc/selinux/plat_seapp_contexts",
 		"/plat_seapp_contexts"
-	},
-	{
-		"/dev/selinux/apex_seapp_contexts",
 	},
 	{
 		"/system_ext/etc/selinux/system_ext_seapp_contexts",
@@ -77,6 +74,12 @@ static const path_alts_t seapp_context_paths = { .paths = {
 		"/odm/etc/selinux/odm_seapp_contexts",
 		"/odm_seapp_contexts"
 	}
+}, .partitions= {
+	"system",
+	"system_ext",
+	"product",
+	"vendor",
+	"odm"
 }};
 
 /* Returns a handle for the file contexts backend, initialized with the Android
@@ -141,6 +144,7 @@ struct seapp_context {
 	char *type;
 	char *level;
 	enum levelFrom levelFrom;
+	const char* partition;
 };
 
 static void free_seapp_context(struct seapp_context *s)
@@ -156,8 +160,14 @@ static void free_seapp_context(struct seapp_context *s)
 	free(s->level);
 }
 
-/* If any duplicate was found while sorting the entries */
-static bool seapp_contexts_dup = false;
+static bool is_platform(const char *partition) {
+	// system, system_ext, product are regarded as "platform", whereas vendor
+	// and odm are regarded as vendor.
+	if (strcmp(partition, "system") == 0) return true;
+	if (strcmp(partition, "system_ext") == 0) return true;
+	if (strcmp(partition, "product") == 0) return true;
+	return false;
+}
 
 /* Compare two seapp_context. Used to sort all the entries found. */
 static int seapp_context_cmp(const void *A, const void *B)
@@ -165,7 +175,6 @@ static int seapp_context_cmp(const void *A, const void *B)
 	const struct seapp_context *const *sp1 = (const struct seapp_context *const *) A;
 	const struct seapp_context *const *sp2 = (const struct seapp_context *const *) B;
 	const struct seapp_context *s1 = *sp1, *s2 = *sp2;
-	bool dup;
 
 	/* Give precedence to isSystemServer=true. */
 	if (s1->isSystemServer != s2->isSystemServer)
@@ -230,31 +239,11 @@ static int seapp_context_cmp(const void *A, const void *B)
 	if (s1->fromRunAs != s2->fromRunAs)
 		return (s1->fromRunAs ? -1 : 1);
 
-	/*
-	 * Check for a duplicated entry on the input selectors.
-	 * We already compared isSystemServer above.
-	 * We also have already checked that both entries specify the same
-	 * string fields, so if s1 has a non-NULL string, then so does s2.
-	 */
-	dup = (!s1->user.str || !strcmp(s1->user.str, s2->user.str)) &&
-		(!s1->seinfo || !strcmp(s1->seinfo, s2->seinfo)) &&
-		(!s1->name.str || !strcmp(s1->name.str, s2->name.str)) &&
-		(s1->isPrivAppSet && s1->isPrivApp == s2->isPrivApp) &&
-		(s1->isSystemServer && s1->isSystemServer == s2->isSystemServer) &&
-		(s1->isEphemeralAppSet && s1->isEphemeralApp == s2->isEphemeralApp) &&
-		(s1->isIsolatedComputeApp && s1->isIsolatedComputeApp == s2->isIsolatedComputeApp) &&
-		(s1->isSdkSandboxNext && s1->isSdkSandboxNext == s2->isSdkSandboxNext);
-
-	if (dup) {
-		seapp_contexts_dup = true;
-		selinux_log(SELINUX_ERROR, "seapp_contexts:  Duplicated entry\n");
-		if (s1->user.str)
-			selinux_log(SELINUX_ERROR, " user=%s\n", s1->user.str);
-		if (s1->seinfo)
-			selinux_log(SELINUX_ERROR, " seinfo=%s\n", s1->seinfo);
-		if (s1->name.str)
-			selinux_log(SELINUX_ERROR, " name=%s\n", s1->name.str);
-	}
+	/* Give precedence to platform side contexts */
+	bool isS1Platform = is_platform(s1->partition);
+	bool isS2Platform = is_platform(s2->partition);
+	if (isS1Platform != isS2Platform)
+		return (isS1Platform ? -1 : 1);
 
 	/* Anything else has equal precedence. */
 	return 0;
@@ -303,8 +292,9 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 	size_t i, len, files_len = 0;
 	int ret;
 	const char* seapp_contexts_files[MAX_CONTEXT_PATHS];
+	const char* seapp_contexts_partitions[MAX_CONTEXT_PATHS];
 
-	files_len = find_existing_files(context_paths, seapp_contexts_files);
+	files_len = find_existing_files_with_partitions(context_paths, seapp_contexts_files, seapp_contexts_partitions);
 
 	/* Reset the current entries */
 	free_seapp_contexts();
@@ -555,6 +545,7 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 				goto err;
 			}
 
+			cur->partition = seapp_contexts_partitions[i];
 			seapp_contexts[nspec] = cur;
 			nspec++;
 			lineno++;
@@ -566,8 +557,40 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 	qsort(seapp_contexts, nspec, sizeof(struct seapp_context *),
 	      seapp_context_cmp);
 
-	if (seapp_contexts_dup)
-		goto err_no_log;
+	for (int i = 0; i < nspec; i++) {
+		const struct seapp_context *s1 = seapp_contexts[i];
+		for (int j = i + 1; j < nspec; j++) {
+			const struct seapp_context *s2 = seapp_contexts[j];
+			if (seapp_context_cmp(&s1, &s2) != 0)
+				break;
+			/*
+			* Check for a duplicated entry on the input selectors.
+			* We already compared isSystemServer with seapp_context_cmp.
+			* We also have already checked that both entries specify the same
+			* string fields, so if s1 has a non-NULL string, then so does s2.
+			*/
+			bool dup = (!s1->user.str || !strcmp(s1->user.str, s2->user.str)) &&
+				(!s1->seinfo || !strcmp(s1->seinfo, s2->seinfo)) &&
+				(!s1->name.str || !strcmp(s1->name.str, s2->name.str)) &&
+				(!s1->isPrivAppSet || s1->isPrivApp == s2->isPrivApp) &&
+				(!s1->isEphemeralAppSet || s1->isEphemeralApp == s2->isEphemeralApp) &&
+				(s1->isIsolatedComputeApp == s2->isIsolatedComputeApp) &&
+				(s1->isSdkSandboxNext == s2->isSdkSandboxNext);
+
+			if (dup) {
+				selinux_log(SELINUX_ERROR, "seapp_contexts:  Duplicated entry\n");
+				if (s1->user.str)
+					selinux_log(SELINUX_ERROR, " user=%s\n", s1->user.str);
+				if (s1->seinfo)
+					selinux_log(SELINUX_ERROR, " seinfo=%s\n", s1->seinfo);
+				if (s1->name.str)
+					selinux_log(SELINUX_ERROR, " name=%s\n", s1->name.str);
+				if (s1->partition)
+					selinux_log(SELINUX_ERROR, " partition=%s\n", s1->partition);
+				goto err_no_log;
+			}
+		}
+	}
 
 #if DEBUG
 	{
@@ -643,6 +666,7 @@ void selinux_android_seapp_context_init(void) {
 #define APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR ":isSdkSandboxNext"
 #define EPHEMERAL_APP_STR ":ephemeralapp"
 #define TARGETSDKVERSION_STR ":targetSdkVersion="
+#define PARTITION_STR ":partition="
 #define FROM_RUNAS_STR ":fromRunAs"
 static int32_t get_app_targetSdkVersion(const char *seinfo)
 {
@@ -663,6 +687,31 @@ static int32_t get_app_targetSdkVersion(const char *seinfo)
 	}
 	return 0; /* default to 0 when targetSdkVersion= is not present in seinfo */
 }
+
+// returns true if found, false if not found or error
+static bool get_partition(const char *seinfo, char partition[], size_t size)
+{
+	if (size == 0) return false;
+
+	const char *substr = strstr(seinfo, PARTITION_STR);
+	if (substr == NULL) return false;
+
+	const char *src = substr + strlen(PARTITION_STR);
+	const char *p = strchr(src, ':');
+	size_t len = p ? p - src : strlen(src);
+	if (len > size - 1) return -1;
+	strncpy(partition, src, len);
+	partition[len] = '\0';
+
+	return true;
+}
+
+static bool is_preinstalled_app_partition_valid(const char *app_policy, const char *app_partition) {
+	// We forbid system/system_ext/product installed apps from being labeled with vendor sepolicy.
+	// So, either the app shouldn't be platform, or the spec should be platform.
+	return !(is_platform(app_partition) && !is_platform(app_policy));
+}
+
 
 static int seinfo_parse(char *dest, const char *src, size_t size)
 {
@@ -742,6 +791,8 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 	bool isSdkSandboxNext = false;
 	int32_t targetSdkVersion = 0;
 	bool fromRunAs = false;
+	bool isPreinstalledApp = false;
+	char partition[BUFSIZ];
 	char parsedseinfo[BUFSIZ];
 
 	if (seinfo) {
@@ -753,6 +804,7 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 		isSdkSandboxNext = strstr(seinfo, APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR) ? true : false;
 		fromRunAs = strstr(seinfo, FROM_RUNAS_STR) ? true : false;
 		targetSdkVersion = get_app_targetSdkVersion(seinfo);
+		isPreinstalledApp = get_partition(seinfo, partition, BUFSIZ);
 		if (targetSdkVersion < 0) {
 			selinux_log(SELINUX_ERROR,
 					"%s:  Invalid targetSdkVersion passed for app with uid %d, seinfo %s, name %s\n",
@@ -856,6 +908,14 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 		} else if (cur->level) {
 			if (context_range_set(ctx, cur->level))
 				goto oom;
+		}
+
+		if (isPreinstalledApp
+				&& !is_preinstalled_app_partition_valid(cur->partition, partition)) {
+			// TODO(b/280547417): make this an error after fixing violations
+			selinux_log(SELINUX_WARNING,
+				"%s:  App %s preinstalled to %s can't be labeled with %s sepolicy",
+				__FUNCTION__, pkgname, partition, cur->partition);
 		}
 
 		break;
