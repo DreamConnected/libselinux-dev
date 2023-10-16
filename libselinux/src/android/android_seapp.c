@@ -28,9 +28,6 @@ static const path_alts_t file_context_paths = { .paths = {
 		"/plat_file_contexts"
 	},
 	{
-		"/dev/selinux/apex_file_contexts",
-	},
-	{
 		"/system_ext/etc/selinux/system_ext_file_contexts",
 		"/system_ext_file_contexts"
 	},
@@ -52,14 +49,14 @@ static const path_alts_t file_context_paths = { .paths = {
  * each partition, only the first existing entry will be used (for example, if
  * /system/etc/selinux/plat_seapp_contexts exists, /plat_seapp_contexts will be
  * ignored).
+ *
+ * PLEASE KEEP IN SYNC WITH:
+ * hostsidetests/security/src/android/security/cts/SELinuxHostTest.java
  */
 static const path_alts_t seapp_context_paths = { .paths = {
 	{
 		"/system/etc/selinux/plat_seapp_contexts",
 		"/plat_seapp_contexts"
-	},
-	{
-		"/dev/selinux/apex_seapp_contexts",
 	},
 	{
 		"/system_ext/etc/selinux/system_ext_seapp_contexts",
@@ -79,7 +76,6 @@ static const path_alts_t seapp_context_paths = { .paths = {
 	}
 }, .partitions= {
 	"system",
-	"system", // regard APEX sepolicy as system
 	"system_ext",
 	"product",
 	"vendor",
