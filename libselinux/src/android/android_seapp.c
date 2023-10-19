@@ -139,6 +139,7 @@ struct seapp_context {
 	bool fromRunAs;
 	bool isIsolatedComputeApp;
 	bool isSdkSandboxNext;
+	bool isSdkSandboxAuditNext;
 	/* outputs */
 	char *domain;
 	char *type;
@@ -525,9 +526,18 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						cur->isSdkSandboxNext = false;
 					else {
 						free_seapp_context(cur);
-              goto err;
-            }
-        } else {
+						goto err;
+					}
+				} else if (!strcasecmp(name, "isSdkSandboxAuditNext")) {
+					if (!strcasecmp(value, "true"))
+						cur->isSdkSandboxAuditNext = true;
+					else if (!strcasecmp(value, "false"))
+						cur->isSdkSandboxAuditNext = false;
+					else {
+						free_seapp_context(cur);
+						goto err;
+					}
+				} else {
 					free_seapp_context(cur);
 					goto err;
 				}
@@ -575,7 +585,8 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 				(!s1->isPrivAppSet || s1->isPrivApp == s2->isPrivApp) &&
 				(!s1->isEphemeralAppSet || s1->isEphemeralApp == s2->isEphemeralApp) &&
 				(s1->isIsolatedComputeApp == s2->isIsolatedComputeApp) &&
-				(s1->isSdkSandboxNext == s2->isSdkSandboxNext);
+				(s1->isSdkSandboxNext == s2->isSdkSandboxNext) &&
+				(s1->isSdkSandboxAuditNext == s2->isSdkSandboxAuditNext);
 
 			if (dup) {
 				selinux_log(SELINUX_ERROR, "seapp_contexts:  Duplicated entry\n");
@@ -597,8 +608,10 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 		int i;
 		for (i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
-			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isEphemeralApp=%s isIsolatedComputeApp=%s isSdkSandboxNext=%s user=%s seinfo=%s "
-					"name=%s isPrivApp=%s minTargetSdkVersion=%d fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isEphemeralApp=%s "
+				"isIsolatedComputeApp=%s isSdkSandboxNext=%s isSdkSandboxAuditNext=%s "
+				"user=%s seinfo=%s name=%s isPrivApp=%s minTargetSdkVersion=%d "
+				"fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
@@ -609,6 +622,7 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 				cur->fromRunAs ? "true" : "false",
 				cur->isIsolatedComputeApp ? "true" : "false",
 				cur->isSdkSandboxNext ? "true" : "false",
+				cur->isSdkSandboxAuditNext ? "true" : "false",
 				cur->domain, cur->type, cur->level,
 				levelFromName[cur->levelFrom]);
 		}
@@ -664,6 +678,7 @@ void selinux_android_seapp_context_init(void) {
 #define PRIVILEGED_APP_STR ":privapp"
 #define ISOLATED_COMPUTE_APP_STR ":isolatedComputeApp"
 #define APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR ":isSdkSandboxNext"
+#define APPLY_SDK_SANDBOX_AUDIT_NEXT_RESTRICTIONS_STR ":isSdkSandboxAuditNext"
 #define EPHEMERAL_APP_STR ":ephemeralapp"
 #define TARGETSDKVERSION_STR ":targetSdkVersion="
 #define PARTITION_STR ":partition="
@@ -789,6 +804,7 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 	bool isEphemeralApp = false;
 	bool isIsolatedComputeApp = false;
 	bool isSdkSandboxNext = false;
+	bool isSdkSandboxAuditNext = false;
 	int32_t targetSdkVersion = 0;
 	bool fromRunAs = false;
 	bool isPreinstalledApp = false;
@@ -802,6 +818,7 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 		isEphemeralApp = strstr(seinfo, EPHEMERAL_APP_STR) ? true : false;
 		isIsolatedComputeApp = strstr(seinfo, ISOLATED_COMPUTE_APP_STR) ? true : false;
 		isSdkSandboxNext = strstr(seinfo, APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR) ? true : false;
+		isSdkSandboxAuditNext = strstr(seinfo, APPLY_SDK_SANDBOX_AUDIT_NEXT_RESTRICTIONS_STR) ? true : false;
 		fromRunAs = strstr(seinfo, FROM_RUNAS_STR) ? true : false;
 		targetSdkVersion = get_app_targetSdkVersion(seinfo);
 		isPreinstalledApp = get_partition(seinfo, partition, BUFSIZ);
@@ -885,6 +902,9 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 			continue;
 
 		if (cur->isSdkSandboxNext != isSdkSandboxNext)
+			continue;
+
+		if (cur->isSdkSandboxAuditNext != isSdkSandboxAuditNext)
 			continue;
 
 		if (kind == SEAPP_TYPE && !cur->type)
