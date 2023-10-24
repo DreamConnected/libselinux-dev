@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a15613_a69bc5cf",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-10-24T16:23:08Z",
+      "side": 1,
+      "message": "The proliferation of these is starting to worry me.\nI wonder if we should just give system server the ability to say \"shut up and take this type\", for things like this that should only be used on a single line in one seapp_contexts file.\n\n@tweek@google.com",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 103
+      },
+      "revId": "e2554c008f7f55e4b713e2b5a6425a069c352ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
