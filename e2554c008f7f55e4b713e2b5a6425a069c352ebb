@@ -22,6 +22,30 @@
       },
       "revId": "e2554c008f7f55e4b713e2b5a6425a069c352ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eddba847_db732d6d",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-10-25T03:11:39Z",
+      "side": 1,
+      "message": "I agree. Created b/307635909 to discuss a few options. Otherwise, I\u0027m ok landing this change as-is.",
+      "parentUuid": "a7a15613_a69bc5cf",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 103
+      },
+      "revId": "e2554c008f7f55e4b713e2b5a6425a069c352ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
