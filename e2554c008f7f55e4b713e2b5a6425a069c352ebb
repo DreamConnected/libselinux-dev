@@ -46,6 +46,30 @@
       },
       "revId": "e2554c008f7f55e4b713e2b5a6425a069c352ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9d3ccf_d58cf0bb",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-10-25T14:18:28Z",
+      "side": 1,
+      "message": "Thanks! Yeah, this CL is fine in the meantime.",
+      "parentUuid": "eddba847_db732d6d",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 103
+      },
+      "revId": "e2554c008f7f55e4b713e2b5a6425a069c352ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
