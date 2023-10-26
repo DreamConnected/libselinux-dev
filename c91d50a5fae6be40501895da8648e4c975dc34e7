@@ -22,6 +22,30 @@
       },
       "revId": "c91d50a5fae6be40501895da8648e4c975dc34e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f495e641_96b2de79",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2023-10-26T10:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f28a30c5_29da16ab",
+      "range": {
+        "startLine": 531,
+        "startChar": 34,
+        "endLine": 531,
+        "endChar": 51
+      },
+      "revId": "c91d50a5fae6be40501895da8648e4c975dc34e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
