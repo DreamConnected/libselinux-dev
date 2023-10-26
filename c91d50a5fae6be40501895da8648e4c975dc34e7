@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28a30c5_29da16ab",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1597535
+      },
+      "writtenOn": "2023-10-26T09:52:06Z",
+      "side": 1,
+      "message": "nit: can we check these in order of declaration (audit before next)?",
+      "range": {
+        "startLine": 531,
+        "startChar": 34,
+        "endLine": 531,
+        "endChar": 51
+      },
+      "revId": "c91d50a5fae6be40501895da8648e4c975dc34e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
