@@ -223,6 +223,30 @@
       },
       "revId": "05fc440a78badaedea6345edef96fb42b777a833",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9edbf9_071129fc",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-20T09:37:54Z",
+      "side": 1,
+      "message": "I think it\u0027s to not make any regressions (no behavior change) as this is only a refactoring change.",
+      "parentUuid": "fcbc40a0_1c538e94",
+      "range": {
+        "startLine": 795,
+        "startChar": 14,
+        "endLine": 795,
+        "endChar": 26
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
