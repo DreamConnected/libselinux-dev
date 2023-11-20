@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be418427_cf53bf16",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-20T06:41:14Z",
+      "side": 1,
+      "message": "is this an actual value passed from framework, or for test?",
+      "range": {
+        "startLine": 686,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 31
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d780a77_6cdc8f9b",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-20T06:41:14Z",
+      "side": 1,
+      "message": "log?",
+      "range": {
+        "startLine": 734,
+        "startChar": 0,
+        "endLine": 734,
+        "endChar": 12
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fe3d25_33e94c9b",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-20T06:41:14Z",
+      "side": 1,
+      "message": "nit; we can factor out this part. Up to you as this is repeated for only two times.",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 52
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a6c2f9_cc9352d6",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-20T06:41:14Z",
+      "side": 1,
+      "message": "log?",
+      "range": {
+        "startLine": 776,
+        "startChar": 4,
+        "endLine": 776,
+        "endChar": 14
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448d156d_0d42dd9d",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-20T06:41:14Z",
+      "side": 1,
+      "message": "log?",
+      "range": {
+        "startLine": 786,
+        "startChar": 4,
+        "endLine": 786,
+        "endChar": 14
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
