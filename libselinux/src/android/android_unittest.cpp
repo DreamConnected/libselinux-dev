@@ -122,8 +122,7 @@ TEST(AndroidSeAppTest, ParseValidSeInfo)
 	EXPECT_EQ(ret, 0);
 	EXPECT_STREQ(info.base, "default");
 	EXPECT_EQ(info.targetSdkVersion, 10000);
-	EXPECT_EQ(info.is, IS_PRIV_APP);
-	EXPECT_EQ(info.isPreinstalledApp, true);
+	EXPECT_STREQ(info.isSelector, "isPrivApp");
 	EXPECT_STREQ(info.partition, "system");
 
 	seinfo = "platform:ephemeralapp:partition=system:complete";
@@ -132,8 +131,7 @@ TEST(AndroidSeAppTest, ParseValidSeInfo)
 	EXPECT_EQ(ret, 0);
 	EXPECT_STREQ(info.base, "platform");
 	EXPECT_EQ(info.targetSdkVersion, 0);
-	EXPECT_EQ(info.is, IS_EPHEMERAL_APP);
-	EXPECT_EQ(info.isPreinstalledApp, true);
+	EXPECT_STREQ(info.isSelector, "isEphemeralApp");
 	EXPECT_STREQ(info.partition, "system");
 
 	seinfo = "bluetooth";
@@ -142,8 +140,16 @@ TEST(AndroidSeAppTest, ParseValidSeInfo)
 	EXPECT_EQ(ret, 0);
 	EXPECT_STREQ(info.base, "bluetooth");
 	EXPECT_EQ(info.targetSdkVersion, 0);
-	EXPECT_EQ(info.isPreinstalledApp, false);
-	EXPECT_EQ(info.is, 0);
+	EXPECT_STREQ(info.isSelector, "");
+
+	seinfo = "default:isSdkSandboxNext:partition=system:complete";
+	ret = parse_seinfo(seinfo.c_str(), &info);
+
+	EXPECT_EQ(ret, 0);
+	EXPECT_STREQ(info.base, "default");
+	EXPECT_EQ(info.targetSdkVersion, 0);
+	EXPECT_STREQ(info.isSelector, "isSdkSandboxNext");
+	EXPECT_STREQ(info.partition, "system");
 }
 
 TEST(AndroidSeAppTest, ParseInvalidSeInfo)
@@ -155,6 +161,14 @@ TEST(AndroidSeAppTest, ParseInvalidSeInfo)
 	EXPECT_EQ(ret, -1);
 
 	seinfo = "default:targetSdkVersion=:complete";
+	ret = parse_seinfo(seinfo.c_str(), &info);
+	EXPECT_EQ(ret, -1);
+
+	seinfo = "default:privapp:ephemeralapp:complete";
+	ret = parse_seinfo(seinfo.c_str(), &info);
+	EXPECT_EQ(ret, -1);
+
+	seinfo = "default:isANewSelector:isAnotherOne:complete";
 	ret = parse_seinfo(seinfo.c_str(), &info);
 	EXPECT_EQ(ret, -1);
 }
