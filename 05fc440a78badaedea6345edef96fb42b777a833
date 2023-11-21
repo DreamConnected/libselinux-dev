@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "470ede9e_15421062",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "That\u0027s my understanding as well. I actually think only one of them may be used at a time (from reading a few seapp_contexts). \n\nThe plan is to follow up with another change which will remove these, and only keep the string of the \"is\" selector (see wip on the change chain).",
+      "parentUuid": "dc565133_10f4b085",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f6e945a_cbc21d2a",
         "filename": "libselinux/src/android/android_internal.h",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2023-11-20T09:30:54Z",
       "side": 1,
       "message": "Why isn\u0027t this a bit in `is` too?",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "037493d5_7c6574b5",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "This is a special bool, which indicates that `partition` has been populated. I kept the name, as it is quite good.\n\nAlso, as opposed to the other `is`, this one may be present while another `is` is (e.g., `privapp:partition\u003dsystem`).",
+      "parentUuid": "8f6e945a_cbc21d2a",
       "range": {
         "startLine": 115,
         "startChar": 6,
@@ -100,6 +148,30 @@
       "writtenOn": "2023-11-20T06:41:14Z",
       "side": 1,
       "message": "is this an actual value passed from framework, or for test?",
+      "range": {
+        "startLine": 686,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 31
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55367432_492fd3c8",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "It is coming from the framework: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/core/java/com/android/server/pm/pkg/SELinuxUtil.java;l\u003d29;drc\u003defbb31963003ab91aeef618a291a9f9d07d0767b\n\nFrom the comments at https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/base/+/1844708/comment/417895d6_bc97d820/: \"[...]WDYT about always adding some sentinel tag in here (\":complete\"?) so that we can add neverallows/checks that apps cannot start without this.\" \n\nI think that was the original intent, but the enforcement has never been implemented.",
+      "parentUuid": "be418427_cf53bf16",
       "range": {
         "startLine": 686,
         "startChar": 0,
@@ -135,6 +207,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2f532c94_4ce5ba7a",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d780a77_6cdc8f9b",
+      "range": {
+        "startLine": 734,
+        "startChar": 0,
+        "endLine": 734,
+        "endChar": 12
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "03fe3d25_33e94c9b",
         "filename": "libselinux/src/android/android_seapp.c",
         "patchSetId": 2
@@ -146,6 +242,30 @@
       "writtenOn": "2023-11-20T06:41:14Z",
       "side": 1,
       "message": "nit; we can factor out this part. Up to you as this is repeated for only two times.",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 52
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937a8251_3eb4a5b7",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "Yeah I thought about that too. I think the duplication is ok for now, but I\u0027ll keep it in mind if another attribute/value is required.",
+      "parentUuid": "03fe3d25_33e94c9b",
       "range": {
         "startLine": 772,
         "startChar": 0,
@@ -179,6 +299,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc66e64f_e3c8c11d",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a6c2f9_cc9352d6",
+      "range": {
+        "startLine": 776,
+        "startChar": 4,
+        "endLine": 776,
+        "endChar": 14
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448d156d_0d42dd9d",
@@ -192,6 +336,30 @@
       "writtenOn": "2023-11-20T06:41:14Z",
       "side": 1,
       "message": "log?",
+      "range": {
+        "startLine": 786,
+        "startChar": 4,
+        "endLine": 786,
+        "endChar": 14
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "733fe745_aa3bfac9",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448d156d_0d42dd9d",
       "range": {
         "startLine": 786,
         "startChar": 4,
@@ -239,6 +407,30 @@
       "side": 1,
       "message": "I think it\u0027s to not make any regressions (no behavior change) as this is only a refactoring change.",
       "parentUuid": "fcbc40a0_1c538e94",
+      "range": {
+        "startLine": 795,
+        "startChar": 14,
+        "endLine": 795,
+        "endChar": 26
+      },
+      "revId": "05fc440a78badaedea6345edef96fb42b777a833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f528b8_b84049ba",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-21T09:39:30Z",
+      "side": 1,
+      "message": "This log was not emitted previously (the parsing was extremely lenient). The log level should not have an impact on the behaviour (at least for the caller\u0027s perpective). Moved to SELINUX_WARNING as it would be good to get reports and understand any omitted cases.",
+      "parentUuid": "cf9edbf9_071129fc",
       "range": {
         "startLine": 795,
         "startChar": 14,
