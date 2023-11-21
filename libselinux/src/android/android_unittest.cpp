@@ -122,7 +122,7 @@ TEST(AndroidSeAppTest, ParseValidSeInfo)
 	EXPECT_EQ(ret, 0);
 	EXPECT_STREQ(info.base, "default");
 	EXPECT_EQ(info.targetSdkVersion, 10000);
-	EXPECT_EQ(info.is, IS_PRIV_APP);
+	EXPECT_STREQ(info.isSelector, "isPrivApp");
 	EXPECT_EQ(info.isPreinstalledApp, true);
 	EXPECT_STREQ(info.partition, "system");
 
@@ -132,7 +132,7 @@ TEST(AndroidSeAppTest, ParseValidSeInfo)
 	EXPECT_EQ(ret, 0);
 	EXPECT_STREQ(info.base, "platform");
 	EXPECT_EQ(info.targetSdkVersion, 0);
-	EXPECT_EQ(info.is, IS_EPHEMERAL_APP);
+	EXPECT_STREQ(info.isSelector, "isEphemeralApp");
 	EXPECT_EQ(info.isPreinstalledApp, true);
 	EXPECT_STREQ(info.partition, "system");
 
@@ -143,7 +143,7 @@ TEST(AndroidSeAppTest, ParseValidSeInfo)
 	EXPECT_STREQ(info.base, "bluetooth");
 	EXPECT_EQ(info.targetSdkVersion, 0);
 	EXPECT_EQ(info.isPreinstalledApp, false);
-	EXPECT_EQ(info.is, 0);
+	EXPECT_STREQ(info.isSelector, "");
 }
 
 TEST(AndroidSeAppTest, ParseInvalidSeInfo)

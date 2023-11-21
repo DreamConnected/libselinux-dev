@@ -128,18 +128,12 @@ static void free_prefix_str(struct prefix_str *p)
 struct seapp_context {
 	/* input selectors */
 	bool isSystemServer;
-	bool isEphemeralAppSet;
-	bool isEphemeralApp;
 	struct prefix_str user;
 	char *seinfo;
 	struct prefix_str name;
-	bool isPrivAppSet;
-	bool isPrivApp;
 	int32_t minTargetSdkVersion;
-	bool fromRunAs;
-	bool isIsolatedComputeApp;
-	bool isSdkSandboxAudit;
-	bool isSdkSandboxNext;
+	char *isSelector;
+	bool isSelectorValue;
 	/* outputs */
 	char *domain;
 	char *type;
@@ -153,6 +147,7 @@ static void free_seapp_context(struct seapp_context *s)
 	if (!s)
 		return;
 
+	free(s->isSelector);
 	free_prefix_str(&s->user);
 	free(s->seinfo);
 	free_prefix_str(&s->name);
@@ -180,11 +175,6 @@ static int seapp_context_cmp(const void *A, const void *B)
 	/* Give precedence to isSystemServer=true. */
 	if (s1->isSystemServer != s2->isSystemServer)
 		return (s1->isSystemServer ? -1 : 1);
-
-	/* Give precedence to a specified isEphemeral= over an
-	 * unspecified isEphemeral=. */
-	if (s1->isEphemeralAppSet != s2->isEphemeralAppSet)
-		return (s1->isEphemeralAppSet ? -1 : 1);
 
 	/* Give precedence to a specified user= over an unspecified user=. */
 	if (s1->user.str && !s2->user.str)
@@ -224,9 +214,11 @@ static int seapp_context_cmp(const void *A, const void *B)
 			return (s1->name.len > s2->name.len) ? -1 : 1;
 	}
 
-	/* Give precedence to a specified isPrivApp= over an unspecified isPrivApp=. */
-	if (s1->isPrivAppSet != s2->isPrivAppSet)
-		return (s1->isPrivAppSet ? -1 : 1);
+	/* Give precedence to a specified isSelector (e.g., isPrivApp) over an unspecified isSelector. */
+	if(s1->isSelector && !s2->isSelector)
+		return -1;
+	if(!s1->isSelector && s2->isSelector)
+		return 1;
 
 	/* Give precedence to a higher minTargetSdkVersion= over a lower minTargetSdkVersion=.
 	 * If unspecified, minTargetSdkVersion has a default value of 0.
@@ -235,10 +227,6 @@ static int seapp_context_cmp(const void *A, const void *B)
 		return -1;
 	else if (s1->minTargetSdkVersion < s2->minTargetSdkVersion)
 		return 1;
-
-	/* Give precedence to fromRunAs=true. */
-	if (s1->fromRunAs != s2->fromRunAs)
-		return (s1->fromRunAs ? -1 : 1);
 
 	/* Give precedence to platform side contexts */
 	bool isS1Platform = is_platform(s1->partition);
@@ -375,16 +363,6 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "isEphemeralApp")) {
-					cur->isEphemeralAppSet = true;
-					if (!strcasecmp(value, "true"))
-						cur->isEphemeralApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isEphemeralApp = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else if (!strcasecmp(name, "user")) {
 					if (cur->user.str) {
 						free_seapp_context(cur);
@@ -485,55 +463,27 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto oom;
 					}
-				} else if (!strcasecmp(name, "isPrivApp")) {
-					cur->isPrivAppSet = true;
-					if (!strcasecmp(value, "true"))
-						cur->isPrivApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isPrivApp = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else if (!strcasecmp(name, "minTargetSdkVersion")) {
 					cur->minTargetSdkVersion = get_minTargetSdkVersion(value);
 					if (cur->minTargetSdkVersion < 0) {
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "fromRunAs")) {
-					if (!strcasecmp(value, "true"))
-						cur->fromRunAs = true;
-					else if (!strcasecmp(value, "false"))
-						cur->fromRunAs = false;
-					else {
+				} else if (!strcasecmp(name, "fromRunAs") || (!strncasecmp(name, "is", 2) && strlen(name) > 3)) {
+					if (cur->isSelector) {
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "isIsolatedComputeApp")) {
-					if (!strcasecmp(value, "true"))
-						cur->isIsolatedComputeApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isIsolatedComputeApp = false;
-					else {
+				  cur->isSelector = strdup(name);
+					if (!cur->isSelector) {
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "isSdkSandboxAudit")) {
-					if (!strcasecmp(value, "true"))
-						cur->isSdkSandboxAudit = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isSdkSandboxAudit = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
-				} else if (!strcasecmp(name, "isSdkSandboxNext")) {
-					if (!strcasecmp(value, "true"))
-						cur->isSdkSandboxNext = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isSdkSandboxNext = false;
-					else {
+					if (!strcasecmp(value, "true")) {
+						cur->isSelectorValue = true;
+					} else if (!strcasecmp(value, "false")) {
+						cur->isSelectorValue = false;
+					} else {
 						free_seapp_context(cur);
 						goto err;
 					}
@@ -547,7 +497,7 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 					break;
 			}
 
-			if (!cur->isPrivApp && cur->name.str &&
+			if (!cur->isSelector && cur->name.str &&
 			    (!cur->seinfo || !strcmp(cur->seinfo, "default"))) {
 				selinux_log(SELINUX_ERROR, "%s:  No specific seinfo value specified with name=\"%s\", on line %u:  insecure configuration!\n",
 					    seapp_contexts_files[i], cur->name.str, lineno);
@@ -582,11 +532,8 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 			bool dup = (!s1->user.str || !strcmp(s1->user.str, s2->user.str)) &&
 				(!s1->seinfo || !strcmp(s1->seinfo, s2->seinfo)) &&
 				(!s1->name.str || !strcmp(s1->name.str, s2->name.str)) &&
-				(!s1->isPrivAppSet || s1->isPrivApp == s2->isPrivApp) &&
-				(!s1->isEphemeralAppSet || s1->isEphemeralApp == s2->isEphemeralApp) &&
-				(s1->isIsolatedComputeApp == s2->isIsolatedComputeApp) &&
-				(s1->isSdkSandboxAudit == s2->isSdkSandboxAudit) &&
-				(s1->isSdkSandboxNext == s2->isSdkSandboxNext);
+				(!s1->isSelector || !strcmp(s1->isSelector, s2->isSelector)) &&
+				(s1->isSelectorValue == s2->isSelectorValue);
 
 			if (dup) {
 				selinux_log(SELINUX_ERROR, "seapp_contexts:  Duplicated entry\n");
@@ -677,8 +624,6 @@ void selinux_android_seapp_context_init(void) {
 
 #define PRIVILEGED_APP_STR "privapp"
 #define ISOLATED_COMPUTE_APP_STR "isolatedComputeApp"
-#define APPLY_SDK_SANDBOX_AUDIT_RESTRICTIONS_STR "isSdkSandboxAudit"
-#define APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR "isSdkSandboxNext"
 #define EPHEMERAL_APP_STR "ephemeralapp"
 #define TARGETSDKVERSION_STR "targetSdkVersion"
 #define PARTITION_STR "partition"
@@ -748,27 +693,23 @@ int parse_seinfo(const char* seinfo, struct parsed_seinfo* info) {
 			continue;
 		}
 		if (!strcmp(token, PRIVILEGED_APP_STR)) {
-			info->is |= IS_PRIV_APP;
+			strcpy(info->isSelector, "isPrivApp");
 			continue;
 		}
 		if (!strcmp(token, EPHEMERAL_APP_STR)) {
-			info->is |= IS_EPHEMERAL_APP;
+			strcpy(info->isSelector, "isEphemeralApp");
 			continue;
 		}
 		if (!strcmp(token, ISOLATED_COMPUTE_APP_STR)) {
-			info->is |= IS_ISOLATED_COMPUTE_APP;
-			continue;
-		}
-		if (!strcmp(token, APPLY_SDK_SANDBOX_AUDIT_RESTRICTIONS_STR)) {
-			info->is |= IS_SDK_SANDBOX_AUDIT;
-			continue;
-		}
-		if (!strcmp(token, APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR)) {
-			info->is |= IS_SDK_SANDBOX_NEXT;
+			strcpy(info->isSelector, "isIsolatedComputeApp");
 			continue;
 		}
 		if (!strcmp(token, FROM_RUNAS_STR)) {
-			info->is |= IS_FROM_RUN_AS;
+			strcpy(info->isSelector, "fromRunAs");
+			continue;
+		}
+		if (!strncmp(token, "is", 2)) {
+			strncpy(info->isSelector, token, strlen(token));
 			continue;
 		}
 		if (!strncmp(token, TARGETSDKVERSION_STR, strlen(TARGETSDKVERSION_STR))) {
@@ -868,9 +809,6 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 		if (cur->isSystemServer != isSystemServer)
 			continue;
 
-		if (cur->isEphemeralAppSet && cur->isEphemeralApp != ((info.is & IS_EPHEMERAL_APP) != 0))
-			continue;
-
 		if (cur->user.str) {
 			if (cur->user.is_prefix) {
 				if (strncasecmp(username, cur->user.str, cur->user.len-1))
@@ -899,23 +837,14 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 			}
 		}
 
-		if (cur->isPrivAppSet && cur->isPrivApp != ((info.is & IS_PRIV_APP) != 0))
-			continue;
-
 		if (cur->minTargetSdkVersion > info.targetSdkVersion)
 			continue;
 
-		if (cur->fromRunAs != ((info.is & IS_FROM_RUN_AS) != 0))
-			continue;
-
-		if (cur->isIsolatedComputeApp != ((info.is & IS_ISOLATED_COMPUTE_APP) != 0))
-			continue;
-
-		if (cur->isSdkSandboxAudit != ((info.is & IS_SDK_SANDBOX_AUDIT) != 0))
-			continue;
-
-		if (cur->isSdkSandboxNext != ((info.is & IS_SDK_SANDBOX_NEXT) != 0))
-			continue;
+		if (cur->isSelector) {
+		  if(!info.isSelector[0] || strcasecmp(info.isSelector, cur->isSelector) || !cur->isSelectorValue) {
+				continue;
+			}
+		}
 
 		if (kind == SEAPP_TYPE && !cur->type)
 			continue;
