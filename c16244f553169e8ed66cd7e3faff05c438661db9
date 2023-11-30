@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "501c489a_87876705",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T04:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a7b15be_74f0ff79",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9286a9_cd1e1e3e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-23T10:28:53Z",
       "side": 1,
       "message": "Nit: line too long",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 98
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbc149a_fe96d9ea",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T04:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9286a9_cd1e1e3e",
       "range": {
         "startLine": 217,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b386ca2_15f457e0",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T04:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a197628d_9557ed37",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 28
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b430231a_37a59958",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "226724a0_38de0fed",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T04:08:21Z",
+      "side": 1,
+      "message": "This was confusing. I found some more background in aosp/1159183. But basically if an app was not a privapp then both the name and seinfo should have been provided. See that change for the reasoning.\n\nI updated the logic to match this (that is, only skip that test for isPrivApp), and added unit tests to validate the logic.",
+      "parentUuid": "b430231a_37a59958",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 130
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5415eef_e425ca48",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-11-23T10:28:53Z",
       "side": 1,
       "message": "Don\u0027t we need to do something special for null?",
+      "range": {
+        "startLine": 566,
+        "startChar": 4,
+        "endLine": 566,
+        "endChar": 19
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa857630_7de011d3",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T04:08:21Z",
+      "side": 1,
+      "message": "Done explicitly. Although, I noticed that this is handled by bionic (https://cs.android.com/android/platform/superproject/main/+/main:bionic/libc/stdio/vfprintf.cpp;l\u003d522;drc\u003d2109f12c3b04d4023030ad12e17197c4a1c843ac), but I couldn\u0027t find any reference in the spec.",
+      "parentUuid": "e5415eef_e425ca48",
       "range": {
         "startLine": 566,
         "startChar": 4,
