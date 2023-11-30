@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d0f5b6_456d711e",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-11-30T11:05:00Z",
+      "side": 1,
+      "message": "I think that rationale applies to all preinstalled apps, not just privileged apps.\nAnd I suspect most apps listed in seapp_contexts files will be preinstalled.\nBut I\u0027m ok if we keep the status quo for now, that\u0027s not really for this CL.",
+      "parentUuid": "226724a0_38de0fed",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 130
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5415eef_e425ca48",
