@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c77c1a9_c3e7874f",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T23:52:50Z",
+      "side": 1,
+      "message": "Good catch. Added a test as well. Thanks.",
+      "parentUuid": "5dce1ebb_e3a45ac1",
+      "range": {
+        "startLine": 506,
+        "startChar": 28,
+        "endLine": 506,
+        "endChar": 68
+      },
+      "revId": "9c3db184ccb16d687b220ed4e7455b24b530ddd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81a80719_84e0c11e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-30T11:05:00Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\tcur-\u003eisSelector ? cur-\u003eisSelector : \"isX\",\n```\n\nThat way the full text will be \"isX\u003dnull\" which seems marginally more intelligible than \"null\u003dnull\".",
+      "range": {
+        "startLine": 570,
+        "startChar": 41,
+        "endLine": 570,
+        "endChar": 45
+      },
+      "revId": "9c3db184ccb16d687b220ed4e7455b24b530ddd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db027970_e35e2957",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2023-11-30T23:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a80719_84e0c11e",
       "range": {
         "startLine": 570,
         "startChar": 41,
