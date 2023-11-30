@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dce1ebb_e3a45ac1",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-30T08:17:40Z",
+      "side": 1,
+      "message": "Regarding the previous version, shouldn\u0027t this be\n\n    strcasecmp(cur-\u003eisSelector, \"isPrivApp\") || !cur-\u003eisSelectorValue\n    \n? Or is this the correct behavior (explicitly setting `isPrivApp\u003dfalse` shouldn\u0027t take this `if` clause)?",
+      "range": {
+        "startLine": 506,
+        "startChar": 28,
+        "endLine": 506,
+        "endChar": 68
+      },
+      "revId": "9c3db184ccb16d687b220ed4e7455b24b530ddd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

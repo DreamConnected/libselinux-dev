@@ -234,6 +234,30 @@
       },
       "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1921288a_fd843a96",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-11-30T08:17:40Z",
+      "side": 1,
+      "message": "yeah passing `nullptr` to `%s` is an undefined behavior.",
+      "parentUuid": "fa857630_7de011d3",
+      "range": {
+        "startLine": 566,
+        "startChar": 4,
+        "endLine": 566,
+        "endChar": 19
+      },
+      "revId": "c16244f553169e8ed66cd7e3faff05c438661db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
