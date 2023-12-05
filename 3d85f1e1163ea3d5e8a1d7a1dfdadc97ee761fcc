@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc01f9b9_3b09e782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004333
+      },
+      "writtenOn": "2023-12-05T00:51:50Z",
+      "side": 1,
+      "message": "This CL has been found through bisection to be the root cause of the droidfood blocking bug: b/314704483 A revert will be made.",
+      "revId": "3d85f1e1163ea3d5e8a1d7a1dfdadc97ee761fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
