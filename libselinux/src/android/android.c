@@ -10,6 +10,10 @@
 #include "android_internal.h"
 #include "callbacks.h"
 
+#ifdef __ANDROID__
+#include <libaudit.h>
+#endif
+
 #ifdef __ANDROID_VNDK__
 #ifndef LOG_EVENT_STRING
 #define LOG_EVENT_STRING(...)
@@ -188,21 +192,39 @@ struct selabel_handle* selinux_android_keystore2_key_context_handle(void)
 	return context_handle(SELABEL_CTX_ANDROID_KEYSTORE2_KEY, &keystore2_context_paths, "keystore2");
 }
 
-static void __selinux_log_callback(bool add_to_event_log, int type, const char *fmt, va_list ap) {
-	int priority;
-	char *strp;
-
+static int translate_priority(int type) {
 	switch(type) {
 	case SELINUX_WARNING:
-		priority = ANDROID_LOG_WARN;
-		break;
+		return ANDROID_LOG_WARN;
 	case SELINUX_INFO:
-		priority = ANDROID_LOG_INFO;
-		break;
+		return ANDROID_LOG_INFO;
 	default:
-		priority = ANDROID_LOG_ERROR;
-		break;
+		return ANDROID_LOG_ERROR;
 	}
+}
+
+#ifdef __ANDROID__
+/* File descriptor for the audit netlink socket */
+static int audit_netlink_fd = -1;
+
+int avc_audit_netlink_open() {
+	audit_netlink_fd = audit_open();
+	return audit_netlink_fd;
+}
+
+void avc_audit_netlink_close() {
+	if (audit_netlink_fd >= 0)
+		audit_close(audit_netlink_fd);
+	audit_netlink_fd = -1;
+}
+#endif
+
+#define MAIN_LOG      (1 << 0)
+#define EVENT_LOG     (1 << 1)
+#define AUDIT_NETLINK (1 << 2)
+
+static void __selinux_log_callback(int flags, int type, const char *fmt, va_list ap) {
+	char *strp;
 
 	int len = vasprintf(&strp, fmt, ap);
 	if (len < 0) {
@@ -216,9 +238,29 @@ static void __selinux_log_callback(bool add_to_event_log, int type, const char *
 	if (len > 0 && strp[len - 1] == '\n') {
 		strp[len - 1] = '\0';
 	}
-	LOG_PRI(priority, "SELinux", "%s", strp);
-	if (add_to_event_log) {
-		LOG_EVENT_STRING(AUDITD_LOG_TAG, strp);
+
+#ifdef __ANDROID__
+	if (type == SELINUX_AVC && flags & AUDIT_NETLINK) {
+		if (audit_netlink_fd == -1) {
+			ALOGE("selinux_log_netlink_callback was called but audit_netlink_fd = -1."
+			      "avc_audit_netlink_open must be called beforehand.");
+			free(strp);
+			return;
+		}
+		int ret = audit_log_android_avc_message(audit_netlink_fd, strp);
+		if (ret < 0) {
+			ALOGE("audit_log_android_avc_message failed with error: %d", ret);
+		}
+	} else {
+#else
+	{
+#endif
+		int priority = translate_priority(type);
+
+		LOG_PRI(priority, "SELinux", "%s", strp);
+		if (flags & EVENT_LOG) {
+			LOG_EVENT_STRING(AUDITD_LOG_TAG, strp);
+		}
 	}
 	free(strp);
 }
@@ -227,7 +269,7 @@ int selinux_log_callback(int type, const char *fmt, ...)
 {
 	va_list ap;
 	va_start(ap, fmt);
-	__selinux_log_callback(true, type, fmt, ap);
+	__selinux_log_callback(MAIN_LOG, type, fmt, ap);
 	va_end(ap);
 	return 0;
 }
@@ -236,7 +278,15 @@ int selinux_vendor_log_callback(int type, const char *fmt, ...)
 {
 	va_list ap;
 	va_start(ap, fmt);
-	__selinux_log_callback(false, type, fmt, ap);
+	__selinux_log_callback(MAIN_LOG | EVENT_LOG, type, fmt, ap);
+	va_end(ap);
+	return 0;
+}
+
+int selinux_log_netlink_callback(int type, const char *fmt, ...) {
+	va_list ap;
+	va_start(ap, fmt);
+	__selinux_log_callback(MAIN_LOG | EVENT_LOG | AUDIT_NETLINK, type, fmt, ap);
 	va_end(ap);
 	return 0;
 }

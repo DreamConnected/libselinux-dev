@@ -88,6 +88,11 @@ extern void selinux_android_seapp_context_init(void);
 /* Forces a reload of the seapp_contexts files. */
 extern int selinux_android_seapp_context_reload(void);
 
+extern int avc_audit_netlink_open(void);
+extern void avc_audit_netlink_close(void);
+extern int selinux_log_netlink_callback(int type, const char *fmt, ...)
+    __attribute__ ((format(printf, 2, 3)));
+
 #ifdef __cplusplus
 }
 #endif
