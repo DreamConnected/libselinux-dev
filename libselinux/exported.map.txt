@@ -54,3 +54,9 @@ LIBSELINUX_S { # introduced=S
     selinux_android_context_with_level; # llndk systemapi
     selinux_android_keystore2_key_context_handle; # llndk systemapi
 };
+
+LIBSELINUX_35 { # introduced=35
+    selinux_log_netlink_callback; # llndk
+    avc_audit_netlink_open; # llndk
+    avc_audit_netlink_close; # llndk
+};
