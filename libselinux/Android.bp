@@ -116,6 +116,9 @@ cc_defaults {
             srcs: [
                 "src/android/android_device.c",
             ],
+            whole_static_libs: [
+                    "libaudit",
+            ],
             static: {
                 whole_static_libs: [
                     "libpackagelistparser",
