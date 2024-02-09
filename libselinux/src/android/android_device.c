@@ -325,9 +325,11 @@ static int extract_userid(const char **pathname, unsigned int *userid)
  * On success, the caller is responsible for free'ing pkgname.
  * Returns 0 on success, -1 on invalid path, -2 on error.
  */
-static int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsigned int *userid)
+static int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsigned int *userid,
+        bool* is_pkg_dir_of_storage_areas, bool* is_storage_area)
 {
     char *end = NULL;
+    bool is_storage_path = false;
 
     if (pkgname == NULL || *pkgname != NULL || userid == NULL) {
       errno = EINVAL;
@@ -364,6 +366,7 @@ static int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsi
             pathname++;
         else
             return -1;
+        is_storage_path = true;
     } else if (!fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
         pathname += sizeof(EXPAND_USER_PATH);
         int rc = extract_userid(&pathname, userid);
@@ -430,6 +433,22 @@ static int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsi
     if (!(*pkgname))
         return -2;
 
+    if (is_storage_path) {
+        // now, check if it is a package's directory of storage areas, or storage area
+        // we have reached the package name: if there is a sub-directory, then we are in a storage area
+        for (end = *pkgname; *end && *end != '/'; end++);
+        if (*end == '/') {
+            end++;
+            if (*end) {
+                // there is a character past the first '/': we are in a subdirectory
+                *is_storage_area = true;
+            }
+        }
+        if (! *is_storage_area) {
+            *is_pkg_dir_of_storage_areas = true;
+        }
+    }
+
     // Trim pkgname.
     for (end = *pkgname; *end && *end != '/'; end++);
     *end = '\0';
@@ -449,8 +468,10 @@ static int pkgdir_selabel_lookup(const char *pathname,
     context_t ctx = NULL;
     int rc = 0;
     unsigned int userid_from_path = 0;
+    bool is_storage_area = false;
+    bool is_pkg_dir_of_storage_areas = false;
 
-    rc = extract_pkgname_and_userid(pathname, &pkgname, &userid_from_path);
+    rc = extract_pkgname_and_userid(pathname, &pkgname, &userid_from_path, &is_pkg_dir_of_storage_areas, &is_storage_area);
     if (rc) {
       /* Invalid path, we skip it */
       if (rc == -1) {
@@ -477,6 +498,7 @@ static int pkgdir_selabel_lookup(const char *pathname,
 
     rc = seapp_context_lookup(SEAPP_TYPE, info ? info->uid : uid, 0,
                               info ? info->seinfo : seinfo, info ? info->name : pkgname, ctx);
+
     if (rc < 0)
         goto err;
 
@@ -843,6 +865,73 @@ realpatherr:
 int selinux_android_restorecon(const char *file, unsigned int flags)
 {
     return selinux_android_restorecon_common(file, NULL, -1, flags);
+}
+
+int selinux_android_restorecon_storage_areas(bool is_storage_area, bool is_pkg_dir_of_storage_areas,
+                                             const char *pathname, const char *seinfo, uid_t uid) {
+    if (is_storage_area && is_pkg_dir_of_storage_areas) {
+        selinux_log(SELINUX_ERROR, "SELinux: path %s cannot be both pkg_dir_of_storage_areas and storage_area", pathname);
+        return -1;
+    }
+    if (!is_storage_area && !is_pkg_dir_of_storage_areas) {
+        selinux_log(SELINUX_ERROR, "SELinux: path %s neither a pkg_dir_of_storage_areas nor a storage_area", pathname);
+        return -1;
+    }
+    struct pkg_info *info = NULL;
+    if(!seinfo) {
+        char *pkgname = NULL;
+        unsigned int _userid_from_path = 0;
+        bool _is_storage_area = false;
+        bool _is_pkg_dir_of_storage_areas = false;
+        if(extract_pkgname_and_userid(pathname, &pkgname,
+                &_userid_from_path,
+                &_is_pkg_dir_of_storage_areas,
+                &_is_storage_area) != 0) {
+            selinux_log(SELINUX_WARNING, "SELinux:  Could not extract pkgname and username for path %s", pathname);
+            free(pkgname);
+            return -1;
+        }
+        // this check doubles as path validation
+        // if the path does not correspond to a storage area or package directory of storage
+        // areas as specified by the boolean flags, we will error here
+        if (is_storage_area != _is_storage_area || is_pkg_dir_of_storage_areas != _is_pkg_dir_of_storage_areas) {
+            selinux_log(SELINUX_WARNING,
+                "SELinux:  mistmatch in input/results for is_pkg_dir_of_storage_areas and is_storage_area for path %s",
+                pathname);
+            free(pkgname);
+            return -1;
+        }
+        info = package_info_lookup(pkgname);
+        if (!info) {
+            selinux_log(SELINUX_WARNING, "SELinux:  Could not find seinfo for package %s, we assume there is none %s.\n",
+                        pkgname, pathname);
+        }
+        free(pkgname);
+    }
+    const char* pkg_dir_of_storage_areas_seinfo = ":isPkgDirOfStorageAreas";
+    const char* storage_area_seinfo = ":isStorageArea";
+    const char* cur_info = (info ? info->seinfo : seinfo);
+    if (!cur_info) {
+        cur_info = "default:complete";
+    }
+    char *lasttoken = strrchr(cur_info, ':');
+    if (!lasttoken || strcmp(lasttoken, ":complete")) {
+        selinux_log(SELINUX_ERROR, "SELinux: seinfo needs to end with the string \":complete\", and we got: %s", lasttoken);
+        return -1;
+    }
+    size_t selen = strlen(cur_info) + strlen(pkg_dir_of_storage_areas_seinfo) + 1;
+    char seinfo_extended[selen];
+    strcat(seinfo_extended, cur_info);
+    seinfo_extended[strlen(cur_info) - strlen(lasttoken)] = '\0'; // cut off ":complete"; we'll add it back
+
+    if(is_pkg_dir_of_storage_areas)
+        strcat(seinfo_extended, pkg_dir_of_storage_areas_seinfo);
+
+    if(is_storage_area)
+        strcat(seinfo_extended, storage_area_seinfo);
+        
+    strcat(seinfo_extended, ":complete");
+    return selinux_android_restorecon_common(pathname, seinfo_extended, uid, SELINUX_ANDROID_RESTORECON_DATADATA);
 }
 
 int selinux_android_restorecon_pkgdir(const char *pkgdir,

@@ -78,6 +78,11 @@ extern int selinux_android_restorecon_pkgdir(const char *pkgdir,
                                              uid_t uid,
                                              unsigned int flags);
 
+/* Restores the security context and adds the tags for a package's directory
+   of storage areas, or a storage area itself. */
+extern int selinux_android_restorecon_storage_areas(bool is_storage_area, bool is_pkg_dir_of_storage_areas,
+                                             const char *pathname, const char *seinfo, uid_t uid);
+
 /* Initialize the seapp contexts for future lookups. Loads all the
  * seapp_contexts files. To force a reload of the files, use
  * selinux_android_seapp_context_reload. While not required, this function can

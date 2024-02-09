@@ -261,6 +261,7 @@ rust_bindgen {
         "--allowlist-function=selinux_android_load_policy_from_fd",
         "--allowlist-function=selinux_android_restorecon",
         "--allowlist-function=selinux_android_restorecon_pkgdir",
+        "--allowlist-function=selinux_android_restorecon_storage_areas",
         "--allowlist-function=selinux_android_seapp_context_init",
         "--allowlist-function=selinux_android_service_context_handle",
         "--allowlist-function=selinux_android_set_sehandle",

@@ -140,6 +140,8 @@ struct seapp_context {
 	bool isIsolatedComputeApp;
 	bool isSdkSandboxAudit;
 	bool isSdkSandboxNext;
+	bool isStorageArea;
+	bool isPkgDirOfStorageAreas;
 	/* outputs */
 	char *domain;
 	char *type;
@@ -537,6 +539,24 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto err;
 					}
+				} else if (!strcasecmp(name, "isStorageArea")) {
+					if (!strcasecmp(value, "true"))
+						cur->isStorageArea = true;
+					else if (!strcasecmp(value, "false"))
+						cur->isStorageArea = false;
+					else {
+						free_seapp_context(cur);
+						goto err;
+					}
+				} else if (!strcasecmp(name, "isPkgDirOfStorageAreas")) {
+					if (!strcasecmp(value, "true"))
+						cur->isPkgDirOfStorageAreas = true;
+					else if (!strcasecmp(value, "false"))
+						cur->isPkgDirOfStorageAreas = false;
+					else {
+						free_seapp_context(cur);
+						goto err;
+					}
 				} else {
 					free_seapp_context(cur);
 					goto err;
@@ -586,6 +606,8 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 				(!s1->isEphemeralAppSet || s1->isEphemeralApp == s2->isEphemeralApp) &&
 				(s1->isIsolatedComputeApp == s2->isIsolatedComputeApp) &&
 				(s1->isSdkSandboxAudit == s2->isSdkSandboxAudit) &&
+				(s1->isStorageArea == s2->isStorageArea) &&
+				(s1->isPkgDirOfStorageAreas == s2->isPkgDirOfStorageAreas) &&
 				(s1->isSdkSandboxNext == s2->isSdkSandboxNext);
 
 			if (dup) {
@@ -611,18 +633,21 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isEphemeralApp=%s "
 				"isIsolatedComputeApp=%s isSdkSandboxAudit=%s isSdkSandboxNext=%s "
 				"user=%s seinfo=%s name=%s isPrivApp=%s minTargetSdkVersion=%d "
-				"fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+				"fromRunAs=%s isStorageArea=%s isPkgDirOfStorageAreas=%s "
+				" -> domain=%s type=%s level=%s levelFrom=%s",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
 				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
+				cur->isIsolatedComputeApp ? "true" : "false",
+				cur->isSdkSandboxAudit ? "true" : "false",
+				cur->isSdkSandboxNext ? "true" : "false",
 				cur->user.str,
 				cur->seinfo, cur->name.str,
 				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
 				cur->minTargetSdkVersion,
 				cur->fromRunAs ? "true" : "false",
-				cur->isIsolatedComputeApp ? "true" : "false",
-				cur->isSdkSandboxAudit ? "true" : "false",
-				cur->isSdkSandboxNext ? "true" : "false",
+				cur->isStorageArea ? "true" : "false",
+				cur->isPkgDirOfStorageAreas ? "true" : "false",
 				cur->domain, cur->type, cur->level,
 				levelFromName[cur->levelFrom]);
 		}
@@ -684,6 +709,8 @@ void selinux_android_seapp_context_init(void) {
 #define PARTITION_STR "partition"
 #define FROM_RUNAS_STR "fromRunAs"
 #define COMPLETE_STR "complete"
+#define STORAGE_AREA_STR "isStorageArea"
+#define PKG_DIR_OF_STORAGE_AREAS_STR "isPkgDirOfStorageAreas"
 
 static bool is_preinstalled_app_partition_valid(const char *app_policy, const char *app_partition) {
 	// We forbid system/system_ext/product installed apps from being labeled with vendor sepolicy.
@@ -798,6 +825,14 @@ int parse_seinfo(const char* seinfo, struct parsed_seinfo* info) {
 		}
 		if (!strcmp(token, COMPLETE_STR)) {
 			break;
+		}
+		if (!strcmp(token, STORAGE_AREA_STR)) {
+			info->is |= IS_STORAGE_AREA;
+			continue;
+		}
+		if (!strcmp(token, PKG_DIR_OF_STORAGE_AREAS_STR)) {
+			info->is |= IS_PKG_DIR_OF_STORAGE_AREAS;
+			continue;
 		}
 		selinux_log(SELINUX_WARNING, "%s:  Ignoring unknown seinfo field: %s in %s\n",
 				__FUNCTION__, token, seinfo);
@@ -915,6 +950,12 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 			continue;
 
 		if (cur->isSdkSandboxNext != ((info.is & IS_SDK_SANDBOX_NEXT) != 0))
+			continue;
+
+		if (cur->isStorageArea != ((info.is & IS_STORAGE_AREA) != 0))
+			continue;
+
+		if (cur->isPkgDirOfStorageAreas != ((info.is & IS_PKG_DIR_OF_STORAGE_AREAS) != 0))
 			continue;
 
 		if (kind == SEAPP_TYPE && !cur->type)

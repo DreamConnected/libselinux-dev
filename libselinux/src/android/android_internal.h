@@ -105,12 +105,14 @@ int seapp_context_reload_internal(const path_alts_t *context_paths);
 /* A parsed seinfo */
 struct parsed_seinfo {
 	char base[SEINFO_BUFSIZ];
-#define IS_PRIV_APP             (1 << 0)
-#define IS_FROM_RUN_AS          (1 << 1)
-#define IS_EPHEMERAL_APP        (1 << 2)
-#define IS_ISOLATED_COMPUTE_APP (1 << 3)
-#define IS_SDK_SANDBOX_AUDIT    (1 << 4)
-#define IS_SDK_SANDBOX_NEXT     (1 << 5)
+#define IS_PRIV_APP             	(1 << 0)
+#define IS_FROM_RUN_AS          	(1 << 1)
+#define IS_EPHEMERAL_APP        	(1 << 2)
+#define IS_ISOLATED_COMPUTE_APP 	(1 << 3)
+#define IS_SDK_SANDBOX_AUDIT    	(1 << 4)
+#define IS_SDK_SANDBOX_NEXT     	(1 << 5)
+#define IS_STORAGE_AREA     		(1 << 6)
+#define IS_PKG_DIR_OF_STORAGE_AREAS	(1 << 7)
 	int32_t is;
 	bool isPreinstalledApp;
 	char partition[SEINFO_BUFSIZ];

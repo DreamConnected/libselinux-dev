@@ -52,5 +52,6 @@ LIBSELINUX_R {
 
 LIBSELINUX_S { # introduced=S
     selinux_android_context_with_level; # llndk systemapi
+    selinux_android_restorecon_storage_areas;
     selinux_android_keystore2_key_context_handle; # llndk systemapi
 };
