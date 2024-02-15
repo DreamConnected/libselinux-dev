@@ -16,6 +16,40 @@
       "message": "Adding @tweek@google.com as a reviewer since he\u0027s familiar with the SElinux input selector logic",
       "revId": "e3e801e3d4364b8d50818f78b3ad5cb3e3f7690a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc91a336_1c8c07af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-15T22:45:05Z",
+      "side": 1,
+      "message": "Thanks. I would like to avoid adding a new exported function to libselinux (see comment below).",
+      "revId": "e3e801e3d4364b8d50818f78b3ad5cb3e3f7690a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae4d7be_b7a0f666",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-15T22:45:05Z",
+      "side": 1,
+      "message": "libselinux is an ll-ndk library. Exporting a new function means that it cannot be removed. We should go down that path only if strictly necessary.\n\nIIUC, the main reason is to reuse the extract_pkgname_and_userid static function. Otherwise, the logic to update the seinfo could be moved higher up (system_server?). I would prefer that option.\n\nOn avoiding the duplication of extract_pkgname_and_userid, it could make sense to create a separate library for that parsing, which both libselinux and your library/binary may include statically.",
+      "revId": "e3e801e3d4364b8d50818f78b3ad5cb3e3f7690a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
