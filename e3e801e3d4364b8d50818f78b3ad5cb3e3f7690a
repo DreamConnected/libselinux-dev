@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f48fe1_03cffc1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954616
+      },
+      "writtenOn": "2024-02-15T18:23:15Z",
+      "side": 1,
+      "message": "Adding @tweek@google.com as a reviewer since he\u0027s familiar with the SElinux input selector logic",
+      "revId": "e3e801e3d4364b8d50818f78b3ad5cb3e3f7690a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
