@@ -16,6 +16,7 @@
 #include <sys/xattr.h>
 #include <unistd.h>
 
+#include <com_android_libselinux_flags.h>
 #include <log/log.h>
 #include <packagelistparser/packagelistparser.h>
 #include <private/android_filesystem_config.h>
@@ -281,6 +282,11 @@ struct pkg_info *package_info_lookup(const char *name)
  */
 static bool is_app_data_path(const char *pathname) {
     int flags = FNM_LEADING_DIR|FNM_PATHNAME;
+    if (com_android_libselinux_flags_data_data_ignore()) {
+        if (!strcmp(pathname, DATA_DATA_PATH)) {
+            return true;
+        }
+    }
     return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
