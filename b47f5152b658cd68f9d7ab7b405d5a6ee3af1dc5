@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bf106b_2b5489bc",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-02-19T10:17:16Z",
+      "side": 1,
+      "message": "You don\u0027t need this with the previous one?\nAlternatively, and probably better: the previous check should be for exact match rather than prefix.",
+      "range": {
+        "startLine": 285,
+        "startChar": 8,
+        "endLine": 285,
+        "endChar": 75
+      },
+      "revId": "b47f5152b658cd68f9d7ab7b405d5a6ee3af1dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
