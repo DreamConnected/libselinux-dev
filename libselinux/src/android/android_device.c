@@ -281,7 +281,8 @@ struct pkg_info *package_info_lookup(const char *name)
  */
 static bool is_app_data_path(const char *pathname) {
     int flags = FNM_LEADING_DIR|FNM_PATHNAME;
-    return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
+    return (!strncmp(pathname, DATA_DATA_PATH, sizeof(DATA_DATA_PATH)-1) ||
+        !strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
         !fnmatch(EXPAND_USER_PATH, pathname, flags) ||
