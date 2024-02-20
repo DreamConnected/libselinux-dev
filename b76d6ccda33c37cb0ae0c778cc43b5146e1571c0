@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d5d7b57_1cfa4817",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2024-02-20T14:04:44Z",
+      "side": 1,
+      "message": "Hi @tweek@google.com, if my understanding correct, here we want to use the flag as build-time flag. If so, only adding `is_fixed_read_only` is enough. The mode `force-read-only` is for flags are not `fixed_read_only`, but the library is desired to be used as a share, read-only library.",
+      "parentUuid": "4687b53a_271cff70",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29a6be6b_81001f66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
