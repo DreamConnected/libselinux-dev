@@ -127,7 +127,6 @@ cc_defaults {
                     "libpackagelistparser",
                 ],
             },
-            system_shared_libs: ["libc"],
         },
     },
 
@@ -143,6 +142,9 @@ cc_defaults {
             "liblog",
         ],
     },
+    whole_static_libs: [
+        "libselinux_aconfig_flags_c_lib",
+    ],
     header_libs: [
         "libbase_headers",
         "libcutils_headers",
@@ -153,8 +155,25 @@ cc_defaults {
         "src",
     ],
     export_include_dirs: ["include"],
+}
 
-    stl: "none",
+aconfig_declarations {
+    name: "libselinux_aconfig_flags",
+    package: "com.android.libselinux.flags",
+    container: "system",
+    srcs: [
+        "libselinux.aconfig",
+    ],
+}
+
+cc_aconfig_library {
+    name: "libselinux_aconfig_flags_c_lib",
+    aconfig_declarations: "libselinux_aconfig_flags",
+    mode: "force-read-only",
+    host_supported: true,
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
 }
 
 cc_library {
@@ -205,8 +224,6 @@ cc_test_host {
         "libpcre2",
     ],
 
-    // Use default stl.
-    stl:""
 }
 
 cc_binary_host {
@@ -218,8 +235,6 @@ cc_binary_host {
         "libselinux",
         "libsepol",
     ],
-
-    stl: "",
 }
 
 rust_bindgen {
