@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4687b53a_271cff70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-20T05:16:26Z",
+      "side": 1,
+      "message": "@zhidou@google.com This is to avoid the implicit dependency on `server_configurable_flags` but  I couldn\u0027t find any other example using this mode in AOSP. Could you confirm if this is the recommended approach? Thanks.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a6be6b_81001f66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-20T05:16:26Z",
+      "side": 1,
+      "message": "@enh@google.com From my understanding, toybox now includes libselinux as a shared library (toybox-shared-defaults), so this may not be an issue anymore. Thoughts?",
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
