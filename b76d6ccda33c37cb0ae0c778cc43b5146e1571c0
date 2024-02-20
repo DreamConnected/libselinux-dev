@@ -63,6 +63,24 @@
       "message": "@enh@google.com From my understanding, toybox now includes libselinux as a shared library (toybox-shared-defaults), so this may not be an issue anymore. Thoughts?",
       "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71cd9b7_7114152f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-02-20T15:58:10Z",
+      "side": 1,
+      "message": "yeah, there are other ways that libc++ ends up in running toybox processes too:\n```\n    // This doesn\u0027t actually prevent us from dragging in libc++ at runtime\n    // on the device because libnetd_client.so is C++, but it improves host\n    // startup time.\n    stl: \"none\",\n```\n(and since the _host_ toybox doesn\u0027t use libselinux, this doesn\u0027t make host startup times worse.)",
+      "parentUuid": "29a6be6b_81001f66",
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
