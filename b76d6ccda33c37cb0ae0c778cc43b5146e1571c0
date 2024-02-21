@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0629fb69_b54c6b76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-02-21T16:08:32Z",
+      "side": 1,
+      "message": "I think the reason server_configruable_flags is missing some variant is because in libselinux, we have:\n\n    ramdisk_available: true,\n    vendor_ramdisk_available: true,\n    \nBut this is not present for server_configurable_flags, if we add the following two lines to server_configurable_flags, the build should work.",
+      "parentUuid": "b6a1d5b6_4b5e11b9",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29a6be6b_81001f66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
