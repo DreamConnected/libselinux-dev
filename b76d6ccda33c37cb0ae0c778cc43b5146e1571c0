@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "734edd26_7fa4ef5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-21T23:42:40Z",
+      "side": 1,
+      "message": "Thanks. I\u0027m a bit puzzled by this answer. The intent here is to have a build-time only flag. From the documentation: \"The flag is a build-time flag, and its value is embedded in the code.\" I don\u0027t understand why we would need to rely on this library if we are not using any of its functionality.\n\nlibselinux is used early in the boot code (part of the 2nd stage init), I am not even sure that this library functions are available/useful that early. (see also b/326303058).\n\nIt\u0027s not because we can make that library available that we should if this makes little sense architecturally.",
+      "parentUuid": "c3cd5076_054cf93d",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29a6be6b_81001f66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
