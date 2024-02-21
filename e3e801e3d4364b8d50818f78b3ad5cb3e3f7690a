@@ -103,6 +103,24 @@
       "parentUuid": "5d4da826_cbf6315d",
       "revId": "e3e801e3d4364b8d50818f78b3ad5cb3e3f7690a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9de886_587b64d3",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1954616
+      },
+      "writtenOn": "2024-02-21T01:39:37Z",
+      "side": 1,
+      "message": "I moved all the functionality to vold_prepare_subdirs and installd",
+      "parentUuid": "e8c9bbf7_3695ecfc",
+      "revId": "e3e801e3d4364b8d50818f78b3ad5cb3e3f7690a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [

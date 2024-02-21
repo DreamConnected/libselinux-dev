@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d0647f_514bec2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954616
+      },
+      "writtenOn": "2024-02-21T01:39:37Z",
+      "side": 1,
+      "message": "Thanks again for the feedback! I\u0027ve removed the extra function from libselinux. I also restructured the way I\u0027m applying the new selinux types, so there is no need for the addition of new input selectors (and the associated parsing).",
+      "revId": "a15963d3ead4e3f8f589a7c4241b67a8c7cdfb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
