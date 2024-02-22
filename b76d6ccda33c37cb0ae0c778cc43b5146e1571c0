@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd7b45f4_c58b86a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-02-22T14:35:12Z",
+      "side": 1,
+      "message": "The reason why server_configurable_flags are added as dependency is because build system has no way to tell if all flags in an aconfig package are all read only. We allow a mix of force read only and regular read write flag in one aconfig package. So when this aconfig package needs codegen, we have to assume the worst and add this dependency.\n\nOn the other hand, when using force read only mode codegen. All flags in the package is converted to read only during codegen, so we can safely remove that dependency. That is why it works when you use force read only codegen.\n\nCurrently, persistent system property (which server_configurable_flags is querying) is available after /data partition mount, so after 2nd stage init. But for new storage, we are moving the actual flag storage into /metadata partition which will be available much early on.",
+      "parentUuid": "734edd26_7fa4ef5d",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29a6be6b_81001f66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
