@@ -39,6 +39,30 @@
       },
       "revId": "a15963d3ead4e3f8f589a7c4241b67a8c7cdfb01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d77630_50d665e0",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1954616
+      },
+      "writtenOn": "2024-02-22T18:07:43Z",
+      "side": 1,
+      "message": "The order the fields were printed in didn\u0027t match their values were listed; I think it was a typo.",
+      "parentUuid": "024da416_75b272ec",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 39
+      },
+      "revId": "a15963d3ead4e3f8f589a7c4241b67a8c7cdfb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
