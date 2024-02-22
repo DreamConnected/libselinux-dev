@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cc6b858_5f4635e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2024-02-22T16:44:49Z",
+      "side": 1,
+      "message": "Hi Thiébaud, I have discussed with Dennis. If you don\u0027t want to make the change on server_configurable_flags, you can use the force-read-only mode for now. \n\nPlease note, the force-read-only mode is not designed for this purpose, and it is mutually exclusive with the exportable flags. Which means if in the same declaration, there are exportable flags, and non-exportable flags, the force-read-only mode library will only include the non-exportable flags.\n\nPlease add a TODO comment and tag this bug b/326414126. We will clean this up once the new storage is in place.",
+      "parentUuid": "cd7b45f4_c58b86a9",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b76d6ccda33c37cb0ae0c778cc43b5146e1571c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29a6be6b_81001f66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
