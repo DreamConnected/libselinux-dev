@@ -16,6 +16,29 @@
       "message": "Thanks again for the feedback! I\u0027ve removed the extra function from libselinux. I also restructured the way I\u0027m applying the new selinux types, so there is no need for the addition of new input selectors (and the associated parsing).",
       "revId": "a15963d3ead4e3f8f589a7c4241b67a8c7cdfb01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024da416_75b272ec",
+        "filename": "libselinux/src/android/android_seapp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-02-22T12:45:47Z",
+      "side": 1,
+      "message": "Why these changes?",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 39
+      },
+      "revId": "a15963d3ead4e3f8f589a7c4241b67a8c7cdfb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
