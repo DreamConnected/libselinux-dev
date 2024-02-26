@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01198ab2_041e87f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-26T02:06:44Z",
+      "side": 1,
+      "message": "This is the \"build flag\" option. We avoid adding any new dependency (stl) to libselinux. The flag translates directly into a C preprocessor macro.",
+      "revId": "8f719500fddedf2041ddd03f016688b91687eb41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
