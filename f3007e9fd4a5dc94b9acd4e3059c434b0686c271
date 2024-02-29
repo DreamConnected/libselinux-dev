@@ -16,6 +16,24 @@
       "message": "Can this patch be upstreamed?",
       "revId": "f3007e9fd4a5dc94b9acd4e3059c434b0686c271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6648404b_61fc1092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-02-29T01:15:47Z",
+      "side": 1,
+      "message": "No, unfortunately selinux_android_file_context_handle is Android specific.",
+      "parentUuid": "815212c7_e1b54fd2",
+      "revId": "f3007e9fd4a5dc94b9acd4e3059c434b0686c271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
