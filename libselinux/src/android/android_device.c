@@ -281,6 +281,10 @@ struct pkg_info *package_info_lookup(const char *name)
  */
 static bool is_app_data_path(const char *pathname) {
     int flags = FNM_LEADING_DIR|FNM_PATHNAME;
+    if (!strcmp(pathname, DATA_DATA_PATH)) {
+        selinux_log(SELINUX_INFO,"debug selinux skip  data\n");
+        return true;
+    }
     return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
@@ -705,7 +709,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     }
 
     error = 0;
-    while ((ftsent = fts_read(fts)) != NULL) {
+    while ((ftsent = fts_read(fts)) != NULL && (!is_app_data_path(ftsent->fts_path))) {
         switch (ftsent->fts_info) {
         case FTS_DC:
             selinux_log(SELINUX_ERROR,
