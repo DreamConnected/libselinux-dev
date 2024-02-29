@@ -255,6 +255,7 @@ struct pkg_info *package_info_lookup(const char *name)
 
 /* The path prefixes of package data directories. */
 #define DATA_DATA_PATH "/data/data"
+#define DATA_DATA_MEDIA_PATH "/data/media/0"
 #define DATA_USER_PATH "/data/user"
 #define DATA_USER_DE_PATH "/data/user_de"
 #define USER_PROFILE_PATH "/data/misc/profiles/cur/*"
@@ -281,6 +282,10 @@ struct pkg_info *package_info_lookup(const char *name)
  */
 static bool is_app_data_path(const char *pathname) {
     int flags = FNM_LEADING_DIR|FNM_PATHNAME;
+    if ((strcmp(pathname, DATA_DATA_PATH) == 0) || (strcmp(pathname, DATA_DATA_MEDIA_PATH) == 0)) {
+        selinux_log(SELINUX_INFO,"debug selinux skip  data/data and data/media/0\n");
+        return true;
+    }
     return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
         !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
@@ -705,7 +710,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
     }
 
     error = 0;
-    while ((ftsent = fts_read(fts)) != NULL) {
+    while ((ftsent = fts_read(fts)) != NULL && (!is_app_data_path(ftsent->fts_path))) {
         switch (ftsent->fts_info) {
         case FTS_DC:
             selinux_log(SELINUX_ERROR,
