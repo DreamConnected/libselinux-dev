@@ -39,6 +39,24 @@
       "message": "This topic also contains https://r.android.com/2903115 which is nearly identical -- which one is the correct one?",
       "revId": "b1af25e1dd4ef317ecbe47b58367fbfd5deb3660",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e65b949_192afc03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954616
+      },
+      "writtenOn": "2024-03-07T21:57:11Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right! I seem to have accidentally duplicated this CL -- sorry for the confusion! I\u0027m abandoning this one, and updating the commit message on the other as you\u0027ve described.",
+      "parentUuid": "11d6a4b8_71e21780",
+      "revId": "b1af25e1dd4ef317ecbe47b58367fbfd5deb3660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
