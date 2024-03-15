@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314e4490_1d48682f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-03-15T03:15:05Z",
+      "side": 1,
+      "message": "When the date is very old like this, it\u0027s worth doing `git commit --amend --reset-author` to update the date.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 37
+      },
+      "revId": "f7a72b12de96d98eb0d0c3efe40d49ce48e10227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
