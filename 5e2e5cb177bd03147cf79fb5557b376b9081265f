@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e49d54_b278e24b",
+        "filename": "checkpolicy/checkpolicy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-15T22:51:06Z",
+      "side": 1,
+      "message": "specifically, it doesn\u0027t call it on this, and there is a strdup member",
+      "range": {
+        "startLine": 609,
+        "startChar": 10,
+        "endLine": 609,
+        "endChar": 30
+      },
+      "revId": "5e2e5cb177bd03147cf79fb5557b376b9081265f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
