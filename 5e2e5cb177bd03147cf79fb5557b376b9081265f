@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "781f1e8b_c77383df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-04-15T23:00:36Z",
+      "side": 1,
+      "message": "Added an ANDROID marker to the comment, this will help when rebasing on upstream. Thanks.",
+      "revId": "5e2e5cb177bd03147cf79fb5557b376b9081265f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a93e40_5cebf2c1",
+        "filename": "checkpolicy/checkpolicy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-04-15T23:00:36Z",
+      "side": 1,
+      "message": "```suggestion\n// ANDROID: this code does not call policydb_destroy, perhaps others\n```",
+      "revId": "5e2e5cb177bd03147cf79fb5557b376b9081265f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e49d54_b278e24b",
