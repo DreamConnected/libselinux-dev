@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1beb782d_0d792b47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2024-04-16T06:17:24Z",
+      "side": 1,
+      "message": "This code comes directly from upstream. Shouldn\u0027t this be reported/fixed there so that we\u0027re not carrying a local patch?",
+      "revId": "c8d5fc8b44738a80b8d89c05f8466f5544fb9d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
