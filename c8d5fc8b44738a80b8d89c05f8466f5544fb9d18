@@ -39,6 +39,24 @@
       "message": "This code comes directly from upstream. Shouldn\u0027t this be reported/fixed there so that we\u0027re not carrying a local patch?",
       "revId": "c8d5fc8b44738a80b8d89c05f8466f5544fb9d18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80b8f06_565fd9a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-04-16T08:25:42Z",
+      "side": 1,
+      "message": "I think this would imply fixing all the error code paths calling exit() to make sure that any data gets freed properly.",
+      "parentUuid": "1beb782d_0d792b47",
+      "revId": "c8d5fc8b44738a80b8d89c05f8466f5544fb9d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
