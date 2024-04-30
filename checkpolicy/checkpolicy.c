@@ -92,6 +92,11 @@
 #include "checkpolicy.h"
 #include "parse_util.h"
 
+// ANDROID: this code does not call policydb_destroy, perhaps others
+const char *__asan_default_options() {
+    return "detect_leaks=0";
+}
+
 static policydb_t policydb;
 static sidtab_t sidtab;
 
