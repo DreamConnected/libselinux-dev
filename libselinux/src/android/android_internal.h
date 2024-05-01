@@ -55,6 +55,9 @@ struct selabel_handle* context_handle(
 		const path_alts_t *context_paths,
 		const char* name);
 
+bool is_app_data_path(const char *pathname);
+int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsigned int *userid);
+
 /* The kind of request when looking up an seapp_context. */
 enum seapp_kind {
 	/* Returns the SELinux type for the app data directory */
