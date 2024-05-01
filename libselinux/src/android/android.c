@@ -219,22 +219,22 @@ struct selabel_handle* selinux_android_keystore2_key_context_handle(void)
  * installd rather than by init.
  */
 bool is_app_data_path(const char *pathname) {
-    int flags = FNM_LEADING_DIR|FNM_PATHNAME;
+	int flags = FNM_LEADING_DIR|FNM_PATHNAME;
 #ifdef SELINUX_FLAGS_DATA_DATA_IGNORE
-    if (!strcmp(pathname, DATA_DATA_PATH)) {
-        return true;
-    }
+	if (!strcmp(pathname, DATA_DATA_PATH)) {
+		return true;
+	}
 #endif
-    return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
-        !strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
-        !strncmp(pathname, DATA_STORAGE_AREA_PREFIX, sizeof(DATA_STORAGE_AREA_PREFIX)-1) ||
-        !fnmatch(EXPAND_USER_PATH, pathname, flags) ||
-        !fnmatch(EXPAND_USER_DE_PATH, pathname, flags) ||
-        !fnmatch(SDK_SANDBOX_DATA_CE_PATH, pathname, flags) ||
-        !fnmatch(SDK_SANDBOX_DATA_DE_PATH, pathname, flags) ||
-        !fnmatch(EXPAND_SDK_CE_PATH, pathname, flags) ||
-        !fnmatch(EXPAND_SDK_DE_PATH, pathname, flags));
+	return (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1) ||
+		!strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1) ||
+		!strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1) ||
+		!strncmp(pathname, DATA_STORAGE_AREA_PREFIX, sizeof(DATA_STORAGE_AREA_PREFIX)-1) ||
+		!fnmatch(EXPAND_USER_PATH, pathname, flags) ||
+		!fnmatch(EXPAND_USER_DE_PATH, pathname, flags) ||
+		!fnmatch(SDK_SANDBOX_DATA_CE_PATH, pathname, flags) ||
+		!fnmatch(SDK_SANDBOX_DATA_DE_PATH, pathname, flags) ||
+		!fnmatch(EXPAND_SDK_CE_PATH, pathname, flags) ||
+		!fnmatch(EXPAND_SDK_DE_PATH, pathname, flags));
 }
 
 /*
@@ -244,23 +244,23 @@ bool is_app_data_path(const char *pathname) {
  */
 static int extract_userid(const char **pathname, unsigned int *userid)
 {
-    char *end = NULL;
+	char *end = NULL;
 
-    errno = 0;
-    *userid = strtoul(*pathname, &end, 10);
-    if (errno) {
-        selinux_log(SELINUX_ERROR, "SELinux: Could not parse userid %s: %s.\n",
-            *pathname, strerror(errno));
-        return -1;
-    }
-    if (*pathname == end) {
-        return -1;
-    }
-    if (*userid > 1000) {
-        return -1;
-    }
-    *pathname = end;
-    return 0;
+	errno = 0;
+	*userid = strtoul(*pathname, &end, 10);
+	if (errno) {
+		selinux_log(SELINUX_ERROR, "SELinux: Could not parse userid %s: %s.\n",
+			*pathname, strerror(errno));
+		return -1;
+	}
+	if (*pathname == end) {
+		return -1;
+	}
+	if (*userid > 1000) {
+		return -1;
+	}
+	*pathname = end;
+	return 0;
 }
 
 /* Extract the pkgname and userid from a path.
@@ -269,114 +269,114 @@ static int extract_userid(const char **pathname, unsigned int *userid)
  */
 int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsigned int *userid)
 {
-    char *end = NULL;
+	char *end = NULL;
 
-    if (pkgname == NULL || *pkgname != NULL || userid == NULL) {
-      errno = EINVAL;
-      return -2;
-    }
+	if (pkgname == NULL || *pkgname != NULL || userid == NULL) {
+		errno = EINVAL;
+		return -2;
+	}
 
-    /* Skip directory prefix before package name. */
-    if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1)) {
-        pathname += sizeof(DATA_DATA_PREFIX) - 1;
-    } else if (!strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1)) {
-        pathname += sizeof(DATA_USER_PREFIX) - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (*pathname == '/')
-            pathname++;
-        else
-            return -1;
-    } else if (!strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1)) {
-        pathname += sizeof(DATA_USER_DE_PREFIX) - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (*pathname == '/')
-            pathname++;
-        else
-            return -1;
-    } else if (!strncmp(pathname, DATA_STORAGE_AREA_PREFIX, sizeof(DATA_STORAGE_AREA_PREFIX)-1)) {
-        pathname += sizeof(DATA_STORAGE_AREA_PREFIX) - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (*pathname == '/')
-            pathname++;
-        else
-            return -1;
-    } else if (!fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
-        pathname += sizeof(EXPAND_USER_PATH);
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (*pathname == '/')
-            pathname++;
-        else
-            return -1;
-    } else if (!fnmatch(EXPAND_USER_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
-        pathname += sizeof(EXPAND_USER_DE_PATH);
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (*pathname == '/')
-            pathname++;
-        else
-            return -1;
-    } else if (!strncmp(pathname, DATA_MISC_CE_PREFIX, sizeof(DATA_MISC_CE_PREFIX)-1)) {
-        pathname += sizeof(DATA_MISC_CE_PREFIX) - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
-            pathname += sizeof("/sdksandbox/") - 1;
-        else
-            return -1;
-    } else if (!strncmp(pathname, DATA_MISC_DE_PREFIX, sizeof(DATA_MISC_DE_PREFIX)-1)) {
-        pathname += sizeof(DATA_MISC_DE_PREFIX) - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
-            pathname += sizeof("/sdksandbox/") - 1;
-        else
-            return -1;
-    } else if (!fnmatch(EXPAND_SDK_CE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
-        pathname += sizeof(EXPAND_MNT_PATH_PREFIX) - 1;
-        pathname += sizeof("misc_ce/") - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
-            pathname += sizeof("/sdksandbox/") - 1;
-        else
-            return -1;
-    } else if (!fnmatch(EXPAND_SDK_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
-        pathname += sizeof(EXPAND_MNT_PATH_PREFIX) - 1;
-        pathname += sizeof("misc_de/") - 1;
-        int rc = extract_userid(&pathname, userid);
-        if (rc)
-            return -1;
-        if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
-            pathname += sizeof("/sdksandbox/") - 1;
-        else
-            return -1;
-    } else
-        return -1;
+	/* Skip directory prefix before package name. */
+	if (!strncmp(pathname, DATA_DATA_PREFIX, sizeof(DATA_DATA_PREFIX)-1)) {
+		pathname += sizeof(DATA_DATA_PREFIX) - 1;
+	} else if (!strncmp(pathname, DATA_USER_PREFIX, sizeof(DATA_USER_PREFIX)-1)) {
+		pathname += sizeof(DATA_USER_PREFIX) - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (*pathname == '/')
+			pathname++;
+		else
+			return -1;
+	} else if (!strncmp(pathname, DATA_USER_DE_PREFIX, sizeof(DATA_USER_DE_PREFIX)-1)) {
+		pathname += sizeof(DATA_USER_DE_PREFIX) - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (*pathname == '/')
+			pathname++;
+		else
+			return -1;
+	} else if (!strncmp(pathname, DATA_STORAGE_AREA_PREFIX, sizeof(DATA_STORAGE_AREA_PREFIX)-1)) {
+		pathname += sizeof(DATA_STORAGE_AREA_PREFIX) - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (*pathname == '/')
+			pathname++;
+		else
+			return -1;
+	} else if (!fnmatch(EXPAND_USER_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+		pathname += sizeof(EXPAND_USER_PATH);
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (*pathname == '/')
+			pathname++;
+		else
+			return -1;
+	} else if (!fnmatch(EXPAND_USER_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+		pathname += sizeof(EXPAND_USER_DE_PATH);
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (*pathname == '/')
+			pathname++;
+		else
+			return -1;
+	} else if (!strncmp(pathname, DATA_MISC_CE_PREFIX, sizeof(DATA_MISC_CE_PREFIX)-1)) {
+		pathname += sizeof(DATA_MISC_CE_PREFIX) - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
+			pathname += sizeof("/sdksandbox/") - 1;
+		else
+			return -1;
+	} else if (!strncmp(pathname, DATA_MISC_DE_PREFIX, sizeof(DATA_MISC_DE_PREFIX)-1)) {
+		pathname += sizeof(DATA_MISC_DE_PREFIX) - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
+			pathname += sizeof("/sdksandbox/") - 1;
+		else
+			return -1;
+	} else if (!fnmatch(EXPAND_SDK_CE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+		pathname += sizeof(EXPAND_MNT_PATH_PREFIX) - 1;
+		pathname += sizeof("misc_ce/") - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
+			pathname += sizeof("/sdksandbox/") - 1;
+		else
+			return -1;
+	} else if (!fnmatch(EXPAND_SDK_DE_PATH, pathname, FNM_LEADING_DIR|FNM_PATHNAME)) {
+		pathname += sizeof(EXPAND_MNT_PATH_PREFIX) - 1;
+		pathname += sizeof("misc_de/") - 1;
+		int rc = extract_userid(&pathname, userid);
+		if (rc)
+			return -1;
+		if (!strncmp(pathname, "/sdksandbox/", sizeof("/sdksandbox/")-1))
+			pathname += sizeof("/sdksandbox/") - 1;
+		else
+			return -1;
+	} else
+		return -1;
 
-    if (!(*pathname))
-        return -1;
+	if (!(*pathname))
+		return -1;
 
-    *pkgname = strdup(pathname);
-    if (!(*pkgname))
-        return -2;
+	*pkgname = strdup(pathname);
+	if (!(*pkgname))
+		return -2;
 
-    // Trim pkgname.
-    for (end = *pkgname; *end && *end != '/'; end++);
-    *end = '\0';
+	// Trim pkgname.
+	for (end = *pkgname; *end && *end != '/'; end++);
+	*end = '\0';
 
-    return 0;
+	return 0;
 }
 
 static void __selinux_log_callback(bool add_to_event_log, int type, const char *fmt, va_list ap) {
