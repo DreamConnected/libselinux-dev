@@ -244,14 +244,6 @@ struct pkg_info *package_info_lookup(const char *name)
 	return NULL;
 }
 
-/* The contents of these paths are encrypted on FBE devices until user
- * credentials are presented (filenames inside are mangled), so we need
- * to delay restorecon of those until vold explicitly requests it. */
-// NOTE: these paths need to be kept in sync with vold
-#define DATA_SYSTEM_CE_PATH "/data/system_ce"
-#define DATA_VENDOR_CE_PATH "/data/vendor_ce"
-#define DATA_MISC_CE_PATH "/data/misc_ce"
-
 #define USER_PROFILE_PATH "/data/misc/profiles/cur/*"
 
 static int pkgdir_selabel_lookup(const char *pathname,
@@ -595,10 +587,7 @@ static int selinux_android_restorecon_common(const char* pathname_orig,
 				}
 			}
 
-			if (skipce &&
-				(!strncmp(ftsent->fts_path, DATA_SYSTEM_CE_PATH, sizeof(DATA_SYSTEM_CE_PATH)-1) ||
-				 !strncmp(ftsent->fts_path, DATA_MISC_CE_PATH, sizeof(DATA_MISC_CE_PATH)-1) ||
-				 !strncmp(ftsent->fts_path, DATA_VENDOR_CE_PATH, sizeof(DATA_VENDOR_CE_PATH)-1))) {
+			if (skipce && is_credential_encrypted_path(ftsent->fts_path)) {
 				// Don't label anything below this directory.
 				fts_set(fts, ftsent, FTS_SKIP);
 				// but fall through and make sure we label the directory itself

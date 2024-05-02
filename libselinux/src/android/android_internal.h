@@ -56,6 +56,7 @@ struct selabel_handle* context_handle(
 		const char* name);
 
 bool is_app_data_path(const char *pathname);
+bool is_credential_encrypted_path(const char *pathname);
 int extract_pkgname_and_userid(const char *pathname, char **pkgname, unsigned int *userid);
 
 /* The kind of request when looking up an seapp_context. */
