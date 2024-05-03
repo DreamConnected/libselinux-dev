@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883edcce_2812a31c",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-05-03T13:00:59Z",
+      "side": 1,
+      "message": "Nit: Remove redundant parentheses: return (x) -\u003e return x.",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 9
+      },
+      "revId": "e5c58ffde4772ece286816e6f35190a20ef1d865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2673e85f_42fdc5bb",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-05-03T13:00:59Z",
+      "side": 1,
+      "message": "Comment please.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 56
+      },
+      "revId": "e5c58ffde4772ece286816e6f35190a20ef1d865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
