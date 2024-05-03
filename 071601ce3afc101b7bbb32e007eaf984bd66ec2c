@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55824e12_39049144",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-05-03T12:57:10Z",
+      "side": 1,
+      "message": "Could we have a bug for these? If nothing else the motivation for the series is a little unclear.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "071601ce3afc101b7bbb32e007eaf984bd66ec2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7b6fb8_9f83c06e",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-05-03T12:57:10Z",
+      "side": 1,
+      "message": "One line comment for each?\n\nIdeally better than the AI suggestion :-)",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 91
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fe0579ae_b071e10b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libselinux/src/android/android_internal.h",
+              "range": {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 58,
+                "endChar": 0
+              },
+              "replacement": "/* Returns true if the path is an app data path. */\n"
+            },
+            {
+              "path": "libselinux/src/android/android_internal.h",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "\n/* Extracts the package name and user id from the path. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "071601ce3afc101b7bbb32e007eaf984bd66ec2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
