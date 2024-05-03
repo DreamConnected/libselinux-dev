@@ -73,6 +73,30 @@
       ],
       "revId": "071601ce3afc101b7bbb32e007eaf984bd66ec2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55246b96_4e5005a3",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2024-05-03T13:01:34Z",
+      "side": 1,
+      "message": "Actually, just move the (good) comments from the .c to the .h.",
+      "parentUuid": "3e7b6fb8_9f83c06e",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 91
+      },
+      "revId": "071601ce3afc101b7bbb32e007eaf984bd66ec2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
