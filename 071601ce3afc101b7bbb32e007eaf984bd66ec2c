@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c4aae0_bea5f1c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-05-06T03:06:58Z",
+      "side": 1,
+      "message": "Done. The motivation is to refactor and add tests for these functions, so other paths can be added with more confidence (e.g., /data/media/, see bug)",
+      "parentUuid": "55824e12_39049144",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "071601ce3afc101b7bbb32e007eaf984bd66ec2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e7b6fb8_9f83c06e",
@@ -89,6 +113,30 @@
       "side": 1,
       "message": "Actually, just move the (good) comments from the .c to the .h.",
       "parentUuid": "3e7b6fb8_9f83c06e",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 91
+      },
+      "revId": "071601ce3afc101b7bbb32e007eaf984bd66ec2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "103ec3b5_a37b2cde",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-05-06T03:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55246b96_4e5005a3",
       "range": {
         "startLine": 58,
         "startChar": 0,
