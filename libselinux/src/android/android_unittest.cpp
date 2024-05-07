@@ -189,10 +189,14 @@ TEST(AndroidSELinuxPathTest, IsCredentialEncryptedPath)
 	EXPECT_TRUE(is_credential_encrypted_path("/data/misc_ce/0/apexdata"));
 	EXPECT_TRUE(is_credential_encrypted_path("/data/vendor_ce/0"));
 	EXPECT_TRUE(is_credential_encrypted_path("/data/vendor_ce/0/data"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/media/0/Alarms/myringtone"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/media/10/Documents/1.pdf"));
 
 	EXPECT_FALSE(is_credential_encrypted_path("/data"));
 	EXPECT_FALSE(is_credential_encrypted_path("/data/data"));
 	EXPECT_FALSE(is_credential_encrypted_path("/data/user/0"));
+	EXPECT_FALSE(is_credential_encrypted_path("/data/media"));
+	EXPECT_FALSE(is_credential_encrypted_path("/data/media/obb"));
 }
 
 TEST(AndroidSELinuxPathTest, ExtractPkgnameAndUserid)
