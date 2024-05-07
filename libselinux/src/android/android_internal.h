@@ -63,10 +63,20 @@ struct selabel_handle* context_handle(
 bool is_app_data_path(const char *pathname);
 
 /*
- * Determines if a path is Credential Encrypted (CE).
- * Some paths are not available when the device first boots (these are protected
- * by a credential). They should not be processed by restorecon until decrypted.
- * See also the --skip-ce option for restorecon.
+ * Determines if a path is considered Credential Encrypted (CE).
+ * Some paths represent encrypted directories. Their content is decrypted only
+ * once the user has provided the required credentials. At boot time, the
+ * content of these directories should not be considered by restorecon (see the
+ * --skip-ce option of restorecon).
+ *
+ * If a path is matched, the current restorecon implementation will still
+ * restore the security context of the directory itself but ignore any
+ * subdirectory.
+ *
+ * There are directories (e.g., /data/data) that are credential-encrypted whose
+ * security context is based on seapp_contexts. These are not matched by this
+ * function. They are captured by is_app_data_path and only considered when
+ * SELINUX_ANDROID_RESTORECON_DATADATA is set.
  */
 bool is_credential_encrypted_path(const char *pathname);
 

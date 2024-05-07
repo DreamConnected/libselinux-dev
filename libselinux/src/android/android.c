@@ -196,6 +196,7 @@ struct selabel_handle* selinux_android_keystore2_key_context_handle(void)
 #define DATA_SYSTEM_CE_PATH "/data/system_ce"
 #define DATA_VENDOR_CE_PATH "/data/vendor_ce"
 #define DATA_MISC_CE_PATH "/data/misc_ce"
+#define DATA_MEDIA_CE_PATH "/data/media/*[0-9]"
 
 /* The path prefixes of package data directories. */
 #define DATA_DATA_PATH "/data/data"
@@ -240,9 +241,11 @@ bool is_app_data_path(const char *pathname) {
 }
 
 bool is_credential_encrypted_path(const char *pathname) {
+	int flags = FNM_LEADING_DIR|FNM_PATHNAME;
 	return !strncmp(pathname, DATA_SYSTEM_CE_PATH, sizeof(DATA_SYSTEM_CE_PATH)-1) ||
 	       !strncmp(pathname, DATA_MISC_CE_PATH, sizeof(DATA_MISC_CE_PATH)-1) ||
-	       !strncmp(pathname, DATA_VENDOR_CE_PATH, sizeof(DATA_VENDOR_CE_PATH)-1);
+	       !strncmp(pathname, DATA_VENDOR_CE_PATH, sizeof(DATA_VENDOR_CE_PATH)-1) ||
+	       !fnmatch(DATA_MEDIA_CE_PATH, pathname, flags);
 }
 
 /*
