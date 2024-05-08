@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321e2132_d5ed7381",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-05-08T22:26:55Z",
+      "side": 1,
+      "message": "Can you document more precisely what is meant by a \"credential-encrypted path\"?  The comment above the declaration has:\n\n```\n/*                                                                                                   \n * Determines if a path is Credential Encrypted (CE).                                                \n * Some paths are not available when the device first boots (these are protected                     \n * by a credential). They should not be processed by restorecon until decrypted.                     \n * See also the --skip-ce option for restorecon.                                                     \n */                                                                                                  \n```\n\nHowever, actually the *paths* `/data/media/[0-9]` are, in a sense, available even while CE storage is locked.  While CE storage is locked, these paths represent locked encrypted directories, and certain operations on them such as creating new files are not allowed.  However, the paths `/data/media/[0-9]` are indeed valid and name those directories.  It\u0027s only more deeply nested files and directories, such as `/data/media/[0-9]/*`, where the original paths don\u0027t work while CE storage is locked, because the filenames in those additional level(s) of directories are encrypted.\n\nAlso, it\u0027s unclear why this doesn\u0027t return true for `/data/user/[0-9]` and `/data/data`.  Those are CE directories too.\n\nSo if you could document precisely whether the top-level encrypted directories are meant to be included or excluded, and which CE locations are meant to be included, that would be helpful.",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
