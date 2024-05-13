@@ -22,6 +22,30 @@
       },
       "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7762ad33_35698e18",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-05-13T06:46:28Z",
+      "side": 1,
+      "message": "Done, see the updated comment above the declaration.\n\nFor `/data/user/[0-9]` and `/data/data`, the security contexts of their subdirectories are based on seapp_contexts (instead of file_contexts). Right now, because they are caught by is_app_data_path(), they are also implicitly skipped. This is working because we don\u0027t use SELINUX_ANDROID_RESTORECON_DATADATA with SELINUX_ANDROID_RESTORECON_SKIPCE. But there is nothing in the code to prevent that from happening. I can follow up with a separate change to make sure these flags are XOR. Thanks.",
+      "parentUuid": "321e2132_d5ed7381",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
