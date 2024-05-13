@@ -46,6 +46,30 @@
       },
       "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99577675_1ff362fa",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-05-13T16:43:36Z",
+      "side": 1,
+      "message": "Thanks.  I don\u0027t think things are clear yet, though.  For system_ce, misc_ce, and vendor_ce, this function returns true even for directory that contains the per-user encrypted directories.  That parent directory, such as `/data/system_ce`, is not encrypted itself.\n\nIs it possible to write a one-line summary that accurately describes what this function actually does?  If not, I fear that it\u0027s not clearly defined enough.",
+      "parentUuid": "7762ad33_35698e18",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
