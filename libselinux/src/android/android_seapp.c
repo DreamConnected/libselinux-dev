@@ -797,7 +797,7 @@ int parse_seinfo(const char* seinfo, struct parsed_seinfo* info) {
 			continue;
 		}
 		if (!strcmp(token, COMPLETE_STR)) {
-			break;
+			continue;
 		}
 		selinux_log(SELINUX_WARNING, "%s:  Ignoring unknown seinfo field: %s in %s\n",
 				__FUNCTION__, token, seinfo);
