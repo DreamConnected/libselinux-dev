@@ -70,6 +70,30 @@
       },
       "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cada9a_83b5e056",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-05-14T02:30:18Z",
+      "side": 1,
+      "message": "That\u0027s right. If you look at the restorecon implementation, if a path matches, then the directory itself gets it security context updated but whatever is below is then skipped. The main difference between `/data/media` and `/data/system_ce` for instance, is that `/data/media` has the `obb` subdirectory which is not encrypted (FWIU). That\u0027s why we use `fnmatch` and not just `strncmp`.\n\nIf I unroll the restorecon implementation:\n/data/system_ce -\u003e is considered CE, its security context is restored but anything below is skipped.\n/data/system_ce/0 -\u003e while this is the encrypted directory, it has been skipped.\n/data/media -\u003e not considered CE, relabelled using standard rules.\n/data/media/0 -\u003e is considered CE, relabelled but skip any subdirectory.\n/data/media/obb -\u003e not considered CE, relabelled using standard rules.\n\nIf we wanted to be consistent, the function should probably return true only for `/data/system_ce/0` but I don\u0027t believe there is any subdirectory other than the user directories in `/data/system_ce` so that\u0027s why we have that shortcut.",
+      "parentUuid": "99577675_1ff362fa",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
