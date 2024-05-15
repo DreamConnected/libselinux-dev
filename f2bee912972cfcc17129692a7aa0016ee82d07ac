@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b7f3dd_74dc2776",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-05-15T18:11:47Z",
+      "side": 1,
+      "message": "It\u0027s just media, not media_ce, since there is no media_de.  So maybe call this DATA_MEDIA_PATH.  Or maybe DATA_MEDIA_USER_PATH since it specifically matches the user directories.",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 26
+      },
+      "revId": "f2bee912972cfcc17129692a7aa0016ee82d07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05828325_f0d3cf7f",
+        "filename": "libselinux/src/android/android_internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-05-15T18:11:47Z",
+      "side": 1,
+      "message": "Does seapp_contexts actually have anything to say about `/data/data` (a.k.a. `/data/user/0`) itself?  `/data/data` does get a per-user label, `u:object_r:system_data_file:s0:c512,c768`, but it looks like that comes from vold_prepare_subdirs without looking at seapp_contexts.  So it looks like restorecon does need to be skipped on `/data/data` to avoid overriding the per-user label, but it\u0027s not because of seapp_contexts per se.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "f2bee912972cfcc17129692a7aa0016ee82d07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

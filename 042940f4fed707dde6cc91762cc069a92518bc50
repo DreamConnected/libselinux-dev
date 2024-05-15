@@ -94,6 +94,30 @@
       },
       "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3018ae7_fc9a15d6",
+        "filename": "libselinux/src/android/android.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-05-15T18:11:47Z",
+      "side": 1,
+      "message": "Thanks!  Would it be worth documenting that `/data/media` is handled differently here because of `/data/media/obb`?\n\nThis solution also assumes that it\u0027s safe to restorecon `/data/media/$userId`.  Is that the case because they\u0027re not assigned per-user labels by vold_prepare_subdirs like e.g. `/data/user/$userId` are?",
+      "parentUuid": "94cada9a_83b5e056",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "042940f4fed707dde6cc91762cc069a92518bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
