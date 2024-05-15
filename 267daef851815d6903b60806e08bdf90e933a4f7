@@ -22,6 +22,30 @@
       },
       "revId": "267daef851815d6903b60806e08bdf90e933a4f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba352d69_f3cef118",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2024-05-15T10:07:43Z",
+      "side": 1,
+      "message": "I took a look at the code, and it should not be too difficult to remove the `:complete` string from seinfo.\n\nHowever, it probably still makes sense to submit this CL first. The change is necessary to enable the sdk_sandbox_audit and sdk_sandbox_next domains. If we need approval to cherry pick a bug fix, it is probably easier to get the approval if the CL is a one-line, instead of a more complex one, like a CL removing the `:complete` string from seinfo.\n\n@nator@google.com FYI",
+      "parentUuid": "afc6f750_05f1ba7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 85
+      },
+      "revId": "267daef851815d6903b60806e08bdf90e933a4f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
