@@ -445,19 +445,6 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto oom;
 					}
-				} else if (!strcasecmp(name, "levelFromUid")) {
-					if (cur->levelFrom) {
-						free_seapp_context(cur);
-						goto err;
-					}
-					if (!strcasecmp(value, "true"))
-						cur->levelFrom = LEVELFROM_APP;
-					else if (!strcasecmp(value, "false"))
-						cur->levelFrom = LEVELFROM_NONE;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else if (!strcasecmp(name, "levelFrom")) {
 					if (cur->levelFrom) {
 						free_seapp_context(cur);
