@@ -102,10 +102,6 @@ cc_library {
     name: "libselinux",
     defaults: ["libselinux_defaults"],
 
-    llndk_stubs: "libselinux.llndk",
-
-    ramdisk_available: true,
-    vendor_ramdisk_available: true,
     recovery_available: true,
 
     host_supported: true,
@@ -216,7 +212,7 @@ cc_library {
 }
 
 llndk_library {
-    name: "libselinux.llndk",
+    name: "libselinux",
     export_include_dirs: ["include"],
     symbol_file: "exported.map",
 }
