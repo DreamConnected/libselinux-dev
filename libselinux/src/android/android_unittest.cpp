@@ -172,3 +172,61 @@ TEST(AndroidSeAppTest, ParseOverflow)
 	ret = parse_seinfo(seinfo.c_str(), &info);
 	EXPECT_EQ(ret, -1);
 }
+
+TEST(AndroidSELinuxPathTest, IsAppDataPath)
+{
+	EXPECT_TRUE(is_app_data_path("/data/data"));
+	EXPECT_TRUE(is_app_data_path("/data/user/0"));
+
+	EXPECT_FALSE(is_app_data_path("/data"));
+}
+
+TEST(AndroidSELinuxPathTest, IsCredentialEncryptedPath)
+{
+	EXPECT_TRUE(is_credential_encrypted_path("/data/system_ce/0"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/system_ce/0/backup"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/misc_ce/0"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/misc_ce/0/apexdata"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/vendor_ce/0"));
+	EXPECT_TRUE(is_credential_encrypted_path("/data/vendor_ce/0/data"));
+
+	EXPECT_FALSE(is_credential_encrypted_path("/data"));
+	EXPECT_FALSE(is_credential_encrypted_path("/data/data"));
+	EXPECT_FALSE(is_credential_encrypted_path("/data/user/0"));
+}
+
+TEST(AndroidSELinuxPathTest, ExtractPkgnameAndUserid)
+{
+	char *pkgname = NULL;
+	unsigned int userid;
+
+	EXPECT_EQ(extract_pkgname_and_userid("/data/", &pkgname, &userid), -1);
+
+	char const* path = "/data/user/0/com.android.myapp";
+	EXPECT_EQ(extract_pkgname_and_userid(path, &pkgname, &userid), 0);
+	EXPECT_STREQ("com.android.myapp", pkgname);
+	EXPECT_EQ(userid, 0);
+	free(pkgname);
+	pkgname = NULL;
+
+	path = "/data/user/0/com.android.myapp/som/subdir";
+	EXPECT_EQ(extract_pkgname_and_userid(path, &pkgname, &userid), 0);
+	EXPECT_STREQ("com.android.myapp", pkgname);
+	EXPECT_EQ(userid, 0);
+	free(pkgname);
+	pkgname = NULL;
+
+	path = "/data/data/com.android.myapp2";
+	EXPECT_EQ(extract_pkgname_and_userid(path, &pkgname, &userid), 0);
+	EXPECT_STREQ("com.android.myapp2", pkgname);
+	EXPECT_EQ(userid, 0);
+	free(pkgname);
+	pkgname = NULL;
+
+	path = "/data/misc_de/10/sdksandbox/com.android.myapp3";
+	EXPECT_EQ(extract_pkgname_and_userid(path, &pkgname, &userid), 0);
+	EXPECT_STREQ("com.android.myapp3", pkgname);
+	EXPECT_EQ(userid, 10);
+	free(pkgname);
+	pkgname = NULL;
+}
