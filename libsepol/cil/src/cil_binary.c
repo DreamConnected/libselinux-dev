@@ -904,10 +904,10 @@ static int cil_sensalias_to_policydb(policydb_t *pdb, struct cil_alias *cil_alia
 
 	rc = mls_level_cpy(mls_level, sepol_level->level);
 	if (rc != SEPOL_OK) {
+		free(mls_level);
 		goto exit;
 	}
 	sepol_alias->level = mls_level;
-	sepol_alias->defined = 1;
 	sepol_alias->isalias = 1;
 
 	return SEPOL_OK;
@@ -1519,6 +1519,46 @@ static int __cil_avrule_to_avtab(policydb_t *pdb, const struct cil_db *db, struc
 			}
 		}
 		ebitmap_destroy(&src_bitmap);
+	} else if (tgt->fqn == CIL_KEY_NOTSELF) {
+		rc = __cil_expand_type(src, &src_bitmap);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+
+		ebitmap_for_each_positive_bit(&src_bitmap, snode, s) {
+			src = DATUM(db->val_to_type[s]);
+			for (t = 0; t < (unsigned int)db->num_types; t++) {
+				if (s != t) {
+					tgt = DATUM(db->val_to_type[t]);
+					rc = __cil_avrule_expand(pdb, kind, src, tgt, classperms, cond_node, cond_flavor);
+					if (rc != SEPOL_OK) {
+						ebitmap_destroy(&src_bitmap);
+						goto exit;
+					}
+				}
+			}
+		}
+		ebitmap_destroy(&src_bitmap);
+	} else if (tgt->fqn == CIL_KEY_OTHER) {
+		rc = __cil_expand_type(src, &src_bitmap);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+
+		ebitmap_for_each_positive_bit(&src_bitmap, snode, s) {
+			src = DATUM(db->val_to_type[s]);
+			ebitmap_for_each_positive_bit(&src_bitmap, tnode, t) {
+				if (s != t) {
+					tgt = DATUM(db->val_to_type[t]);
+					rc = __cil_avrule_expand(pdb, kind, src, tgt, classperms, cond_node, cond_flavor);
+					if (rc != SEPOL_OK) {
+						ebitmap_destroy(&src_bitmap);
+						goto exit;
+					}
+				}
+			}
+		}
+		ebitmap_destroy(&src_bitmap);
 	} else {
 		int expand_src = __cil_should_expand_attribute(db, src);
 		int expand_tgt = __cil_should_expand_attribute(db, tgt);
@@ -1875,7 +1915,48 @@ static int cil_avrulex_to_hashtable(policydb_t *pdb, const struct cil_db *db, st
 			src = DATUM(db->val_to_type[s]);
 			rc = __cil_avrulex_to_hashtable_helper(pdb, kind, src, src, cil_avrulex->perms.x.permx, args);
 			if (rc != SEPOL_OK) {
+				ebitmap_destroy(&src_bitmap);
 				goto exit;
+			}
+		}
+		ebitmap_destroy(&src_bitmap);
+	} else if (tgt->fqn == CIL_KEY_NOTSELF) {
+		rc = __cil_expand_type(src, &src_bitmap);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+
+		ebitmap_for_each_positive_bit(&src_bitmap, snode, s) {
+			src = DATUM(db->val_to_type[s]);
+			for (t = 0; t < (unsigned int)db->num_types; t++) {
+				if (s != t) {
+					tgt = DATUM(db->val_to_type[t]);
+					rc = __cil_avrulex_to_hashtable_helper(pdb, kind, src, tgt, cil_avrulex->perms.x.permx, args);
+					if (rc != SEPOL_OK) {
+						ebitmap_destroy(&src_bitmap);
+						goto exit;
+					}
+				}
+			}
+		}
+		ebitmap_destroy(&src_bitmap);
+	} else if (tgt->fqn == CIL_KEY_OTHER) {
+		rc = __cil_expand_type(src, &src_bitmap);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
+
+		ebitmap_for_each_positive_bit(&src_bitmap, snode, s) {
+			src = DATUM(db->val_to_type[s]);
+			ebitmap_for_each_positive_bit(&src_bitmap, tnode, t) {
+				if (s != t) {
+					tgt = DATUM(db->val_to_type[t]);
+					rc = __cil_avrulex_to_hashtable_helper(pdb, kind, src, tgt, cil_avrulex->perms.x.permx, args);
+					if (rc != SEPOL_OK) {
+						ebitmap_destroy(&src_bitmap);
+						goto exit;
+					}
+				}
 			}
 		}
 		ebitmap_destroy(&src_bitmap);
@@ -2123,7 +2204,7 @@ static int __cil_cond_item_to_sepol_expr(policydb_t *pdb, struct cil_list_item *
 		*head = cil_malloc(sizeof(cond_expr_t));
 		(*head)->next = NULL;
 		(*head)->expr_type = COND_BOOL;
-		(*head)->bool = sepol_bool->s.value;
+		(*head)->boolean = sepol_bool->s.value;
 		*tail = *head;
 	} else if (item->flavor == CIL_LIST) {
 		struct cil_list *l = item->data;
@@ -2159,7 +2240,7 @@ static int __cil_cond_expr_to_sepol_expr_helper(policydb_t *pdb, struct cil_list
 		enum cil_flavor cil_op = (enum cil_flavor)(uintptr_t)item->data;
 
 		op = cil_malloc(sizeof(*op));
-		op->bool = 0;
+		op->boolean = 0;
 		op->next = NULL;
 
 		switch (cil_op) {
@@ -2226,7 +2307,7 @@ static int __cil_cond_expr_to_sepol_expr_helper(policydb_t *pdb, struct cil_list
 				goto exit;
 			}
 			op = cil_malloc(sizeof(*op));
-			op->bool = 0;
+			op->boolean = 0;
 			op->next = NULL;
 			op->expr_type = COND_OR;
 			t1->next = h2;
@@ -3081,8 +3162,6 @@ int cil_sepol_level_define(policydb_t *pdb, struct cil_sens *cil_sens)
 			}
 		}
 	}
-
-	sepol_level->defined = 1;
 
 	return SEPOL_OK;
 
@@ -4170,13 +4249,13 @@ static int __cil_user_val_array_insert(hashtab_key_t key, hashtab_datum_t datum,
 static int __cil_bool_val_array_insert(hashtab_key_t key, hashtab_datum_t datum, void *data)
 {
 	policydb_t *pdb = data;
-	cond_bool_datum_t *bool = (cond_bool_datum_t *)datum;
+	cond_bool_datum_t *boolean = (cond_bool_datum_t *)datum;
 
-	if (bool->s.value < 1 || bool->s.value > pdb->p_bools.nprim) {
+	if (boolean->s.value < 1 || boolean->s.value > pdb->p_bools.nprim) {
 		return -EINVAL;
 	}
-	pdb->p_bool_val_to_name[bool->s.value - 1] = (char *)key;
-	pdb->bool_val_to_struct[bool->s.value - 1] = bool;
+	pdb->p_bool_val_to_name[boolean->s.value - 1] = (char *)key;
+	pdb->bool_val_to_struct[boolean->s.value - 1] = boolean;
 
 	return 0;
 }
@@ -4813,8 +4892,16 @@ static int cil_check_neverallow(const struct cil_db *db, policydb_t *pdb, struct
 
 	if (tgt->fqn == CIL_KEY_SELF) {
 		rule->flags = RULE_SELF;
+	} else if (tgt->fqn == CIL_KEY_NOTSELF) {
+		rule->flags = RULE_NOTSELF;
+	} else if (tgt->fqn == CIL_KEY_OTHER) {
+		rule->flags = RULE_NOTSELF;
+		rc = __cil_add_sepol_type(pdb, db, cil_rule->src, &rule->ttypes.types);
+		if (rc != SEPOL_OK) {
+			goto exit;
+		}
 	} else {
-		rc = __cil_add_sepol_type(pdb, db, cil_rule->tgt, &rule->ttypes.types);
+		rc = __cil_add_sepol_type(pdb, db, tgt, &rule->ttypes.types);
 		if (rc != SEPOL_OK) {
 			goto exit;
 		}
