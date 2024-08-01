@@ -81,6 +81,7 @@ cc_defaults {
         "src/getenforce.c",
         "src/getfilecon.c",
         "src/getpeercon.c",
+        "src/hashtab.c",
         "src/init.c",
         "src/label.c",
         "src/label_backends_android.c",
@@ -112,7 +113,8 @@ cc_defaults {
         },
         android: {
             cflags: [
-                "-DHAVE_STRLCPY"
+                "-DHAVE_STRLCPY",
+                "-DHAVE_REALLOCARRAY"
             ],
             srcs: [
                 "src/android/android_device.c",
