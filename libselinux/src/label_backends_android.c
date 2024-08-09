@@ -128,7 +128,7 @@ static int process_line(struct selabel_handle *rec,
 		spec_arr[nspec].lr.ctx_raw = context;
 
 		if (rec->validating) {
-			if (selabel_validate(rec, &spec_arr[nspec].lr) < 0) {
+			if (selabel_validate(&spec_arr[nspec].lr) < 0) {
 				selinux_log(SELINUX_ERROR,
 					    "%s:  line %u has invalid context %s\n",
 					    path, lineno, spec_arr[nspec].lr.ctx_raw);
@@ -149,10 +149,33 @@ static int process_file(struct selabel_handle *rec, const char *path)
 	char line_buf[BUFSIZ];
 	unsigned int lineno, maxnspec, pass;
 	struct stat sb;
+<<<<<<< HEAD   (966613 Delete levelFromUid)
 	FILE *fp;
 	int status = -1;
 	unsigned int nspec;
 	spec_t *spec_arr;
+=======
+
+	/* Process arguments */
+	while (n) {
+		n--;
+		switch (opts[n].type) {
+		case SELABEL_OPT_PATH:
+			path = opts[n].value;
+			break;
+		case SELABEL_OPT_UNUSED:
+		case SELABEL_OPT_VALIDATE:
+		case SELABEL_OPT_DIGEST:
+			break;
+		default:
+			errno = EINVAL;
+			return -1;
+		}
+	}
+
+	if (!path)
+		return -1;
+>>>>>>> BRANCH (2eb286 Release 3.7)
 
 	/* Open the specification file. */
 	if ((fp = fopen(path, "re")) == NULL)
@@ -195,10 +218,18 @@ static int process_file(struct selabel_handle *rec, const char *path)
 			if (spec_arr == NULL)
 				goto finish;
 
+<<<<<<< HEAD   (966613 Delete levelFromUid)
 			memset(&spec_arr[data->nspec], 0, nspec * sizeof(spec_t));
 			data->spec_arr = spec_arr;
 			maxnspec = nspec;
 			rewind(fp);
+=======
+			maxnspec = data->nspec;
+
+			status = fseek(fp, 0L, SEEK_SET);
+			if (status == -1)
+				goto finish;
+>>>>>>> BRANCH (2eb286 Release 3.7)
 		}
 	}
 
@@ -284,6 +315,16 @@ static void closef(struct selabel_handle *rec)
 
 	if (!data)
 		return;
+<<<<<<< HEAD   (966613 Delete levelFromUid)
+=======
+
+	for (i = 0; i < data->nspec; i++) {
+		spec = &data->spec_arr[i];
+		free(spec->property_key);
+		free(spec->lr.ctx_raw);
+		free(spec->lr.ctx_trans);
+	}
+>>>>>>> BRANCH (2eb286 Release 3.7)
 
 	/* make sure successive ->func_close() calls are harmless */
 	rec->data = NULL;
