@@ -102,4 +102,19 @@ extern int has_selinux_config ;
 size_t strlcpy(char *dest, const char *src, size_t size);
 #endif
 
+#ifndef HAVE_REALLOCARRAY
+void *reallocarray(void *ptr, size_t nmemb, size_t size);
+#endif
+
+/* Use to ignore intentional unsigned under- and overflows while running under UBSAN. */
+#if defined(__clang__) && defined(__clang_major__) && (__clang_major__ >= 4)
+#if (__clang_major__ >= 12)
+#define ignore_unsigned_overflow_        __attribute__((no_sanitize("unsigned-integer-overflow", "unsigned-shift-base")))
+#else
+#define ignore_unsigned_overflow_        __attribute__((no_sanitize("unsigned-integer-overflow")))
+#endif
+#else
+#define ignore_unsigned_overflow_
+#endif
+
 #endif /* SELINUX_INTERNAL_H_ */
