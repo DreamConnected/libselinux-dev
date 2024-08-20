@@ -31,6 +31,16 @@ cc_defaults {
         "liblog",
         "libselinux",
     ],
+    fuzz_config: {
+        cc: [
+            "brambonne@google.com",
+        ],
+        description: "The fuzzer targets the APIs of libselinux",
+        vector: "local_no_privileges_required",
+        service_privilege: "privileged",
+        users: "multi_user",
+        fuzzed_code_usage: "shipped",
+    },
 }
 
 cc_fuzz {
