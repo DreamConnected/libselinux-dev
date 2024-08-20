@@ -175,8 +175,7 @@ static int add_exclude(const char *directory, bool who)
 		return -1;
 	}
 
-	tmp_list = realloc(exclude_lst,
-			   sizeof(struct edir) * (exclude_count + 1));
+	tmp_list = reallocarray(exclude_lst, exclude_count + 1, sizeof(struct edir));
 	if (!tmp_list)
 		goto oom;
 
@@ -244,7 +243,7 @@ static uint64_t exclude_non_seclabel_mounts(void)
 	int index = 0, found = 0;
 	uint64_t nfile = 0;
 	char *mount_info[4];
-	char *buf = NULL, *item;
+	char *buf = NULL, *item, *saveptr;
 
 	/* Check to see if the kernel supports seclabel */
 	if (uname(&uts) == 0 && strverscmp(uts.release, "2.6.30") < 0)
@@ -259,13 +258,14 @@ static uint64_t exclude_non_seclabel_mounts(void)
 	while (getline(&buf, &len, fp) != -1) {
 		found = 0;
 		index = 0;
-		item = strtok(buf, " ");
+		saveptr = NULL;
+		item = strtok_r(buf, " ", &saveptr);
 		while (item != NULL) {
 			mount_info[index] = item;
 			index++;
 			if (index == 4)
 				break;
-			item = strtok(NULL, " ");
+			item = strtok_r(NULL, " ", &saveptr);
 		}
 		if (index < 4) {
 			selinux_log(SELINUX_ERROR,
@@ -277,14 +277,15 @@ static uint64_t exclude_non_seclabel_mounts(void)
 		/* Remove pre-existing entry */
 		remove_exclude(mount_info[1]);
 
-		item = strtok(mount_info[3], ",");
+		saveptr = NULL;
+		item = strtok_r(mount_info[3], ",", &saveptr);
 		while (item != NULL) {
 			if (strcmp(item, "seclabel") == 0) {
 				found = 1;
 				nfile += file_system_count(mount_info[1]);
 				break;
 			}
-			item = strtok(NULL, ",");
+			item = strtok_r(NULL, ",", &saveptr);
 		}
 
 		/* Exclude mount points without the seclabel option */
