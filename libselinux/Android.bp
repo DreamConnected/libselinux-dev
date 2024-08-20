@@ -160,26 +160,13 @@ cc_defaults {
     stl: "none",
 }
 
-soong_config_module_type {
-    name: "cc_defaults_libselinux_flags",
-    module_type: "cc_defaults",
-    config_namespace: "ANDROID",
-    bool_variables: [
-        "release_selinux_data_data_ignore",
-    ],
-    properties: [
-        "cflags",
-    ],
-}
-
-cc_defaults_libselinux_flags {
+cc_defaults {
     name: "libselinux_flags_defaults",
     host_supported: true,
-    soong_config_variables: {
-        release_selinux_data_data_ignore: {
-            cflags: ["-DSELINUX_FLAGS_DATA_DATA_IGNORE"],
-        }
-    }
+    cflags: select(release_flag("RELEASE_SELINUX_DATA_DATA_IGNORE"), {
+        true: ["-DSELINUX_FLAGS_DATA_DATA_IGNORE"],
+        default: [],
+    }),
 }
 
 cc_library {
