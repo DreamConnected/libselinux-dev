@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78266b54_eff5fdce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-08-30T01:44:47Z",
+      "side": 1,
+      "message": "This was sent upstream: https://lore.kernel.org/selinux/20240826041044.1753994-1-tweek@google.com/T/#u\n\nMerging here to unblock CTS test.",
+      "revId": "219e32ac3960fa9429692783d80dc93e202150e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
