@@ -41,7 +41,7 @@ static int process_line(const char *path, char *line_buf, int pass,
 	char *type, *key, *context;
 
 	buf_p = line_buf;
-	while (isspace(*buf_p))
+	while (isspace((unsigned char)*buf_p))
 		buf_p++;
 	/* Skip comment lines and empty lines. */
 	if (*buf_p == '#' || *buf_p == 0)
@@ -107,12 +107,21 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 	struct stat sb;
 
 	/* Process arguments */
-	while (n--)
+	while (n) {
+		n--;
 		switch(opts[n].type) {
 		case SELABEL_OPT_PATH:
 			path = opts[n].value;
 			break;
+		case SELABEL_OPT_UNUSED:
+		case SELABEL_OPT_VALIDATE:
+		case SELABEL_OPT_DIGEST:
+			break;
+		default:
+			errno = EINVAL;
+			return -1;
 		}
+	}
 
 	/* Open the specification file. */
 	if (!path)
@@ -157,7 +166,10 @@ static int init(struct selabel_handle *rec, const struct selinux_opt *opts,
 				goto finish;
 			memset(data->spec_arr, 0, sizeof(spec_t)*data->nspec);
 			maxnspec = data->nspec;
-			rewind(fp);
+
+			status = fseek(fp, 0L, SEEK_SET);
+			if (status == -1)
+				goto finish;
 		}
 	}
 	free(line_buf);
@@ -179,8 +191,13 @@ finish:
 static void close(struct selabel_handle *rec)
 {
 	struct saved_data *data = (struct saved_data *)rec->data;
-	struct spec *spec, *spec_arr = data->spec_arr;
+	struct spec *spec, *spec_arr;
 	unsigned int i;
+
+	if (!data)
+		return;
+
+	spec_arr = data->spec_arr;
 
 	for (i = 0; i < data->nspec; i++) {
 		spec = &spec_arr[i];
