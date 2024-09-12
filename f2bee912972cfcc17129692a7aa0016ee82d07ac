@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c56b21_c7a34cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2024-09-12T01:07:55Z",
+      "side": 1,
+      "message": "Is this CL still needed?",
+      "revId": "f2bee912972cfcc17129692a7aa0016ee82d07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8b7f3dd_74dc2776",
