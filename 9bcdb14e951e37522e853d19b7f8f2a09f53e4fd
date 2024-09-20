@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5de6a7_b04d02d8",
+        "filename": "libselinux/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2024-09-20T10:12:30Z",
+      "side": 1,
+      "message": "What does this mean? libselinux is used all over the place, but isn\u0027t an API that is exposed across IPC to other security domains.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "9bcdb14e951e37522e853d19b7f8f2a09f53e4fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
