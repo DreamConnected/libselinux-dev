@@ -662,6 +662,11 @@ int selinux_android_restorecon_pkgdir(const char *pkgdir,
 	return selinux_android_restorecon_common(pkgdir, seinfo, uid, flags | SELINUX_ANDROID_RESTORECON_DATADATA);
 }
 
+struct selabel_handle* selinux_android_get_sehandle(void)
+{
+	__selinux_once(fc_once, file_context_init);
+	return fc_sehandle;
+}
 
 void selinux_android_set_sehandle(const struct selabel_handle *hndl)
 {
