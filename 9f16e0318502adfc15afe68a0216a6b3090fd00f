@@ -16,6 +16,29 @@
       "message": "PTAL, thanks!",
       "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b799a3_42db42af",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2024-09-26T20:43:14Z",
+      "side": 1,
+      "message": "One thought: There are different sehandles for different contexts (e.g. file contexts vs service contexts vs property contexts). We may want to name this API such that it includes \"file contexts\" somewhere in it.\n\nIt\u0027s unfortunate that the previous selinux_android_set_sehandle() doesn\u0027t specify that.",
+      "range": {
+        "startLine": 665,
+        "startChar": 23,
+        "endLine": 665,
+        "endChar": 51
+      },
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
