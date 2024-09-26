@@ -26,6 +26,11 @@ extern struct selabel_handle* selinux_android_vendor_service_context_handle(void
 /* Returns the keystore2 context handle */
 extern struct selabel_handle* selinux_android_keystore2_key_context_handle(void);
 
+/* Gets the cached file context handle. Avoids the force reloading of files
+ * using selinux_android_file_context_handle if the file context handle has
+ * already been initialized */
+extern struct selabel_handle* selinux_android_get_sehandle(void);
+
 /* Sets the file context handle. Must be called using the output of
  * selinux_android_file_context_handle. This function can be used to preload
  * the file_contexts files and speed up later calls to
