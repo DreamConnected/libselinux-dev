@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89d51108_3bd45b18",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-09-27T02:47:34Z",
+      "side": 1,
+      "message": "I\u0027m having some second thoughts here. What if we changed the logic in `selinux_android_file_context_handle` to transparently do the caching? This would avoid adding a very similar function to the library.\n\nThe main drawback is that we are changing the behaviour of that function. I couldn\u0027t think about a blocking use-case here. Is there a process known to force the reloading of the file_contexts which relies on this behaviour? I don\u0027t think `init` does, nor does file_contexts in apexes, but I might be wrong?",
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bf559b_79ba68c5",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-09-27T02:47:34Z",
+      "side": 1,
+      "message": "We should be able to mark this function as deprecated in favour of your new function. Could you add a comment here and reference the new function as the alternative? You can also include a warning that calling this function twice will reparse the configuration files and hence have a performance impact. Thanks!",
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f0a3a0_22c44f92",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-09-27T02:47:34Z",
+      "side": 1,
+      "message": "Same here, could you add a comment that marks that function as deprecated (and also mention your new function as an alternative)?",
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38b799a3_42db42af",
         "filename": "libselinux/src/android/android_device.c",
         "patchSetId": 3
@@ -31,6 +82,30 @@
       "writtenOn": "2024-09-26T20:43:14Z",
       "side": 1,
       "message": "One thought: There are different sehandles for different contexts (e.g. file contexts vs service contexts vs property contexts). We may want to name this API such that it includes \"file contexts\" somewhere in it.\n\nIt\u0027s unfortunate that the previous selinux_android_set_sehandle() doesn\u0027t specify that.",
+      "range": {
+        "startLine": 665,
+        "startChar": 23,
+        "endLine": 665,
+        "endChar": 51
+      },
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44666d31_af782ecf",
+        "filename": "libselinux/src/android/android_device.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-09-27T02:47:34Z",
+      "side": 1,
+      "message": "+1 to include `file_context` in the name. \n\nWhat about`selinux_android_file_context_get_sehandle()`?",
+      "parentUuid": "38b799a3_42db42af",
       "range": {
         "startLine": 665,
         "startChar": 23,
