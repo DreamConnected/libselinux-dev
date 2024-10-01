@@ -254,6 +254,7 @@ rust_bindgen {
         "//frameworks/native/libs/binder/rust/tests",
         "//system/security/keystore2:__subpackages__",
         "//packages/modules/Virtualization:__subpackages__",
+        "//system/software_defined_vehicle:__subpackages__",
     ],
     source_stem: "bindings",
     local_include_dirs: ["include"],
