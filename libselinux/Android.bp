@@ -250,11 +250,16 @@ rust_bindgen {
     name: "libselinux_bindgen",
     wrapper_src: "rust/selinux.h",
     crate_name: "selinux_bindgen",
+<<<<<<< PATCH SET (1363e1 Removes visibility from libselinux_bindgen.)
+||||||| BASE
+    visibility: ["//frameworks/native/libs/binder/rust/tests", "//system/security/keystore2:__subpackages__", "//packages/modules/Virtualization:__subpackages__"],
+=======
     visibility: [
         "//frameworks/native/libs/binder/rust/tests",
         "//system/security/keystore2:__subpackages__",
         "//packages/modules/Virtualization:__subpackages__",
     ],
+>>>>>>> BASE      (15fb5b libselinux: rename hashtab functions am: 219e32ac39)
     source_stem: "bindings",
     local_include_dirs: ["include"],
 
