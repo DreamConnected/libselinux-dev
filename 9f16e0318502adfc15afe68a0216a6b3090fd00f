@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2304004_b9502ba5",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2024-10-02T09:41:27Z",
+      "side": 1,
+      "message": "SGTM. Android does not support updating the selinux policy at run time, so I think it\u0027s fine to assume that it won\u0027t happen.",
+      "parentUuid": "72bf6e56_5831b83c",
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34f0a3a0_22c44f92",
         "filename": "libselinux/include/selinux/android.h",
         "patchSetId": 3
