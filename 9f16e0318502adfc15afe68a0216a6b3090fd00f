@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72bf6e56_5831b83c",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-10-02T04:14:47Z",
+      "side": 1,
+      "message": "@jeffv@google.com @nnk@google.com \n\nWe are discussing the idea of changing the behaviour of `selinux_android_file_context_handle` to automatically cache its result into the internal file sehandle.\n\nThat function is taking a static list of paths for file_contexts (see file_context_paths https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:external/selinux/libselinux/src/android/android_seapp.c;l\u003d25;drc\u003d9666135cc1fd6103a931900b3d64c035c7918b92) and load them. This list is not updated at runtime. I\u0027m assuming that all these partitions (/system, /vendor, /odm, /product, /system_ext) are available before init or any other process call this function (this would be the only reason why the caching would return an incorrect result: one of these partition is mounted in between the first and second call).\n\nOne scenario to consider is when using OverlayFS on `userdebug` images. From my understanding, it allows part of /system to be replaced (especially the SELinux policy). But from what I can tell, this is happening before any of the policy is loaded. So I assume the following series of events is not possible:\n1. init calls selinux_android_file_context_handle\n2. the same init process mount the overlay fs for /system\n3. the same init process calls selinux_android_file_context_handle but gets the cached result.\n\n@yochiang@google.com is my understanding of OverlayFS correct? Can you see any edge case to consider? Thanks.",
+      "parentUuid": "16bb516b_f7f9fa96",
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34f0a3a0_22c44f92",
         "filename": "libselinux/include/selinux/android.h",
         "patchSetId": 3
