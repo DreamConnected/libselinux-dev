@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "643655cd_b6668212",
+        "filename": "libselinux/include/selinux/android.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-10-13T22:43:44Z",
+      "side": 1,
+      "message": "Great, thanks everyone for the feedback.\n\n@ynaffit@google.com It looks like this is a viable option. Would you like to give it a try? For the testing, presubmit will help. You may also check the log messages from libselinux at boot time. Thanks.",
+      "parentUuid": "f36ebfb1_6a8c95f0",
+      "revId": "9f16e0318502adfc15afe68a0216a6b3090fd00f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34f0a3a0_22c44f92",
         "filename": "libselinux/include/selinux/android.h",
         "patchSetId": 3
