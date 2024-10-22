@@ -271,6 +271,7 @@ rust_bindgen {
         "--allowlist-function=getfilecon",
         "--allowlist-function=getpeercon",
         "--allowlist-function=getpidcon",
+        "--allowlist-function=getprevcon",
         "--allowlist-function=is_selinux_enabled",
         "--allowlist-function=lgetfilecon",
         "--allowlist-function=lsetfilecon",

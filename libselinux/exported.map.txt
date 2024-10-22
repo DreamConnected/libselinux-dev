@@ -54,3 +54,7 @@ LIBSELINUX_S { # introduced=S
     selinux_android_context_with_level; # llndk systemapi
     selinux_android_keystore2_key_context_handle; # llndk systemapi
 };
+
+LIBSELINUX_36 { # introduced=36
+    getprevcon; # systemapi
+};
