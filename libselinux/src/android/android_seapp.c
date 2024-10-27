@@ -82,9 +82,10 @@ static const path_alts_t seapp_context_paths = { .paths = {
 	"odm"
 }};
 
-/* Returns a handle for the file contexts backend, initialized with the Android
- * configuration */
-struct selabel_handle* selinux_android_file_context_handle(void)
+static pthread_once_t fc_once = PTHREAD_ONCE_INIT;
+static struct selabel_handle* seapp_fc_sehandle = NULL;
+
+void selinux_android_file_context_handle_init(void)
 {
 	const char* file_contexts[MAX_CONTEXT_PATHS];
 	struct selinux_opt opts[MAX_CONTEXT_PATHS + 1];
@@ -97,7 +98,15 @@ struct selabel_handle* selinux_android_file_context_handle(void)
 	opts[npaths].value = (char *) 1;
 	nopts = npaths + 1;
 
-	return initialize_backend(SELABEL_CTX_FILE, "file", opts, nopts);
+	seapp_fc_sehandle = initialize_backend(SELABEL_CTX_FILE, "file", opts, nopts);
+}
+
+/* Returns a handle for the file contexts backend, initialized with the Android
+ * configuration */
+struct selabel_handle* selinux_android_file_context_handle(void)
+{
+	__selinux_once(fc_once, selinux_android_file_context_handle_init);
+	return seapp_fc_sehandle;
 }
 
 #if DEBUG
