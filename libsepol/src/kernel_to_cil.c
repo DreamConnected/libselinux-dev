@@ -1436,7 +1436,7 @@ static int map_type_aliases_to_strs(char *key, void *data, void *args)
 static int write_type_alias_rules_to_cil(FILE *out, struct policydb *pdb)
 {
 	type_datum_t *alias;
-	struct strs *strs = NULL;
+	struct strs *strs;
 	char *name;
 	char *type;
 	unsigned i, num = 0;
@@ -1651,8 +1651,7 @@ static char *xperms_to_str(const avtab_extended_perms_t *xperms)
 	size_t remaining, size = 128;
 
 	if ((xperms->specified != AVTAB_XPERMS_IOCTLFUNCTION)
-		&& (xperms->specified != AVTAB_XPERMS_IOCTLDRIVER)
-		&& (xperms->specified != AVTAB_XPERMS_NLMSG)) {
+		&& (xperms->specified != AVTAB_XPERMS_IOCTLDRIVER)) {
 		return NULL;
 	}
 
@@ -1682,8 +1681,7 @@ retry:
 			continue;
 		}
 
-		if ((xperms->specified == AVTAB_XPERMS_IOCTLFUNCTION)
-		 || (xperms->specified == AVTAB_XPERMS_NLMSG)) {
+		if (xperms->specified & AVTAB_XPERMS_IOCTLFUNCTION) {
 			value = xperms->driver<<8 | bit;
 			if (in_range) {
 				low_value = xperms->driver<<8 | low_bit;
@@ -1692,7 +1690,7 @@ retry:
 			} else {
 				len = snprintf(p, remaining, " 0x%hx", value);
 			}
-		} else if (xperms->specified == AVTAB_XPERMS_IOCTLDRIVER) {
+		} else if (xperms->specified & AVTAB_XPERMS_IOCTLDRIVER) {
 			value = bit << 8;
 			if (in_range) {
 				low_value = low_bit << 8;
@@ -1730,7 +1728,7 @@ static char *avtab_node_to_str(struct policydb *pdb, avtab_key_t *key, avtab_dat
 	uint32_t data = datum->data;
 	type_datum_t *type;
 	const char *flavor, *tgt;
-	char *src, *class, *perms, *new, *xperm;
+	char *src, *class, *perms, *new;
 	char *rule = NULL;
 
 	switch (0xFFF & key->specified) {
@@ -1797,16 +1795,9 @@ static char *avtab_node_to_str(struct policydb *pdb, avtab_key_t *key, avtab_dat
 			ERR(NULL, "Failed to generate extended permission string");
 			goto exit;
 		}
-		if (datum->xperms->specified == AVTAB_XPERMS_IOCTLFUNCTION || datum->xperms->specified == AVTAB_XPERMS_IOCTLDRIVER) {
-			xperm = (char *) "ioctl";
-		} else if (datum->xperms->specified == AVTAB_XPERMS_NLMSG) {
-			xperm = (char *) "nlmsg";
-		} else {
-			ERR(NULL, "Unknown extended permssion");
-			goto exit;
-		}
+
 		rule = create_str("(%s %s %s (%s %s (%s)))",
-				  flavor, src, tgt, xperm, class, perms);
+				  flavor, src, tgt, "ioctl", class, perms);
 		free(perms);
 	} else {
 		new = pdb->p_type_val_to_name[data - 1];

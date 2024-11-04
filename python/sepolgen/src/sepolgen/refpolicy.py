@@ -1217,7 +1217,6 @@ class Comment:
             self.lines = l
         else:
             self.lines = []
-        self.gen_cil = False
 
     def to_string(self):
         # If there are no lines, treat this as a spacer between
