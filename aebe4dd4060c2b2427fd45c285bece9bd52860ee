@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3719dac_9a4486dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-11-04T06:16:38Z",
+      "side": 1,
+      "message": "There is no indication that the bug is related to any of these changes. This is a merge change, reverting will have an impact on the git history. I\u0027ll reply on the bug with more details.",
+      "revId": "aebe4dd4060c2b2427fd45c285bece9bd52860ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
