@@ -299,7 +299,6 @@ static void closef(struct selabel_handle *rec)
 	}
 
 	free(data);
-	rec->data = NULL;
 }
 
 static struct selabel_lookup_rec *property_lookup(struct selabel_handle *rec,

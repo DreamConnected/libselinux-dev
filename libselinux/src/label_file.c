@@ -563,10 +563,8 @@ static FILE *open_file(const char *path, const char *suffix,
 		/* This handles the case if suffix is null */
 		path = rolling_append(stack_path, fdetails[i].suffix,
 				      sizeof(stack_path));
-		if (!path) {
-			errno = ENOMEM;
+		if (!path)
 			return NULL;
-		}
 
 		rc = stat(path, &fdetails[i].sb);
 		if (rc)
@@ -630,7 +628,7 @@ static int process_file(const char *path, const char *suffix,
 
 		rc = fcontext_is_binary(fp);
 		if (rc < 0) {
-			fclose_errno_safe(fp);
+			(void) fclose(fp);
 			return -1;
 		}
 
@@ -641,7 +639,7 @@ static int process_file(const char *path, const char *suffix,
 			rc = digest_add_specfile(digest, fp, NULL, sb.st_size,
 				found_path);
 
-		fclose_errno_safe(fp);
+		fclose(fp);
 
 		if (!rc)
 			return 0;
@@ -984,7 +982,6 @@ static void closef(struct selabel_handle *rec)
 		free(last_area);
 	}
 	free(data);
-	rec->data = NULL;
 }
 
 // Finds all the matches of |key| in the given context. Returns the result in

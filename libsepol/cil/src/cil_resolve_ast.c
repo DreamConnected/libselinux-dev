@@ -4291,7 +4291,7 @@ int cil_resolve_name_keep_aliases(struct cil_tree_node *ast_node, char *name, en
 	int rc = SEPOL_ERR;
 	struct cil_tree_node *node = NULL;
 
-	if (name == NULL || sym_index >= CIL_SYM_NUM) {
+	if (name == NULL) {
 		cil_log(CIL_ERR, "Invalid call to cil_resolve_name\n");
 		goto exit;
 	}

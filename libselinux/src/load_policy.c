@@ -326,9 +326,7 @@ int selinux_init_load_policy(int *enforce)
 
 	if (seconfig == -1) {
 		/* Runtime disable of SELinux. */
-		IGNORE_DEPRECATED_DECLARATION_BEGIN
 		rc = security_disable();
-		IGNORE_DEPRECATED_DECLARATION_END
 		if (rc == 0) {
 			/* Successfully disabled, so umount selinuxfs too. */
 			umount(selinux_mnt);
