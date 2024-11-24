@@ -88,6 +88,25 @@ static const path_alts_t keystore2_context_paths = { .paths = {
 	}
 }};
 
+static const path_alts_t tee_service_context_paths = { .paths = {
+	{
+		"/system/etc/selinux/plat_tee_service_contexts",
+		"/plat_tee_service_contexts"
+	},
+	{
+		"/system_ext/etc/selinux/system_ext_tee_service_contexts",
+		"/system_ext_tee_service_contexts"
+	},
+	{
+		"/product/etc/selinux/product_tee_service_contexts",
+		"/product_tee_service_contexts"
+	},
+	{
+		"/vendor/etc/selinux/vendor_tee_service_contexts",
+		"/vendor_tee_service_contexts"
+	}
+}};
+
 size_t find_existing_files(
 		const path_alts_t *path_sets,
 		const char* paths[MAX_CONTEXT_PATHS])
@@ -187,6 +206,11 @@ struct selabel_handle* selinux_android_vendor_service_context_handle(void)
 struct selabel_handle* selinux_android_keystore2_key_context_handle(void)
 {
 	return context_handle(SELABEL_CTX_ANDROID_KEYSTORE2_KEY, &keystore2_context_paths, "keystore2");
+}
+
+struct selabel_handle* selinux_android_tee_service_context_handle(void)
+{
+	return context_handle(SELABEL_CTX_ANDROID_SERVICE, &tee_service_context_paths, "tee_service");
 }
 
 /* The contents of these paths are encrypted on FBE devices until user
