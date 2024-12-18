@@ -254,6 +254,7 @@ rust_bindgen {
         "//frameworks/native/libs/binder/rust/tests",
         "//system/security/keystore2:__subpackages__",
         "//packages/modules/Virtualization:__subpackages__",
+        "//system/software_defined_vehicle:__subpackages__",
     ],
     source_stem: "bindings",
     local_include_dirs: ["include"],
@@ -270,6 +271,7 @@ rust_bindgen {
         "--allowlist-function=getfilecon",
         "--allowlist-function=getpeercon",
         "--allowlist-function=getpidcon",
+        "--allowlist-function=getprevcon",
         "--allowlist-function=is_selinux_enabled",
         "--allowlist-function=lgetfilecon",
         "--allowlist-function=lsetfilecon",
@@ -311,6 +313,7 @@ rust_bindgen {
         "--allowlist-function=string_to_security_class",
         "--allowlist-function=selinux_android_context_with_level",
         "--allowlist-function=selinux_android_keystore2_key_context_handle",
+        "--allowlist-function=selinux_android_tee_service_context_handle",
 
         // We also need some constants in addition to the functions.
         "--allowlist-var=SELABEL_.*",

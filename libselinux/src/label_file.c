@@ -111,7 +111,7 @@ static int nodups_specs(struct saved_data *data, const char *path)
 	struct chkdups_key *new = NULL;
 	unsigned int hashtab_len = (data->nspec / SHRINK_MULTIS) ? data->nspec / SHRINK_MULTIS : 1;
 
-	hashtab_t hash_table = hashtab_create(symhash, symcmp, hashtab_len);
+	hashtab_t hash_table = selinux_hashtab_create(symhash, symcmp, hashtab_len);
 	if (!hash_table) {
 		rc = -1;
 		COMPAT_LOG(SELINUX_ERROR, "%s: hashtab create failed.\n", path);
@@ -121,18 +121,18 @@ static int nodups_specs(struct saved_data *data, const char *path)
 		new = (struct chkdups_key *)malloc(sizeof(struct chkdups_key));
 		if (!new) {
 			rc = -1;
-			hashtab_destroy_key(hash_table, destroy_chkdups_key);
+			selinux_hashtab_destroy_key(hash_table, destroy_chkdups_key);
 			COMPAT_LOG(SELINUX_ERROR, "%s: hashtab key create failed.\n", path);
 			return rc;
 		}
 		new->regex = spec_arr[ii].regex_str;
 		new->mode = spec_arr[ii].mode;
-		ret = hashtab_insert(hash_table, (hashtab_key_t)new, &spec_arr[ii]);
+		ret = selinux_hashtab_insert(hash_table, (hashtab_key_t)new, &spec_arr[ii]);
 		if (ret == HASHTAB_SUCCESS)
 			continue;
 		if (ret == HASHTAB_PRESENT) {
 			curr_spec =
-				(struct spec *)hashtab_search(hash_table, (hashtab_key_t)new);
+				(struct spec *)selinux_hashtab_search(hash_table, (hashtab_key_t)new);
 			rc = -1;
 			errno = EINVAL;
 			free(new);
@@ -161,7 +161,7 @@ static int nodups_specs(struct saved_data *data, const char *path)
 		}
 	}
 
-	hashtab_destroy_key(hash_table, destroy_chkdups_key);
+	selinux_hashtab_destroy_key(hash_table, destroy_chkdups_key);
 
 	return rc;
 }
@@ -563,8 +563,10 @@ static FILE *open_file(const char *path, const char *suffix,
 		/* This handles the case if suffix is null */
 		path = rolling_append(stack_path, fdetails[i].suffix,
 				      sizeof(stack_path));
-		if (!path)
+		if (!path) {
+			errno = ENOMEM;
 			return NULL;
+		}
 
 		rc = stat(path, &fdetails[i].sb);
 		if (rc)
@@ -628,7 +630,7 @@ static int process_file(const char *path, const char *suffix,
 
 		rc = fcontext_is_binary(fp);
 		if (rc < 0) {
-			(void) fclose(fp);
+			fclose_errno_safe(fp);
 			return -1;
 		}
 
@@ -639,7 +641,7 @@ static int process_file(const char *path, const char *suffix,
 			rc = digest_add_specfile(digest, fp, NULL, sb.st_size,
 				found_path);
 
-		fclose(fp);
+		fclose_errno_safe(fp);
 
 		if (!rc)
 			return 0;
@@ -982,6 +984,7 @@ static void closef(struct selabel_handle *rec)
 		free(last_area);
 	}
 	free(data);
+	rec->data = NULL;
 }
 
 // Finds all the matches of |key| in the given context. Returns the result in
