@@ -3,6 +3,7 @@
 #include <linux/magic.h>
 #include <pwd.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -131,24 +132,50 @@ static void free_prefix_str(struct prefix_str *p)
 	free(p->str);
 }
 
+#define MAX_BOOL_SELECTORS 6
+#if (MAX_BOOL_SELECTORS > 16)
+#error The bitmasks in struct seapp_contexts and struct parsed_seinfo must be updated.
+#endif
+static struct {
+	/* The string matched from the `seinfo` field provided by system
+	 * server. Case sensitive (strcmp). */
+	const char* seinfo;
+	/* The string referenced in seapp_contexts. Case insensitive
+	 * (strcasecmp). */
+	const char* seapp_context;
+	/* A boolean if the selector default to false when not specified */
+	bool default_to_false;
+} BOOL_SELECTORS[MAX_BOOL_SELECTORS] = {
+	{"ephemeralapp", "isEphemeralApp",  false},
+	{"privapp", "isPrivApp", false},
+#define PRIV_APP_INDEX 1
+	{"fromRunAs", "fromRunAs", true},
+	{"isolatedComputeApp", "isIsolatedComputeApp", true},
+	{"isSdkSandboxAudit", "isSdkSandboxAudit", true},
+	{"isSdkSandboxNext", "isSdkSandboxNext", true},
+};
+
 /* For a set of selectors, represents the contexts that should be applied to an
  * app and its data. Each instance is based on a line in a seapp_contexts file.
  * */
 struct seapp_context {
 	/* input selectors */
 	bool isSystemServer;
-	bool isEphemeralAppSet;
-	bool isEphemeralApp;
+
+        /* Bitmask for the boolean selectors (isEphemeralApp,
+         * fromRunAs, etc). A bit here indicates that the value was
+         * set in seapp_contexts. */
+        uint16_t boolSelectorsSet;
+
+        /* Bitmask for the boolean selectors (isEphemeralApp,
+         * fromRunAs, etc). A bit here indicates the value set. */
+        uint16_t boolSelectorsValue;
+
 	struct prefix_str user;
 	char *seinfo;
 	struct prefix_str name;
-	bool isPrivAppSet;
-	bool isPrivApp;
 	int32_t minTargetSdkVersion;
-	bool fromRunAs;
-	bool isIsolatedComputeApp;
-	bool isSdkSandboxAudit;
-	bool isSdkSandboxNext;
+
 	/* outputs */
 	char *domain;
 	char *type;
@@ -190,11 +217,6 @@ static int seapp_context_cmp(const void *A, const void *B)
 	if (s1->isSystemServer != s2->isSystemServer)
 		return (s1->isSystemServer ? -1 : 1);
 
-	/* Give precedence to a specified isEphemeral= over an
-	 * unspecified isEphemeral=. */
-	if (s1->isEphemeralAppSet != s2->isEphemeralAppSet)
-		return (s1->isEphemeralAppSet ? -1 : 1);
-
 	/* Give precedence to a specified user= over an unspecified user=. */
 	if (s1->user.str && !s2->user.str)
 		return -1;
@@ -233,9 +255,16 @@ static int seapp_context_cmp(const void *A, const void *B)
 			return (s1->name.len > s2->name.len) ? -1 : 1;
 	}
 
-	/* Give precedence to a specified isPrivApp= over an unspecified isPrivApp=. */
-	if (s1->isPrivAppSet != s2->isPrivAppSet)
-		return (s1->isPrivAppSet ? -1 : 1);
+	/* Give precedence to a specified boolean selector over an unspecified one. */
+	for (int i=0; i < MAX_BOOL_SELECTORS; i++) {
+		int bit = 1 << i;
+		if (!BOOL_SELECTORS[i].default_to_false) {
+			if((s1->boolSelectorsSet & bit) != (s2->boolSelectorsSet & bit))
+				return ((s2->boolSelectorsSet & bit) - (s1->boolSelectorsSet & bit));
+		} else if((s1->boolSelectorsValue & bit) != (s2->boolSelectorsValue & bit)) {
+				return ((s2->boolSelectorsValue & bit) - (s1->boolSelectorsValue & bit));
+		}
+	}
 
 	/* Give precedence to a higher minTargetSdkVersion= over a lower minTargetSdkVersion=.
 	 * If unspecified, minTargetSdkVersion has a default value of 0.
@@ -244,10 +273,6 @@ static int seapp_context_cmp(const void *A, const void *B)
 		return -1;
 	else if (s1->minTargetSdkVersion < s2->minTargetSdkVersion)
 		return 1;
-
-	/* Give precedence to fromRunAs=true. */
-	if (s1->fromRunAs != s2->fromRunAs)
-		return (s1->fromRunAs ? -1 : 1);
 
 	/* Give precedence to platform side contexts */
 	bool isS1Platform = is_platform(s1->partition);
@@ -384,16 +409,6 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "isEphemeralApp")) {
-					cur->isEphemeralAppSet = true;
-					if (!strcasecmp(value, "true"))
-						cur->isEphemeralApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isEphemeralApp = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else if (!strcasecmp(name, "user")) {
 					if (cur->user.str) {
 						free_seapp_context(cur);
@@ -481,61 +496,30 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 						free_seapp_context(cur);
 						goto oom;
 					}
-				} else if (!strcasecmp(name, "isPrivApp")) {
-					cur->isPrivAppSet = true;
-					if (!strcasecmp(value, "true"))
-						cur->isPrivApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isPrivApp = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else if (!strcasecmp(name, "minTargetSdkVersion")) {
 					cur->minTargetSdkVersion = get_minTargetSdkVersion(value);
 					if (cur->minTargetSdkVersion < 0) {
 						free_seapp_context(cur);
 						goto err;
 					}
-				} else if (!strcasecmp(name, "fromRunAs")) {
-					if (!strcasecmp(value, "true"))
-						cur->fromRunAs = true;
-					else if (!strcasecmp(value, "false"))
-						cur->fromRunAs = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
-				} else if (!strcasecmp(name, "isIsolatedComputeApp")) {
-					if (!strcasecmp(value, "true"))
-						cur->isIsolatedComputeApp = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isIsolatedComputeApp = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
-				} else if (!strcasecmp(name, "isSdkSandboxAudit")) {
-					if (!strcasecmp(value, "true"))
-						cur->isSdkSandboxAudit = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isSdkSandboxAudit = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
-				} else if (!strcasecmp(name, "isSdkSandboxNext")) {
-					if (!strcasecmp(value, "true"))
-						cur->isSdkSandboxNext = true;
-					else if (!strcasecmp(value, "false"))
-						cur->isSdkSandboxNext = false;
-					else {
-						free_seapp_context(cur);
-						goto err;
-					}
 				} else {
-					free_seapp_context(cur);
-					goto err;
+					bool found = false;
+					for (int i=0; i < MAX_BOOL_SELECTORS; i++) {
+						if (!strcasecmp(name, BOOL_SELECTORS[i].seapp_context)) {
+							found = true;
+							cur->boolSelectorsSet |= 1 << i;
+							if (!strcasecmp(value, "true"))
+								cur->boolSelectorsValue |= 1 << i;
+							else if (strcasecmp(value, "false")) {
+								free_seapp_context(cur);
+								goto err;
+							}
+						}
+					}
+					if (!found) {
+						free_seapp_context(cur);
+						goto err;
+					}
 				}
 
 				token = strtok_r(NULL, " \t", &saveptr);
@@ -543,7 +527,8 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 					break;
 			}
 
-			if (!cur->isPrivApp && cur->name.str &&
+			bool isPrivApp = ((cur->boolSelectorsSet & (1 << PRIV_APP_INDEX)) && (cur->boolSelectorsValue & (1 << PRIV_APP_INDEX)));
+			if (!isPrivApp && cur->name.str &&
 			    (!cur->seinfo || !strcmp(cur->seinfo, "default"))) {
 				selinux_log(SELINUX_ERROR, "%s:  No specific seinfo value specified with name=\"%s\", on line %u:  insecure configuration!\n",
 					    seapp_contexts_files[i], cur->name.str, lineno);
@@ -577,12 +562,7 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 			*/
 			bool dup = (!s1->user.str || !strcmp(s1->user.str, s2->user.str)) &&
 				(!s1->seinfo || !strcmp(s1->seinfo, s2->seinfo)) &&
-				(!s1->name.str || !strcmp(s1->name.str, s2->name.str)) &&
-				(!s1->isPrivAppSet || s1->isPrivApp == s2->isPrivApp) &&
-				(!s1->isEphemeralAppSet || s1->isEphemeralApp == s2->isEphemeralApp) &&
-				(s1->isIsolatedComputeApp == s2->isIsolatedComputeApp) &&
-				(s1->isSdkSandboxAudit == s2->isSdkSandboxAudit) &&
-				(s1->isSdkSandboxNext == s2->isSdkSandboxNext);
+				(!s1->name.str || !strcmp(s1->name.str, s2->name.str));
 
 			if (dup) {
 				selinux_log(SELINUX_ERROR, "seapp_contexts:  Duplicated entry\n");
@@ -601,26 +581,29 @@ int seapp_context_reload_internal(const path_alts_t *context_paths)
 
 #if DEBUG
 	{
-		int i;
-		for (i = 0; i < nspec; i++) {
+		for (int i = 0; i < nspec; i++) {
 			cur = seapp_contexts[i];
-			selinux_log(SELINUX_INFO, "%s:  isSystemServer=%s isEphemeralApp=%s "
-				"isIsolatedComputeApp=%s isSdkSandboxAudit=%s isSdkSandboxNext=%s "
-				"user=%s seinfo=%s name=%s isPrivApp=%s minTargetSdkVersion=%d "
-				"fromRunAs=%s -> domain=%s type=%s level=%s levelFrom=%s",
+			char *boolValues = NULL;
+			for (int j=0; j < MAX_BOOL_SELECTORS; j++) {
+				char *prev = boolValues;
+				int bit = 1 << j;
+				asprintf(&boolValues, "%s %s=%s", prev, BOOL_SELECTORS[j].seapp_context,
+						(cur->boolSelectorsSet & bit) ?
+						((cur->boolSelectorsValue & bit) ? "true" : "false") : "(null)");
+				free(prev);
+			}
+			selinux_log(SELINUX_ERROR, "%s: isSystemServer=%s "
+				"user=%s seinfo=%s name=%s minTargetSdkVersion=%d %s "
+				"-> domain=%s type=%s level=%s levelFrom=%s \n",
 				__FUNCTION__,
 				cur->isSystemServer ? "true" : "false",
-				cur->isEphemeralAppSet ? (cur->isEphemeralApp ? "true" : "false") : "null",
-				cur->isIsolatedComputeApp ? "true" : "false",
-				cur->isSdkSandboxAudit ? "true" : "false",
-				cur->isSdkSandboxNext ? "true" : "false",
 				cur->user.str,
 				cur->seinfo, cur->name.str,
-				cur->isPrivAppSet ? (cur->isPrivApp ? "true" : "false") : "null",
 				cur->minTargetSdkVersion,
-				cur->fromRunAs ? "true" : "false",
+				boolValues,
 				cur->domain, cur->type, cur->level,
 				levelFromName[cur->levelFrom]);
+			free(boolValues);
 		}
 	}
 #endif
@@ -671,14 +654,8 @@ void selinux_android_seapp_context_init(void) {
  */
 #define CAT_MAPPING_MAX_ID (0x1<<16)
 
-#define PRIVILEGED_APP_STR "privapp"
-#define ISOLATED_COMPUTE_APP_STR "isolatedComputeApp"
-#define APPLY_SDK_SANDBOX_AUDIT_RESTRICTIONS_STR "isSdkSandboxAudit"
-#define APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR "isSdkSandboxNext"
-#define EPHEMERAL_APP_STR "ephemeralapp"
 #define TARGETSDKVERSION_STR "targetSdkVersion"
 #define PARTITION_STR "partition"
-#define FROM_RUNAS_STR "fromRunAs"
 #define COMPLETE_STR "complete"
 
 static bool is_preinstalled_app_partition_valid(const char *app_policy, const char *app_partition) {
@@ -743,28 +720,15 @@ int parse_seinfo(const char* seinfo, struct parsed_seinfo* info) {
 			first = false;
 			continue;
 		}
-		if (!strcmp(token, PRIVILEGED_APP_STR)) {
-			info->is |= IS_PRIV_APP;
-			continue;
+		bool found = false;
+		for (int i=0; i < MAX_BOOL_SELECTORS; i++) {
+			if(!strcmp(token, BOOL_SELECTORS[i].seinfo)) {
+				info->is |= 1 << i;
+				found = true;
+				break;
+			}
 		}
-		if (!strcmp(token, EPHEMERAL_APP_STR)) {
-			info->is |= IS_EPHEMERAL_APP;
-			continue;
-		}
-		if (!strcmp(token, ISOLATED_COMPUTE_APP_STR)) {
-			info->is |= IS_ISOLATED_COMPUTE_APP;
-			continue;
-		}
-		if (!strcmp(token, APPLY_SDK_SANDBOX_AUDIT_RESTRICTIONS_STR)) {
-			info->is |= IS_SDK_SANDBOX_AUDIT;
-			continue;
-		}
-		if (!strcmp(token, APPLY_SDK_SANDBOX_NEXT_RESTRICTIONS_STR)) {
-			info->is |= IS_SDK_SANDBOX_NEXT;
-			continue;
-		}
-		if (!strcmp(token, FROM_RUNAS_STR)) {
-			info->is |= IS_FROM_RUN_AS;
+		if (found) {
 			continue;
 		}
 		if (!strncmp(token, TARGETSDKVERSION_STR, strlen(TARGETSDKVERSION_STR))) {
@@ -864,9 +828,6 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 		if (cur->isSystemServer != isSystemServer)
 			continue;
 
-		if (cur->isEphemeralAppSet && cur->isEphemeralApp != ((info.is & IS_EPHEMERAL_APP) != 0))
-			continue;
-
 		if (cur->user.str) {
 			if (cur->user.is_prefix) {
 				if (strncasecmp(username, cur->user.str, cur->user.len-1))
@@ -895,22 +856,20 @@ int seapp_context_lookup_internal(enum seapp_kind kind,
 			}
 		}
 
-		if (cur->isPrivAppSet && cur->isPrivApp != ((info.is & IS_PRIV_APP) != 0))
-			continue;
-
 		if (cur->minTargetSdkVersion > info.targetSdkVersion)
 			continue;
 
-		if (cur->fromRunAs != ((info.is & IS_FROM_RUN_AS) != 0))
-			continue;
-
-		if (cur->isIsolatedComputeApp != ((info.is & IS_ISOLATED_COMPUTE_APP) != 0))
-			continue;
-
-		if (cur->isSdkSandboxAudit != ((info.is & IS_SDK_SANDBOX_AUDIT) != 0))
-			continue;
-
-		if (cur->isSdkSandboxNext != ((info.is & IS_SDK_SANDBOX_NEXT) != 0))
+		bool no_match = false;
+		for (int i=0; i < MAX_BOOL_SELECTORS; i++) {
+			uint16_t bit = 1 << i;
+			if (BOOL_SELECTORS[i].default_to_false || (cur->boolSelectorsSet & bit)) {
+				if ((cur->boolSelectorsValue & bit) != (info.is & bit)) {
+					no_match = true;
+					break;
+				}
+			}
+		}
+		if (no_match)
 			continue;
 
 		if (kind == SEAPP_TYPE && !cur->type)
