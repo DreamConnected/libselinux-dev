@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf40e5f_68baeae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2025-02-13T01:28:52Z",
+      "side": 1,
+      "message": "This is more of an RFC than a request for review at this stage. The intent is to clean up (a bit) the logic for parsing seapp_contexts (see b/307635909).\n\nThe behaviour is identical, except for how entries are sorted (see seapp_context_cmp). \n\nLet me know if you think this is worth pursuing or not.",
+      "revId": "6555568afe8e7e5b2b6bbb54b5e7c909df1d956d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
