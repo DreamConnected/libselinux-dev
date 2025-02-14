@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110e1fbd_c640930c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2025-02-14T02:06:19Z",
+      "side": 1,
+      "message": "Thanks, sorry for the delay. From the discussion here, I\u0027m not confident these changes won\u0027t introduce some side-effect we did not think about. Since the triggering bug has been fixed, I\u0027ll abandon this change and close the bug. Thanks.",
+      "parentUuid": "49c56b21_c7a34cbf",
+      "revId": "f2bee912972cfcc17129692a7aa0016ee82d07ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8b7f3dd_74dc2776",
