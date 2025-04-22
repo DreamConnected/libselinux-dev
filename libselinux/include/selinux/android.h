@@ -50,6 +50,14 @@ extern int selinux_android_setcontext(uid_t uid,
 				      const char *seinfo,
 				      const char *name);
 
+/* Returns the context of the package based on the information provided. Returns
+ * -1 if error occured */
+extern int selinux_android_getcontext(uid_t uid,
+              bool isSystemServer,
+              const char *seinfo,
+              const char *pkgname,
+              char **contextstr);
+
 /* Builds a new context based on context, adding the categories from userid and
  * appid. If userid or appid are -1, the corresponding categories are not
  * modified. */
