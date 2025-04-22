@@ -149,6 +149,73 @@ oom:
 	goto out;
 }
 
+int selinux_android_getcontext(uid_t uid,
+      bool isSystemServer,
+      const char *seinfo,
+      const char *pkgname,
+      char **contextstr)
+{
+    char *orig_ctx_str = NULL;
+    const char *ctx_str = NULL;
+    context_t ctx = NULL;
+    int rc = -1;
+
+    if (is_selinux_enabled() <= 0)
+        return 0;
+
+    rc = getcon(&orig_ctx_str);
+    if (rc) {
+        goto err;
+    }
+
+    ctx = context_new(orig_ctx_str);
+    if (!ctx) {
+        goto oom;
+    }
+
+    rc = seapp_context_lookup(SEAPP_DOMAIN, uid, isSystemServer, seinfo, pkgname, ctx);
+    if (rc == -1) {
+        goto err;
+    } else if (rc == -2) {
+        goto oom;
+    }
+
+    ctx_str = context_str(ctx);
+    if (!ctx_str)
+        goto oom;
+
+    rc = security_check_context(ctx_str);
+    if (rc < 0)
+        goto err;
+
+    *contextstr = strdup(ctx_str);
+
+    rc = 0;
+
+out:
+    if (orig_ctx_str != NULL)
+        freecon(orig_ctx_str);
+    if (ctx != NULL)
+        context_free(ctx);
+    return rc;
+err:
+    if (isSystemServer)
+        selinux_log(SELINUX_ERROR,
+            "%s:  Error getting context for system server: %s\n",
+            __FUNCTION__, strerror(errno));
+    else
+        selinux_log(SELINUX_ERROR,
+            "%s:  Error getting context for app with uid %d, seinfo %s: %s\n",
+            __FUNCTION__, uid, seinfo, strerror(errno));
+
+    rc = -1;
+    goto out;
+oom:
+    selinux_log(SELINUX_ERROR, "%s:  Out of memory\n", __FUNCTION__);
+    rc = -1;
+    goto out;
+}
+
 static struct selabel_handle *fc_sehandle = NULL;
 
 static void file_context_init(void)
