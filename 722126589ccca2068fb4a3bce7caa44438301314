@@ -22,6 +22,30 @@
       },
       "revId": "722126589ccca2068fb4a3bce7caa44438301314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c67466_be84883e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3507701
+      },
+      "writtenOn": "2025-04-24T18:25:27Z",
+      "side": 1,
+      "message": "Hi @tweek@google.com, I am grouping all the relevant changes and will post them soon",
+      "parentUuid": "b516631d_28b43bf6",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 83
+      },
+      "revId": "722126589ccca2068fb4a3bce7caa44438301314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
