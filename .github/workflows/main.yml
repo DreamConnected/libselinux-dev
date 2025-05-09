@@ -35,11 +35,11 @@ jobs:
         pcre2_link=$(curl -s https://api.github.com/repos/DreamConnected/libpcre2-dev/releases/latest | grep browser_download_url | cut -d'"' -f4 |grep -E 'zip$')
         libsepol_link=$(curl -s https://api.github.com/repos/DreamConnected/libsepol-dev/releases/latest | grep browser_download_url | cut -d'"' -f4 |grep -E 'zip$')
         pcre2_name=$(curl -s https://api.github.com/repos/DreamConnected/libpcre2-dev/releases/latest | grep name | cut -d'"' -f4 |grep -E 'zip$')
-        libsepol_name=$(curl -s https://api.github.com/repos/DreamConnected/libpcre2-dev/releases/latest | grep name | cut -d'"' -f4 |grep -E 'zip$')
+        libsepol_name=$(curl -s https://api.github.com/repos/DreamConnected/libsepol-dev/releases/latest | grep name | cut -d'"' -f4 |grep -E 'zip$')
         wget ${pcre2_link}
         wget ${libsepol_link}
-        sudo unzip -o ${pcre2_name} -d /
-        sudo unzip -o ${libsepol_name} -d /
+        sudo unzip ${pcre2_name} -d /
+        sudo unzip ${libsepol_name} -d /
         
     - name: Set build parameters
       id: vars
