@@ -67,7 +67,7 @@ jobs:
         AR=$NDK_TOOLCHAIN/llvm-ar RANLIB=$NDK_TOOLCHAIN/llvm-ranlib PREFIX=/data/sysroot LDFLAGS=" -Wl,--undefined-version" \
         CFLAGS="-I/data/sysroot/include -I../../libselinux/include"
         sudo make -C libselinux install PREFIX=/data/sysroot
-        su -c 'cd /data/sysroot/lib && ln -s libselinux.so libselinux.so.1'
+        sudo sh -c 'cd /data/sysroot/lib && ln -s libselinux.so libselinux.so.1'
         echo "RELEASE_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
     - name: Upload artifacts
