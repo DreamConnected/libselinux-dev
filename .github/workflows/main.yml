@@ -1,0 +1,89 @@
+name: Android Build selinux
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_arch:
+        description: 'Target architecture (aarch64/arm/x86_64/i686)'
+        required: false
+        default: 'aarch64'
+      ndk_version:
+        description: 'Android NDK version'
+        required: false
+        default: 'r27c'
+      android_api:
+        description: 'Android API level'
+        required: false
+        default: '30'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Android NDK
+      uses: nttld/setup-ndk@v1
+      with:
+        ndk-version: ${{ github.event.inputs.ndk_version || 'r27c' }}
+
+    - name: Install dependencies
+      run: sudo apt-get install -y build-essential unzip zlib1g-dev libtool bison flex autoconf make
+
+    - name: Clone dep pcre2 & libsepol
+      run: |
+        pcre2_link=$(curl -s https://api.github.com/repos/DreamConnected/libpcre2-dev/releases/latest | grep browser_download_url | cut -d'"' -f4 |grep -E 'zip$')
+        libsepol_link=$(curl -s https://api.github.com/repos/DreamConnected/libsepol-dev/releases/latest | grep browser_download_url | cut -d'"' -f4 |grep -E 'zip$')
+        pcre2_name=$(curl -s https://api.github.com/repos/DreamConnected/libpcre2-dev/releases/latest | grep name | cut -d'"' -f4 |grep -E 'zip$')
+        libsepol_name=$(curl -s https://api.github.com/repos/DreamConnected/libpcre2-dev/releases/latest | grep name | cut -d'"' -f4 |grep -E 'zip$')
+        wget ${pcre2_link}
+        wget ${libsepol_link}
+        sudo unzip ${pcre2_name} -d /
+        sudo unzip ${libsepol_name} -d /
+        
+    - name: Set build parameters
+      id: vars
+      run: |
+        # Set target triple based on architecture
+        case "${{ github.event.inputs.target_arch || 'aarch64' }}" in
+          aarch64) target="aarch64-linux-android" ;;
+          arm) target="armv7a-linux-androideabi" ;;
+          x86_64) target="x86_64-linux-android" ;;
+          i686) target="i686-linux-android" ;;
+          *) echo "Unsupported architecture"; exit 1 ;;
+        esac
+        
+        echo "target=$target" >> $GITHUB_OUTPUT
+        echo "api=${{ github.event.inputs.android_api || '30' }}" >> $GITHUB_OUTPUT
+
+    - name: Build selinux
+      run: |
+        export NDK_TOOLCHAIN=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
+        export TARGET=${{ steps.vars.outputs.target }}
+        export API=${{ steps.vars.outputs.api }}
+
+        make -C libselinux LIBDIR=/data/sysroot/lib SHLIBDIR=/data/sysroot/lib CC="$NDK_TOOLCHAIN/clang --target=$TARGET$API" \
+        AR=$NDK_TOOLCHAIN/llvm-ar RANLIB=$NDK_TOOLCHAIN/llvm-ranlib PREFIX=/data/sysroot LDFLAGS=" -Wl,--undefined-version" \
+        CFLAGS="-I/data/sysroot/include -I../../libselinux/include"
+        sudo make -C libselinux install PREFIX=/data/sysroot
+        echo "RELEASE_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4.3.1
+      with:
+        name: android-${{ github.event.inputs.target_arch || 'aarch64' }}-libselinux-dev
+        path: /data/sysroot/*
+
+    - name: Create a ZIP file for artifact
+      run: zip -r android-${{ github.event.inputs.target_arch || 'aarch64' }}-libselinux-dev.zip /data/sysroot/*
+    
+    - name: Create Release and Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ env.RELEASE_DATE }}
+        name: Release ${{ env.RELEASE_DATE }}
+        body: TODO New Release.
+        draft: false
+        prerelease: false
+        files: |
+            android-${{ github.event.inputs.target_arch || 'aarch64' }}-libselinux-dev.zip
