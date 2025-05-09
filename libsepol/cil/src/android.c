@@ -146,7 +146,7 @@ exit:
  * multiple hash tables would be needed.  These tables can then be used by
  * attributize() to change all references to these types.
  */
-int cil_extract_attributees(struct cil_db *db, hashtab_t vers_map)
+static int cil_extract_attributees(struct cil_db *db, hashtab_t vers_map)
 {
 	/* walk ast. */
 	int rc = SEPOL_ERR;
