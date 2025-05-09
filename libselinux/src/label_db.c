@@ -292,8 +292,8 @@ db_init(const struct selinux_opt *opts, unsigned nopts,
 		errno = EINVAL;
 		return NULL;
 	}
-	rec->spec_file = strdup(path);
-	if (!rec->spec_file) {
+	rec->spec_files = strdup(path);
+	if (!rec->spec_files) {
                 free(catalog);
                 fclose(filp);
                 return NULL;
