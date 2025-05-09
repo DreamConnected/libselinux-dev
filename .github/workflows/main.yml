@@ -61,6 +61,7 @@ jobs:
         export NDK_TOOLCHAIN=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
         export TARGET=${{ steps.vars.outputs.target }}
         export API=${{ steps.vars.outputs.api }}
+        export PKG_CONFIG_PATH=/data/sysroot/lib/pkgconfig:$PKG_CONFIG_PATH
 
         make -C libselinux LIBDIR=/data/sysroot/lib SHLIBDIR=/data/sysroot/lib CC="$NDK_TOOLCHAIN/clang --target=$TARGET$API" \
         AR=$NDK_TOOLCHAIN/llvm-ar RANLIB=$NDK_TOOLCHAIN/llvm-ranlib PREFIX=/data/sysroot LDFLAGS=" -Wl,--undefined-version" \
