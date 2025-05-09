@@ -41,6 +41,25 @@
 
 #define STAR_COUNT 1024
 
+static int strverscmp(const char *s1, const char *s2) {
+    while (*s1 && *s2) {
+        while (*s1 && !isdigit(*s1)) s1++;
+        while (*s2 && !isdigit(*s2)) s2++;
+
+        long num1 = strtol(s1, (char **)&s1, 10);
+        long num2 = strtol(s2, (char **)&s2, 10);
+
+        if (num1 != num2) {
+            return (num1 < num2) ? -1 : 1;
+        }
+
+        while (*s1 && isdigit(*s1)) s1++;
+        while (*s2 && isdigit(*s2)) s2++;
+    }
+
+    return (*s1 == '\0' && *s2 == '\0') ? 0 : (*s1 ? 1 : -1);
+}
+
 static struct selabel_handle *fc_sehandle = NULL;
 static bool selabel_no_digest;
 static char *rootpath = NULL;
